@@ -14,7 +14,7 @@ Egy kutatócsoport felkérte cégünket, hogy készítsünk nekik egy webalkalma
 - Adatbázis, tesztek és eredmények, amiket az AI már kitöltött.
   - (jelenleg nincs birtokunkban egy sem, de készíthető vagy lekérhető másoktól)
 -  Hallgatók, akik csak arra várnak, hogy előadás végén részt vegyenek a projectben
-  - (Köszönjük, Viktor) 
+    - (Köszönjük, Viktor) 
 -  Oktatók, akik ki tudják elemezni az eredményeket vagy új számokat bevinni
 -  Diákok, akik kézírással mégtöbb adatot tudnak nekünk generálni
 -  AI - fejlesztők, akik felhasználva az adatokat tudnak tovább kutatni
