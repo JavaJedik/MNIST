@@ -15,6 +15,10 @@ Ez az adatgyűjtés és összehasonlítás szolgálna a mesterséges intelligenc
 
 ## 3. Követelménylista
 
+- Bejelentkezési lehetőség:
+  - Google, facebook, más
+  - Vendégként játszás
+  - IP-ből vagy más adatból meghatározása egy felhasználónak, ha nem akar bejelentkezni
 - Jó adatfolyam
   - Képes legyen egyszerre több csomagot / képet küldeni a http kérések javításához
   - Képes legyen egyszerre több képre választ adni.
@@ -76,9 +80,14 @@ Elérhető legyen magyar, illetve angol nyelven, a következő platformokon:
 
 ![](kepek/MNIST-mobil.png)
 
+### 7.3. Bejelentkezési felület
+
+![](kepek/login.png)
+
 ## 8. Forgatókönyv
 
-
+1. A felhasználó bejelentkezik
+   - Lehet vendég is vagy a saját ip címéből készítünk neki profilt
 
 ## 9. Funkció - követelmény megfeleltetés
 
