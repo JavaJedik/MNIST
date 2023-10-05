@@ -93,7 +93,17 @@ Elérhető legyen magyar, illetve angol nyelven, a következő platformokon:
 1. A felhasználó bejelentkezik
    - Lehet vendég is vagy a saját ip címéből készítünk neki profilt
    - Lehetőleg felhasználónév-jelszó párossal vagy más külső accounttal, pl.: Google
-2. Tudjon játékot indítani 
+2. Tudjon játékot indítani
+   - Kapjon kérdéseket, amikre válaszokat tud adni
+   - Tudjon küldeni választ felhasználói interakcióval, http kérésekkel
+   - Tudja meg esetlegesen, hogy "helyesen" válaszolt-e
+   - A játék megszakítása ne jelentse az adatbázisban a sérülést
+3. Kapjon értékelést a teljesítményéről, motiválja további játékra
+4. Jelentkezzen ki, ha szükséges vagy zárja be az oldalt
+
+- Egy esetleges admin vagy oktató tudjon új képeket feltölteni
+- Egy AI specialista tudja összevetni az eredményeket
+- Egy adatbázis szakértő api-kon keresztül szolgáltasson adatokat
 
 ## 9. Funkció - követelmény megfeleltetés
 
