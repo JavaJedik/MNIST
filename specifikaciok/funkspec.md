@@ -76,6 +76,7 @@ Az a helyzet, hogy szükség lenne egy adatbázisra, ami jól definiált táblá
 - Rendszergazdaként lehessen:
   - Mintákat/Adatokat feltölteni
   - Mintákat/Adatokat törölni
+  - Ranglista alaphelyzetbe állítása
 - Megtekinthető legyen a ranglista.
 
 
