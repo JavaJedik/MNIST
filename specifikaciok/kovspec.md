@@ -18,7 +18,6 @@ Ezzel gamifikáljuk a kitöltést és így várhatóan többen fognak segédkezn
 - Adatbázis, tesztek és eredmények, amiket az AI már kitöltött.
   - (jelenleg nincs birtokunkban egy sem, de készíthető vagy lekérhető másoktól)
 -  Hallgatók, akik csak arra várnak, hogy előadás végén részt vegyenek a projectben
-    - (Köszönjük, Viktor) 
 -  Oktatók, akik ki tudják elemezni az eredményeket vagy új számokat bevinni
 -  Diákok, akik kézírással mégtöbb adatot tudnak nekünk generálni
 -  AI - fejlesztők, akik felhasználva az adatokat tudnak tovább kutatni
@@ -72,12 +71,12 @@ Ezzel gamifikáljuk a kitöltést és így várhatóan többen fognak segédkezn
 
 - Rendszergazda (admin) felület, ahol lehetőség van az alkalmazás adatainak módosítására:
   - Minták/Adatok feltöltése
-  - Minták/Adatok törélse
+  - Minták/Adatok törlése
 - Bejelentkezési lehetőség:
   - Google, facebook, más
   - Vendégként játszás
   - IP-ből vagy más adatból meghatározása egy felhasználónak, ha nem akar bejelentkezni
-- Egy ranglistához hasonló felület, ahol megtekinthető, hogy adott felhasználó hány tesztre adott (jó)választ.
+- Egy ranglistához hasonló felület, ahol megtekinthető, hogy adott felhasználó hány tesztre adott (jó) választ.
 - Jó adatfolyam
   - Képes legyen egyszerre több csomagot / képet küldeni a http kérések javításához
   - Képes legyen egyszerre több képre választ adni.
