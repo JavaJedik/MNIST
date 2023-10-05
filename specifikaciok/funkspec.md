@@ -123,6 +123,8 @@ Az a helyzet, hogy szükség lenne egy adatbázisra, ami jól definiált táblá
 - Az elkészült program a megrendelő minden igényét kielégíti.
 - Copyright: A felhasznált forrásokat, pl. a képek eredetét fel kell tüntetni.
 - GDPR: A felhasználók adatainak gyűjtése illetve továbbítása a megfelelő tájékoztatás hiányában tilos.
+- Az adatok helyesek legyenek, biztosítva azt, hogy nem fogják a kutatás pontosságát veszélyeztetni.
+- A felhasználókat csábítsa a minél több kitöltésre.
 
 ## 10. Fogalomszótár
 
