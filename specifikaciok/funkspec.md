@@ -17,7 +17,7 @@ Az a helyzet, hogy szükség lenne egy adatbázisra, ami jól definiált táblá
 
 - Rendszergazda (admin) felület, ahol lehetőség van az alkalmazás adatainak módosítására:
   - Minták/Adatok feltöltése
-  - Minták/Adatok törélse
+  - Minták/Adatok törlése
   - Ranglista alaphelyzetbe állítása
 - Bejelentkezési lehetőség:
   - Google, facebook, más
@@ -135,7 +135,7 @@ Az adatbázist széles körben használják képzésre és tesztelésre is a gé
 
 ### 10.4. MVC modell
 
-- Modell - Viev - Controller lényege, hogy a grafikus felülettől független környezetet tudunk kialakítani:
+- Modell - View - Controller lényege, hogy a grafikus felülettől független környezetet tudunk kialakítani:
 - Összetett, sok adatot a felhasználó elé táró számítógépes alkalmazásokban gyakori fejlesztői kívánalom az adathoz (modell) és a felhasználói felülethez (nézet) tartozó dolgok szétválasztása, hogy a felhasználói felület ne befolyásolja az adatkezelést, és az adatok átszervezhetők legyenek a felhasználói felület változtatása nélkül. A modell-nézet-vezérlő ezt úgy éri el, hogy elkülöníti az adatok elérését és az üzleti logikát az adatok megjelenítésétől és a felhasználói interakciótól egy közbülső összetevő, a vezérlő bevezetésével.
   - Az adatbázis tud kommunikálni a szerverrel, önállóan
   - A szerver tud adatot küldeni a kliensnek és kinyerni adatokat az adatbázisból API-kon keresztül
