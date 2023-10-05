@@ -83,11 +83,17 @@ Ezzel gamifikáljuk a kitöltést és így várhatóan többen fognak segédkezn
     - Előnye, hogy kevesebb a http kérés, a közölt adat és kisebb veszteség.    
 - A felület reszponzív legyen
 - A program weben legyen elérhető mindenki számára
-- Elérhető legyen crossplatformon:
+- Elérhető legyen magyar, illetve angol nyelven, a következő platformokon:
   - Linux (lehető legtöbb distro)
   - MacOS
   - Windows
-  - Mobil (Android / iOS) 
+  - Mobil (Android / iOS)
+  - Samsung okoshűtő
+    - A felhasználó sörözés közben is tudja használni a programot
+    - Olyanok is tudják használni, akik a konyhában laknak
+      - Remek lehetőség a teljesítmény mérésére:
+        - Sör előtt
+        - Sör után
 - A felület intuitív, könnyen értelmezhető legyen
 - Nyelvválasztás lehetősége (angol / magyar)
 - Külső fenyegetettségek elől védett legyen a rendszer
