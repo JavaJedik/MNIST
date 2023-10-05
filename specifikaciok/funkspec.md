@@ -74,6 +74,12 @@ Az a helyzet, hogy szükség lenne egy adatbázisra, ami jól definiált táblá
   - MacOS
   - Windows
   - Mobil (Android / iOS)
+  - Samsung okoshűtő
+    - A felhasználó sörözés közben is tudja használni a programot
+    - Olyanok is tudják használni, akik a konyhában laknak
+      - Remek lehetőség a teljesítmény mérésére:
+        - Sör előtt
+        - Sör után
 - Rendszergazdaként lehessen:
   - Mintákat/Adatokat feltölteni
   - Mintákat/Adatokat törölni
