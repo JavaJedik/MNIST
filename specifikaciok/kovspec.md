@@ -26,20 +26,22 @@ Ezzel gamifikáljuk a kitöltést és így várhatóan többen fognak segédkezn
 ## 4. Igényelt üzleti folyamatok
 
 
-
 ## 5. A rendszerre vonatkozó szabályok
-
 
 
 ## 6. Követelménylista
 
+- Jó adatfolyam
+  - Képes legyen egyszerre több csomagot / képet küldeni a http kérések javításához
+  - Képes legyen egyszerre több képre választ adni.
+    - Előnye, hogy kevesebb a http kérés, a közölt adat és kisebb veszteség.    
 - A felület reszponzív legyen
 - A program weben legyen elérhető mindenki számára
 - Elérhető legyen crossplatformon:
   - Linux (lehető legtöbb distro)
   - MacOS
   - Windows
-  - Mobil 
+  - Mobil (Android / iOS) 
 - A felület intuitív, könnyen értelmezhető legyen
 - Nyelvválasztás lehetősége (angol / magyar)
 - Külső fenyegetettségek elől védett legyen a rendszer
