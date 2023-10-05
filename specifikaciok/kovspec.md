@@ -70,10 +70,14 @@ Ezzel gamifikáljuk a kitöltést és így várhatóan többen fognak segédkezn
 
 ## 6. Követelménylista
 
+- Rendszergazda (admin) felület, ahol lehetőség van az alkalmazás adatainak módosítására:
+  - Minták/Adatok feltöltése
+  - Minták/Adatok törélse
 - Bejelentkezési lehetőség:
   - Google, facebook, más
   - Vendégként játszás
   - IP-ből vagy más adatból meghatározása egy felhasználónak, ha nem akar bejelentkezni
+- Egy ranglistához hasonló felület, ahol megtekinthető, hogy adott felhasználó hány tesztre adott (jó)választ.
 - Jó adatfolyam
   - Képes legyen egyszerre több csomagot / képet küldeni a http kérések javításához
   - Képes legyen egyszerre több képre választ adni.
