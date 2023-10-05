@@ -28,6 +28,28 @@ Ezzel gamifikáljuk a kitöltést és így várhatóan többen fognak segédkezn
 
 ## 5. A rendszerre vonatkozó szabályok
 
+- A felület szabványos eszközökkel készüljön
+  - HTML, CSS, Adatbázis (MySQL - MariaDB) 
+  - Ne használjon elavult technológiákat
+  - Legyen biztonságos
+    - Felhasználói szinten
+      - GDPR
+        - A felhasználó ne férjen hozzá más adataihoz, mint például:
+          - Jelszavak, tartózkodási hely, beszélt nyelv stb.
+          - Korábbi kitöltések
+          - Játékidő, kitöltött kérdések száma
+          - Bejelentkezések, beállítások
+      - Ne tudjon adatot hamisítani, módosítani, elfogattatni
+      - Ne tudjon külső szoftvereket csalásként használni
+    - Rendszerszinten
+      - Védett legyen külső támadásokkal, sebezhetőségekkel szemben
+      - Csak biztonságos protokolokat használjon, titkosítson
+      - Jelszavakat az adatbázisban hashelve és sózva tárolja, ne nyílt szövegként
+      - Azonosítatlan http kérésekre küldjön sikertelen választ
+      - Ha a felhasználó egy szerkezetileg helyes, de jogtalan kérést küld, utasítsa el
+        - Ne tudjon más képre hivatkozni, amit kapott
+        - Ne tudjon más felhasználó nevében cselekedni
+        - Ne tudja megfejteni a kérdésre a választ 
 
 ## 6. Követelménylista
 
