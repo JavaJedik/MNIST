@@ -18,6 +18,7 @@ Az a helyzet, hogy szükség lenne egy adatbázisra, ami jól definiált táblá
 - Rendszergazda (admin) felület, ahol lehetőség van az alkalmazás adatainak módosítására:
   - Minták/Adatok feltöltése
   - Minták/Adatok törélse
+  - Ranglista alaphelyzetbe állítása
 - Bejelentkezési lehetőség:
   - Google, facebook, más
   - Vendégként játszás
