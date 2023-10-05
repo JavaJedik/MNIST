@@ -43,4 +43,14 @@ Egy kutatócsoport felkérte cégünket, hogy készítsünk nekik egy webalkalma
 
 
 ## 10. Fogalomszótár
-
+- AI - Mesterséges Intelligencia
+- OCR - Szöveg felismerésére "szakosodott" AI. Ezekkel szokták pl.: a dokumentumokat PDF formátumba alakítani, bescannelni.
+- Az MNIST (Módosított Nemzeti Szabványügyi és Technológiai Intézet, angolul: Modified National Institute of Standards and Technology)
+- egy nagy adatbázis kézzel írt számjegyekből, amelyet általában különféle képfeldolgozó rendszerek betanítására használnak.
+- Az adatbázist széles körben használják képzésre és tesztelésre is a gépi tanulás területén.
+- MVC modell:
+Összetett, sok adatot a felhasználó elé táró számítógépes alkalmazásokban gyakori fejlesztői kívánalom az adathoz (modell)
+és a felhasználói felülethez (nézet) tartozó dolgok szétválasztása, hogy a felhasználói felület ne befolyásolja az adatkezelést,
+és az adatok átszervezhetők legyenek a felhasználói felület változtatása nélkül. A modell-nézet-vezérlő ezt úgy éri el,
+hogy elkülöníti az adatok elérését és az üzleti logikát az adatok megjelenítésétől és a felhasználói interakciótól egy
+közbülső összetevő, a vezérlő bevezetésével.
