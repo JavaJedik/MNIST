@@ -25,6 +25,18 @@ Egy kutatócsoport felkérte cégünket, hogy készítsünk nekik egy webalkalma
 
 ## 5. Igényelt üzleti folyamatok modellje
 
+- Képek összegyűjtése a MariaDB adatbázishoz
+    - Adatbázis megtervezése
+        - Táblák és kapcsolatok implementálása
+        - Egyéb megszorítások és követelmények implementálása
+        - Adatok feltöltése a modellhez
+    - Felhasználói játékok összegyűjtése és elemzése az adatbázishoz
+    - AI általi válaszok hozzáadása az összehasonlításhoz
+    - Adatok feldolgozása, játékok elemzése
+    - Olyan képet ne mutasson sokat, amire a válasz egyértelmű
+        - Helyezze előnybe azokat a képeket, amikre sok a "rossz" válasz
+        - Ne használjuk az emberi erőforrásokat feleslegesen "könnyű" képekkel
+    - A képek helyes letárolása az adatbázisban, hogy gyors maradjon
 
 
 ## 6. Használati esetek
