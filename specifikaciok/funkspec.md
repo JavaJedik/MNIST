@@ -77,7 +77,9 @@ Elérhető legyen magyar, illetve angol nyelven, a következő platformokon:
 
 ## 9. Funkció - követelmény megfeleltetés
 
-
+- Az elkészült program a megrendelő minden igényét kielégíti.
+- Copyright: A felhasznált forrásokat, pl. a képek eredetét fel kell tüntetni.
+- GDPR: A felhasználók adatainak gyűjtése illetve továbbítása a megfelelő tájékoztatás hiányában tilos.
 
 ## 10. Fogalomszótár
 - AI - Mesterséges Intelligencia
