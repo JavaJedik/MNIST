@@ -50,8 +50,8 @@ Elérhető legyen magyar, illetve angol nyelven, a következő platformokon:
 - AI - Mesterséges Intelligencia
 - OCR - Szöveg felismerésére "szakosodott" AI. Ezekkel szokták pl.: a dokumentumokat PDF formátumba alakítani, bescannelni.
 - Az MNIST (Módosított Nemzeti Szabványügyi és Technológiai Intézet, angolul: Modified National Institute of Standards and Technology)
-- egy nagy adatbázis kézzel írt számjegyekből, amelyet általában különféle képfeldolgozó rendszerek betanítására használnak.
-- Az adatbázist széles körben használják képzésre és tesztelésre is a gépi tanulás területén.
+egy nagy adatbázis kézzel írt számjegyekből, amelyet általában különféle képfeldolgozó rendszerek betanítására használnak.
+Az adatbázist széles körben használják képzésre és tesztelésre is a gépi tanulás területén.
 - MVC modell:
 Összetett, sok adatot a felhasználó elé táró számítógépes alkalmazásokban gyakori fejlesztői kívánalom az adathoz (modell)
 és a felhasználói felülethez (nézet) tartozó dolgok szétválasztása, hogy a felhasználói felület ne befolyásolja az adatkezelést,
