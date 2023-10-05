@@ -11,7 +11,7 @@ Ez az adatgyűjtés és összehasonlítás szolgálna a mesterséges intelligenc
 
 ## 2. Jelenlegi helyzet
 
-
+Az a helyzet, hogy szükség lenne egy adatbázisra, ami jól definiált táblákkal, kapcsolatokkal, attribútumokkal rendelkezik, és megfelel legalább a harmadik normál formulának. Fontos, hogy tartalmazza a modellt, a userek adatait, a számokat és minden mást úgy, hogy nincs benne redundancia, ha van, akkor a lekérdezések nem lesznek konzisztensek, és a fentebbi rétégek nem tudnak rá építkezni, ezért ennek tervezése rendkívül fontos feladat. Bár vannak kutatóink és tesztereink (hallgatóink), programozóink nincsenek a feladathoz. Nincs még kidolgozva a modell, ami alapján az AI és az ember válaszait össze tudnánk vetni.
 
 ## 3. Követelménylista
 
@@ -88,6 +88,8 @@ Elérhető legyen magyar, illetve angol nyelven, a következő platformokon:
 
 1. A felhasználó bejelentkezik
    - Lehet vendég is vagy a saját ip címéből készítünk neki profilt
+   - Lehetőleg felhasználónév-jelszó párossal vagy más külső accounttal, pl.: Google
+2. Tudjon játékot indítani 
 
 ## 9. Funkció - követelmény megfeleltetés
 
