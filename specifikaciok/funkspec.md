@@ -128,7 +128,17 @@ Az a helyzet, hogy szükség lenne egy adatbázisra, ami jól definiált táblá
 
 ### 10.1. AI
 
-Mesterséges Intelligencia
+Mesterséges Intelligencia:
+- Mesterséges intelligenciának (MI vagy AI – az angol artificial intelligence-ből) egy gép, program vagy mesterségesen létrehozott 
+tudat által megnyilvánuló intelligenciát nevezzük. A fogalmat legtöbbször a számítógépekkel társítjuk. A köznyelvben több külön 
+jelentésben használják:
+  - A mesterségesen létrehozott tárgy állandó emberi beavatkozás nélkül képes legyen válaszolni környezeti behatásokra 
+  (automatizáltság) – az egyszerű szoftverágens ilyen;
+  - A mesterségesen létrehozott tárgy képes legyen hasonlóan viselkedni, mint egy természetes intelligenciával rendelkező élőlény, 
+  még ha az azonos viselkedés mögött eltérő mechanizmus is húzódik meg (TI szimuláltság – ilyen értelemben beszélhetünk pl. a számítógépes
+  játékok gép irányította karaktereinek „intelligenciájáról”);
+  - Végül, a mesterségesen létrehozott tárgy képes legyen viselkedését célszerűen és megismételhető módon változtatni
+  (tanulás) – ez utóbbi jelentés az, ami a modern MI-kutatásban előtérbe került, és jelenleg az MI fogalmával legjobban azonosítható.
 
 ### 10.2. OCR
 
