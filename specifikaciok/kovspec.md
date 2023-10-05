@@ -6,7 +6,11 @@ Egy kutatócsoport felkérte cégünket, hogy készítsünk nekik egy webalkalma
 
 ## 2. Vágyálom rendszer
 
-
+Egy Java nyelven íródott webalkalmazás lefejlesztése a célja a projektnek.
+Minél izgalmasabb vagy kevésbé unalmas legyen a kérdések kitöltése.
+Ezzel több adatot fogunk tudni kinyerni emberenként, ezzel pontosítani lehet a kutatás eredményét.
+Egy ranglista készítése, ahol a kitöltők láthatják, hogy kik a legtöbb választ beküldők.
+Ezzel gamifikáljuk a kitöltést és így várhatóan többen fognak segédkezni.
 
 ## 3. Jelenlegi üzleti folyamatok
 
