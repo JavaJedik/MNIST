@@ -22,7 +22,11 @@ Egy kutatócsoport felkérte cégünket, hogy készítsünk nekik egy webalkalma
 
 ## 6. Használati esetek
 
-
+Elérhető legyen magyar, illetve angol nyelven, a következő platformokon:
+- Linux (lehető legtöbb distro)
+- MacOS
+- Windows
+- Mobil (Android / iOS)
 
 ## 7. Képernyő tervek
 
