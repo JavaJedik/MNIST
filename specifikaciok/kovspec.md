@@ -101,3 +101,4 @@ is a gépi tanulás területén.
   - A kliens vagy a View modell csak egy megjelenítő, a felhasználó interakciókat továbbítja a modellnek, általában http protokolokon keresztül
 - MariaDB - A MySQL egy forkja, ingyenesen használható, alkalmas titkosításhoz, jól skálázható, nyílt forráskódú, relációs adatbázis, a syntax az Oracle-höz hasonló, így könnyen integrálható akár azzal is.
 - Syntax - egy programozási vagy más nyelv szabályai, aminek meg kell felelni.
+- GDPR: Minden adat és kérdés bizalmas kezelése, ne férhessen hozzá idegen személy.
