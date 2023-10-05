@@ -101,17 +101,23 @@ Ezzel gamifikáljuk a kitöltést és így várhatóan többen fognak segédkezn
 
 ## 7. Fogalomszótár
 
-- AI - Mesterséges Intelligencia
-- OCR - Szöveg felismerésére "szakosodott" AI. Ezekkel szokták pl.: a dokumentumokat PDF formátumba alakítani, bescannelni.
-- Az MNIST (Módosított Nemzeti Szabványügyi és Technológiai Intézet, angolul: 
-Modified National Institute of Standards and Technology) egy nagy adatbázis kézzel írt számjegyekből, amelyet általában 
-különféle képfeldolgozó rendszerek betanítására használnak. Az adatbázist széles körben használják képzésre és tesztelésre 
-is a gépi tanulás területén.
-- MVC modell - Modell - Viev - Controller lényege, hogy a grafikus felülettől független környezetet tudunk kialakítani:
+### 7.1. AI
+
+Mesterséges Intelligencia
+
+### 7.2. OCR
+
+Szöveg felismerésére "szakosodott" AI. Ezekkel szokták pl.: a dokumentumokat PDF formátumba alakítani, bescannelni.
+
+### 7.3. MNIST (Módosított Nemzeti Szabványügyi és Technológiai Intézet, angolul: Modified National Institute of Standards and Technology)
+
+Egy nagy adatbázis kézzel írt számjegyekből, amelyet általában különféle képfeldolgozó rendszerek betanítására használnak.
+Az adatbázist széles körben használják képzésre és tesztelésre is a gépi tanulás területén.
+
+### 7.4. MVC modell
+
+- Modell - View - Controller lényege, hogy a grafikus felülettől független környezetet tudunk kialakítani:
 - Összetett, sok adatot a felhasználó elé táró számítógépes alkalmazásokban gyakori fejlesztői kívánalom az adathoz (modell) és a felhasználói felülethez (nézet) tartozó dolgok szétválasztása, hogy a felhasználói felület ne befolyásolja az adatkezelést, és az adatok átszervezhetők legyenek a felhasználói felület változtatása nélkül. A modell-nézet-vezérlő ezt úgy éri el, hogy elkülöníti az adatok elérését és az üzleti logikát az adatok megjelenítésétől és a felhasználói interakciótól egy közbülső összetevő, a vezérlő bevezetésével.
   - Az adatbázis tud kommunikálni a szerverrel, önállóan
   - A szerver tud adatot küldeni a kliensnek és kinyerni adatokat az adatbázisból API-kon keresztül
   - A kliens vagy a View modell csak egy megjelenítő, a felhasználó interakciókat továbbítja a modellnek, általában http protokolokon keresztül
-- MariaDB - A MySQL egy forkja, ingyenesen használható, alkalmas titkosításhoz, jól skálázható, nyílt forráskódú, relációs adatbázis, a syntax az Oracle-höz hasonló, így könnyen integrálható akár azzal is.
-- Syntax - egy programozási vagy más nyelv szabályai, aminek meg kell felelni.
-- GDPR: Minden adat és kérdés bizalmas kezelése, ne férhessen hozzá idegen személy.
