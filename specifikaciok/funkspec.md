@@ -26,7 +26,13 @@ Egy kutatócsoport felkérte cégünket, hogy készítsünk nekik egy webalkalma
 
 ## 7. Képernyő tervek
 
+### 7.1. Számítógépes megjelenés
 
+![](kepek/MNIST-pc.png)
+
+### 7.2. Mobilos megjelenés
+
+![](kepek/MNIST-mobil.png)
 
 ## 8. Forgatókönyv
 
