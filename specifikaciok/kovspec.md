@@ -10,7 +10,14 @@ Egy kutatócsoport felkérte cégünket, hogy készítsünk nekik egy webalkalma
 
 ## 3. Jelenlegi üzleti folyamatok
 
-
+- Rengeteg AI modell pl. OCR, amik képesek felismerni számokat (is)
+- Adatbázis, tesztek és eredmények, amiket az AI már kitöltött.
+  - (jelenleg nincs birtokunkban egy sem, de készíthető vagy lekérhető másoktól)
+-  Hallgatók, akik csak arra várnak, hogy előadás végén részt vegyenek a projectben
+  - (Köszönjük, Viktor) 
+-  Oktatók, akik ki tudják elemezni az eredményeket vagy új számokat bevinni
+-  Diákok, akik kézírással mégtöbb adatot tudnak nekünk generálni
+-  AI - fejlesztők, akik felhasználva az adatokat tudnak tovább kutatni
 
 ## 4. Igényelt üzleti folyamatok
 
@@ -27,3 +34,4 @@ Egy kutatócsoport felkérte cégünket, hogy készítsünk nekik egy webalkalma
 ## 7. Fogalomszótár
 
 AI - Mesterséges Intelligencia
+OCR - Szöveg felismerésére "szakosodott" AI. Ezekkel szokták pl.: a dokumentumokat PDF formátumba alakítani, bescannelni.
