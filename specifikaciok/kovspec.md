@@ -33,5 +33,9 @@ Egy kutatócsoport felkérte cégünket, hogy készítsünk nekik egy webalkalma
 
 ## 7. Fogalomszótár
 
-AI - Mesterséges Intelligencia
-OCR - Szöveg felismerésére "szakosodott" AI. Ezekkel szokták pl.: a dokumentumokat PDF formátumba alakítani, bescannelni.
+ - AI - Mesterséges Intelligencia
+ - OCR - Szöveg felismerésére "szakosodott" AI. Ezekkel szokták pl.: a dokumentumokat PDF formátumba alakítani, bescannelni.
+ - Az MNIST (Módosított Nemzeti Szabványügyi és Technológiai Intézet, angolul: 
+Modified National Institute of Standards and Technology) egy nagy adatbázis kézzel írt számjegyekből, amelyet általában 
+különféle képfeldolgozó rendszerek betanítására használnak. Az adatbázist széles körben használják képzésre és tesztelésre 
+is a gépi tanulás területén.
