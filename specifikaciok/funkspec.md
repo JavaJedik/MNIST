@@ -71,6 +71,10 @@ Elérhető legyen magyar, illetve angol nyelven, a következő platformokon:
 
 ![](kepek/MNIST-mobil.png)
 
+### 7.3. Bejelentkezési felület
+
+![](kepek/login.png)
+
 ## 8. Forgatókönyv
 
 
