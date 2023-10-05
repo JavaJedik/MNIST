@@ -68,11 +68,16 @@ Az a helyzet, hogy szükség lenne egy adatbázisra, ami jól definiált táblá
 
 ## 6. Használati esetek
 
-Elérhető legyen magyar, illetve angol nyelven, a következő platformokon:
-- Linux (lehető legtöbb distro)
-- MacOS
-- Windows
-- Mobil (Android / iOS)
+- Elérhető legyen magyar, illetve angol nyelven, a következő platformokon:
+  - Linux (lehető legtöbb distro)
+  - MacOS
+  - Windows
+  - Mobil (Android / iOS)
+- Rendszergazdaként lehessen:
+  - Mintákat/Adatokat feltölteni
+  - Mintákat/Adatokat törölni
+- Megtekinthető legyen a ranglista.
+
 
 ## 7. Képernyő tervek
 
