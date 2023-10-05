@@ -6,7 +6,7 @@ Egy kutatócsoport felkérte cégünket, hogy készítsünk nekik egy webalkalma
 
 ## 2. Vágyálom rendszer
 
-Egy Java nyelven íródott webalkalmazás lefejlesztése a célja a projektnek.
+Egy webalkalmazás lefejlesztése a célja a projektnek az MVC modell megvalósításával. A kliens függetlenedjen a szervertől és a szerver függetlenetjen az adatbázistól, API-kon keresztül kommunikáljanak.
 Minél izgalmasabb vagy kevésbé unalmas legyen a kérdések kitöltése.
 Ezzel több adatot fogunk tudni kinyerni emberenként, ezzel pontosítani lehet a kutatás eredményét.
 Egy ranglista készítése, ahol a kitöltők láthatják, hogy kik a legtöbb választ beküldők.
@@ -25,9 +25,24 @@ Ezzel gamifikáljuk a kitöltést és így várhatóan többen fognak segédkezn
 
 ## 4. Igényelt üzleti folyamatok
 
+- Képek összegyűjtése a MariaDB adatbázishoz
+  - Adatbázis megtervezése
+    - Táblák és kapcsolatok implementálása
+    - Egyéb megszorítások és követelmények implementálása
+    - Adatok feltöltése a modellhez
+  - Felhasználói játékok összegyűjtése és elemzése az adatbázishoz
+  - AI általi válaszok hozzáadása az összehasonlításhoz
+  - Adatok feldolgozása, játékok elemzése
+  - Olyan képet ne mutasson sokat, amire a válasz egyértelmű
+    - Helyezze előnybe azokat a képeket, amikre sok a "rossz" válasz
+    - Ne használjuk az emberi erőforrásokat feleslegesen "könnyű" képekkel
+  - A képek helyes letárolása az adatbázisban, hogy gyors maradjon 
 
 ## 5. A rendszerre vonatkozó szabályok
 
+- Ingyenes, skálázható szoftverek üzleti felhasználásra is:
+  - MariaDB - MySQL egy forkja, nyílt forráskódú, skálázható
+  - OCR és egyébb AI modellek, mint a Tesseract
 - A felület szabványos eszközökkel készüljön
   - HTML, CSS, Adatbázis (MySQL - MariaDB) 
   - Ne használjon elavult technológiákat
@@ -49,7 +64,9 @@ Ezzel gamifikáljuk a kitöltést és így várhatóan többen fognak segédkezn
       - Ha a felhasználó egy szerkezetileg helyes, de jogtalan kérést küld, utasítsa el
         - Ne tudjon más képre hivatkozni, amit kapott
         - Ne tudjon más felhasználó nevében cselekedni
-        - Ne tudja megfejteni a kérdésre a választ 
+        - Ne tudja megfejteni a kérdésre a választ
+        - Ne tudjon hozzáférni az adatbázishoz illetéktelen személy
+        - Ne legyen lehetőség az adatbázis lekérdezésére folyamatos játékokkal (pl.: curl)
 
 ## 6. Követelménylista
 
@@ -77,3 +94,9 @@ Ezzel gamifikáljuk a kitöltést és így várhatóan többen fognak segédkezn
 Modified National Institute of Standards and Technology) egy nagy adatbázis kézzel írt számjegyekből, amelyet általában 
 különféle képfeldolgozó rendszerek betanítására használnak. Az adatbázist széles körben használják képzésre és tesztelésre 
 is a gépi tanulás területén.
+- MVC modell - Modell - Viev - Controller lényege, hogy a grafikus felülettől független környezetet tudunk kialakítani:
+  - Az adatbázis tud kommunikálni a szerverrel, önállóan
+  - A szerver tud adatot küldeni a kliensnek és kinyerni adatokat az adatbázisból API-kon keresztül
+  - A kliens vagy a View modell csak egy megjelenítő, a felhasználó interakciókat továbbítja a modellnek, általában http protokolokon keresztül
+- MariaDB - A MySQL egy forkja, ingyenesen használható, alkalmas titkosításhoz, jól skálázható, nyílt forráskódú, relációs adatbázis, a syntax az Oracle-höz hasonló, így könnyen integrálható akár azzal is.
+- Syntax - egy programozási vagy más nyelv szabályai, aminek meg kell felelni.
