@@ -7,4 +7,4 @@
 
 ### Test 1-3
 
-![../../kepek/teszt/1.png]()
+![../../kepek/teszt/tomi/1.png]()
