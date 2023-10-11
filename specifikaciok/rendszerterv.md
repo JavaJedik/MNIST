@@ -103,3 +103,5 @@ Ezen kívül egyéb szoftver nem szükséges a futtatáshoz.
 
 ## 13. Karbantartási terv
 
+- Új képek hozzáadása, hibás/elavult képek javítása.
+- Jövőben felmerülő biztonsági hibák javítása.
