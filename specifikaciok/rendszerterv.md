@@ -95,6 +95,10 @@ A webes felületnek köszönhetően használható lesz telefonos, illetve szám�
 
 ## 12. Telepítési terv
 
+- A szoftver webes felületéhez egy ajánlott böngésző telepítése szükséges (Google Chrome, Firefox, Opera, Safari),
+illetve egy olyan operációs rendszer használata, mely ezen böngészők legfrissebb verziójának futtatására képes.
+Ezen kívül egyéb szoftver nem szükséges a futtatáshoz.
+- A webszerverre közvetlenül az internetről kapcsolódnak rá a kliensek.
 
 
 ## 13. Karbantartási terv
