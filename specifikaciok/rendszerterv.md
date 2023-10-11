@@ -196,6 +196,11 @@ Adattagjai:
 
 ## 8. Architekturális terv
 
+![](kepek/usecase-diagram.png)
+
+Mobilra és számítógépre tervezzük kiadni a szoftvert.
+A játékost vizuálisan ki kell szolgálni attól függően, hogy a kijelzője függőleges vagy vízszintes tájolású.
+A játékban személyre kell tudni szabnia a játékosnak, hogy milyen nyelvű kérdéseket kapjon.
 
 
 ## 9. Adatbázis terv
