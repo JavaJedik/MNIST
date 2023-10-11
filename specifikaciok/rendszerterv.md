@@ -40,6 +40,33 @@ böngészőket (pl. Google Chrome v100 és frissebb).
 
 ## 5. Funkcionális terv
 
+### 5.1. A felhasználónak:
+
+- be kell tudni jelentkeznie
+- játékot kell tudni indítania
+- tudjon nyelvet váltani (játék előtt)
+- ki tudjon belőle szállni
+- választ tudjon adni, visszajelzést kell kapnia
+
+### 5.2. Az adminisztrátornak:
+
+- be kell tudni jelentkeznie
+- tudnia kell módosítani a játék adatait:
+  - Minták/Adatok feltöltése
+  - Minták/Adatok törlése
+  - Ranglista alaphelyzetbe állítása
+
+
+### 5.3. A szervernek, alkalmazásnak:
+
+- A következő technológiák segítségével kell felépíteni:
+  - react + html + css frontend
+  - Java Spring Boot backend
+  - MariaDB adatbázis
+- az egyes komponenseknek jól kell kommunikálniuk egymással
+- a játék, játékos, rendszer minden folyamatát naplózni kell
+- folyamatosan futni kell, nem szabad random leállnia
+
 
 
 ## 6. Fizikai környezet
