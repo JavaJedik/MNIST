@@ -10,7 +10,7 @@ Shared Styles
 }
 
 .main-container {
-    background-image: url("../../resources/background.png");
+    background-image: url("../../resources/background.jpg");
     background-position: center;
     background-size: cover;
     display: flex;
@@ -81,7 +81,7 @@ Login Styles
 
 
 .blur-container {
-    background-color: rgba(70, 89, 171, 0.5);
+    background-color: rgba(107, 123, 140, 0.5);
     backdrop-filter: blur(20px);
     position: absolute;
     top: 50%;
@@ -204,7 +204,7 @@ Home Styles
 }
 
 .home-blur-container {
-    background-color: rgba(70, 89, 171, 0.5);
+    background-color: rgba(107, 123, 140, 0.5);
     backdrop-filter: blur(20px);
     position: absolute;
     top: 50%;
@@ -278,7 +278,7 @@ Leaderboard Styles
 }
 
 .board-blur-container {
-    background-color: rgba(70, 89, 171, 0.5);
+    background-color: rgba(107, 123, 140, 0.5);
     backdrop-filter: blur(20px);
     position: absolute;
     top: 50%;
@@ -380,7 +380,7 @@ Register Styles
 }
 
 .reg-blur-container {
-    background-color: rgba(70, 89, 171, 0.5);
+    background-color: rgba(107, 123, 140, 0.5);
     backdrop-filter: blur(20px);
     position: absolute;
     top: 50%;
