@@ -1,3 +1,5 @@
+/*Login*/
+
 * {
     font-size: 1rem;
     font-family: serif;
@@ -111,5 +113,280 @@
 
     .content-bottom {
         font-size: 1rem;
+    }
+}
+
+/*Home*/
+
+.home-header {
+    position: relative;
+    text-align: center;
+    color: whitesmoke;
+    font-size: 1.5rem;
+    letter-spacing: 0.2rem;
+    margin: 0 0 1em;
+}
+
+.home-dropbtn {
+    position: relative;
+    background: whitesmoke;
+    color: #6e6e6e;
+    width: 20.25em;
+    height: 2em;
+    border-radius: 15px;
+    transition-duration: 0.8s;
+    text-align: center;
+    cursor: pointer;
+    border: medium solid lightgreen;
+}
+
+.home-dropbtn:hover {
+    border: thin solid dodgerblue;
+    background: rgb(185, 197, 246);
+}
+
+.home-dropdown {
+    position: relative;
+    display: inline-list-item;
+    text-align: center;
+    margin: 1em;
+}
+
+.home-dropdown-content {
+    display: none;
+    position: absolute;
+    width: 20.25em;
+    height: 5.25em;
+    border-radius: 15px;
+    background-color: #f1f1f1;
+    border: thin solid grey;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    cursor: pointer;
+}
+
+.home-dropdown:hover .home-dropdown-content {
+    display: block;
+}
+
+.home-dropdown-content p:hover {
+    color: dodgerblue;
+}
+
+.home-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30em;
+    height: 25em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.home-blur-container {
+    background-color: rgba(70, 89, 171, 0.5);
+    backdrop-filter: blur(20px);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30em;
+    height: 25em;
+    border-radius: 25px;
+    z-index: 0;
+}
+
+.home-button-style {
+    background: whitesmoke;
+    text-align: center;
+    margin: 1em;
+    border: medium solid rgb(185, 197, 246);
+    border-radius: 15px;
+    transition-duration: 0.8s;
+    width: 20em;
+    height: 2em;
+    cursor: pointer;
+}
+
+.home-button-style:hover {
+    background: rgb(185, 197, 246);
+}
+
+@media (max-width: 1200px) {
+    .home-header {
+        font-size: 0.85rem;
+    }
+
+    .home-dropbtn {
+        width: 10em;
+    }
+
+    .home-dropdown-content {
+        width: 10em;
+    }
+
+    .home-button-style {
+        width: 10em;
+    }
+
+    .home-container {
+        width: 20em;
+    }
+
+    .home-blur-container {
+        width: 20em;
+    }
+}
+
+/*Leaderboard*/
+
+.board-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70em;
+    height: 50em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.board-blur-container {
+    background-color: rgba(70, 89, 171, 0.5);
+    backdrop-filter: blur(20px);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70em;
+    height: 50em;
+    border-radius: 25px;
+    z-index: 0;
+}
+
+.board-container table {
+    position: relative;
+    width: 60em;
+    height: 40em;
+    margin: 2em;
+    padding: 2em;
+    border-collapse: collapse;
+    border-spacing: 0;
+    cursor: default;
+    border-radius: 25px;
+    text-align: center;
+    border-bottom: none;
+    table-layout: fixed;
+}
+
+.thead-style td {
+    padding: 1em;
+    font-weight: bold;
+    border-top: none;
+}
+
+.bottom-cell td {
+    border-bottom: none;
+}
+
+/*Register*/
+
+.dropbtn {
+    position: relative;
+    background: whitesmoke;
+    color: #6e6e6e;
+    width: 20.25em;
+    height: 2.25em;
+    border: medium solid lightgreen;
+    border-radius: 15px;
+    transition-duration: 0.8s;
+    text-align: center;
+    cursor: pointer;
+    margin: 0 1em;
+}
+
+.dropbtn:hover {
+    border: thin solid dodgerblue;
+    background: rgb(185, 197, 246);
+}
+
+.dropdown {
+    position: relative;
+    display: inline-list-item;
+    text-align: center;
+    margin: 1em;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    width: 20.25em;
+    height: 7.25em;
+    margin: 0 1em;
+    border-radius: 15px;
+    background-color: #f1f1f1;
+    border: thin solid grey;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    cursor: pointer;
+}
+
+.dropdown-content p:hover {
+    color: dodgerblue;
+}
+
+.reg-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40em;
+    height: 30em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.reg-blur-container {
+    background-color: rgba(70, 89, 171, 0.5);
+    backdrop-filter: blur(20px);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40em;
+    height: 30em;
+    border-radius: 25px;
+    z-index: 0;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+@media (max-width: 1200px) {
+    .dropbtn {
+        width: 10.25em;
+    }
+
+    .dropdown-content {
+        width: 10.25em;
+    }
+
+    .reg-container {
+        width: 20em;
+    }
+
+    .reg-blur-container {
+        width: 20em;
     }
 }
