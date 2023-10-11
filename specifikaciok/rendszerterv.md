@@ -208,6 +208,35 @@ Adattagjai:
 
 ## 11. Teszt terv
 
+### 11.1. Különböző böngészők tesztelése
+
+- *@veresviktor02* - Safari (WebKit)
+- *@egyiptomi425* - Brave (Blink)
+- *@pkristof1999* - Firefox (Gecko)
+
+### 11.2. Különböző operációs rendszerek tesztelése
+
+- *@veresviktor02* - MacOS Ventura (13)
+- *@egyiptomi425* - Ubuntu Linux 23.04
+- *@pkristof1999* - Windows 11
+
+Teszteléseknél törekszünk arra, hogy minél több rendszeren,
+és minél több fajta böngészővel próbáljuk ki a kész szoftvert,
+hogy a lehető legnagyobb tesztlefedettséggel tudjuk biztosítani a hibátlan szoftver működést.
+
+### 11.3. Béta teszt
+
+A teszt célja a szoftver funkcióinak átfogó ellenőrzése különböző operációs rendszerek használatával és minél több fajta böngészővel.
+Teszteléskor ellenőrzésre kerül továbbá, hogy a szoftver minden főbb felbontáson hibátlanul,
+jó láthatósággal működik-e (pl. 1280×720p [minimum támogatott felbontás], 1366×768p, 1920×1080p, 2560×1440p és 3840×2160p [maximum támogatott felbontás]).
+A teszt tervezett időtartama három hét.
+
+### 11.4. Release teszt
+
+A szoftver bemutatásra kerül.
+A tesztelés alatt visszajelzéseket fogadnak a fejlesztők.
+Hiba, vagy változtatási kérelem esetén a fejlesztők a lehető leghamarabb javítják, módosítják a programot.
+A teszt időtartama a bemutatás órája.
 
 
 ## 12. Telepítési terv
