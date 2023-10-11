@@ -14,9 +14,20 @@ számítógépes, illetve telefonos operációs rendszereket (pl. Windows 10 és
 böngészőket (pl. Google Chrome v100 és frissebb).
 
 
-
 ## 2. Projekt terv
 
+**Projekt lebonyolítása:**
+
+- A projekt kódolására 5 hetet fogunk fordítani
+    - Az agilis fejlesztés biztosítása érdekében a 3. héten egy meetingen bemutatjuk a projektünk béta verzióját a megrendelőnek, és a maradék időben próbáljuk a megrendelői igényekhez igazodni.
+- Az adatbázis megtervezése és kivitelezése, adatok feltöltése az adatbázisba *@egyiptomi425* feladata lesz.
+- Az adatok kikeresése *@veresviktor02* feladata lesz.
+- Az ábrák és diagramok rajzolása *@egyiptomi425* és *@veresviktor02* feladata.
+- A frontend kódot *@veresviktor02* és *@pkristof1999* írja.
+- A backend kódot *@veresviktor02*, *@pkristof1999* és *@egyiptomi425* írja.
+- A teszteket a frontendhez *@veresviktor02* és *@pkristof1999* írja.
+- A teszteket a backendhez *@egyiptomi425* írja.
+- A manuális tesztelést *@veresviktor02*, *@pkristof1999* és *@egyiptomi425* csinálja.
 
 
 ## 3. Üzleti folyamatok modellje
