@@ -44,6 +44,33 @@ böngészőket (pl. Google Chrome v100 és frissebb).
 
 ## 6. Fizikai környezet
 
+### 6.1. Felhasználói környezet:
+
+Az alkalmazás webes platforma készül.
+Használatához szükséges a böngészők legfrissebb verziójának megléte.
+A webes felületnek köszönhetően használható lesz telefonos, illetve számítógépes környezetben is.
+
+### 6.2. Fejlesztői környezet:
+
+**Kódolás:**
+- IntelliJ IDEA (JetBrains)
+- VS Code (Microsoft)
+- WebStorm (JetBrains)
+
+**Fájlok megosztása:**
+- Google Drive
+- Discord
+- Facebook Messenger
+
+**Ábrák szerkesztése:**
+- Paint (Windows)
+- PaintBrush (MacOS)
+- Draw.io (web)
+
+**Kommunikációs csatornák:**
+- Facebook Messenger
+- Discord
+- Trello
 
 
 ## 7. Absztrakt domain modell
