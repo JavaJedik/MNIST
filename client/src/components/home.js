@@ -28,7 +28,7 @@ const Home = () => {
         navigate("/login");
     };
 
-    const navigateQuiz = async () => {
+    /*const navigateQuiz = async () => {
         try {
             const data = await AuthService.checkLoggedIn();
 
@@ -54,11 +54,15 @@ const Home = () => {
         } catch (error) {
             console.error('Hiba az autentikációs ellenőrzésben:', error);
         }
-    };
+    };*/
 
     const handleDropdownItemClick = (item) => {
         setSelectedItem(item);
     };
+
+    const navigateLeaderboardTemp = () => {
+        navigate("/leaderboard");
+    }
 
     return (
         <div className="main-container">
@@ -79,12 +83,12 @@ const Home = () => {
                         </div>
                     </div>
                     <div>
-                        <button className="home-button-style" onClick={navigateLeaderboard}>
+                        <button className="home-button-style" onClick={navigateLeaderboardTemp}>
                             Toplista megtekintése
                         </button>
                     </div>
                     <div>
-                        <button className="home-button-style" onClick={navigateQuiz}>
+                        <button className="home-button-style">
                             <u>Játék indítása</u>
                         </button>
                     </div>

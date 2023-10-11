@@ -2,8 +2,8 @@ import React from 'react';
 import './App.css';
 import Login from './components/login';
 import Home from './components/home';
-import Register from './components/Register';
-import Leaderboard from './components/Leaderboard';
+import Register from './components/register';
+import Leaderboard from './components/leaderboard';
 import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
 function App() {
     return (

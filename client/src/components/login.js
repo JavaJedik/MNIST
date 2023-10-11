@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import "./styles.css"
 //import AuthService from '../AuthService';
 
 const Login = () => {
@@ -40,7 +41,6 @@ const Login = () => {
                         placeholder="Felhasználónév"
                         id="username"
                         value={username}
-                        onChange={(e) => setUsername(e.target.value)}
                     />
                 </div>
                 <div className="content">
@@ -50,7 +50,6 @@ const Login = () => {
                         placeholder="Jelszó"
                         id="password"
                         value={password}
-                        onChange={(e) => setPassword(e.target.value)}
                     />
                 </div>
                 <div className="content">

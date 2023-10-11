@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './Register.css';
-import './Login.css';
 
 const Register = () => {
     const navigate = useNavigate();
@@ -61,6 +59,7 @@ const Register = () => {
                             <p onClick={() => handleDropdownItemClick("Most nem válaszolnék")}>Most nem válaszolnék</p>
                             <p onClick={() => handleDropdownItemClick("Férfi")}>Férfi</p>
                             <p onClick={() => handleDropdownItemClick("Nő")}>Nő</p>
+                            <p onClick={() => handleDropdownItemClick("Nő")}>Macska</p>
                         </div>
                     </div>
                 </div>

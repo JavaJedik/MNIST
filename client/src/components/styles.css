@@ -1,0 +1,115 @@
+* {
+    font-size: 1rem;
+    font-family: serif;
+}
+
+.main-container {
+    background-image: url("../../resources/background.png");
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.input-field {
+    position: relative;
+    background: whitesmoke;
+    width: 20em;
+    height: 2em;
+    margin: 0.15em;
+    border: thin solid grey;
+    border-radius: 15px;
+    transition-duration: 0.8s;
+    text-align: center;
+}
+
+.input-field:hover {
+    border: thin solid dodgerblue;
+    background: rgb(185, 197, 246);
+}
+
+.button-style {
+    background: whitesmoke;
+    text-align: center;
+    margin: 0.25em;
+    border: medium solid rgb(185, 197, 246);
+    border-radius: 15px;
+    transition-duration: 0.8s;
+    width: 8em;
+    height: 2em;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.button-style:hover {
+    background: rgb(185, 197, 246);
+}
+
+.button-style:active {
+    transform: scale(0.85);
+    transition-duration: 0.3s;
+}
+
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40em;
+    height: 20em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.blur-container {
+    background-color: rgba(70, 89, 171, 0.5);
+    backdrop-filter: blur(20px);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40em;
+    height: 20em;
+    border-radius: 25px;
+    z-index: 0;
+}
+
+.content {
+    position: relative;
+    margin: 1em 0;
+}
+
+.content-bottom {
+    color: whitesmoke;
+    font-size: 1.5rem;
+    position: relative;
+    text-align: center;
+}
+
+@media (max-width: 1200px) {
+    .input-field {
+        width: 10em;
+    }
+
+    .button-style {
+        width: 6em;
+    }
+
+    .container {
+        width: 20em;
+    }
+
+    .blur-container {
+        width: 20em;
+    }
+
+    .content-bottom {
+        font-size: 1rem;
+    }
+}
