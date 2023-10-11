@@ -14,9 +14,9 @@
 
 ### Test 1-6
 
-![](../kepek/teszt/tomi/1.png)
+![](../kepek/teszt/tomi/t1.png)
 
-![](../kepek/teszt/tomi/2.png)
+![](../kepek/teszt/tomi/t2.png)
 
 (Bár Svájcban a rétoromán is hivatalos nyelv, háttérbe szorul, ezért nem vettem bele.
 Hozzáadtam a 3 hivatalos nyelvén is az ország adatait.)
@@ -52,4 +52,4 @@ where
 			language_name.name = "magyar");
 ```
 
-![](../kepek/teszt/tomi/3.png)
+![](../kepek/teszt/tomi/t3.png)
