@@ -7,6 +7,18 @@
 | 5   | Adatbázis   | 2023-10-11 | Ellenőrzés, hogy nem okoz gondot, ha 1 nyelv nevét csak 1 nyelven tárolom                | Success |
 | 5   | Adatbázis   | 2023-10-11 | Ha a német nyelv megnevezés csak magyarul van tárolva, használhatok német szavakat       | Success |
 | 6   | Adatbázis   | 2023-10-11 | 3. teszt ismétlése a többnyelvű Svájccal is                                              | Success |
+| 7   | Adatbázis   | 2023-10-11 | Nem enged kamu nyelvazonosítóval beszúrni playert                                        | Success |
+| 8   | Adatbázis   | 2023-10-11 | Nem enged kamu országazonosítóval beszúrni playert                                       | Success |
+| 9   | Adatbázis   | 2023-10-11 | Nem enged kamu nemazonosítóval beszúrni playert                                          | Success |
+| 10  | Adatbázis   | 2023-10-11 | Nem enged kamu e-mail domain-nel beszúrni playert                                        | Success |
+| 11  | Adatbázis   | 2023-10-11 | Nem enged kamu e-mailt beszúrni a playerhez, ha nincs domain hozzá                       | Success |
+| 12  | Adatbázis   | 2023-10-11 | Nem enged nem számokat használni telefonszámban                                          | Success |
+| 13  | Adatbázis   | 2023-10-11 | Nem enged országhívó kód nélkül telefonszámot megadni                                    | Success |
+| 14  | Adatbázis   | 2023-10-11 | Nem enged kamu országhívó kódot megadni                                                  | Success |
+| 15  | Adatbázis   | 2023-10-11 | Nem enged hálózati-szolgáltató kód nélkül telefonszámot megadni                          | Success |
+| 16  | Adatbázis   | 2023-10-11 | Nem enged nem telefonszám alapú telefonszámot megadni                                    | Success |
+| 17  | Adatbázis   | 2023-10-11 | Nem enged nem adatbázisban előre letárolt jelszót használni                              | Success |
+| 18  | Adatbázis   | 2023-10-11 | Egy regisztrált játékos tényleges, teljes regisztrációja                                 | Success |
 
 ## Egyszerűbb áttekinthetőségért csak a nehezebb lekérdezéseket írtam le, triviálisakat kevésbé.
 
@@ -53,3 +65,8 @@ where
 ```
 
 ![](../kepek/teszt/tomi/t3.png)
+
+## Test 7-
+
+Itt a userre vonatkozó adatbázis integritását és sérthetetlenségét tesztelem, hogy minden információ, ami benne van, garantáltan valódi, ne lehessen hamis adatokat megadni. Az adatbázis a kulcsmegszorítások miatt minden ilyen kérést meg kell, hogy tagadjon akkor is, ha a fentebbi kódréteg ezt nem veszi észre, így többrétegű a biztonság is.
+Ez nem azt jelenti, hogy eddig nem létező országgal nem szúrhatunk be soha semmilyen körülmények között új playert, de ehhez először az adott országot fel kell venni a nyílvántartásba automatikusan vagy manuálisan.
