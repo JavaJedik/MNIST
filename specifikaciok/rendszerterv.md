@@ -66,6 +66,39 @@ A rendszer célja, hogy a felhasználók képfelismerési teszteket végezzenek 
 
 ## 4. Követelmények
 
+### 4.1. Webes felület (responsive webdesign)
+
+- Frameworkök
+  - REACT + HTML - javascript frontend
+  - Spring Boot - java backend
+  - MariaDB - adatbázis, SQL a játékhoz
+- Felhasználói felület
+- Admin felület
+- Toplista
+- Biztonság
+  - Adatkezelés és GDPR kérdések
+  - A szerver védve legyen a támadásoktól
+  - A játékos ne tudjon csalni
+    - Ne tudja manipulálni az adatbázist és a kérdéseket
+  - A rendszer naplózásának / adatbázisának kell tudni, hogy:
+    - A játékos nem jelölt meg semmit, mert mondjuk elment a nete.
+
+### 4.2. Adatbázis (ingyenes, de mindent tudjon, szokásos hozzáállás)
+
+- Zéró redundancia és felesleges függőség
+- Kérdések tárolása
+  - Helyes válasz
+  - Hány ember adott rá jó / rossz választ
+  - Magyar vagy angol nyelven
+- A felhasználó adatainak tárolása
+  - Név
+  - Email
+  - Nem (lehet null érték, ha nem ismert vagy nem szeretné megadni)
+  - Regisztráció ideje
+  - Megválaszolt kérdések száma
+- A játékok tárolása
+  - Ki és mikor játszotta
+  - Mik voltak a kérdések, milyen válaszokat adott rá
 
 
 ## 5. Funkcionális terv
