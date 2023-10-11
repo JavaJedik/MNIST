@@ -32,6 +32,36 @@ böngészőket (pl. Google Chrome v100 és frissebb).
 
 ## 3. Üzleti folyamatok modellje
 
+### 3.1. Cél
+A rendszer célja, hogy a felhasználók képfelismerési teszteket végezzenek el, majd ez az adatgyűjtés és összehasonlítás szolgálna a mesterséges intelligencia fejlesztéséhez. Minél több ilyen teszteset van - ahol lehetőleg a felhasználó minél pontosabban válaszol - annál jobban lehet tanítani a mesterséges intelligenciát.
+
+### 3.2. Résztvevők
+
+- Felhasználók: A játékban résztvevő játékos.
+- Admin: A játék adatait módosítani képes felhasználó (pl. tesztadatok feltöltése, vagy törlése)
+
+### 3.3. Játék menete
+
+1. A felhasználó bejelentkezik
+  - Lehet vendég is vagy a saját IP címéből készítünk neki profilt
+  - Lehetőleg felhasználónév-jelszó párossal vagy más külső accounttal, pl.: Google, Facebook
+2. Tudjon játékot indítani
+  - Kapjon kérdéseket, amikre válaszokat tud adni
+  - Tudjon küldeni választ felhasználói interakcióval, http kérésekkel
+  - Tudja meg esetlegesen, hogy "helyesen" válaszolt-e
+  - A játék megszakítása ne jelentse az adatbázisban sérülést
+3. Kapjon értékelést a teljesítményéről, motiválja további játékra
+4. Jelentkezzen ki, ha szükséges vagy zárja be az oldalt
+
+- Egy esetleges admin vagy oktató tudjon új képeket feltölteni
+- Egy AI specialista tudja összevetni az eredményeket
+- Egy adatbázis szakértő API-kon keresztül szolgáltasson adatokat
+
+### 3.4. Komponensek
+
+- Frontend: A felhasználói felület.
+- Backend: A szerveroldal, amely kapcsolatot tart a frontenddel és kezeli az üzleti logikát.
+- Adatbázis: Az adatok tárolására és lekérdezésére szolgál.
 
 
 ## 4. Követelmények
