@@ -7,4 +7,4 @@
 
 ### Test 1-3
 
-![](/kepek/teszt/tomi/)
+![](../../kepek/teszt/tomi/)
