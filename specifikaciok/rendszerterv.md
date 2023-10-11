@@ -165,6 +165,33 @@ A webes felületnek köszönhetően használható lesz telefonos, illetve szám�
 
 ## 7. Absztrakt domain modell
 
+Objektum:
+__Question__
+
+Metódusai:
+
+- *getPicture* - kép
+- *getAnswer* - string
+
+Adattagjai:
+
+- *picture* -kép
+- *answer* - Integer
+
+Objektum:
+__Player__
+
+Metódusai:
+
+- *setAnswer* - void
+
+Adattagjai:
+
+- *name* - string
+- *gender* - string
+- *email* - string
+- *registrationDate* - Date
+- *numberOfAnswersGiven* - integer (megszorítás: nem lehet kisebb, mint nulla!)
 
 
 ## 8. Architekturális terv
