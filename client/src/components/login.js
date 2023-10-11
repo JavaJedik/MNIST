@@ -21,6 +21,10 @@ const Login = () => {
         }
     };*/
 
+    const navigateHomeTemp = () => {
+        navigate('/home');
+    }
+
     const navigateRegister = () => {
         navigate('/register');
     };
@@ -50,7 +54,7 @@ const Login = () => {
                     />
                 </div>
                 <div className="content">
-                    <button className="button-style" onClick={navigateHome}>
+                    <button className="button-style" onClick={navigateHomeTemp}>
                         Bejelentkezés
                     </button>
                     <button className="button-style" onClick={navigateRegister}>
