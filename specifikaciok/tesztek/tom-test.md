@@ -20,6 +20,7 @@
 | 17  | Adatbázis   | 2023-10-11 | Nem enged nem adatbázisban előre letárolt jelszót használni                              | Success |
 | 18  | Adatbázis   | 2023-10-11 | Adatbázisba olyan rekordok felvétele, amikkel már tud rendelkezni egy felhasználó        | Success |
 | 19  | Adatbázis   | 2023-10-11 | Egy regisztrált játékos tényleges, teljes regisztrációja                                 | Success |
+| 20  | Adatbázis   | 2023-10-12 | Egy kép beszűrása az adatbázisba                                                         | Success |
 
 ## Egyszerűbb áttekinthetőségért csak a nehezebb lekérdezéseket írtam le, triviálisakat kevésbé.
 
