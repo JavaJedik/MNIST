@@ -18,7 +18,8 @@
 | 15  | Adatbázis   | 2023-10-11 | Nem enged hálózati-szolgáltató kód nélkül telefonszámot megadni                          | Success |
 | 16  | Adatbázis   | 2023-10-11 | Nem enged nem telefonszám alapú telefonszámot megadni                                    | Success |
 | 17  | Adatbázis   | 2023-10-11 | Nem enged nem adatbázisban előre letárolt jelszót használni                              | Success |
-| 18  | Adatbázis   | 2023-10-11 | Egy regisztrált játékos tényleges, teljes regisztrációja                                 | Success |
+| 18  | Adatbázis   | 2023-10-11 | Adatbázisba olyan rekordok felvétele, amikkel már tud rendelkezni egy felhasználó        | Success |
+| 19  | Adatbázis   | 2023-10-11 | Egy regisztrált játékos tényleges, teljes regisztrációja                                 | Success |
 
 ## Egyszerűbb áttekinthetőségért csak a nehezebb lekérdezéseket írtam le, triviálisakat kevésbé.
 
@@ -66,7 +67,24 @@ where
 
 ![](../kepek/teszt/tomi/t3.png)
 
-## Test 7-
+## Test 7-19
 
 Itt a userre vonatkozó adatbázis integritását és sérthetetlenségét tesztelem, hogy minden információ, ami benne van, garantáltan valódi, ne lehessen hamis adatokat megadni. Az adatbázis a kulcsmegszorítások miatt minden ilyen kérést meg kell, hogy tagadjon akkor is, ha a fentebbi kódréteg ezt nem veszi észre, így többrétegű a biztonság is.
 Ez nem azt jelenti, hogy eddig nem létező országgal nem szúrhatunk be soha semmilyen körülmények között új playert, de ehhez először az adott országot fel kell venni a nyílvántartásba automatikusan vagy manuálisan.
+
+![](../kepek/teszt/tomi/t4.png)
+
+```sql
+select registered_player.name as name, gender.name as gender,
+registered_player.email_prefix, email_type.domain, email_tld.tld,
+country_calling_code.country_number, phone_network.network_number,
+phone
+from registered_player, gender, email_type, email_tld, country_calling_code, 
+phone_network
+	where
+		registered_player.gender_id = gender.id and
+		email_type.tld_id = email_tld.id and
+		registered_player.email_type_id = email_type.id and
+		registered_player.country_calling_code_id = country_calling_code.id and
+		registered_player.phone_network_id = phone_network.id;
+```
