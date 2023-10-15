@@ -4,6 +4,12 @@ Shared Styles
 ------------------------------------------------------------------------------------------------------------------------
 */
 
+/* * {
+    outline: 1px solid red;
+    outline-offset: -1px;
+}*/
+
+
 * {
     font-size: 1rem;
     font-family: serif;
@@ -45,7 +51,7 @@ Login Styles
 .button-style {
     background: whitesmoke;
     text-align: center;
-    margin: 1em 0.5em 0;
+    margin: 1.8em 0.5em 0;
     border: medium solid rgb(185, 197, 246);
     border-radius: 15px;
     transition-duration: 0.8s;
@@ -88,7 +94,7 @@ Login Styles
     left: 50%;
     transform: translate(-50%, -50%);
     width: 40em;
-    height: 20em;
+    height: 22em;
     border-radius: 25px;
     z-index: 0;
 }
@@ -96,7 +102,7 @@ Login Styles
 
 .content {
     position: relative;
-    margin: 0.8em;
+    margin: 0.8em 0 0.5em;
 }
 
 .content-bottom {
@@ -336,7 +342,6 @@ Register Styles
     transition-duration: 0.8s;
     text-align: center;
     cursor: pointer;
-    margin: 0 1em;
 }
 
 .dropbtn-arrow {
@@ -357,7 +362,7 @@ Register Styles
     position: relative;
     display: inline-list-item;
     text-align: center;
-    margin: 1em;
+    margin: 0.5em;
 }
 
 .dropdown-content {
@@ -365,7 +370,6 @@ Register Styles
     position: absolute;
     width: 20.25em;
     height: 7.25em;
-    margin: 0 1em;
     border-radius: 15px;
     background-color: #f1f1f1;
     border: thin solid grey;
@@ -401,7 +405,7 @@ Register Styles
     left: 50%;
     transform: translate(-50%, -50%);
     width: 40em;
-    height: 30em;
+    height: 28em;
     border-radius: 25px;
     z-index: 0;
 }
