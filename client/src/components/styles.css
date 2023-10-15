@@ -31,7 +31,6 @@ Login Styles
     background: whitesmoke;
     width: 20em;
     height: 2em;
-    margin: 0.15em;
     border: thin solid grey;
     border-radius: 15px;
     transition-duration: 0.8s;
@@ -46,12 +45,12 @@ Login Styles
 .button-style {
     background: whitesmoke;
     text-align: center;
-    margin: 0.25em;
+    margin: 1em 0.5em 0;
     border: medium solid rgb(185, 197, 246);
     border-radius: 15px;
     transition-duration: 0.8s;
-    width: 8em;
-    height: 2em;
+    width: 9.6em;
+    height: 2.25em;
     padding: 5px;
     cursor: pointer;
 }
@@ -97,7 +96,7 @@ Login Styles
 
 .content {
     position: relative;
-    margin: 1em 0;
+    margin: 0.8em;
 }
 
 .content-bottom {
