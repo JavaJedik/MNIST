@@ -82,6 +82,7 @@ Login Styles
 
 .blur-container {
     background-color: rgba(107, 123, 140, 0.5);
+    border: 1px solid whitesmoke;
     backdrop-filter: blur(20px);
     position: absolute;
     top: 50%;
@@ -106,7 +107,7 @@ Login Styles
     text-align: center;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 700px) {
     .input-field {
         width: 10em;
     }
@@ -146,14 +147,14 @@ Home Styles
 .home-dropbtn {
     position: relative;
     background: whitesmoke;
+    border: medium solid rgb(185, 197, 246);
     color: #6e6e6e;
-    width: 20.25em;
+    width: 20em;
     height: 2em;
     border-radius: 15px;
     transition-duration: 0.8s;
     text-align: center;
     cursor: pointer;
-    border: medium solid lightgreen;
 }
 
 .home-dropbtn:hover {
@@ -170,9 +171,10 @@ Home Styles
 
 .home-dropdown-content {
     display: none;
+    color: #6e6e6e;
     position: absolute;
-    width: 20.25em;
-    height: 5.25em;
+    width: 20em;
+    height: 5em;
     border-radius: 15px;
     background-color: #f1f1f1;
     border: thin solid grey;
@@ -181,7 +183,7 @@ Home Styles
     cursor: pointer;
 }
 
-.home-dropdown:hover .home-dropdown-content {
+.home-dropdown.active .home-dropdown-content {
     display: block;
 }
 
@@ -205,6 +207,7 @@ Home Styles
 
 .home-blur-container {
     background-color: rgba(107, 123, 140, 0.5);
+    border: 1px solid whitesmoke;
     backdrop-filter: blur(20px);
     position: absolute;
     top: 50%;
@@ -218,6 +221,7 @@ Home Styles
 
 .home-button-style {
     background: whitesmoke;
+    color: #6e6e6e;
     text-align: center;
     margin: 1em;
     border: medium solid rgb(185, 197, 246);
@@ -232,7 +236,7 @@ Home Styles
     background: rgb(185, 197, 246);
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 700px) {
     .home-header {
         font-size: 0.85rem;
     }
@@ -263,6 +267,7 @@ Home Styles
 Leaderboard Styles
 ------------------------------------------------------------------------------------------------------------------------
 */
+
 .board-container {
     position: absolute;
     top: 50%;
@@ -327,12 +332,21 @@ Register Styles
     color: #6e6e6e;
     width: 20.25em;
     height: 2.25em;
-    border: medium solid lightgreen;
+    border: thin solid grey;
     border-radius: 15px;
     transition-duration: 0.8s;
     text-align: center;
     cursor: pointer;
     margin: 0 1em;
+}
+
+.dropbtn-arrow {
+    position: absolute;
+    top: 0;
+    right: 0.8em;
+    bottom: 0;
+    display: flex;
+    align-items: center;
 }
 
 .dropbtn:hover {
@@ -382,6 +396,7 @@ Register Styles
 .reg-blur-container {
     background-color: rgba(107, 123, 140, 0.5);
     backdrop-filter: blur(20px);
+    border: 1px solid whitesmoke;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -392,13 +407,17 @@ Register Styles
     z-index: 0;
 }
 
-.dropdown:hover .dropdown-content {
+.dropdown.active .dropdown-content {
     display: block;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 700px) {
     .dropbtn {
         width: 10.25em;
+    }
+
+    .dropbtn-arrow {
+        right: 0.2em;
     }
 
     .dropdown-content {

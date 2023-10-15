@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import "./styles.css"
 
 const Register = () => {
     const navigate = useNavigate();
     const [selectedItem, setSelectedItem] = useState(null);
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
     const navigateLogin = () => {
         navigate("/login");
@@ -11,6 +13,7 @@ const Register = () => {
 
     const handleDropdownItemClick = (item) => {
         setSelectedItem(item);
+        setIsDropdownOpen(false);
     };
 
     return (
@@ -49,17 +52,20 @@ const Register = () => {
                         id="password-check"
                     />
                 </div>
-                <div className="dropdown">
-                    <button
-                        className="dropbtn">
-                        {selectedItem || "Adja meg a nemét!"}
+                <div className={`dropdown ${isDropdownOpen ? "active" : ""}`}>
+                    <button className="dropbtn" onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
+                        <span>
+                            {selectedItem || 'Adja meg a nemét!'}
+                        </span>
+                        <span className="dropbtn-arrow">
+                            &#9660;
+                        </span>
                     </button>
                     <div id="myDropdown">
                         <div className="dropdown-content">
-                            <p onClick={() => handleDropdownItemClick("Most nem válaszolnék")}>Most nem válaszolnék</p>
                             <p onClick={() => handleDropdownItemClick("Férfi")}>Férfi</p>
                             <p onClick={() => handleDropdownItemClick("Nő")}>Nő</p>
-                            <p onClick={() => handleDropdownItemClick("Nő")}>Macska</p>
+                            <p onClick={() => handleDropdownItemClick("Macska")}>Macska</p>
                         </div>
                     </div>
                 </div>

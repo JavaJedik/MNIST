@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import "./styles.css"
 //import AuthService from '../AuthService';
 
 const Home = () => {
     //const token = localStorage.getItem('userToken');
     const navigate = useNavigate();
     const [selectedItem, setSelectedItem] = useState(null);
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
     /*useEffect(() => {
         const fetchData = async () => {
@@ -58,6 +60,7 @@ const Home = () => {
 
     const handleDropdownItemClick = (item) => {
         setSelectedItem(item);
+        setIsDropdownOpen(false)
     };
 
     const navigateLeaderboardTemp = () => {
@@ -71,9 +74,14 @@ const Home = () => {
                     <div>
                         <h1 className="home-header">Üdvözöljük, Felhasználónév!</h1>
                     </div>
-                    <div className="home-dropdown">
-                        <button className="home-dropbtn">
-                            {selectedItem || "Válasszon nyelvet"}
+                    <div className={`home-dropdown ${isDropdownOpen ? "active" : ""}`}>
+                        <button className="home-dropbtn" onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
+                            <span>
+                                {selectedItem || "Válasszon nyelvet"}
+                            </span>
+                            <span className="dropbtn-arrow">
+                                &#9660;
+                            </span>
                         </button>
                         <div id="home-myDropdown">
                             <div className="home-dropdown-content">
