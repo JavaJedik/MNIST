@@ -41,6 +41,8 @@ Login Styles
     border-radius: 15px;
     transition-duration: 0.8s;
     text-align: center;
+    caret-color: blueviolet;
+    caret-shape: auto;
 }
 
 .input-field:hover {
@@ -110,6 +112,7 @@ Login Styles
     font-size: 1.5rem;
     position: relative;
     text-align: center;
+    cursor: default;
 }
 
 @media (max-width: 700px) {

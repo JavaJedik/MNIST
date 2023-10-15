@@ -40,7 +40,7 @@ const Login = () => {
                         type="text"
                         placeholder="Felhasználónév"
                         id="username"
-                        value={username}
+                        //value={username}
                     />
                 </div>
                 <div className="content">
@@ -49,7 +49,7 @@ const Login = () => {
                         type="password"
                         placeholder="Jelszó"
                         id="password"
-                        value={password}
+                        //value={password}
                     />
                 </div>
                 <div className="content">
