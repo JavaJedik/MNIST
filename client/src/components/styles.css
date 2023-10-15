@@ -93,8 +93,8 @@ Login Styles
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 40em;
-    height: 22em;
+    width: 35em;
+    height: 25em;
     border-radius: 25px;
     z-index: 0;
 }
