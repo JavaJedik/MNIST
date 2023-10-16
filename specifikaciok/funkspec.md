@@ -11,7 +11,7 @@ Ez az adatgyűjtés és összehasonlítás szolgálna a mesterséges intelligenc
 
 ## 2. Jelenlegi helyzet
 
-Az a helyzet, hogy szükség lenne egy adatbázisra, ami jól definiált táblákkal, kapcsolatokkal, attribútumokkal rendelkezik, és megfelel legalább a harmadik normál formulának. Fontos, hogy tartalmazza a modellt, a userek adatait, a számokat és minden mást úgy, hogy nincs benne redundancia, ha van, akkor a lekérdezések nem lesznek konzisztensek, és a fentebbi rétégek nem tudnak rá építkezni, ezért ennek tervezése rendkívül fontos feladat. Bár vannak kutatóink és tesztereink (hallgatóink), programozóink nincsenek a feladathoz. Nincs még kidolgozva a modell, ami alapján az AI és az ember válaszait össze tudnánk vetni.
+Az a helyzet, hogy szükség lenne egy adatbázisra, ami jól definiált táblákkal, kapcsolatokkal, attribútumokkal rendelkezik, és megfelel legalább a harmadik normál formulának. Fontos, hogy tartalmazza a modellt, a userek adatait, a számokat és minden mást úgy, hogy nincs benne redundancia, ha van, akkor a lekérdezések nem lesznek konzisztensek, és a fentebbi rétégek nem tudnak rá építkezni, ezért ennek tervezése rendkívül fontos feladat. Bár vannak kutatóink és tesztereink (hallgatóink), programozóink nincsenek a feladathoz. Ilyen applikációkat már készítettek különböző cégek, de mi a megvalósítását szeretnénk átformálni.
 
 ## 3. Követelménylista
 
