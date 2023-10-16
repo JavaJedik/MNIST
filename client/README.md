@@ -14,6 +14,12 @@ Open [http://localhost:1488](http://localhost:1488) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
+
+### `npm run windows_start`
+
+Use this, if you are on Windows operational system, and want to run the app.
+Open [http://localhost:1488](http://localhost:1488) to view it in your browser.
+
 ### `npm test`
 
 Launches the test runner in the interactive watch mode.\
