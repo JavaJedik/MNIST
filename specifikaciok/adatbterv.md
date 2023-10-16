@@ -1,3 +1,22 @@
+![](../kepek/tt1.png)
+
+![](../kepek/tt2.png)
+
+![](../kepek/tt3.png)
+
+![](../kepek/tt4.png)
+
+![](../kepek/tt5.png)
+
+![](../kepek/tt6.png)
+
+![](../kepek/tt7.png)
+
+![](../kepek/tt8.png)
+
+![](../kepek/tt9.png)
+
+
 MariaDB [mnist]> show tables;
 +-----------------------------+
 | Tables_in_mnist             |

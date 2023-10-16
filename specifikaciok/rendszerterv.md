@@ -205,13 +205,15 @@ A játékban személyre kell tudni szabnia a játékosnak, hogy milyen nyelvű k
 
 ## 9. Adatbázis terv
 
-
+Az adatbterv.md-ben található. 5NF, és keresésekre optimalizált B fákkal. Bináris módon fragmentálja a képeket, párhuzamosítva.
 
 ## 10. Implementációs terv
 
-
+MVC alapú játékot tervezünk, ami HTTP kérésekkel kommunikál a szerverrel egy adatbázissal mögötte.
 
 ## 11. Teszt terv
+
+Háromszintű tesztelési tervet terveztünk, az adatbázis tesztelése, a server és a frontend tesztelése.
 
 ### 11.1. Különböző böngészők tesztelése
 
