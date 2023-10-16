@@ -522,8 +522,14 @@ Game Styles
     background: whitesmoke;
 }
 
-.idk-text {
+.idk-button {
     text-align: center;
+    width: inherit;
+    height: inherit;
     font-size: 3em;
     font-family: "Times New Roman", serif;
+}
+
+.idk-button:hover, .number-button:hover {
+    background: yellowgreen;
 }
