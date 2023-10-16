@@ -207,6 +207,8 @@ A játékban személyre kell tudni szabnia a játékosnak, hogy milyen nyelvű k
 
 Az adatbterv.md-ben található. 5NF, és keresésekre optimalizált B fákkal. Bináris módon fragmentálja a képeket, párhuzamosítva.
 
+![](kepek/tt1.png)
+
 ## 10. Implementációs terv
 
 MVC alapú játékot tervezünk, ami HTTP kérésekkel kommunikál a szerverrel egy adatbázissal mögötte.
