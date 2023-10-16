@@ -13,6 +13,7 @@ Shared Styles
 * {
     font-size: 1rem;
     font-family: serif;
+    user-select: none;
 }
 
 .main-container {
@@ -446,7 +447,14 @@ Game Styles
 */
 
 .image {
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+    margin: 0.5em;
     content: url("placeholder.png");
+    width: 224px;
+    height: auto;
 }
 
 .game-blur-container {
@@ -455,7 +463,7 @@ Game Styles
     backdrop-filter: blur(20px);
     position: absolute;
     top: 50%;
-    left: 50%;
+    left: 75%;
     transform: translate(-50%, -50%);
     width: 35em;
     height: 45em;
@@ -466,7 +474,7 @@ Game Styles
 .game-container {
     position: absolute;
     top: 50%;
-    left: 50%;
+    left: 75%;
     transform: translate(-50%, -50%);
     width: 40em;
     height: 20em;
@@ -513,6 +521,7 @@ Game Styles
     height: inherit;
     font-size: 3em;
     background: whitesmoke;
+    cursor: pointer;
 }
 
 .idk {
@@ -528,8 +537,13 @@ Game Styles
     height: inherit;
     font-size: 3em;
     font-family: "Times New Roman", serif;
+    cursor: pointer;
 }
 
 .idk-button:hover, .number-button:hover {
     background: yellowgreen;
+}
+
+.right-button {
+    margin-left: 3.5em;
 }

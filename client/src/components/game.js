@@ -95,7 +95,7 @@ const Game = () => {
                     <button className="button-style" onClick={navigateHome}>
                         Kilépés
                     </button>
-                    <button className="button-style" onClick={navigateLeaderboard}>
+                    <button className="button-style right-button" onClick={navigateLeaderboard}>
                         Toplista
                     </button>
                 </div>
