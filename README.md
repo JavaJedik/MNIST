@@ -32,3 +32,8 @@ sudo apt install npm
 npm install react-scripts --save
 ```
 
+## Backend (Ha azóta van újabb verzió, lehet azzal is jó.)
+
+```bash
+sudo apt install openjdk-17-jdk
+```
