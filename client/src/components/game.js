@@ -15,6 +15,10 @@ const Game = () => {
         navigate('/leaderboard');
     };
 
+    const handleClick = (clickedNumber) => {
+        alert("A válaszod: " + clickedNumber);
+    }
+
     return (
         <div className="main-container">
 
@@ -31,67 +35,67 @@ const Game = () => {
                                 Adjon meg egy választ!
                             </div>
                         </div>
-                        <div className="number">
+                        <div className="number" onClick={() => handleClick(1)}>
                             <button className="number-button">
                                 1
                             </button>
                         </div>
-                        <div className="number">
+                        <div className="number" onClick={() => handleClick(2)}>
                             <button className="number-button">
                                 2
                             </button>
                         </div>
-                        <div className="number">
+                        <div className="number" onClick={() => handleClick(3)}>
                             <button className="number-button">
                                 3
                             </button>
                         </div>
-                        <div className="number">
+                        <div className="number" onClick={() => handleClick(4)}>
                             <button className="number-button">
                                 4
                             </button>
                         </div>
-                        <div className="number">
+                        <div className="number" onClick={() => handleClick(5)}>
                             <button className="number-button">
                                 5
                             </button>
                         </div>
-                        <div className="number">
+                        <div className="number" onClick={() => handleClick(6)}>
                             <button className="number-button">
                                 6
                             </button>
                         </div>
-                        <div className="number">
+                        <div className="number" onClick={() => handleClick(7)}>
                             <button className="number-button">
                                 7
                             </button>
                         </div>
-                        <div className="number">
+                        <div className="number" onClick={() => handleClick(8)}>
                             <button className="number-button">
                                 8
                             </button>
                         </div>
-                        <div className="number">
+                        <div className="number" onClick={() => handleClick(9)}>
                             <button className="number-button">
                                 9
                             </button>
                         </div>
-                        <div className="number">
+                        <div className="number"  onClick={() => handleClick(1)}>
                             <button className="number-button">
                                 0
                             </button>
                         </div>
                         <div className="idk">
-                            <div className="idk-text">
+                            <button className="idk-button" onClick={() => handleClick("Nem tudom")}>
                                 Nem tudom
-                            </div>
+                            </button>
                         </div>
                     </div>
 
                     <button className="button-style" onClick={navigateHome}>
                         Kilépés
                     </button>
-                    <button className="button-style" onClick={navigateLeaderboard}>
+                    <button className="button-style right-button" onClick={navigateLeaderboard}>
                         Toplista
                     </button>
                 </div>
