@@ -24,7 +24,9 @@
 | 21  | Log         | 2023-10-13 | Egy player bejelentkezésének regisztrálása                                               | Success |
 | 22  | Adatbázis   | 2023-10-13 | Egy képformátum regisztrálása az adatbázisba                                             | Success |
 | 23  | Adatbázis   | 2023-10-13 | Egy kép fragmentálásának elhelyezése az adatbázisban                                     | Success |
-| 24  | Merevlemez  | 2023-10-13 | Egy kép-fragment rekordja 4KB - néhány byte, a hatékony keresés és tárolás miatt         | Success |
+| 24  | Merevlemez  | 2023-10-13 | Egy kép-fragment rekordja 255 - néhány byte, a hatékony keresés és tárolás miatt         | Success |
+| 25  | Szerver     | 2023-10-17 | A szerver elindítása általános függőségmegadással                                        | Success |
+
 
 ## Egyszerűbb áttekinthetőségért csak a nehezebb lekérdezéseket írtam le, triviálisakat kevésbé.
 
