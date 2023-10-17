@@ -4,10 +4,10 @@ Shared Styles
 ------------------------------------------------------------------------------------------------------------------------
 */
 
-/* {
+* {
     outline: 1px solid red;
     outline-offset: -1px;
-}*/
+}
 
 
 * {
@@ -484,10 +484,7 @@ Game Styles
     background-color: rgba(107, 123, 140, 0.5);
     border: 1px solid whitesmoke;
     backdrop-filter: blur(20px);
-    position: absolute;
-    top: 50%;
-    left: 75%;
-    transform: translate(-50%, -50%);
+    position: relative;
     width: 35em;
     height: 45em;
     border-radius: 25px;
@@ -509,6 +506,7 @@ Game Styles
 }
 
 .numbers {
+    position: inherit;
     display: flex;
     border: thick solid whitesmoke;
     border-radius: 15px;
@@ -592,6 +590,20 @@ Game Styles
 @media (max-width: 1160px) {
     .game-blur-container {
         width: 30em;
+    }
+
+    .numbers {
+        width: 14.4em;
+    }
+
+    .number {
+        width: 4.5em;
+        height: 4.5em;
+    }
+
+    .idk {
+        width: 9.3em;
+        height: 4.5em;
     }
 }
 
