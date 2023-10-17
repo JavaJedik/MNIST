@@ -4,10 +4,10 @@ Shared Styles
 ------------------------------------------------------------------------------------------------------------------------
 */
 
-* {
+/* {
     outline: 1px solid red;
     outline-offset: -1px;
-}
+}*/
 
 
 * {
@@ -522,9 +522,9 @@ Game Styles
 }
 
 .numbers-top {
-    background: red;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+    background: dodgerblue;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
     width: 100%;
     height: 5em;
 
@@ -537,7 +537,7 @@ Game Styles
 }
 
 .number {
-    border: 0.25em solid blue;
+    border: 0.25em solid rgb(185, 197, 246);
     font-family: "Arial Black", serif;
     width: 7.5em;
     height: 7.5em;
@@ -552,22 +552,23 @@ Game Styles
 }
 
 .last-number {
-    border-bottom-left-radius: 10px;
+    border-bottom-left-radius: 8px;
 }
 
 .idk {
     width: 15.5em;
     height: 7.5em;
-    border: 0.25em solid blue;
+    border: 0.25em solid rgb(185, 197, 246);
     background: whitesmoke;
 }
 
 .idk:last-child {
-    border-bottom-right-radius: 10px;
+    border-bottom-right-radius: 8px;
 }
 
 .idk-button {
     text-align: center;
+    border: 2px solid black;
     width: inherit;
     height: inherit;
     font-size: 3em;
@@ -576,7 +577,8 @@ Game Styles
 }
 
 .idk-button:hover, .number-button:hover {
-    background: yellowgreen;
+    background: royalblue;
+    color: whitesmoke;
 }
 
 .left-game-button {
@@ -587,8 +589,10 @@ Game Styles
     margin-left: 1em;
 }
 
-@media (max-width: 900px) {
-
+@media (max-width: 1160px) {
+    .game-blur-container {
+        width: 30em;
+    }
 }
 
 @media (max-width: 700px) {
