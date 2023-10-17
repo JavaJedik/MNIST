@@ -30,6 +30,10 @@ const Home = () => {
         navigate("/login");
     };
 
+    const navigateNumberGame = () => {
+        navigate("/number_game")
+    }
+
     /*const navigateQuiz = async () => {
         try {
             const data = await AuthService.checkLoggedIn();
@@ -96,7 +100,7 @@ const Home = () => {
                         </button>
                     </div>
                     <div>
-                        <button className="home-button-style">
+                        <button className="home-button-style" onClick={navigateNumberGame}>
                             <u>Játék indítása</u>
                         </button>
                     </div>

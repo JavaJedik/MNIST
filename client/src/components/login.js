@@ -23,7 +23,7 @@ const Login = () => {
     };*/
 
     const navigateHomeTemp = () => {
-        navigate('/game');
+        navigate('/home');
     }
 
     const navigateRegister = () => {

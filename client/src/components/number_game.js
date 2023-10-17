@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import "./styles.css"
 
-const Game = () => {
+const Number_Game = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
@@ -28,7 +28,6 @@ const Game = () => {
             <div className="game-blur-container"/>
             <div className="game-container">
                 <div className="content">
-
                     <div className="numbers">
                         <div className="numbers-top">
                             <div className="numbers-top-text">
@@ -91,9 +90,8 @@ const Game = () => {
                             </button>
                         </div>
                     </div>
-
                     <button className="button-style" onClick={navigateHome}>
-                        Kilépés
+                        Visszalépés
                     </button>
                     <button className="button-style right-button" onClick={navigateLeaderboard}>
                         Toplista
@@ -104,4 +102,4 @@ const Game = () => {
     );
 };
 
-export default Game;
+export default Number_Game;
