@@ -5,7 +5,8 @@ import "./styles.css"
 const Register = () => {
     const navigate = useNavigate();
     const [selectedItem, setSelectedItem] = useState(null);
-    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const [isDropdownOpenCountry, setIsDropdownOpenCountry] = useState(false);
+    const [isDropdownOpenGender, setIsDropdownOpenGender] = useState(false);
 
     const navigateLogin = () => {
         navigate("/login");
@@ -13,7 +14,8 @@ const Register = () => {
 
     const handleDropdownItemClick = (item) => {
         setSelectedItem(item);
-        setIsDropdownOpen(false);
+        setIsDropdownOpenCountry(false)
+        setIsDropdownOpenGender(false);
     };
 
     return (
@@ -52,8 +54,25 @@ const Register = () => {
                         id="password-check"
                     />
                 </div>
-                <div className={`dropdown ${isDropdownOpen ? "active" : ""}`}>
-                    <button className="dropbtn" onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
+                <div className={`dropdown ${isDropdownOpenCountry ? "active-country" : ""}`}>
+                    <button className="dropbtn" onClick={() => setIsDropdownOpenCountry(!isDropdownOpenCountry)}>
+                        <span>
+                            {selectedItem || 'Adja meg a nemét!'}
+                        </span>
+                        <span className="dropbtn-arrow">
+                            &#9660;
+                        </span>
+                    </button>
+                    <div id="myDropdown">
+                        <div className="dropdown-content">
+                            <p onClick={() => handleDropdownItemClick("Férfi")}>Férfi</p>
+                            <p onClick={() => handleDropdownItemClick("Nő")}>Nő</p>
+                            <p onClick={() => handleDropdownItemClick("Macska")}>Macska</p>
+                        </div>
+                    </div>
+                </div>
+                <div className={`dropdown ${isDropdownOpenGender ? "active-gender" : ""}`}>
+                    <button className="dropbtn" onClick={() => setIsDropdownOpenGender(!isDropdownOpenGender)}>
                         <span>
                             {selectedItem || 'Adja meg a nemét!'}
                         </span>

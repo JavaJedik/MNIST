@@ -4,10 +4,10 @@ Shared Styles
 ------------------------------------------------------------------------------------------------------------------------
 */
 
-* {
+/* * {
     outline: 1px solid red;
     outline-offset: -1px;
-}
+} */
 
 
 * {
@@ -414,7 +414,11 @@ Register Styles
     z-index: 0;
 }
 
-.dropdown.active .dropdown-content {
+.dropdown.active-country .dropdown-content {
+    display: block;
+}
+
+.dropdown.active-gender .dropdown-content {
     display: block;
 }
 
