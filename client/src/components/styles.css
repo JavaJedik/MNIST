@@ -346,6 +346,7 @@ Register Styles
     transition-duration: 0.8s;
     text-align: center;
     cursor: pointer;
+    margin-top: 0.25em;
 }
 
 .dropbtn-arrow {
@@ -369,21 +370,17 @@ Register Styles
     margin: 0.5em;
 }
 
-.dropdown-content {
+.dropdown-content-language, .dropdown-content-gender {
     display: none;
     position: absolute;
     width: 20.25em;
-    height: 7.25em;
+    height: auto;
     border-radius: 15px;
     background-color: #f1f1f1;
     border: thin solid grey;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
     cursor: pointer;
-}
-
-.dropdown-content p:hover {
-    color: dodgerblue;
 }
 
 .reg-container {
@@ -408,17 +405,17 @@ Register Styles
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 40em;
-    height: 28em;
+    width: 38em;
+    height: 32em;
     border-radius: 25px;
     z-index: 0;
 }
 
-.dropdown.active-country .dropdown-content {
+.dropdown.active-language .dropdown-content-language {
     display: block;
 }
 
-.dropdown.active-gender .dropdown-content {
+.dropdown.active-gender .dropdown-content-gender {
     display: block;
 }
 
