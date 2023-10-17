@@ -447,6 +447,7 @@ Game Styles
 */
 
 .game-main-container {
+    position: absolute;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -455,6 +456,7 @@ Game Styles
 }
 
 .game-left-container {
+    position: relative;
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -463,6 +465,7 @@ Game Styles
 }
 
 .game-right-container {
+    position: relative;
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -494,19 +497,12 @@ Game Styles
 .game-container {
     position: absolute;
     top: 50%;
-    left: 75%;
+    left: 50%;
     transform: translate(-50%, -50%);
-    width: 40em;
-    height: 20em;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    z-index: 1;
 }
 
 .numbers {
-    position: inherit;
+    position: relative;
     display: flex;
     border: thick solid whitesmoke;
     border-radius: 15px;
@@ -524,8 +520,10 @@ Game Styles
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
     width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     height: 5em;
-
 }
 
 .numbers-top-text {
@@ -593,17 +591,45 @@ Game Styles
     }
 
     .numbers {
-        width: 14.4em;
+        width: 19.5em;
+        height: 31em;
+    }
+
+    .numbers-top-text {
+        font-size: 1.8em;
     }
 
     .number {
-        width: 4.5em;
-        height: 4.5em;
+        width: 6em;
+        height: 6em;
+    }
+
+    .number-button {
+        font-size: 2em;
     }
 
     .idk {
-        width: 9.3em;
-        height: 4.5em;
+        width: 12.5em;
+        height: 6em;
+    }
+
+    .idk-button {
+        font-size: 2em;
+    }
+
+    .left-game-button {
+        margin: 1em;
+    }
+
+    .right-game-button {
+        margin: 0;
+    }
+}
+
+@media (max-width: 1000px) {
+    .game-blur-container {
+        width: 25em;
+        height: 40em;
     }
 }
 
@@ -612,7 +638,43 @@ Game Styles
         flex-direction: column;
     }
 
+    .game-blur-container {
+        width: 25em;
+        height: 40em;
+    }
+
     .image {
         width: 112px;
+    }
+
+    .numbers {
+        width: 19.5em;
+        height: 31em;
+    }
+
+    .number {
+        width: 6em;
+        height: 6em;
+    }
+
+    .number-button {
+        font-size: 2em;
+    }
+
+    .idk {
+        width: 12.5em;
+        height: 6em;
+    }
+
+    .idk-button {
+        font-size: 2em;
+    }
+
+    .left-game-button {
+        margin-left: 3.5em;
+    }
+
+    .right-game-button {
+        margin-left: 2em;
     }
 }
