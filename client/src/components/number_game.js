@@ -81,7 +81,7 @@ const Number_Game = () => {
                                         9
                                     </button>
                                 </div>
-                                <div className="number"  onClick={() => handleClick(1)}>
+                                <div className="number last-number"  onClick={() => handleClick(1)}>
                                     <button className="number-button">
                                         0
                                     </button>
@@ -92,10 +92,10 @@ const Number_Game = () => {
                                     </button>
                                 </div>
                             </div>
-                            <button className="button-style" onClick={navigateHome}>
+                            <button className="button-style left-game-button" onClick={navigateHome}>
                                 Visszalépés
                             </button>
-                            <button className="button-style right-button" onClick={navigateLeaderboard}>
+                            <button className="button-style right-game-button" onClick={navigateLeaderboard}>
                                 Toplista
                             </button>
                         </div>

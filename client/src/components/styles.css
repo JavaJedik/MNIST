@@ -510,17 +510,21 @@ Game Styles
 
 .numbers {
     display: flex;
+    border: thick solid whitesmoke;
+    border-radius: 15px;
     flex-direction: row;
     align-items: flex-start;
     flex-wrap: wrap;
     justify-content: center;
     width: 24em;
     height: 37em;
-    border: medium solid whitesmoke;
+    margin: 1em;
 }
 
 .numbers-top {
     background: red;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
     width: 100%;
     height: 5em;
 
@@ -547,11 +551,19 @@ Game Styles
     cursor: pointer;
 }
 
+.last-number {
+    border-bottom-left-radius: 10px;
+}
+
 .idk {
     width: 15.5em;
     height: 7.5em;
     border: 0.25em solid blue;
     background: whitesmoke;
+}
+
+.idk:last-child {
+    border-bottom-right-radius: 10px;
 }
 
 .idk-button {
@@ -567,8 +579,12 @@ Game Styles
     background: yellowgreen;
 }
 
-.right-button {
-    margin-left: 3.5em;
+.left-game-button {
+    margin-left: 3em;
+}
+
+.right-game-button {
+    margin-left: 1em;
 }
 
 @media (max-width: 900px) {
