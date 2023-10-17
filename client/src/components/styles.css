@@ -4,10 +4,10 @@ Shared Styles
 ------------------------------------------------------------------------------------------------------------------------
 */
 
-/* * {
+* {
     outline: 1px solid red;
     outline-offset: -1px;
-}*/
+}
 
 
 * {
@@ -446,11 +446,34 @@ Game Styles
 ------------------------------------------------------------------------------------------------------------------------
 */
 
+.game-main-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.game-left-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-right-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .image {
-    position: absolute;
-    top: 50%;
-    left: 25%;
-    transform: translate(-50%, -50%);
+    position: relative;
+    border: 20px solid white;
+    border-radius: 15px;
     margin: 0.5em;
     content: url("placeholder.png");
     width: 224px;
@@ -546,4 +569,18 @@ Game Styles
 
 .right-button {
     margin-left: 3.5em;
+}
+
+@media (max-width: 900px) {
+
+}
+
+@media (max-width: 700px) {
+    .game-main-container {
+        flex-direction: column;
+    }
+
+    .image {
+        width: 112px;
+    }
 }
