@@ -80,16 +80,25 @@ Ez nem azt jelenti, hogy eddig nem létező országgal nem szúrhatunk be soha s
 ![](../kepek/teszt/tomi/t4.png)
 
 ```sql
-select registered_player.name as name, gender.name as gender,
+select registered_player.name as name, gender_name.name as gender,
 registered_player.email_prefix, email_type.domain, email_tld.tld,
 country_calling_code.country_number, phone_network.network_number,
 phone
-from registered_player, gender, email_type, email_tld, country_calling_code, 
-phone_network
+from registered_player, gender, gender_name, email_type, email_tld,
+country_calling_code, phone_network
 	where
 		registered_player.gender_id = gender.id and
+		gender_name.gender_id = gender.id and
 		email_type.tld_id = email_tld.id and
 		registered_player.email_type_id = email_type.id and
 		registered_player.country_calling_code_id = country_calling_code.id and
-		registered_player.phone_network_id = phone_network.id;
+		registered_player.phone_network_id = phone_network.id and
+		gender_name.language_id =
+		(select id from language
+			inner join language_name
+				on language.id = language_name.language_id and
+				language_name.name_language_id = language.id
+			where
+				language_name.language_id = language_name.name_language_id and
+				language_name.name = "magyar");
 ```
