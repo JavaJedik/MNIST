@@ -734,3 +734,27 @@ Admin Styles
     border-radius: 25px;
     z-index: 0;
 }
+
+.file-upload {
+    cursor: pointer;
+    background: whitesmoke;
+    width: 20em;
+    height: 2em;
+    padding: 0.1em;
+    border: 1px solid grey;
+    border-radius: 15px;
+    margin: 1em;
+}
+
+.file-upload:hover {
+    transition-duration: 0.8s;
+    border: thin solid dodgerblue;
+    background: rgb(185, 197, 246);
+}
+
+.file-upload::-webkit-file-upload-button {
+    /* Default gomb eltűntetése */
+    width: 0;
+    height: 0;
+    visibility: hidden;
+}

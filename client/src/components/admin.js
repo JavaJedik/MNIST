@@ -39,7 +39,7 @@ const Admin = () => {
                 </div>
 
                 <div>
-                    <button className="home-button-style" onClick={navigateLogin}>
+                    <button className="home-button-style">
                         Fájl feltöltése
                     </button>
                 </div>
