@@ -166,6 +166,10 @@ Home Styles
     cursor: pointer;
 }
 
+.active .dropbtn-arrow {
+    transform: rotate(180deg);
+}
+
 .home-dropbtn:hover {
     border: thin solid dodgerblue;
     background: rgb(185, 197, 246);
