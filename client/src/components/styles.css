@@ -358,6 +358,14 @@ Register Styles
     align-items: center;
 }
 
+.active-language .dropbtn-arrow {
+    transform: rotate(180deg);
+}
+
+.active-gender .dropbtn-arrow {
+    transform: rotate(180deg);
+}
+
 .dropbtn:hover {
     border: thin solid dodgerblue;
     background: rgb(185, 197, 246);
