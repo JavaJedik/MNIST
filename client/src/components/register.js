@@ -4,7 +4,8 @@ import "./styles.css"
 
 const Register = () => {
     const navigate = useNavigate();
-    const [selectedItem, setSelectedItem] = useState(null);
+    const [selectedLanguageItem, setSelectedLanguageItem] = useState(null);
+    const [selectedGenderItem, setSelectedGenderItem] = useState(null);
     const [isDropdownOpenLanguage, setIsDropdownOpenLanguage] = useState(false);
     const [isDropdownOpenGender, setIsDropdownOpenGender] = useState(false);
 
@@ -12,11 +13,16 @@ const Register = () => {
         navigate("/login");
     };
 
-    const handleDropdownItemClick = (item) => {
-        setSelectedItem(item);
+    const handleLanguageDropdownItemClick = (item) => {
+        setSelectedLanguageItem(item);
         setIsDropdownOpenLanguage(false)
-        setIsDropdownOpenGender(false);
+        //setIsDropdownOpenGender(false);
     };
+
+    const handleGenderDropdownItemClick = (item) => {
+        setSelectedGenderItem(item);
+        setIsDropdownOpenGender(false);
+    }
 
     return (
         <div className="main-container">
@@ -57,7 +63,7 @@ const Register = () => {
                 <div className={`dropdown ${isDropdownOpenLanguage ? "active-language" : ""}`}>
                     <button className="dropbtn" onClick={() => setIsDropdownOpenLanguage(!isDropdownOpenLanguage)}>
                         <span>
-                            {selectedItem || "Itt lesz a nyelv.."}
+                            {selectedLanguageItem || "Itt lesz a nyelv.."}
                         </span>
                         <span className="dropbtn-arrow">
                             &#9660;
@@ -65,15 +71,15 @@ const Register = () => {
                     </button>
                     <div id="myDropdown">
                         <div className="dropdown-content-language">
-                            <p onClick={() => handleDropdownItemClick("Magyar")}>Magyar</p>
-                            <p onClick={() => handleDropdownItemClick("Angol")}>Angol</p>
+                            <p onClick={() => handleLanguageDropdownItemClick("Magyar")}>Magyar</p>
+                            <p onClick={() => handleLanguageDropdownItemClick("Angol")}>Angol</p>
                         </div>
                     </div>
                 </div>
                 <div className={`dropdown ${isDropdownOpenGender ? "active-gender" : ""}`}>
                     <button className="dropbtn" onClick={() => setIsDropdownOpenGender(!isDropdownOpenGender)}>
                         <span>
-                            {selectedItem || "Adja meg a nemét!"}
+                            {selectedGenderItem || "Adja meg a nemét!"}
                         </span>
                         <span className="dropbtn-arrow">
                             &#9660;
@@ -81,9 +87,9 @@ const Register = () => {
                     </button>
                     <div id="myDropdown">
                         <div className="dropdown-content-gender">
-                            <p onClick={() => handleDropdownItemClick("Férfi")}>Férfi</p>
-                            <p onClick={() => handleDropdownItemClick("Nő")}>Nő</p>
-                            <p onClick={() => handleDropdownItemClick("Macska")}>Macska</p>
+                            <p onClick={() => handleGenderDropdownItemClick("Férfi")}>Férfi</p>
+                            <p onClick={() => handleGenderDropdownItemClick("Nő")}>Nő</p>
+                            <p onClick={() => handleGenderDropdownItemClick("Macska")}>Macska</p>
                         </div>
                     </div>
                 </div>
