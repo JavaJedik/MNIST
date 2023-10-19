@@ -32,7 +32,7 @@ const Home = () => {
 
     const navigateNumberGame = () => {
         navigate("/number_game")
-    }
+    };
 
     /*const navigateQuiz = async () => {
         try {
@@ -67,16 +67,18 @@ const Home = () => {
         setIsDropdownOpen(false)
     };
 
-    const navigateLeaderboardTemp = () => {
+    const navigateLeaderboard = () => {
         navigate("/leaderboard");
-    }
+    };
 
     return (
         <div className="main-container">
-            <div className="home-blur-container">
+            <div className="home-blur-container" />
                 <div className="home-container">
                     <div>
-                        <h1 className="home-header">Üdvözöljük, Felhasználónév!</h1>
+                        <h1 className="home-header">
+                            Üdvözöljük, Felhasználónév!
+                        </h1>
                     </div>
                     <div className={`home-dropdown ${isDropdownOpen ? "active" : ""}`}>
                         <button className="home-dropbtn" onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
@@ -89,13 +91,17 @@ const Home = () => {
                         </button>
                         <div id="home-myDropdown">
                             <div className="home-dropdown-content">
-                                <p onClick={() => handleDropdownItemClick("Magyar")}>Magyar</p>
-                                <p onClick={() => handleDropdownItemClick("English")}>English</p>
+                                <p onClick={() => handleDropdownItemClick("Magyar")}>
+                                    Magyar
+                                </p>
+                                <p onClick={() => handleDropdownItemClick("English")}>
+                                    English
+                                </p>
                             </div>
                         </div>
                     </div>
                     <div>
-                        <button className="home-button-style" onClick={navigateLeaderboardTemp}>
+                        <button className="home-button-style" onClick={navigateLeaderboard}>
                             Toplista megtekintése
                         </button>
                     </div>
@@ -110,7 +116,7 @@ const Home = () => {
                         </button>
                     </div>
                 </div>
-            </div>
+
         </div>
     );
 };
