@@ -22,9 +22,9 @@ const Login = () => {
         }
     };*/
 
-    const navigateHomeTemp = () => {
+    const navigateHome = () => {
         navigate('/home');
-    }
+    };
 
     const navigateRegister = () => {
         navigate('/register');
@@ -32,7 +32,7 @@ const Login = () => {
 
     return (
         <div className="main-container">
-            <div className="blur-container"></div>
+            <div className="blur-container" />
             <div className="container">
                 <div className="content">
                     <input
@@ -53,7 +53,7 @@ const Login = () => {
                     />
                 </div>
                 <div className="content">
-                    <button className="button-style" onClick={navigateHomeTemp}>
+                    <button className="button-style" onClick={navigateHome}>
                         Bejelentkezés
                     </button>
                     <button className="button-style" onClick={navigateRegister}>
@@ -61,7 +61,9 @@ const Login = () => {
                     </button>
                 </div>
                 <div>
-                    <p className="content-bottom">Jelentkezz be, vagy regisztrálj a kezdéshez!</p>
+                    <p className="content-bottom">
+                        Jelentkezz be, vagy regisztrálj a kezdéshez!
+                    </p>
                 </div>
             </div>
         </div>

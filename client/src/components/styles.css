@@ -166,6 +166,10 @@ Home Styles
     cursor: pointer;
 }
 
+.active .dropbtn-arrow {
+    transform: rotate(180deg);
+}
+
 .home-dropbtn:hover {
     border: thin solid dodgerblue;
     background: rgb(185, 197, 246);
@@ -356,6 +360,14 @@ Register Styles
     bottom: 0;
     display: flex;
     align-items: center;
+}
+
+.active-language .dropbtn-arrow {
+    transform: rotate(180deg);
+}
+
+.active-gender .dropbtn-arrow {
+    transform: rotate(180deg);
 }
 
 .dropbtn:hover {
