@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import "./styles.css"
 
@@ -6,6 +6,60 @@ const Number_Game = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
+
+    useEffect(() => {
+        document.addEventListener('keydown', handleKeyPress);
+
+        return () => {
+            document.removeEventListener('keydown', handleKeyPress);
+        };
+    }, []);
+
+    const handleKeyPress = (event) => {
+        switch (event.key) {
+            case '1':
+                simulateButtonClick(event.key);
+                break;
+            case '2':
+                simulateButtonClick(event.key);
+                break;
+            case '3':
+                simulateButtonClick(event.key);
+                break;
+            case '4':
+                simulateButtonClick(event.key);
+                break;
+            case '5':
+                simulateButtonClick(event.key);
+                break;
+            case '6':
+                simulateButtonClick(event.key);
+                break;
+            case '7':
+                simulateButtonClick(event.key);
+                break;
+            case '8':
+                simulateButtonClick(event.key);
+                break;
+            case '9':
+                simulateButtonClick(event.key);
+                break;
+            case '0':
+                simulateButtonClick(event.key);
+                break;
+            case 'Enter':
+                simulateButtonClick(event.key);
+                break;
+        }
+    };
+
+    const simulateButtonClick = (number) => {
+        const buttonId = `button${number}`;
+        const button = document.getElementById(buttonId);
+        if (button) {
+            button.click();
+        }
+    };
 
     const navigateHome = () => {
         navigate('/home');
@@ -37,57 +91,57 @@ const Number_Game = () => {
                                     </div>
                                 </div>
                                 <div className="number" onClick={() => handleClick(1)}>
-                                    <button className="number-button">
+                                    <button id="button1" className="number-button">
                                         1
                                     </button>
                                 </div>
                                 <div className="number" onClick={() => handleClick(2)}>
-                                    <button className="number-button">
+                                    <button id="button2" className="number-button">
                                         2
                                     </button>
                                 </div>
                                 <div className="number" onClick={() => handleClick(3)}>
-                                    <button className="number-button">
+                                    <button id="button3" className="number-button">
                                         3
                                     </button>
                                 </div>
                                 <div className="number" onClick={() => handleClick(4)}>
-                                    <button className="number-button">
+                                    <button id="button4" className="number-button">
                                         4
                                     </button>
                                 </div>
                                 <div className="number" onClick={() => handleClick(5)}>
-                                    <button className="number-button">
+                                    <button id="button5" className="number-button">
                                         5
                                     </button>
                                 </div>
                                 <div className="number" onClick={() => handleClick(6)}>
-                                    <button className="number-button">
+                                    <button id="button6" className="number-button">
                                         6
                                     </button>
                                 </div>
                                 <div className="number" onClick={() => handleClick(7)}>
-                                    <button className="number-button">
+                                    <button id="button7" className="number-button">
                                         7
                                     </button>
                                 </div>
                                 <div className="number" onClick={() => handleClick(8)}>
-                                    <button className="number-button">
+                                    <button id="button8" className="number-button">
                                         8
                                     </button>
                                 </div>
                                 <div className="number" onClick={() => handleClick(9)}>
-                                    <button className="number-button">
+                                    <button id="button9" className="number-button">
                                         9
                                     </button>
                                 </div>
-                                <div className="number last-number"  onClick={() => handleClick(1)}>
-                                    <button className="number-button">
+                                <div className="number last-number"  onClick={() => handleClick(0)}>
+                                    <button id="button0" className="number-button">
                                         0
                                     </button>
                                 </div>
                                 <div className="idk">
-                                    <button className="idk-button" onClick={() => handleClick("Nem tudom")}>
+                                    <button id="number" className="idk-button" onClick={() => handleClick("Nem tudom")}>
                                         Nem tudom
                                     </button>
                                 </div>
