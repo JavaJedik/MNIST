@@ -12,6 +12,10 @@ const Admin = () => {
         navigate("/login");
     };
 
+    const sendPicture = () => {
+        //TODO
+    };
+
     return (
         <div className="main-container">
             <div className="admin-blur-container" />
@@ -39,7 +43,7 @@ const Admin = () => {
                 </div>
 
                 <div>
-                    <button className="home-button-style">
+                    <button className="home-button-style" onClick={sendPicture}>
                         Fájl feltöltése
                     </button>
                 </div>
