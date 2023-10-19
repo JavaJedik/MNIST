@@ -6,7 +6,25 @@ import "./styles.css"
 const Admin = () => {
 
     return(
-        <h1>hello world</h1>
+        <div className="main-container">
+            <div className="admin-blur-container" />
+            <div className="admin-container">
+                <div>
+                    <h1 className="admin-header">
+                        Üdvözöljük, Admin!
+                    </h1>
+                </div>
+
+                
+
+                <div>
+                    <button className="home-button-style">
+                        Kijelentkezés
+                    </button>
+                </div>
+            </div>
+
+        </div>
     );
 };
 
