@@ -11,5 +11,5 @@ public interface LoginService
 {
     Login login = new Login();
     
-    public String AuthenticateUser(LoginData ld);
+    public String authenticateUser(LoginData ld);
 }
