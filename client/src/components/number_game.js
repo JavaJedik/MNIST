@@ -76,18 +76,18 @@ const Number_Game = () => {
 
     return (
         <div className="main-container">
-
-            <label className="switch">
-                <input
-                    defaultChecked={false}
-                    type="checkbox"
-                    checked={darkMode}
-                    onChange={() => setDarkMode(!darkMode)}
-                />
-                <span className="slider round"></span>
-            </label>
-
             <div className="game-main-container">
+
+                <label className="switch">
+                    <input
+                        defaultChecked={false}
+                        type="checkbox"
+                        checked={darkMode}
+                        onChange={() => setDarkMode(!darkMode)}
+                    />
+                    <span className="slider round"></span>
+                </label>
+
                 <div className="game-left-container">
                     <div className="image">
                     </div>
