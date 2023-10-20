@@ -234,7 +234,7 @@ Home Styles
 
 .home-button-style {
     background: whitesmoke;
-    color: #6e6e6e;
+    color: #000000;
     text-align: center;
     margin: 1em;
     border: medium solid rgb(185, 197, 246);
@@ -742,12 +742,19 @@ Admin Styles
 .file-upload {
     cursor: pointer;
     background: whitesmoke;
-    width: 20em;
+    width: 19em; /* 19em width + 1em padding-left */
     height: 2em;
-    padding: 0.1em;
     border: 1px solid grey;
     border-radius: 15px;
     margin: 1em;
+    padding-left: 1em;
+    padding-top: 3px;
+    padding-right: 0;
+    padding-bottom: 0;
+}
+
+.file-upload:before {
+    content: "Kép neve:";
 }
 
 .file-upload:hover {

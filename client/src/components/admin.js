@@ -33,6 +33,7 @@ const Admin = () => {
                     type="file"
                     accept=".png, .jpg, .jpeg, .svg, .gif"
                     value={pic}
+                    placeholder="file"
                     onChange={(e) => setPicture(e.target.value)}
                     id="file_uploader"
                 />
@@ -41,7 +42,8 @@ const Admin = () => {
                     <input
                         className="input-field"
                         type="text"
-                        placeholder="Helyes válasz"
+                        maxLength="1"
+                        placeholder="Helyes válasz (1 karakter)"
                         id="answer"
                         value={answer}
                         onChange={(e) => setText(e.target.value)}
