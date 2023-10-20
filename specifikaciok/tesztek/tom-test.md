@@ -122,3 +122,7 @@ curl -X POST -H "Content-Type: application/json" -d '{"username": "felhasznalone
 Sikeresen teszteltem a logolást a szerveren bejelentkezésnél és indításnál:
 
 ![](../kepek/teszt/tomi/t5.png)
+
+## Teszt 29
+
+/[](../kepek/teszt/tomi/t6.png)
