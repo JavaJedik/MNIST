@@ -16,7 +16,6 @@ const Register = () => {
     const handleLanguageDropdownItemClick = (item) => {
         setSelectedLanguageItem(item);
         setIsDropdownOpenLanguage(false)
-        //setIsDropdownOpenGender(false);
     };
 
     const handleGenderDropdownItemClick = (item) => {

@@ -14,7 +14,7 @@ const Login = () => {
 
             if (data.success) {
                 navigate('/home');
-                console.log(username + ' felhasználó sikeresen bejelentkezett')
+                console.log(username + ' felhasználó sikeresen bejelentkezett.')
             } else {
                 alert('Sikertelen bejelentkezés. Rossz felhasználónév vagy jelszó.');
                 console.log('Sikertelen bejelentkezés. Rossz felhasználónév vagy jelszó.')
