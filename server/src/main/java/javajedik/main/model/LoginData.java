@@ -2,20 +2,13 @@ package javajedik.main.model;
 
 public class LoginData 
 {
-    private final String name;
-    private final String password;
+    private String username;
+    private String password;
 
-    public LoginData(String name, String password) 
+    public String getUsername() 
     {
-        this.name = name;
-        this.password = password;
+        return username;
     }
-
-    public String getName() 
-    {
-        return name;
-    }
-
     public String getPassword() 
     {
         return password;
