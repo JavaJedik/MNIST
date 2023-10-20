@@ -25,12 +25,14 @@ const Leaderboard = () => {
                     checked={darkMode}
                     onChange={() => setDarkMode(!darkMode)}
                 />
-                <span className="slider round"></span>
+                <span className={`slider round ${darkMode ? "dark-slider" : ""}`} />
             </label>
 
-            <div className="board-blur-container" />
+            <div className={`classname ${darkMode ? "dark" : ""}`} />
+
+            <div className={`board-blur-container ${darkMode ? "dark-blur-container" : ""}`} />
             <div className="board-container">
-                <table>
+                <table className={`${darkMode ? "dark-table" : ""}`}>
                     <thead className="thead-style">
                         <tr>
                             <td>Helyezés</td>
@@ -113,7 +115,11 @@ const Leaderboard = () => {
                         </tr>
                     </tbody>
                 </table>
-                <button className="home-button-style" onClick={navigateHome}>
+                <button
+                    className="home-button-style"
+                    className={`home-button-style ${darkMode ? "dark-button-style" : ""}`}
+                    onClick={navigateHome}
+                >
                     Visszalépés
                 </button>
             </div>
