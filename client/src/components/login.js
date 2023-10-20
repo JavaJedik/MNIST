@@ -14,16 +14,19 @@ const Login = () => {
 
             if (data.success) {
                 navigate('/home');
+                console.log(username + ' felhasználó sikeresen bejelentkezett.')
             } else {
                 alert('Sikertelen bejelentkezés. Rossz felhasználónév vagy jelszó.');
+                console.log('Sikertelen bejelentkezés. Rossz felhasználónév vagy jelszó.')
             }
         } catch (error) {
-            console.error('Login failed:', error);
+            console.error('Login failed: ', error);
         }
     };
 
     const navigateRegister = () => {
         navigate('/register');
+        console.log('Regisztrációs oldal megnyitása.')
     };
 
     return (
@@ -37,6 +40,7 @@ const Login = () => {
                         placeholder="Felhasználónév"
                         id="username"
                         value={username}
+                        onChange={(e) => setUsername(e.target.value)}
                     />
                 </div>
                 <div className="content">
@@ -46,6 +50,7 @@ const Login = () => {
                         placeholder="Jelszó"
                         id="password"
                         value={password}
+                        onChange={(e) => setPassword(e.target.value)}
                     />
                 </div>
                 <div className="content">

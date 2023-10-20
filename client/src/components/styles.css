@@ -395,6 +395,10 @@ Register Styles
     cursor: pointer;
 }
 
+.dropdown-content-language p:hover, .dropdown-content-gender p:hover {
+    color: dodgerblue;
+}
+
 .reg-container {
     position: absolute;
     top: 50%;

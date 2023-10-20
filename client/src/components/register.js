@@ -16,7 +16,6 @@ const Register = () => {
     const handleLanguageDropdownItemClick = (item) => {
         setSelectedLanguageItem(item);
         setIsDropdownOpenLanguage(false)
-        //setIsDropdownOpenGender(false);
     };
 
     const handleGenderDropdownItemClick = (item) => {
@@ -63,7 +62,7 @@ const Register = () => {
                 <div className={`dropdown ${isDropdownOpenLanguage ? "active-language" : ""}`}>
                     <button className="dropbtn" onClick={() => setIsDropdownOpenLanguage(!isDropdownOpenLanguage)}>
                         <span>
-                            {selectedLanguageItem || "Itt lesz a nyelv.."}
+                            {selectedLanguageItem || "Válasszon nyelvet!"}
                         </span>
                         <span className="dropbtn-arrow">
                             &#9660;
