@@ -16,7 +16,7 @@ public class LoginController
     private static final Logger logger = LogManager.getLogger(LoginController.class);
     private static final String userToken = "EzIttAUserToken"; // Konstans userToken
 
-    @PostMapping("/")
+    @PostMapping("")
     public ResponseEntity<String> loginUser(@RequestBody LoginData loginData) 
     {
         logger.info("Login data arrived: username: " + loginData.getUsername());

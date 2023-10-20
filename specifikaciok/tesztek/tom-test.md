@@ -112,7 +112,7 @@ country_calling_code, phone_network
 A curl parancs az alábbi volt:
 
 ```bash
-curl -X POST -H "Content-Type: application/json" -d '{"username": "felhasznalonev", "password": "jelszo"}' http://localhost:8814/login/
+curl -X POST -H "Content-Type: application/json" -d '{"username": "felhasznalonev", "password": "jelszo"}' http://localhost:8814/login
 ```
 
 ## Teszt 28
