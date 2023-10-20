@@ -27,7 +27,7 @@
 | 24  | Merevlemez  | 2023-10-13 | Egy kép-fragment rekordja 255 - néhány byte, a hatékony keresés és tárolás miatt         | Success |
 | 25  | Szerver     | 2023-10-17 | A szerver elindítása általános függőségmegadással                                        | Success |
 | 26  | Szerver     | 2023-10-19 | A szerver és a client tud kommunikálni egymással publikus hálón keresztül.               | Success |
-| 27  | Szerver     | 2023-10-19 | Sikeres szerver oldali bejelentkezés fiktiv adatokkal                                    | Success |
+| 27  | Szerver     | 2023-10-19 | Sikeres szerver oldali bejelentkezés fiktív adatokkal                                    | Success |
 ## Egyszerűbb áttekinthetőségért csak a nehezebb lekérdezéseket írtam le, triviálisakat kevésbé.
 
 (Pl.: Nem írom le, hogy hogyan szúrunk be a táblába egy sort, mert 1 perc google, és nem akarom, hogy 100 oldal legyen a dokumentum.)
@@ -103,4 +103,12 @@ country_calling_code, phone_network
 			where
 				language_name.language_id = language_name.name_language_id and
 				language_name.name = "magyar");
+```
+
+## Teszt 27
+
+A curl parancs az alábbi volt:
+
+```bash
+curl -X POST -H "Content-Type: application/json" -d '{"username": "felhasznalonev", "password": "jelszo"}' http://localhost:8814/login/
 ```
