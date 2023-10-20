@@ -6,6 +6,8 @@ import "./styles.css"
 const Admin = () => {
 
     const navigate = useNavigate();
+    const [answer, setText] = useState('');
+    const [pic, setPicture] = useState(null);
 
     const navigateLogin = () => {
         //localStorage.removeItem('userToken');
@@ -13,7 +15,7 @@ const Admin = () => {
     };
 
     const sendPicture = () => {
-        //TODO
+        alert(`küldött válasz: ${answer} ... ${pic}`);
     };
 
     return (
@@ -30,6 +32,8 @@ const Admin = () => {
                     className="file-upload"
                     type="file"
                     accept=".png, .jpg, .jpeg, .svg, .gif"
+                    value={pic}
+                    onChange={(e) => setPicture(e.target.value)}
                     id="file_uploader"
                 />
 
@@ -39,6 +43,8 @@ const Admin = () => {
                         type="text"
                         placeholder="Helyes válasz"
                         id="answer"
+                        value={answer}
+                        onChange={(e) => setText(e.target.value)}
                     />
                 </div>
 
