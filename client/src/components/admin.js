@@ -8,6 +8,7 @@ const Admin = () => {
     const navigate = useNavigate();
     const [answer, setText] = useState('');
     const [pic, setPicture] = useState(null);
+    const [darkMode, setDarkMode] = useState(false);
 
     const navigateLogin = () => {
         //localStorage.removeItem('userToken');
@@ -20,6 +21,17 @@ const Admin = () => {
 
     return (
         <div className="main-container">
+
+            <label className="switch">
+                <input
+                    defaultChecked={false}
+                    type="checkbox"
+                    checked={darkMode}
+                    onChange={() => setDarkMode(!darkMode)}
+                />
+                <span className="slider round"></span>
+            </label>
+
             <div className="admin-blur-container" />
             <div className="admin-container">
                 <div>

@@ -8,6 +8,7 @@ const Register = () => {
     const [selectedGenderItem, setSelectedGenderItem] = useState(null);
     const [isDropdownOpenLanguage, setIsDropdownOpenLanguage] = useState(false);
     const [isDropdownOpenGender, setIsDropdownOpenGender] = useState(false);
+    const [darkMode, setDarkMode] = useState(false);
 
     const navigateLogin = () => {
         navigate("/login");
@@ -25,6 +26,17 @@ const Register = () => {
 
     return (
         <div className="main-container">
+
+            <label className="switch">
+                <input
+                    defaultChecked={false}
+                    type="checkbox"
+                    checked={darkMode}
+                    onChange={() => setDarkMode(!darkMode)}
+                />
+                <span className="slider round"></span>
+            </label>
+
             <div className = "reg-blur-container"></div>
             <div className = "reg-container">
                 <div className = "content">

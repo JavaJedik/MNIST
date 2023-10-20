@@ -6,6 +6,7 @@ const Number_Game = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
+    const [darkMode, setDarkMode] = useState(false);
 
     const navigateHome = () => {
         navigate('/home');
@@ -21,6 +22,17 @@ const Number_Game = () => {
 
     return (
         <div className="main-container">
+
+            <label className="switch">
+                <input
+                    defaultChecked={false}
+                    type="checkbox"
+                    checked={darkMode}
+                    onChange={() => setDarkMode(!darkMode)}
+                />
+                <span className="slider round"></span>
+            </label>
+
             <div className="game-main-container">
                 <div className="game-left-container">
                     <div className="image">

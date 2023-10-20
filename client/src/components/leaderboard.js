@@ -4,6 +4,7 @@ import "./styles.css"
 
 const Leaderboard = () => {
     const navigate = useNavigate();
+    const [darkMode, setDarkMode] = useState(false);
 
     const navigateHome = () => {
         navigate('/home');
@@ -16,6 +17,17 @@ const Leaderboard = () => {
 
     return (
         <div className="main-container">
+
+            <label className="switch">
+                <input
+                    defaultChecked={false}
+                    type="checkbox"
+                    checked={darkMode}
+                    onChange={() => setDarkMode(!darkMode)}
+                />
+                <span className="slider round"></span>
+            </label>
+
             <div className="board-blur-container" />
             <div className="board-container">
                 <table>
