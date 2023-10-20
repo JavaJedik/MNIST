@@ -29,6 +29,7 @@
 | 26  | Szerver     | 2023-10-19 | A szerver és a client tud kommunikálni egymással publikus hálón keresztül                | Success |
 | 27  | Szerver     | 2023-10-19 | Sikeres szerver oldali bejelentkezés fiktív adatokkal                                    | Success |
 | 28  | Szerver-log | 2023-10-19 | Sikeres logolás a szerveren                                                              | Success |
+| 29  | Szerver     | 2023-10-20 | Más magyarok, görögök, oroszok, lengyenek, csehek, németek, osztrákok elérik a szervert  | Success |
 
 ## Egyszerűbb áttekinthetőségért csak a nehezebb lekérdezéseket írtam le, triviálisakat kevésbé.
 
