@@ -113,6 +113,7 @@ A curl parancs az alábbi volt:
 
 ```bash
 curl -X POST -H "Content-Type: application/json" -d '{"username": "felhasznalonev", "password": "jelszo"}' http://localhost:8814/login
+curl -X POST -H "Content-Type: application/json" -d '{"username": "felhasznalonev", "password": "jelszo"}' https://mnist-server.serveo.net/login
 ```
 
 ## Teszt 28
