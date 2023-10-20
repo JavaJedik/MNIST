@@ -914,3 +914,22 @@ input[type="file"].dark-input-field {
 .dark-content-bottom {
     color: white;
 }
+
+.dark-numbers {
+    border: thick solid darkgray;
+    background: red;
+}
+
+.dark-numbers-top {
+    background: rgb(70, 58, 9); /*TODO gombok ilyen színűek*/
+}
+
+.dark-number-button {
+    background: grey;
+    border-color: white;
+    color: white;
+}
+
+.dark-number-button:hover {
+    background: rgb(225, 111, 0);;
+}

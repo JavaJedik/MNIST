@@ -88,80 +88,122 @@ const Number_Game = () => {
                     <span className="slider round"></span>
                 </label>
 
+                <div className={`classname ${darkMode ? "dark" : ""}`} />
+
                 <div className="game-left-container">
                     <div className="image">
                     </div>
                 </div>
                 <div className="game-right-container">
-                    <div className="game-blur-container"/>
+                    <div className={`game-blur-container ${darkMode ? "dark-blur-container" : ""}`}/>
                     <div className="game-container">
                         <div className="content">
-                            <div className="numbers">
-                                <div className="numbers-top">
+
+                            <div className={`numbers ${darkMode ? "dark-numbers" : ""}`}>
+                                <div className={`numbers-top ${darkMode ? "dark-numbers-top" : ""}`}>
                                     <div className="numbers-top-text">
                                         Adjon meg egy választ!
                                     </div>
                                 </div>
                                 <div className="number" onClick={() => handleClick(1)}>
-                                    <button id="button1" className="number-button">
+                                    <button
+                                        id="button1"
+                                        className={`number-button ${darkMode ? "dark-number-button" : ""}`}
+                                    >
                                         1
                                     </button>
                                 </div>
                                 <div className="number" onClick={() => handleClick(2)}>
-                                    <button id="button2" className="number-button">
+                                    <button
+                                        id="button2"
+                                        className={`number-button ${darkMode ? "dark-number-button" : ""}`}
+                                    >
                                         2
                                     </button>
                                 </div>
                                 <div className="number" onClick={() => handleClick(3)}>
-                                    <button id="button3" className="number-button">
+                                    <button
+                                        id="button3"
+                                        className={`number-button ${darkMode ? "dark-number-button" : ""}`}
+                                    >
                                         3
                                     </button>
                                 </div>
                                 <div className="number" onClick={() => handleClick(4)}>
-                                    <button id="button4" className="number-button">
+                                    <button
+                                        id="button4"
+                                        className={`number-button ${darkMode ? "dark-number-button" : ""}`}
+                                    >
                                         4
                                     </button>
                                 </div>
                                 <div className="number" onClick={() => handleClick(5)}>
-                                    <button id="button5" className="number-button">
+                                    <button
+                                        id="button5"
+                                        className={`number-button ${darkMode ? "dark-number-button" : ""}`}
+                                    >
                                         5
                                     </button>
                                 </div>
                                 <div className="number" onClick={() => handleClick(6)}>
-                                    <button id="button6" className="number-button">
+                                    <button
+                                        id="button6"
+                                        className={`number-button ${darkMode ? "dark-number-button" : ""}`}
+                                    >
                                         6
                                     </button>
                                 </div>
                                 <div className="number" onClick={() => handleClick(7)}>
-                                    <button id="button7" className="number-button">
+                                    <button
+                                        id="button7"
+                                        className={`number-button ${darkMode ? "dark-number-button" : ""}`}
+                                    >
                                         7
                                     </button>
                                 </div>
                                 <div className="number" onClick={() => handleClick(8)}>
-                                    <button id="button8" className="number-button">
+                                    <button
+                                        id="button8"
+                                        className={`number-button ${darkMode ? "dark-number-button" : ""}`}
+                                    >
                                         8
                                     </button>
                                 </div>
                                 <div className="number" onClick={() => handleClick(9)}>
-                                    <button id="button9" className="number-button">
+                                    <button
+                                        id="button9"
+                                        className={`number-button ${darkMode ? "dark-number-button" : ""}`}
+                                    >
                                         9
                                     </button>
                                 </div>
                                 <div className="number last-number"  onClick={() => handleClick(0)}>
-                                    <button id="button0" className="number-button">
+                                    <button
+                                        id="button0"
+                                        className={`number-button ${darkMode ? "dark-number-button" : ""}`}
+                                    >
                                         0
                                     </button>
                                 </div>
                                 <div className="idk">
-                                    <button id="number" className="idk-button" onClick={() => handleClick("Nem tudom")}>
+                                    <button
+                                        id="number"
+                                        className={`idk-button ${darkMode ? "dark-number-button" : ""}`}
+                                        onClick={() => handleClick("Nem tudom")}>
                                         Nem tudom
                                     </button>
                                 </div>
                             </div>
-                            <button className="button-style left-game-button" onClick={navigateHome}>
+                            <button
+                                className={`button-style left-game-button ${darkMode ? "dark-button-style" : ""}`}
+                                onClick={navigateHome}
+                            >
                                 Visszalépés
                             </button>
-                            <button className="button-style right-game-button" onClick={navigateLeaderboard}>
+                            <button
+                                className={`button-style right-game-button ${darkMode ? "dark-button-style" : ""}`}
+                                onClick={navigateLeaderboard}
+                            >
                                 Toplista
                             </button>
                         </div>
