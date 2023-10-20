@@ -50,14 +50,18 @@ Shared Styles
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #ccc;
+    background-color: #bbb;
     -webkit-transition: .4s;
     transition: .4s;
 }
 
 .slider:before {
     position: absolute;
-    content: "";
+    content: "\2600";
+    color: orange;
+    text-align: center;
+    font-size: 1.15rem;
+    padding: 0;
     height: 26px;
     width: 26px;
     left: 4px;
@@ -67,12 +71,16 @@ Shared Styles
     transition: .4s;
 }
 
+.dark-slider:before {
+    content: "\1F319";
+}
+
 input:checked + .slider {
-    background-color: #2196F3;
+    background-color: black;
 }
 
 input:focus + .slider {
-    box-shadow: 0 0 1px #2196F3;
+    box-shadow: 0 0 1px black;
 }
 
 input:checked + .slider:before {
@@ -917,11 +925,10 @@ input[type="file"].dark-input-field {
 
 .dark-numbers {
     border: thick solid darkgray;
-    background: red;
 }
 
 .dark-numbers-top {
-    background: rgb(70, 58, 9); /*TODO gombok ilyen színűek*/
+    background: rgb(70, 58, 9);
 }
 
 .dark-number-button {
@@ -931,5 +938,5 @@ input[type="file"].dark-input-field {
 }
 
 .dark-number-button:hover {
-    background: rgb(225, 111, 0);;
+    background: rgb(225, 111, 0);
 }

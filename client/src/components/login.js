@@ -40,7 +40,7 @@ const Login = () => {
                     checked={darkMode}
                     onChange={() => setDarkMode(!darkMode)}
                 />
-                    <span className="slider round"></span>
+                    <span className={`slider round ${darkMode ? "dark-slider" : ""}`} />
             </label>
 
             <div className={`classname ${darkMode ? "dark" : ""}`} />
