@@ -6,22 +6,22 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 @RestController
 @RequestMapping("/login")
 public class LoginController 
 {
-
+    private static final Logger logger = LogManager.getLogger(LoginController.class);
     private static final String userToken = "EzIttAUserToken"; // Konstans userToken
 
     @PostMapping("/")
     public ResponseEntity<String> loginUser(@RequestBody LoginData loginData) 
     {
-        // Ide kerülhet a hitelesítési logika a loginData objektum alapján
-        // Jelenleg csak kiírjuk a konzolra a felhasználónevet és jelszót
-        System.out.println("Felhasználónév: " + loginData.getUsername());
-        System.out.println("Jelszó: " + loginData.getPassword());
-
+        logger.info("Login data arrived: username: " + loginData.getUsername());
+        
+        logger.info("Login accepted, token sent: username: " + loginData.getUsername());
         return ResponseEntity.ok(userToken);
     }
 }
