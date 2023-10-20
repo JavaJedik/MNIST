@@ -1,4 +1,4 @@
-const API_URL = 'https://almafa.serveo.net';
+const API_URL = 'https://mnist-server.serveo.net';
 
 const AuthService = {
     
