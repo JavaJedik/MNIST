@@ -17,7 +17,7 @@ import org.springframework.http.HttpStatus;
 public class LoginController 
 {
     @Autowired
-    LoginService loginService;
+    private LoginService loginService;
     
     private static final Logger logger = LogManager.getLogger(LoginController.class);
     private static final String userToken = "EzIttAUserToken"; // Konstans userToken
@@ -29,10 +29,10 @@ public class LoginController
         
         if(loginService.isValidLoginData(loginData))
         {
+            logger.info("Bejelentkezés elfogadva, token elküldve: username: " + loginData.getUsername());
             return ResponseEntity.ok(userToken);
         }
         
-        logger.info("Bejelentkezés elfogadva, token elküldve: username: " + loginData.getUsername());
         return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
 }
