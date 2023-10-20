@@ -14,6 +14,7 @@ Shared Styles
     font-size: 1rem;
     font-family: serif;
     user-select: none;
+    transition-duration: 0.8s;
 }
 
 .main-container {
@@ -301,7 +302,8 @@ Home Styles
 
 .home-button-style {
     background: whitesmoke;
-    color: #000000;
+    color: black;
+    font-weight: bolder;
     text-align: center;
     margin: 1em;
     border: medium solid rgb(185, 197, 246);
@@ -772,7 +774,7 @@ Admin Styles
 .admin-header {
     position: relative;
     text-align: center;
-    color: whitesmoke;
+    color: black;
     font-size: 1.5rem;
     letter-spacing: 0.2rem;
     margin: 0 0 1em;
@@ -806,8 +808,11 @@ Admin Styles
     z-index: 0;
 }
 
-.file-upload {
+.file-upload-clickable {
     cursor: pointer;
+}
+
+.file-upload {
     background: whitesmoke;
     width: 19em; /* 19em width + 1em padding-left */
     height: 2em;
@@ -818,6 +823,11 @@ Admin Styles
     padding-top: 3px;
     padding-right: 0;
     padding-bottom: 0;
+}
+
+.file-upload::placeholder {
+    font-weight: bolder;
+    text-align: center;
 }
 
 .file-upload:before {
@@ -860,6 +870,19 @@ Dark Styles
 .dark-input-field:hover {
     border: thin solid rgb(225, 111, 0); /*dodgerblue*/
     background: rgb(70, 58, 9); /*rgb(185, 197, 246)*/
+}
+
+.dark-input-field:before {
+    color: white;
+}
+
+input[type="file"] {
+    font-weight: bolder;
+}
+
+input[type="file"].dark-input-field {
+    font-weight: bolder;
+    color: white;
 }
 
 .dark-button-style {

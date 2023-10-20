@@ -32,16 +32,16 @@ const Admin = () => {
                 <span className="slider round"></span>
             </label>
 
-            <div className="admin-blur-container" />
+            <div className={`admin-blur-container ${darkMode ? "dark-blur-container" : ""}`} />
             <div className="admin-container">
                 <div>
-                    <h1 className="admin-header">
+                    <h1 className={`admin-header ${darkMode ? "dark-content-bottom" : ""}`}>
                         Üdvözöljük, Admin!
                     </h1>
                 </div>
 
                 <input
-                    className="file-upload"
+                    className={`file-upload file-upload-clickable ${darkMode ? "dark-input-field" : ""}`}
                     type="file"
                     accept=".png, .jpg, .jpeg, .svg, .gif"
                     value={pic}
@@ -52,7 +52,7 @@ const Admin = () => {
 
                 <div className="content">
                     <input
-                        className="input-field"
+                        className={`file-upload ${darkMode ? "dark-input-field" : ""}`}
                         type="text"
                         maxLength="1"
                         placeholder="Helyes válasz (1 karakter)"
@@ -63,13 +63,19 @@ const Admin = () => {
                 </div>
 
                 <div>
-                    <button className="home-button-style" onClick={sendPicture}>
+                    <button
+                        className={`home-button-style ${darkMode ? "dark-button-style" : ""}`}
+                        onClick={sendPicture}
+                    >
                         Fájl feltöltése
                     </button>
                 </div>
 
                 <div>
-                    <button className="home-button-style" onClick={navigateLogin}>
+                    <button
+                        className={`home-button-style ${darkMode ? "dark-button-style" : ""}`}
+                        onClick={navigateLogin}
+                    >
                         Kijelentkezés
                     </button>
                 </div>
