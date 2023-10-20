@@ -85,16 +85,21 @@ const Home = () => {
                 <span className="slider round"></span>
             </label>
 
-            <div className="home-blur-container" />
+            <div className={`classname ${darkMode ? "dark" : ""}`} />
+
+            <div className={`home-blur-container ${darkMode ? "dark-blur-container" : ""}`} />
                 <div className="home-container">
                     <div>
-                        <h1 className="home-header">
+                        <h1 className={`home-header ${darkMode ? "dark-content-bottom" : ""}`}>
                             Üdvözöljük, Felhasználónév!
                         </h1>
                     </div>
-                    <div className={`home-dropdown ${isDropdownOpen ? "active" : ""}`}>
-                        <button className="home-dropbtn" onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
-                            <span>
+                    <div
+                        className={`home-dropdown ${isDropdownOpen ? "active" : ""}`}>
+                        <button
+                            className={`home-dropbtn ${darkMode ? "dark-button-style" : ""}`}
+                            onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
+                            <span className={`${darkMode ? "dark-span" : ""}`}>
                                 {selectedItem || "Válasszon nyelvet"}
                             </span>
                             <span className="dropbtn-arrow">
@@ -102,7 +107,7 @@ const Home = () => {
                             </span>
                         </button>
                         <div id="home-myDropdown">
-                            <div className="home-dropdown-content">
+                            <div className={`home-dropdown-content ${darkMode ? "dark-dropdown-content" : ""}`}>
                                 <p onClick={() => handleDropdownItemClick("Magyar")}>
                                     Magyar
                                 </p>
@@ -113,17 +118,23 @@ const Home = () => {
                         </div>
                     </div>
                     <div>
-                        <button className="home-button-style" onClick={navigateLeaderboard}>
+                        <button
+                            className={`home-button-style ${darkMode ? "dark-button-style" : ""}`}
+                            onClick={navigateLeaderboard}>
                             Toplista megtekintése
                         </button>
                     </div>
                     <div>
-                        <button className="home-button-style" onClick={navigateNumberGame}>
+                        <button
+                            className={`home-button-style ${darkMode ? "dark-button-style" : ""}`}
+                            onClick={navigateNumberGame}>
                             <u>Játék indítása</u>
                         </button>
                     </div>
                     <div className="home-content">
-                        <button className="home-button-style" onClick={navigateLogin}>
+                        <button
+                            className={`home-button-style ${darkMode ? "dark-button-style" : ""}`}
+                            onClick={navigateLogin}>
                             Kijelentkezés
                         </button>
                     </div>

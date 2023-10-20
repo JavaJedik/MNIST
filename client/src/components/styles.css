@@ -215,7 +215,7 @@ Home Styles
 .home-header {
     position: relative;
     text-align: center;
-    color: whitesmoke;
+    color: black;
     font-size: 1.5rem;
     letter-spacing: 0.2rem;
     margin: 0 0 1em;
@@ -894,6 +894,21 @@ input[type="file"].dark-input-field {
 
 .dark-button-style:hover {
     background: rgb(70, 58, 9);
+    border: medium solid rgb(70, 58, 9);
+}
+
+.dark-span {
+    color: white;
+}
+
+.dark-dropdown-content {
+    background: darkgray;
+    color: white;
+    font-weight: bolder;
+}
+
+.dark-dropdown-content p:hover {
+    color: rgb(225, 111, 0);
 }
 
 .dark-content-bottom {
