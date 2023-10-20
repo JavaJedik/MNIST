@@ -125,4 +125,6 @@ Sikeresen teszteltem a logolást a szerveren bejelentkezésnél és indításná
 
 ## Teszt 29
 
-/[](../kepek/teszt/tomi/t6.png)
+Sikeresen tesztelték a weboldal elérését különböző testereink.
+
+![](../kepek/teszt/tomi/t6.png)
