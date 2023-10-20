@@ -27,6 +27,67 @@ Shared Styles
     height: 100vh;
 }
 
+.switch {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 1em;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: #2196F3;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
 /*
 ------------------------------------------------------------------------------------------------------------------------
 Login Styles
@@ -51,8 +112,13 @@ Login Styles
     background: rgb(185, 197, 246);
 }
 
+.input-field::placeholder {
+    font-weight: bolder;
+}
+
 .button-style {
     background: whitesmoke;
+    font-weight: bolder;
     text-align: center;
     margin: 1.8em 0.5em 0;
     border: medium solid rgb(185, 197, 246);
@@ -109,7 +175,8 @@ Login Styles
 }
 
 .content-bottom {
-    color: whitesmoke;
+    color: black;
+    font-weight: bolder;
     font-size: 1.5rem;
     position: relative;
     text-align: center;
@@ -768,4 +835,44 @@ Admin Styles
     width: 0;
     height: 0;
     visibility: hidden;
+}
+
+/*
+------------------------------------------------------------------------------------------------------------------------
+Dark Styles
+------------------------------------------------------------------------------------------------------------------------
+*/
+
+.dark-blur-container {
+    background: rgba(120, 110, 100, 0.5); /*kézzel átállított*/
+    border: 1px solid darkgray;
+}
+
+.dark-input-field {
+    background: darkgray; /*whitesmoke*/
+}
+
+.dark-input-field::placeholder {
+    color: white;
+    font-weight: bolder;
+}
+
+.dark-input-field:hover {
+    border: thin solid rgb(225, 111, 0); /*dodgerblue*/
+    background: rgb(70, 58, 9); /*rgb(185, 197, 246)*/
+}
+
+.dark-button-style {
+    background: darkgray;
+    border: medium solid rgb(70, 58, 9);
+    color: white;
+    font-weight: bolder;
+}
+
+.dark-button-style:hover {
+    background: rgb(70, 58, 9);
+}
+
+.dark-content-bottom {
+    color: white;
 }
