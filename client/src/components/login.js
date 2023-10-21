@@ -30,6 +30,22 @@ const Login = () => {
         console.log('Regisztrációs oldal megnyitása.')
     };
 
+    const navigateHomeAsGuest = async () => {
+        try {
+            const data = await AuthService.loginAsGuest();
+
+            if (data.success) {
+                navigate('/home');
+                console.log(username + ' felhasználó sikeresen bejelentkezett.')
+            } else {
+                alert('Sikertelen bejelentkezés. Rossz felhasználónév vagy jelszó.');
+                console.log('Sikertelen bejelentkezés. Rossz felhasználónév vagy jelszó.')
+            }
+        } catch (error) {
+            console.error('Login failed: ', error);
+        }
+    }
+
     return (
         <div className="main-container">
 
@@ -92,7 +108,7 @@ const Login = () => {
                     <button
                         className="button-style"
                         className={`button-style ${darkMode ? "dark-button-style" : ""}`}
-                        onClick={navigateHome}
+                        onClick={navigateHomeAsGuest}
                     >
                         Vendég
                     </button>

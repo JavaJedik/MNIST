@@ -44,6 +44,38 @@ const AuthService = {
     }
   },
 
+  loginAsGuest: async () => {
+    try {
+      const response = await fetch(`${API_URL}/login`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({})
+      });
+
+      console.log(response)
+
+      if (response.status === 200) {
+        const responseText = await response.text();
+        console.log('Válasz típusa:', typeof responseText);
+        console.log('Válasz tartalma:', responseText);
+
+        return {success: true, userToken: responseText};
+      } else if (response.status === 403) {
+        console.log('Nincs válasz a státuszkód 403 (Forbidden) esetén.');
+
+        return {success: false, userToken: ''};
+      } else {
+        console.log('Nem kezelt státuszkód:', response.status);
+        throw new Error('Login failed');
+      }
+    } catch (error) {
+      console.error('Fetch error:', error);
+      throw new Error('Login failed');
+    }
+  },
+
   checkLoggedIn: async () => {
     const userToken = localStorage.getItem('userToken');
 
