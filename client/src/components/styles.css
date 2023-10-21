@@ -139,6 +139,12 @@ Login Styles
     cursor: pointer;
 }
 
+
+.bottom-button {
+    margin: 0;
+    padding: 0;
+}
+
 .button-style:hover {
     background: rgb(185, 197, 246);
 }
@@ -190,6 +196,7 @@ Login Styles
     position: relative;
     text-align: center;
     cursor: default;
+    margin: 1em 0 0;
 }
 
 @media (max-width: 700px) {

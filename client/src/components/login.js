@@ -88,6 +88,15 @@ const Login = () => {
                         Jelentkezz be, vagy regisztrálj a kezdéshez!
                     </p>
                 </div>
+                <div className="bottom-button">
+                    <button
+                        className="button-style"
+                        className={`button-style ${darkMode ? "dark-button-style" : ""}`}
+                        onClick={navigateHome}
+                    >
+                        Vendég
+                    </button>
+                </div>
             </div>
         </div>
     );
