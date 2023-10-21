@@ -7,7 +7,6 @@ public class RegistrateData
     String password;
     String language;
     String gender;
-    String country;
 
     public String getUsername() 
     {
@@ -33,11 +32,6 @@ public class RegistrateData
     {
         return gender;
     }
-
-    public String getCountry() 
-    {
-        return country;
-    }
     
     @Override
     public String toString() 
@@ -46,7 +40,6 @@ public class RegistrateData
                ", email: " + (email != null ? email : "?") +
                ", password: " + (password != null ? "?" : "?") +
                ", language: " + (language != null ? language : "?") +
-               ", gender: " + (gender != null ? gender : "?") +
-               ", country: " + (country != null ? country : "?");
+               ", gender: " + (gender != null ? gender : "?");
     }
 }

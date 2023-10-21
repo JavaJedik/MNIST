@@ -11,6 +11,17 @@ public class RegisteredPlayer
     private int phoneNetworkId;
     private int phone;
 
+    public RegisteredPlayer(){};
+    
+    public RegisteredPlayer(int playerId, String name, int genderId, String emailPrefix, int emailTypeId) 
+    {
+        this.playerId = playerId;
+        this.name = name;
+        this.genderId = genderId;
+        this.emailPrefix = emailPrefix;
+        this.emailTypeId = emailTypeId;
+    }
+
     public int getPlayerId() 
     {
         return playerId;

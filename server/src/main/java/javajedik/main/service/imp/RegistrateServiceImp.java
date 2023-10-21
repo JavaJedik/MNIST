@@ -1,5 +1,7 @@
 package javajedik.main.service.imp;
 
+import java.util.concurrent.ExecutionException;
+import java.util.logging.Level;
 import javajedik.main.model.RegistrateData;
 import javajedik.main.service.RegistrateService;
 import javajedik.main.sql.RegistratePlayerSQL;
@@ -19,6 +21,16 @@ public class RegistrateServiceImp implements RegistrateService
     @Override
     public boolean registratePlayer(RegistrateData registrateData) 
     {
+        try 
+        {
+            registratePlayerSQL.tryToRegistratePlayer(registrateData);
+        } 
+        catch (ExecutionException ex) 
+        {
+            java.util.logging.Logger.getLogger(RegistrateServiceImp.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+        
         logger.info("A regisztráció sikeres");
         return true;       
     }
