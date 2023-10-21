@@ -93,7 +93,14 @@ const Register = () => {
             const { latitude, longitude } = position.coords;
 
             const response = await fetch(
-                `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`);
+                `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`,
+                {
+                    headers: {
+                        'Accept-Language': 'hu'
+                    }
+                }
+            );
+
             const data = await response.json();
 
             if (data.display_name) {
