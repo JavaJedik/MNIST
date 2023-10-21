@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import "./styles.css"
+import AuthService from "../AuthService";
 
 const Register = () => {
     const navigate = useNavigate();
@@ -10,9 +11,39 @@ const Register = () => {
     const [isDropdownOpenGender, setIsDropdownOpenGender] = useState(false);
     const [darkMode, setDarkMode] = useState(false);
 
+    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
+    const [password1, setPassword1] = useState('');
+    const [password2, setPassword2] = useState('');
+
     const navigateLogin = () => {
         navigate("/login");
     };
+
+    const validateUserData = async () => {
+        try {
+            if (username === null || username === '' // A kitörlés miatt kell, mert akkor már nem null lesz.
+                || email === null || email === ''
+                || password1 === null || password1 === ''
+                || password2 === null || password2 === ''
+                || selectedLanguageItem === null
+                || selectedGenderItem === null) {
+                throw new Error('Hiányzó adatok!')
+            } else if (password1 !== password2) {
+                throw new Error('A jelszavak nem egyeznek!')
+            } else {
+                registerUser()
+            }
+
+        } catch (error) {
+            console.log(error)
+            alert(error)
+        }
+    }
+
+    const registerUser = async () => {
+
+    }
 
     const handleLanguageDropdownItemClick = (item) => {
         setSelectedLanguageItem(item);
@@ -22,6 +53,16 @@ const Register = () => {
     const handleGenderDropdownItemClick = (item) => {
         setSelectedGenderItem(item);
         setIsDropdownOpenGender(false);
+    }
+
+    function isValidEmail(checkEmail) {
+        const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+        return emailRegex.test(checkEmail);
+    }
+
+    function isLessStrongPassword(checkPassword) {
+        const passwordRegex = /^(?=.*[a-zA-Z])(?=.*\d).{6,}$/;
+        return passwordRegex.test(checkPassword);
     }
 
     return (
@@ -45,6 +86,8 @@ const Register = () => {
                         type="text"
                         placeholder="Felhasználónév"
                         id="username"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
                     />
                 </div>
                 <div className = "content">
@@ -53,6 +96,8 @@ const Register = () => {
                         type="text"
                         placeholder="E-mail cím"
                         id="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
                     />
                 </div>
                 <div className = "content">
@@ -60,7 +105,9 @@ const Register = () => {
                         className= "input-field"
                         type="password"
                         placeholder="Jelszó"
-                        id="password"
+                        id="password1"
+                        value={password1}
+                        onChange={(e) => setPassword1(e.target.value)}
                     />
                 </div>
                 <div className = "content">
@@ -68,7 +115,9 @@ const Register = () => {
                         className= "input-field"
                         type="password"
                         placeholder="Jelszó mégegyszer"
-                        id="password-check"
+                        id="password2"
+                        value={password2}
+                        onChange={(e) => setPassword2(e.target.value)}
                     />
                 </div>
                 <div className={`dropdown ${isDropdownOpenLanguage ? "active-language" : ""}`}>
@@ -111,7 +160,8 @@ const Register = () => {
                         Vissza
                     </button>
                     <button
-                        className= "button-style">
+                        className= "button-style"
+                        onClick={validateUserData}>
                         Regisztráció
                     </button>
                 </div>
