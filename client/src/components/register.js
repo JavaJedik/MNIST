@@ -34,7 +34,6 @@ const Register = () => {
             } else {
                 await registerUser()
             }
-
         } catch (error) {
             console.error(error)
             alert(error)
@@ -43,13 +42,16 @@ const Register = () => {
 
     const registerUser = async () => {
         try {
-            const country = 'Magyarország';
+            const country = await getCurrentLocation();
+            console.log(country)
+
             const data = await AuthService.registerUser(username, email, password1,
                 selectedLanguageItem, selectedGenderItem, country);
 
             if (data.success) {
                 alert('Az adatok mentése sikeres!')
                 console.log('Az adatok mentése sikeres!')
+                navigate("/home")
             } else {
                 alert('Az adatok mentése sikertelen!')
                 console.log('Az adatok mentése sikertelen!')
@@ -80,6 +82,30 @@ const Register = () => {
         // Minimum 6 karakter, közte 1 szám és 1 nagybetű.
         const passwordRegex = /^(?=.*[a-zA-Z])(?=.*\d).{6,}$/;
         return passwordRegex.test(checkPassword);
+    }
+
+    async function getCurrentLocation() {
+        try {
+            const position = await new Promise((resolve, reject) => {
+                navigator.geolocation.getCurrentPosition(resolve, reject);
+            });
+
+            const { latitude, longitude } = position.coords;
+
+            const response = await fetch(
+                `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`);
+            const data = await response.json();
+
+            if (data.display_name) {
+                const locationName = data.display_name;
+                return locationName;
+            } else {
+                throw new Error("Sikertelen helymeghatározás, alapértelmezett: Magyarország.")
+            }
+        } catch (error) {
+            console.error(error)
+            return "Magyarország";
+        }
     }
 
     return (
