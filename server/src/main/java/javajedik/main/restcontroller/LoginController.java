@@ -16,10 +16,11 @@ import org.springframework.http.HttpStatus;
 @RequestMapping("/login")
 public class LoginController 
 {
+    private static final Logger logger = LogManager.getLogger(LoginController.class);
+    
     @Autowired
     private LoginService loginService;
     
-    private static final Logger logger = LogManager.getLogger(LoginController.class);
     private static final String userToken = "EzIttAUserToken"; // Konstans userToken
 
     @PostMapping("")
