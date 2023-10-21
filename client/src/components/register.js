@@ -32,17 +32,33 @@ const Register = () => {
             } else if (password1 !== password2) {
                 throw new Error('A jelszavak nem egyeznek!')
             } else {
-                registerUser()
+                await registerUser()
             }
 
         } catch (error) {
-            console.log(error)
+            console.error(error)
             alert(error)
         }
     }
 
     const registerUser = async () => {
+        try {
+            const country = 'Magyarország'
+            const data = await AuthService.registerUser(username, email, password1,
+                selectedLanguageItem, selectedGenderItem, country);
 
+            if (data.success) {
+                alert('Az adatok mentése sikeres!')
+                console.log('Az adatok mentése sikeres!')
+            } else {
+                alert('Az adatok mentése sikertelen!')
+                console.log('Az adatok mentése sikertelen!')
+                throw new Error('Az adatok mentése sikertelen!')
+            }
+        } catch (error) {
+            console.error(error)
+            alert(error)
+        }
     }
 
     const handleLanguageDropdownItemClick = (item) => {
