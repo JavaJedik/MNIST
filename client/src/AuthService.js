@@ -65,15 +65,14 @@ const AuthService = {
     }
   },
 
-  registerUser: async (username, email, password, language, gender, country) => {
+  registerUser: async (username, email, password, language, gender) => {
     try {
       const requestData = {
         username,
         email,
         password,
         language,
-        gender,
-        country
+        gender
       };
 
       console.log('Küldött adatok:', requestData);

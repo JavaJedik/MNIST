@@ -42,11 +42,11 @@ const Register = () => {
 
     const registerUser = async () => {
         try {
-            const country = await getCurrentLocation();
-            console.log(country)
+            /*const country = await getCurrentLocation();
+            console.log(country)*/
 
             const data = await AuthService.registerUser(username, email, password1,
-                selectedLanguageItem, selectedGenderItem, country);
+                selectedLanguageItem, selectedGenderItem);
 
             if (data.success) {
                 alert('Az adatok mentése sikeres!')
@@ -84,7 +84,7 @@ const Register = () => {
         return passwordRegex.test(checkPassword);
     }
 
-    async function getCurrentLocation() {
+    /*async function getCurrentLocation() {
         try {
             const position = await new Promise((resolve, reject) => {
                 navigator.geolocation.getCurrentPosition(resolve, reject);
@@ -113,7 +113,7 @@ const Register = () => {
             console.error(error)
             return "Magyarország";
         }
-    }
+    }*/
 
     return (
         <div className="main-container">
