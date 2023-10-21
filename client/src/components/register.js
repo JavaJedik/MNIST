@@ -43,7 +43,7 @@ const Register = () => {
 
     const registerUser = async () => {
         try {
-            const country = 'Magyarország'
+            const country = 'Magyarország';
             const data = await AuthService.registerUser(username, email, password1,
                 selectedLanguageItem, selectedGenderItem, country);
 
@@ -77,6 +77,7 @@ const Register = () => {
     }
 
     function isLessStrongPassword(checkPassword) {
+        // Minimum 6 karakter, közte 1 szám és 1 nagybetű.
         const passwordRegex = /^(?=.*[a-zA-Z])(?=.*\d).{6,}$/;
         return passwordRegex.test(checkPassword);
     }

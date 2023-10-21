@@ -98,11 +98,11 @@ const AuthService = {
         return { success: false, userToken: '' };
       } else {
         console.log('Nem kezelt státuszkód:', response.status);
-        throw new Error('Login failed');
+        throw new Error('Registration failed.');
       }
     } catch (error) {
       console.error('Fetch error:', error);
-      throw new Error('Login failed');
+      throw new Error('Registration failed.');
     }
   }
 };
