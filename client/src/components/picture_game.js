@@ -7,6 +7,7 @@ const Number_Game = () => {
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
     const [darkMode, setDarkMode] = useState(false);
+    const [numAnswers, setNumAnswers] = useState(3);
 
     const navigateHome = () => {
         navigate('/home');
@@ -19,6 +20,11 @@ const Number_Game = () => {
     const handleClick = (clickedNumber) => {
         alert("A válaszod: " + clickedNumber);
     }
+
+    const handleSliderChange = (event) => {
+        setNumAnswers(parseInt(event.target.value, 10));
+    };
+
 
     return (
         <div className="main-container">
@@ -34,6 +40,20 @@ const Number_Game = () => {
             </label>
 
             <div className="game-main-container">
+
+                <div>
+                    <label>Number of Answers:</label>
+                    <input
+                        type="range"
+                        min="2"
+                        max="10"
+                        value={numAnswers}
+                        onChange={handleSliderChange}
+                    />
+                </div>
+
+
+
                 <div className="game-left-container">
                     <div className="image">
                     </div>
@@ -42,8 +62,12 @@ const Number_Game = () => {
                     <div className="game-blur-container"/>
                     <div className="game-container">
                         <div className="content">
-                            <div className="numbers">
-
+                            <div className="picture-numbers">
+                                {Array.from({ length: numAnswers }).map((_, index) => (
+                                    <div className="number">
+                                        <button key={index} className="number-button">{`Btn ${index + 1}`}</button>
+                                    </div>
+                                ))}
                             </div>
                             <button className="button-style left-game-button" onClick={navigateHome}>
                                 Visszalépés
