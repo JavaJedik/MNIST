@@ -41,22 +41,25 @@ const Number_Game = () => {
 
             <div className="game-main-container">
 
-                <div>
-                    <label>Number of Answers:</label>
-                    <input
-                        type="range"
-                        min="2"
-                        max="10"
-                        value={numAnswers}
-                        onChange={handleSliderChange}
-                    />
-                </div>
-
 
 
                 <div className="game-left-container">
-                    <div className="image">
+                    <div className="image" />
+
+                    <div className="slider-container">
+                        <div className="slider-text">
+                            Válaszok száma:
+                        </div>
+                        <input
+                            className="answer-slider"
+                            type="range"
+                            min="2"
+                            max="30"
+                            value={numAnswers}
+                            onChange={handleSliderChange}
+                        />
                     </div>
+
                 </div>
                 <div className="game-right-container">
                     <div className="game-blur-container"/>
@@ -64,7 +67,7 @@ const Number_Game = () => {
                         <div className="content">
                             <div className="picture-numbers">
                                 {Array.from({ length: numAnswers }).map((_, index) => (
-                                    <div className="number">
+                                    <div className="picture-number">
                                         <button key={index} className="number-button">{`Btn ${index + 1}`}</button>
                                     </div>
                                 ))}
