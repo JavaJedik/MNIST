@@ -146,7 +146,7 @@ public class RegistratePlayerSQL
         return players;
     }
 
-    public int tryToRegistratePlayer(RegistrateData registrateData) throws ExecutionException 
+    public int tryToRegistratePlayer(RegistrateData registrateData)
     {
         int player_id = -1;
         EmailParts emailParts = EmailUtil.splitEmail(registrateData.getEmail());

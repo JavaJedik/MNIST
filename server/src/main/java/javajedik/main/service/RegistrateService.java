@@ -4,5 +4,5 @@ import javajedik.main.model.RegistrateData;
 
 public interface RegistrateService 
 {
-    public boolean registratePlayer(RegistrateData registrateData);
+    public int registratePlayer(RegistrateData registrateData);
 }

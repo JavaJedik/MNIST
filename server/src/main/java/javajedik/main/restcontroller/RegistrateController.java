@@ -25,11 +25,10 @@ public class RegistrateController
     {
         logger.info("Regisztrációs adatok megérkeztek:\n" + registrateData.toString());
         
-        if(registrateService.registratePlayer(registrateData))
-        {
-            return null;
-        }
+        int player_id = registrateService.registratePlayer(registrateData);
         
-        return null;
+        logger.info("A generált player_id: " + player_id);
+        
+        return ResponseEntity.ok(player_id + "");
     }
 }

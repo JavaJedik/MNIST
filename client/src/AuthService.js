@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:8814'; //'https://mnist-server.serveo.net';
+const API_URL = 'https://mnist-server.serveo.net';
 
 const AuthService = {
 

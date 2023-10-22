@@ -19,20 +19,11 @@ public class RegistrateServiceImp implements RegistrateService
     private RegistratePlayerSQL registratePlayerSQL;
     
     @Override
-    public boolean registratePlayer(RegistrateData registrateData) 
+    public int registratePlayer(RegistrateData registrateData) 
     {
-        try 
-        {
-            registratePlayerSQL.tryToRegistratePlayer(registrateData);
-        } 
-        catch (ExecutionException ex) 
-        {
-            java.util.logging.Logger.getLogger(RegistrateServiceImp.class.getName()).log(Level.SEVERE, null, ex);
-            return false;
-        }
+        int player_id = registratePlayerSQL.tryToRegistratePlayer(registrateData);
         
-        logger.info("A regisztráció sikeres");
-        return true;       
+        return player_id;      
     }
     
 }
