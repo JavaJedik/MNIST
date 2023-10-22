@@ -8,6 +8,7 @@ const Number_Game = () => {
     const navigate = useNavigate();
     const [darkMode, setDarkMode] = useState(false);
     const [numAnswers, setNumAnswers] = useState(3);
+    const maxNumber = 30;
 
     const navigateHome = () => {
         navigate('/home');
@@ -22,39 +23,46 @@ const Number_Game = () => {
     }
 
     const handleSliderChange = (event) => {
+        if(event.target.value <= maxNumber) {
         setNumAnswers(parseInt(event.target.value, 10));
+        }
     };
 
 
     return (
         <div className="main-container">
-
-            <label className="switch">
-                <input
-                    defaultChecked={false}
-                    type="checkbox"
-                    checked={darkMode}
-                    onChange={() => setDarkMode(!darkMode)}
-                />
-                <span className={`slider round ${darkMode ? "dark-slider" : ""}`} />
-            </label>
-
             <div className="game-main-container">
 
+                <label className="switch">
+                    <input
+                        defaultChecked={false}
+                        type="checkbox"
+                        checked={darkMode}
+                        onChange={() => setDarkMode(!darkMode)}
+                    />
+                    <span className={`slider round ${darkMode ? "dark-slider" : ""}`} />
+                </label>
 
+                <div className={`classname ${darkMode ? "dark" : ""}`} />
 
                 <div className="game-left-container">
                     <div className="image" />
 
-                    <div className="slider-container">
-                        <div className="slider-text">
+                    <div className={`slider-container ${darkMode ? "dark-blur-container" : ""}`}>
+                        <div className={`slider-text ${darkMode ? "dark-text" : ""}`}>
                             Válaszok száma:
                         </div>
                         <input
-                            className="answer-slider"
+                            className={`answer-slider ${darkMode ? "dark-answer-slider" : ""}`}
                             type="range"
                             min="2"
                             max="30"
+                            value={numAnswers}
+                            onChange={handleSliderChange}
+                        />
+                        <input
+                            className={`answer-number-input ${darkMode ? "dark-answer-number-input" : ""}`}
+                            type="number"
                             value={numAnswers}
                             onChange={handleSliderChange}
                         />
@@ -62,20 +70,31 @@ const Number_Game = () => {
 
                 </div>
                 <div className="game-right-container">
-                    <div className="game-blur-container"/>
+                    <div className={`game-blur-container ${darkMode ? "dark-blur-container" : ""}`}/>
                     <div className="game-container">
                         <div className="content">
-                            <div className="picture-numbers">
+                            <div className={`picture-numbers ${darkMode ? "dark-numbers" : ""}`}>
                                 {Array.from({ length: numAnswers }).map((_, index) => (
                                     <div className="picture-number">
-                                        <button key={index} className="number-button">{`Btn ${index + 1}`}</button>
+                                        <button
+                                            key={index}
+                                            className={`number-button ${darkMode ? "dark-number-button" : ""}`}
+                                        >
+                                            {`Btn ${index + 1}`}
+                                        </button>
                                     </div>
                                 ))}
                             </div>
-                            <button className="button-style left-game-button" onClick={navigateHome}>
+                            <button
+                                className={`button-style left-game-button ${darkMode ? "dark-button-style" : ""}`}
+                                onClick={navigateHome}
+                            >
                                 Visszalépés
                             </button>
-                            <button className="button-style right-game-button" onClick={navigateLeaderboard}>
+                            <button
+                                className={`button-style right-game-button ${darkMode ? "dark-button-style" : ""}`}
+                                onClick={navigateLeaderboard}
+                            >
                                 Toplista
                             </button>
                         </div>
