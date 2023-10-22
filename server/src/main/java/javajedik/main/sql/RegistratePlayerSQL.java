@@ -102,10 +102,10 @@ public class RegistratePlayerSQL
             return ps;
         }, keyHolder);
 
-        SqlRowSet keys = (SqlRowSet) keyHolder.getKeyList();
-        if (keys.next()) 
+        Number key = keyHolder.getKey();
+        if (key != null) 
         {
-            return keys.getInt(1);
+            return key.intValue();
         } 
         else 
         {
@@ -154,7 +154,7 @@ public class RegistratePlayerSQL
     public int tryToRegistratePlayer(RegistrateData registrateData)
     {
         logger.info("Játékos regisztrálásának megkezdése az adatbázisban. Adatok:\n" + registrateData.toString());
-        int player_id = -1;
+        int player_id;
         EmailParts emailParts = EmailUtil.splitEmail(registrateData.getEmail());
 
         CompletableFuture<Integer> emailTypeFuture = CompletableFuture.supplyAsync(() -> getEmailTypeIdFromDatabase(emailParts));
@@ -179,6 +179,14 @@ public class RegistratePlayerSQL
             try 
             {
                 player_id = insertPlayerId(language_id, 1); // 1 - user role
+                
+                if(player_id == -1)
+                {
+                    logger.info("A játékos regisztrálása sikertelen, változások visszavonása");
+                    transactionManager.rollback(status);
+                    return -1;
+                }
+                
                 logger.info("A generált player_id: " + player_id);
                 RegisteredPlayer player = new RegisteredPlayer(player_id, registrateData.getUsername(), gender_id, emailParts.getEmailPrefix(), email_type_id);
                 boolean success = insertRegisteredPlayerMinimal(player);
