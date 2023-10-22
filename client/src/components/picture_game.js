@@ -75,10 +75,14 @@ const Number_Game = () => {
                         <div className="content">
                             <div className={`picture-numbers ${darkMode ? "dark-numbers" : ""}`}>
                                 {Array.from({ length: numAnswers }).map((_, index) => (
-                                    <div className="picture-number">
+                                    <div
+                                        className="picture-number"
+                                        onClick={() => handleClick(index+1)}
+                                    >
                                         <button
                                             key={index}
                                             className={`number-button ${darkMode ? "dark-number-button" : ""}`}
+
                                         >
                                             {`Btn ${index + 1}`}
                                         </button>
