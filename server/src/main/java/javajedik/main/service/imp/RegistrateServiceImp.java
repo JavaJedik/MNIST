@@ -1,7 +1,5 @@
 package javajedik.main.service.imp;
 
-import java.util.concurrent.ExecutionException;
-import java.util.logging.Level;
 import javajedik.main.model.RegistrateData;
 import javajedik.main.service.RegistrateService;
 import javajedik.main.sql.RegistratePlayerSQL;
@@ -22,6 +20,9 @@ public class RegistrateServiceImp implements RegistrateService
     public int registratePlayer(RegistrateData registrateData) 
     {
         int player_id = registratePlayerSQL.tryToRegistratePlayer(registrateData);
+        
+        logger.info("A generált player_id: " + player_id);
+        
         
         return player_id;      
     }

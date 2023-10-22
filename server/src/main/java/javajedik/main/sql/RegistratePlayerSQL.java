@@ -12,18 +12,23 @@ import javajedik.main.model.EmailParts;
 import javajedik.main.model.RegisteredPlayer;
 import javajedik.main.model.RegistrateData;
 import javajedik.main.util.EmailUtil;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.dao.DataAccessException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.transaction.TransactionException;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
 
 @Repository
 public class RegistratePlayerSQL 
 {
+    private static final Logger logger = LogManager.getLogger(RegistratePlayerSQL.class);
+    
     @Autowired
     private JdbcTemplate jdbcTemplate;
     
@@ -148,6 +153,7 @@ public class RegistratePlayerSQL
 
     public int tryToRegistratePlayer(RegistrateData registrateData)
     {
+        logger.info("Játékos regisztrálásának megkezdése az adatbázisban. Adatok:\n" + registrateData.toString());
         int player_id = -1;
         EmailParts emailParts = EmailUtil.splitEmail(registrateData.getEmail());
 
@@ -163,28 +169,34 @@ public class RegistratePlayerSQL
 
             if (email_type_id == -1 || gender_id == -1 || language_id == -1) 
             {
+                logger.info("Játékos regisztrációja sikertelen. Helytelen e-mail, nem vagy nyelv. Adatok:\n" + registrateData.toString());
                 return -1;
             }
-
+            
+            logger.info("Játékos adatai a valóságnak megfelelnek. Tranzakció megkezdése. Adatok:\n" + registrateData.toString());
             TransactionStatus status = transactionManager.getTransaction(new DefaultTransactionDefinition());
 
             try 
             {
                 player_id = insertPlayerId(language_id, 1); // 1 - user role
+                logger.info("A generált player_id: " + player_id);
                 RegisteredPlayer player = new RegisteredPlayer(player_id, registrateData.getUsername(), gender_id, emailParts.getEmailPrefix(), email_type_id);
                 boolean success = insertRegisteredPlayerMinimal(player);
 
                 if (success) 
                 {
+                    logger.info("A játékos regisztrálása sikeres, tranzakció mentése... Adatok:\n" + registrateData.toString());
                     transactionManager.commit(status);
                 } 
                 else 
                 {
+                    logger.info("A játékos regisztrálása sikertelen, változások visszavonása");
                     transactionManager.rollback(status);
                 }
             } 
-            catch (Exception e) 
+            catch (TransactionException e) 
             {
+                logger.info("A tranzakció közben hiba lépett fel, adatok visszaállítása...");
                 transactionManager.rollback(status);
                 return -1;
             }
@@ -192,6 +204,7 @@ public class RegistratePlayerSQL
         } 
         catch (InterruptedException | ExecutionException e) 
         {
+            logger.info("Hiba történt az adatbázisban történő lekérdezés során.");
             return -1;
         }
 
