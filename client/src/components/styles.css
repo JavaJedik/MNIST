@@ -864,6 +864,59 @@ Admin Styles
 
 /*
 ------------------------------------------------------------------------------------------------------------------------
+Picture Game Styles
+------------------------------------------------------------------------------------------------------------------------
+*/
+
+.slider-container {
+    margin: 1em;
+    padding: 0.5em;
+    background-color: rgba(107, 123, 140, 0.5);
+    border: 1px solid whitesmoke;
+    border-radius: 0.5em;
+    backdrop-filter: blur(20px);
+}
+
+.slider-text {
+    font-weight: bolder;
+    text-align: center;
+    color: black;
+    font-size: 1.2em;
+}
+
+.answer-slider {
+    width: 10em;
+    height: 1em;
+}
+
+.picture-numbers {
+    position: relative;
+    display: flex;
+    border: thick solid whitesmoke;
+    border-radius: 15px;
+    flex-direction: row;
+    align-content: baseline;
+    flex-wrap: wrap;
+    width: 24em;
+    height: 37em;
+    margin: 1em;
+    overflow: scroll;
+}
+
+.picture-numbers::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
+.picture-number {
+    border: 0.25em solid rgb(185, 197, 246);
+    font-family: "Arial Black", serif;
+    width: 7.5em;
+    height: auto;
+}
+
+/*
+------------------------------------------------------------------------------------------------------------------------
 Dark Styles
 ------------------------------------------------------------------------------------------------------------------------
 */
