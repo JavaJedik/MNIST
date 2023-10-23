@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
 import "./styles.css"
-//import AuthService from '../AuthService';
+import authService from "../AuthService";
 
 const Admin = () => {
 
@@ -13,10 +13,6 @@ const Admin = () => {
     const navigateLogin = () => {
         //localStorage.removeItem('userToken');
         navigate("/login");
-    };
-
-    const sendPicture = () => {
-        alert(`küldött válasz: ${answer} ... ${pic}`);
     };
 
     return (
@@ -65,7 +61,7 @@ const Admin = () => {
                 <div>
                     <button
                         className={`home-button-style ${darkMode ? "dark-button-style" : ""}`}
-                        onClick={sendPicture}
+                        onClick={authService.sendPicture(pic, answer)}
                     >
                         Fájl feltöltése
                     </button>

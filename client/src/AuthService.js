@@ -135,6 +135,37 @@ const AuthService = {
       console.error('Fetch error:', error);
       throw new Error('Registration failed.');
     }
+  },
+
+  //const pic = 0;
+  //const answer = '';
+
+  sendPicture: (pic, answer) => {
+    if (!pic) {
+      alert("Please select a file before uploading.");
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("image", pic);
+
+    // Add the character value to the form data
+    formData.append("character", answer);
+
+    fetch(`${API_URL}/upload_picture`, {
+      method: "POST",
+      body: formData,
+    })
+        .then((response) => {
+          if (response.ok) {
+            alert("File uploaded successfully.");
+          } else {
+            alert("File upload failed.");
+          }
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
   }
 };
 export default AuthService;
