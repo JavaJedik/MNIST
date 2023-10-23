@@ -30,6 +30,11 @@
 | 27  | Szerver     | 2023-10-19 | Sikeres szerver oldali bejelentkezés fiktív adatokkal                                    | Success |
 | 28  | Szerver-log | 2023-10-19 | Sikeres logolás a szerveren                                                              | Success |
 | 29  | Szerver     | 2023-10-20 | Más magyarok, görögök, oroszok, lengyenek, csehek, németek, osztrákok elérik a szervert  | Success |
+| 30  | Szerver-sec | 2023-10-23 | A szerver a logolás közben nem jeleníti meg a jelszót, ?-t hagy a helyén                 | Success |
+| 31  | Szerver     | 2023-10-23 | A szerver kezeli a rosszul megadott e-mail címeket (ha a kliens nem venné észre)         | Success |
+| 32  | Szerver     | 2023-10-23 | A szerver kezeli a rosszul megadott nemet (ha a kliens nem venné észre)                  | Success |
+| 33  | Szerver     | 2023-10-23 | A szerver kezeli a rosszul megadott nyelvet (ha a kliens nem venné észre)                | Success |
+| 34  | Szerver     | 2023-10-23 | Játékos regisztrációja jelszóval együtt szervernek küldött post kéréssel                 | Success |
 
 ## Egyszerűbb áttekinthetőségért csak a nehezebb lekérdezéseket írtam le, triviálisakat kevésbé.
 
@@ -128,3 +133,49 @@ Sikeresen teszteltem a logolást a szerveren bejelentkezésnél és indításná
 Sikeresen tesztelték a weboldal elérését különböző testereink.
 
 ![](../kepek/teszt/tomi/t6.png)
+
+
+## Teszt 30-34
+
+Curl kérés segítségével helytelen e-mail címe küldünk a szervernek, amit sikeresen elkapott, lekezelt, és választ küldött.
+
+```bash
+curl -X POST -H "Content-Type: application/json" -d '{
+  "username": "Johny",
+  "email": "tomigmail.com",
+  "password": "YourPasswordHere",
+  "language": "magyar",
+  "gender": "Férfi"
+}' http://localhost:8814/registrate
+```
+
+Válasz: Az adatok érvénytelenek
+
+A szerver logolása:
+
+```bash
+2023-10-23T17:18:42.602+02:00  INFO 37880 --- [nio-8814-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2023-10-23T17:18:42.672+02:00  INFO 37880 --- [nio-8814-exec-1] j.m.restcontroller.RegistrateController  : Regisztrációs adatok megérkeztek:
+username: Johny, email: tomigmail.com, password: ?, language: magyar, gender: Férfi
+2023-10-23T17:18:42.674+02:00  INFO 37880 --- [nio-8814-exec-1] javajedik.main.sql.RegistratePlayerSQL   : Játékos regisztrálásának megkezdése az adatbázisban. Adatok:
+username: Johny, email: tomigmail.com, password: ?, language: magyar, gender: Férfi
+2023-10-23T17:18:42.674+02:00 ERROR 37880 --- [nio-8814-exec-1] javajedik.main.sql.RegistratePlayerSQL   : Hibás e-mail cím formátum
+2023-10-23T17:18:42.674+02:00 ERROR 37880 --- [nio-8814-exec-1] j.main.service.RegistrateService         : Játékos regisztrálása sikertelen. Adatok:
+username: Johny, email: tomigmail.com, password: ?, language: magyar, gender: Férfi
+2023-10-23T17:18:42.674+02:00 ERROR 37880 --- [nio-8814-exec-1] j.m.restcontroller.RegistrateController  : Játékos regisztrálása sikertelen. Adatok:
+username: Johny, email: tomigmail.com, password: ?, language: magyar, gender: Férfi
+```
+
+Miután helyes kérést indítottunk, a regisztráció sikeres volt, jelszó is belekerült a táblába bináris formában.
+
+```bash
+curl -X POST -H "Content-Type: application/json" -d '{
+  "username": "Johny",
+  "email": "tomi@gmail.com",
+  "password": "YourPasswordHere",
+  "language": "magyar",
+  "gender": "Férfi"
+}' http://localhost:8814/registrate
+```
+
+![](../kepek/teszt/tomi/t7.png)

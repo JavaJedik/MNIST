@@ -33,7 +33,6 @@ public class PasswordUtil
             return hash;
         } catch (NoSuchAlgorithmException e) 
         {
-            // Kezeljük a kivételt vagy dobhatunk tovább
             return null;
         }
     }

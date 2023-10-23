@@ -19,7 +19,6 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
-import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.transaction.TransactionException;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
@@ -156,6 +155,11 @@ public class RegistratePlayerSQL
         logger.info("Játékos regisztrálásának megkezdése az adatbázisban. Adatok:\n" + registrateData.toString());
         int player_id;
         EmailParts emailParts = EmailUtil.splitEmail(registrateData.getEmail());
+        if(emailParts == null)
+        {
+            logger.error("Hibás e-mail cím formátum");
+            return -1;
+        }
 
         CompletableFuture<Integer> emailTypeFuture = CompletableFuture.supplyAsync(() -> getEmailTypeIdFromDatabase(emailParts));
         CompletableFuture<Integer> genderIdFuture = CompletableFuture.supplyAsync(() -> getGenderIdByName(registrateData.getGender()));
@@ -169,7 +173,7 @@ public class RegistratePlayerSQL
 
             if (email_type_id == -1 || gender_id == -1 || language_id == -1) 
             {
-                logger.info("Játékos regisztrációja sikertelen. Helytelen e-mail, nem vagy nyelv. Adatok:\n" + registrateData.toString());
+                logger.error("Játékos regisztrációja sikertelen. Helytelen e-mail, nem vagy nyelv. Adatok:\n" + registrateData.toString());
                 return -1;
             }
             
@@ -198,13 +202,13 @@ public class RegistratePlayerSQL
                 } 
                 else 
                 {
-                    logger.info("A játékos regisztrálása sikertelen, változások visszavonása");
+                    logger.error("A játékos regisztrálása sikertelen, változások visszavonása");
                     transactionManager.rollback(status);
                 }
             } 
             catch (TransactionException e) 
             {
-                logger.info("A tranzakció közben hiba lépett fel, adatok visszaállítása...");
+                logger.error("A tranzakció közben hiba lépett fel, adatok visszaállítása...");
                 transactionManager.rollback(status);
                 return -1;
             }
@@ -212,7 +216,7 @@ public class RegistratePlayerSQL
         } 
         catch (InterruptedException | ExecutionException e) 
         {
-            logger.info("Hiba történt az adatbázisban történő lekérdezés során.");
+            logger.error("Hiba történt az adatbázisban történő lekérdezés során.");
             return -1;
         }
 

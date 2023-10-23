@@ -5,6 +5,7 @@ import javajedik.main.service.RegistrateService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -26,6 +27,12 @@ public class RegistrateController
         logger.info("Regisztrációs adatok megérkeztek:\n" + registrateData.toString());
         
         int player_id = registrateService.registratePlayer(registrateData);
+        
+        if(player_id == -1)
+        {
+            logger.error("Játékos regisztrálása sikertelen. Adatok:\n" + registrateData.toString());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Az adatok érvénytelenek.");
+        }
         
         logger.info("A generált player_id: " + player_id);
         
