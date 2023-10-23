@@ -61,7 +61,7 @@ const Admin = () => {
                 <div>
                     <button
                         className={`home-button-style ${darkMode ? "dark-button-style" : ""}`}
-                        onClick={authService.sendPicture(pic, answer)}
+                        onClick={() => authService.sendPicture(pic, answer)}
                     >
                         Fájl feltöltése
                     </button>

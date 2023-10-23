@@ -141,15 +141,25 @@ const AuthService = {
   //const answer = '';
 
   sendPicture: (pic, answer) => {
+    let breakFunction = false
+
     if (!pic) {
       alert("Please select a file before uploading.");
+      breakFunction = true;
+    }
+    if(answer === '') {
+      alert("Please declare the answer for the picture.");
+      breakFunction = true;
+    }
+    if(breakFunction) {
       return;
     }
 
+    console.log("átment a kép");
+
     const formData = new FormData();
     formData.append("image", pic);
-
-    // Add the character value to the form data
+    
     formData.append("character", answer);
 
     fetch(`${API_URL}/upload_picture`, {
