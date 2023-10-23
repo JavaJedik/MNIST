@@ -48,7 +48,7 @@ const Admin = () => {
 
                 <div className="content">
                     <input
-                        className={`file-upload ${darkMode ? "dark-input-field" : ""}`}
+                        className={`file-upload one-char-answer ${darkMode ? "dark-input-field dark-one-char-answer" : ""}`}
                         type="text"
                         maxLength="1"
                         placeholder="Helyes válasz (1 karakter)"

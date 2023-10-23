@@ -862,6 +862,12 @@ Admin Styles
     visibility: hidden;
 }
 
+.one-char-answer {
+    text-align: center;
+    font-weight: bolder;
+    color: black;
+}
+
 /*
 ------------------------------------------------------------------------------------------------------------------------
 Picture Game Styles
@@ -1076,4 +1082,8 @@ input[type="file"].dark-input-field {
 .dark-answer-number-input {
     color: whitesmoke;
     background: darkgray;
+}
+
+.dark-one-char-answer {
+    color: whitesmoke;
 }
