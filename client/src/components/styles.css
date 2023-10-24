@@ -109,7 +109,7 @@ Login Styles
     background: whitesmoke;
     width: 20em;
     height: 2em;
-    border: medium solid rgb(185, 197, 246);
+    border: thin solid rgb(185, 197, 246);
     border-radius: 15px;
     transition-duration: 0.8s;
     text-align: center;
@@ -991,6 +991,7 @@ Dark Styles
 
 .dark-input-field {
     background: darkgray; /*whitesmoke*/
+    border: thin solid rgb(70, 58, 9);
 }
 
 .dark-input-field::placeholder {

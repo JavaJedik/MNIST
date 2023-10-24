@@ -217,13 +217,15 @@ const Register = () => {
                 </div>
                 <div className = "content">
                     <button
-                        className= "button-style"
-                        onClick={navigateLogin}>
+                        className={`button-style ${darkMode ? "dark-button-style" : ""}`}
+                        onClick={navigateLogin}
+                    >
                         Vissza
                     </button>
                     <button
-                        className= "button-style"
-                        onClick={validateUserData}>
+                        className={`button-style ${darkMode ? "dark-button-style" : ""}`}
+                        onClick={validateUserData}
+                    >
                         Regisztráció
                     </button>
                 </div>
