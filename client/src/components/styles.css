@@ -15,6 +15,7 @@ Shared Styles
     font-family: serif;
     user-select: none;
     transition-duration: 0.8s;
+    font-weight: bolder;
 }
 
 .main-container {
@@ -108,7 +109,7 @@ Login Styles
     background: whitesmoke;
     width: 20em;
     height: 2em;
-    border: thin solid grey;
+    border: medium solid rgb(185, 197, 246);
     border-radius: 15px;
     transition-duration: 0.8s;
     text-align: center;
@@ -117,7 +118,7 @@ Login Styles
 }
 
 .input-field:hover {
-    border: thin solid dodgerblue;
+    border: medium solid rgb(185, 197, 246);;
     background: rgb(185, 197, 246);
 }
 
@@ -429,7 +430,7 @@ Register Styles
     color: #6e6e6e;
     width: 20.25em;
     height: 2.25em;
-    border: thin solid grey;
+    border: medium solid rgb(185, 197, 246);
     border-radius: 15px;
     transition-duration: 0.8s;
     text-align: center;

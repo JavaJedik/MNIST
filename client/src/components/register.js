@@ -128,11 +128,13 @@ const Register = () => {
                 <span className={`slider round ${darkMode ? "dark-slider" : ""}`} />
             </label>
 
-            <div className = "reg-blur-container"></div>
+            <div className={`classname ${darkMode ? "dark" : ""}`} />
+
+            <div  className={`reg-blur-container ${darkMode ? "dark-blur-container" : ""}`}/>
             <div className = "reg-container">
                 <div className = "content">
                     <input
-                        className= "input-field"
+                        className={`input-field ${darkMode ? "dark-input-field" : ""}`}
                         type="text"
                         placeholder="Felhasználónév"
                         id="username"
@@ -142,7 +144,7 @@ const Register = () => {
                 </div>
                 <div className = "content">
                     <input
-                        className= "input-field"
+                        className={`input-field ${darkMode ? "dark-input-field" : ""}`}
                         type="text"
                         placeholder="E-mail cím"
                         id="email"
@@ -152,7 +154,7 @@ const Register = () => {
                 </div>
                 <div className = "content">
                     <input
-                        className= "input-field"
+                        className={`input-field ${darkMode ? "dark-input-field" : ""}`}
                         type="password"
                         placeholder="Jelszó"
                         id="password1"
@@ -162,7 +164,7 @@ const Register = () => {
                 </div>
                 <div className = "content">
                     <input
-                        className= "input-field"
+                        className={`input-field ${darkMode ? "dark-input-field" : ""}`}
                         type="password"
                         placeholder="Jelszó mégegyszer"
                         id="password2"
@@ -171,7 +173,10 @@ const Register = () => {
                     />
                 </div>
                 <div className={`dropdown ${isDropdownOpenLanguage ? "active-language" : ""}`}>
-                    <button className="dropbtn" onClick={() => setIsDropdownOpenLanguage(!isDropdownOpenLanguage)}>
+                    <button
+                        className={`dropbtn ${darkMode ? "dark-button-style" : ""}`}
+                        onClick={() => setIsDropdownOpenLanguage(!isDropdownOpenLanguage)}
+                    >
                         <span>
                             {selectedLanguageItem || "Válasszon nyelvet!"}
                         </span>
@@ -180,14 +185,20 @@ const Register = () => {
                         </span>
                     </button>
                     <div id="myDropdown">
-                        <div className="dropdown-content-language">
-                            <p onClick={() => handleLanguageDropdownItemClick("Magyar")}>Magyar</p>
-                            <p onClick={() => handleLanguageDropdownItemClick("Angol")}>Angol</p>
+                        <div className={`dropdown-content-language ${darkMode ? "dark-dropdown-content" : ""}`}>
+                            <p onClick={() => handleLanguageDropdownItemClick("Magyar")}>
+                                Magyar
+                            </p>
+                            <p onClick={() => handleLanguageDropdownItemClick("Angol")}>
+                                Angol
+                            </p>
                         </div>
                     </div>
                 </div>
                 <div className={`dropdown ${isDropdownOpenGender ? "active-gender" : ""}`}>
-                    <button className="dropbtn" onClick={() => setIsDropdownOpenGender(!isDropdownOpenGender)}>
+                    <button
+                        className={`dropbtn ${darkMode ? "dark-button-style" : ""}`}
+                        onClick={() => setIsDropdownOpenGender(!isDropdownOpenGender)}>
                         <span>
                             {selectedGenderItem || "Adja meg a nemét!"}
                         </span>
@@ -196,7 +207,8 @@ const Register = () => {
                         </span>
                     </button>
                     <div id="myDropdown">
-                        <div className="dropdown-content-gender">
+
+                        <div className={`dropdown-content-gender ${darkMode ? "dark-dropdown-content" : ""}`}>
                             <p onClick={() => handleGenderDropdownItemClick("Férfi")}>Férfi</p>
                             <p onClick={() => handleGenderDropdownItemClick("Nő")}>Nő</p>
                             <p onClick={() => handleGenderDropdownItemClick("Macska")}>Macska</p>
