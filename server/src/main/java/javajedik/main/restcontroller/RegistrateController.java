@@ -30,7 +30,7 @@ public class RegistrateController
         
         if(player_id == -1)
         {
-            logger.error("Játékos regisztrálása sikertelen. Adatok:\n" + registrateData.toString());
+            logger.warn("Játékos regisztrálása sikertelen, http 400 küldése. Adatok:\n" + registrateData.toString());
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Az adatok érvénytelenek.");
         }
         

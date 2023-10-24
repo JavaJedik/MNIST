@@ -34,6 +34,7 @@ public class LoginController
             return ResponseEntity.ok(userToken);
         }
         
+        logger.warn("Bejelentkezés elutasítva, http 401 küldése, username: " + loginData.getUsername());
         return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
 }
