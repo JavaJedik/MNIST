@@ -540,6 +540,10 @@ Register Styles
     .reg-blur-container {
         width: 20em;
     }
+
+    .dropdown-content-language, .dropdown-content-gender {
+        width: 10em;
+    }
 }
 
 /*
