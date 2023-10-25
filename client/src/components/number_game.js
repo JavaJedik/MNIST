@@ -1,12 +1,16 @@
 import React, {useEffect, useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import "./styles.css"
+import {content} from "./contents/number_gameContent";
 
 const Number_Game = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
     const [darkMode, setDarkMode] = useState(false);
+    const [selectedLanguage, setSelectedLanguage] = useState("HUN")
+
+    const text = content[selectedLanguage];
 
     useEffect(() => {
         document.addEventListener('keydown', handleKeyPress);
@@ -102,7 +106,7 @@ const Number_Game = () => {
                             <div className={`numbers ${darkMode ? "dark-numbers" : ""}`}>
                                 <div className={`numbers-top ${darkMode ? "dark-numbers-top" : ""}`}>
                                     <div className="numbers-top-text">
-                                        Adjon meg egy választ!
+                                        {text.toptext}
                                     </div>
                                 </div>
                                 <div className="number" onClick={() => handleClick(1)}>
@@ -190,7 +194,7 @@ const Number_Game = () => {
                                         id="number"
                                         className={`idk-button ${darkMode ? "dark-number-button" : ""}`}
                                         onClick={() => handleClick("Nem tudom")}>
-                                        Nem tudom
+                                        {text.idk}
                                     </button>
                                 </div>
                             </div>
@@ -198,13 +202,13 @@ const Number_Game = () => {
                                 className={`button-style left-game-button ${darkMode ? "dark-button-style" : ""}`}
                                 onClick={navigateHome}
                             >
-                                Visszalépés
+                                {text.goback}
                             </button>
                             <button
                                 className={`button-style right-game-button ${darkMode ? "dark-button-style" : ""}`}
                                 onClick={navigateLeaderboard}
                             >
-                                Toplista
+                                {text.leaderboard}
                             </button>
                         </div>
                     </div>
