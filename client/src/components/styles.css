@@ -130,7 +130,7 @@ Login Styles
     background: whitesmoke;
     font-weight: bolder;
     text-align: center;
-    margin: 1.8em 0.5em 0;
+    margin: 1em 0.5em 0;
     border: medium solid rgb(185, 197, 246);
     border-radius: 15px;
     transition-duration: 0.8s;
@@ -197,7 +197,7 @@ Login Styles
     position: relative;
     text-align: center;
     cursor: default;
-    margin: 1em 0 0;
+    margin: 0.5em 0;
 }
 
 @media (max-width: 700px) {

@@ -63,6 +63,13 @@ const Login = () => {
 
             <div className={`blur-container ${darkMode ? "dark-blur-container" : ""}`} />
             <div className="container">
+
+                <div>
+                    <p className={`content-bottom ${darkMode ? "dark-content-bottom" : ""}`}>
+                        Jelentkezz be, vagy regisztrálj a kezdéshez!
+                    </p>
+                </div>
+
                 <div className="content">
                     <input
                         className={`input-field ${darkMode ? "dark-input-field" : ""}`}
@@ -101,7 +108,7 @@ const Login = () => {
                 </div>
                 <div>
                     <p className={`content-bottom ${darkMode ? "dark-content-bottom" : ""}`}>
-                        Jelentkezz be, vagy regisztrálj a kezdéshez!
+                        Nem akarsz bejelentkezni?
                     </p>
                 </div>
                 <div className="bottom-button">
