@@ -2,12 +2,16 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import "./styles.css"
 import AuthService from '../AuthService';
+import {content} from "./contents/loginContent";
 
 const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [darkMode, setDarkMode] = useState(false);
     const navigate = useNavigate();
+    const [selectedLanguage, setSelectedLanguage] = useState("ENG");
+
+    const text = content[selectedLanguage];
 
     const navigateHome = async () => {
         try {
@@ -66,7 +70,7 @@ const Login = () => {
 
                 <div>
                     <p className={`content-bottom ${darkMode ? "dark-content-bottom" : ""}`}>
-                        Jelentkezz be, vagy regisztrálj a kezdéshez!
+                        {text.toptext}
                     </p>
                 </div>
 
@@ -74,7 +78,7 @@ const Login = () => {
                     <input
                         className={`input-field ${darkMode ? "dark-input-field" : ""}`}
                         type="text"
-                        placeholder="Felhasználónév"
+                        placeholder={text.username}
                         id="username"
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
@@ -84,7 +88,7 @@ const Login = () => {
                     <input
                         className={`input-field ${darkMode ? "dark-input-field" : ""}`}
                         type="password"
-                        placeholder="Jelszó"
+                        placeholder={text.password}
                         id="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
@@ -96,19 +100,19 @@ const Login = () => {
                         className={`button-style ${darkMode ? "dark-button-style" : ""}`}
                         onClick={navigateHome}
                     >
-                        Bejelentkezés
+                        {text.login}
                     </button>
                     <button
                         className="button-style"
                         className={`button-style ${darkMode ? "dark-button-style" : ""}`}
                         onClick={navigateRegister}
                     >
-                        Regisztráció
+                        {text.registration}
                     </button>
                 </div>
                 <div>
                     <p className={`content-bottom ${darkMode ? "dark-content-bottom" : ""}`}>
-                        Nem akarsz bejelentkezni?
+                        {text.bottomtext}
                     </p>
                 </div>
                 <div className="bottom-button">
@@ -117,7 +121,7 @@ const Login = () => {
                         className={`button-style ${darkMode ? "dark-button-style" : ""}`}
                         onClick={navigateHomeAsGuest}
                     >
-                        Vendég
+                        {text.guest}
                     </button>
                 </div>
             </div>
