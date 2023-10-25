@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import "./styles.css"
+import { content } from './contents/homeContent';
 //import AuthService from '../AuthService';
 
 const Home = () => {
     //const token = localStorage.getItem('userToken');
     const navigate = useNavigate();
-    const [selectedItem, setSelectedItem] = useState(null);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [darkMode, setDarkMode] = useState(false);
+    const [selectedLanguage, setSelectedLanguage] = useState("HUN")
+
+    const text = content[selectedLanguage];
 
     /*useEffect(() => {
         const fetchData = async () => {
@@ -63,8 +66,8 @@ const Home = () => {
         }
     };*/
 
-    const handleDropdownItemClick = (item) => {
-        setSelectedItem(item);
+    const handleDropdownItemClick = (language) => {
+        setSelectedLanguage(language)
         setIsDropdownOpen(false)
     };
 
@@ -91,7 +94,7 @@ const Home = () => {
                 <div className="home-container">
                     <div>
                         <h1 className={`home-header ${darkMode ? "dark-content-bottom" : ""}`}>
-                            Üdvözöljük, Felhasználónév!
+                            {text.welcome}
                         </h1>
                     </div>
                     <div
@@ -100,7 +103,7 @@ const Home = () => {
                             className={`home-dropbtn ${darkMode ? "dark-button-style" : ""}`}
                             onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
                             <span className={`${darkMode ? "dark-span" : ""}`}>
-                                {selectedItem || "Válasszon nyelvet"}
+                                {text.language}
                             </span>
                             <span className="dropbtn-arrow">
                                 &#9660;
@@ -108,10 +111,10 @@ const Home = () => {
                         </button>
                         <div id="home-myDropdown">
                             <div className={`home-dropdown-content ${darkMode ? "dark-dropdown-content" : ""}`}>
-                                <p onClick={() => handleDropdownItemClick("Magyar")}>
+                                <p onClick={() => handleDropdownItemClick("HUN")}>
                                     Magyar
                                 </p>
-                                <p onClick={() => handleDropdownItemClick("English")}>
+                                <p onClick={() => handleDropdownItemClick("ENG")}>
                                     English
                                 </p>
                             </div>
@@ -121,21 +124,23 @@ const Home = () => {
                         <button
                             className={`home-button-style ${darkMode ? "dark-button-style" : ""}`}
                             onClick={navigateLeaderboard}>
-                            Toplista megtekintése
+                            {text.leaderboard}
                         </button>
                     </div>
                     <div>
                         <button
                             className={`home-button-style ${darkMode ? "dark-button-style" : ""}`}
                             onClick={navigateNumberGame}>
-                            <u>Játék indítása</u>
+                            <u>
+                                {text.game}
+                            </u>
                         </button>
                     </div>
                     <div className="home-content">
                         <button
                             className={`home-button-style ${darkMode ? "dark-button-style" : ""}`}
                             onClick={navigateLogin}>
-                            Kijelentkezés
+                            {text.logout}
                         </button>
                     </div>
                 </div>
