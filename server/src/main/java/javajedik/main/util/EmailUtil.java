@@ -1,9 +1,13 @@
 package javajedik.main.util;
 
 import javajedik.main.model.EmailParts;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class EmailUtil 
 {
+    private static final Logger logger = LogManager.getLogger(EmailUtil.class);
+    
     public static EmailParts splitEmail(String email) 
     {
         try
@@ -17,16 +21,19 @@ public class EmailUtil
             {
                 domain += "." + domainParts[i];
             }
+            logger.info("Email fragmentálása sikeres");
             return new EmailParts(emailPrefix, domain, tld);
         }
         catch (Exception ex)
         {
+            logger.error("Email fragmentálása sikertelen");
             return null;
         }
     }
 
     public static String combineEmail(EmailParts emailParts) 
     {
+        logger.info("Email defragmentálása");
         return emailParts.getEmailPrefix() + "@" + emailParts.getDomain() + "." + emailParts.getTld();
     }
 }
