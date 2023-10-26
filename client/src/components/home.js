@@ -81,9 +81,11 @@ const Home = () => {
             } else {
                 alert('Ranglista megnyitása sikertelen.');
                 console.log('Ranglista megnyitása sikertelen.')
+                navigate('/login')
             }
         } catch (error) {
             console.error('Ranglista megnyitása sikertelen:', error);
+            navigate('/login')
         }
     };
 
