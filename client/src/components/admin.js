@@ -11,7 +11,7 @@ const Admin = () => {
     const [pic, setPicture] = useState(null);
     const [darkMode, setDarkMode] = useState(false);
 
-    const [selectedLanguage, setSelectedLanguage] = useState("HUN");
+    const selectedLanguage = localStorage.getItem("language");
     const text = content[selectedLanguage];
 
     const setLocalStorageItems = () => {

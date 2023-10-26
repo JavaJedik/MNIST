@@ -14,7 +14,7 @@ const Leaderboard = () => {
     }
     const [darkMode, setDarkMode] = useState(previousDarkMode);
 
-    const [selectedLanguage, setSelectedLanguage] = useState("HUN");
+    const selectedLanguage = localStorage.getItem("language");
     const text = content[selectedLanguage];
 
     const setLocalStorageItems = () => {
