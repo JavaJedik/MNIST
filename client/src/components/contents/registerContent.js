@@ -8,6 +8,9 @@ export const content = {
         gender: "Choose your gender!",
         goback: "Go back",
         register: "Register",
+        male: "Male",
+        female: "Female",
+        cat: "Cat",
     },
     HUN: {
         username: "Felhasználónév",
@@ -18,5 +21,8 @@ export const content = {
         gender: "Adja meg a nevét!",
         goback: "Visszalépés",
         register: "Regisztráció",
+        male: "Férfi",
+        female: "Nő",
+        cat: "Macska",
     },
 };

@@ -227,9 +227,15 @@ const Register = () => {
                     <div id="myDropdown">
 
                         <div className={`dropdown-content-gender ${darkMode ? "dark-dropdown-content" : ""}`}>
-                            <p onClick={() => handleGenderDropdownItemClick("Férfi")}>Férfi</p>
-                            <p onClick={() => handleGenderDropdownItemClick("Nő")}>Nő</p>
-                            <p onClick={() => handleGenderDropdownItemClick("Macska")}>Macska</p>
+                            <p onClick={() => handleGenderDropdownItemClick(text.male)}>
+                                {text.male}
+                            </p>
+                            <p onClick={() => handleGenderDropdownItemClick(text.female)}>
+                                {text.female}
+                            </p>
+                            <p onClick={() => handleGenderDropdownItemClick(text.cat)}>
+                                {text.cat}
+                            </p>
                         </div>
                     </div>
                 </div>
