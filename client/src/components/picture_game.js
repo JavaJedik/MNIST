@@ -11,7 +11,7 @@ const Number_Game = () => {
     const [numAnswers, setNumAnswers] = useState(3);
     const maxNumber = 30;
 
-    const [selectedLanguage, setSelectedLanguage] = useState("HUN");
+    const selectedLanguage = localStorage.getItem("language");
     const text = content[selectedLanguage];
 
     const navigateHome = () => {

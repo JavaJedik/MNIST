@@ -9,8 +9,8 @@ const Login = () => {
     const [password, setPassword] = useState('');
     const [darkMode, setDarkMode] = useState(false);
     const navigate = useNavigate();
-    const [selectedLanguage, setSelectedLanguage] = useState("ENG");
 
+    const selectedLanguage = localStorage.getItem("language");
     const text = content[selectedLanguage];
 
     const navigateHome = async () => {

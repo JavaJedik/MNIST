@@ -17,7 +17,7 @@ const Register = () => {
     const [password1, setPassword1] = useState('');
     const [password2, setPassword2] = useState('');
 
-    const [selectedLanguage, setSelectedLanguage] = useState("HUN");
+    const selectedLanguage = localStorage.getItem("language");
     const text = content[selectedLanguage];
 
     const navigateLogin = () => {
