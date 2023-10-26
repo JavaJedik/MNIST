@@ -1,8 +1,14 @@
 export const content = {
     ENG: {
-        //TODO
+        welcome: "Welcome, Admin!",
+        answerplaceholder: "Correct answer (1 character)",
+        upload: "Upload file",
+        logout: "Log out",
     },
     HUN: {
-        //TODO
+        welcome: "Üdvözöljük, Admin!",
+        answerplaceholder: "Helyes válasz (1 karakter)",
+        upload: "Fájl feltöltése",
+        logout: "Kijelentkezés",
     },
 };

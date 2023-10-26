@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
 import "./styles.css"
 import authService from "../AuthService";
+import {content} from "./contents/adminContent";
 
 const Admin = () => {
 
@@ -9,6 +10,9 @@ const Admin = () => {
     const [answer, setText] = useState('');
     const [pic, setPicture] = useState(null);
     const [darkMode, setDarkMode] = useState(false);
+
+    const [selectedLanguage, setSelectedLanguage] = useState("HUN");
+    const text = content[selectedLanguage];
 
     const navigateLogin = () => {
         //localStorage.removeItem('userToken');
@@ -32,7 +36,7 @@ const Admin = () => {
             <div className="admin-container">
                 <div>
                     <h1 className={`admin-header ${darkMode ? "dark-content-bottom" : ""}`}>
-                        Üdvözöljük, Admin!
+                        {text.welcome}
                     </h1>
                 </div>
 
@@ -51,7 +55,7 @@ const Admin = () => {
                         className={`file-upload one-char-answer ${darkMode ? "dark-input-field dark-one-char-answer" : ""}`}
                         type="text"
                         maxLength="1"
-                        placeholder="Helyes válasz (1 karakter)"
+                        placeholder={text.answerplaceholder}
                         id="answer"
                         value={answer}
                         onChange={(e) => setText(e.target.value)}
@@ -63,7 +67,7 @@ const Admin = () => {
                         className={`home-button-style ${darkMode ? "dark-button-style" : ""}`}
                         onClick={() => authService.sendPicture(pic, answer)}
                     >
-                        Fájl feltöltése
+                        {text.upload}
                     </button>
                 </div>
 
@@ -72,7 +76,7 @@ const Admin = () => {
                         className={`home-button-style ${darkMode ? "dark-button-style" : ""}`}
                         onClick={navigateLogin}
                     >
-                        Kijelentkezés
+                        {text.logout}
                     </button>
                 </div>
             </div>

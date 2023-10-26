@@ -34,12 +34,17 @@ const Home = () => {
 
     const navigateLogin = () => {
         //localStorage.removeItem('userToken');
+        setLocalStorageItems();
         navigate("/login");
     };
 
-    const navigateNumberGame = () => {
+    const setLocalStorageItems = () => {
         localStorage.setItem("language", selectedLanguage);
         localStorage.setItem("darkMode", JSON.stringify(darkMode));
+    }
+
+    const navigateNumberGame = () => {
+        setLocalStorageItems();
         navigate("/number_game")
     };
 
@@ -77,6 +82,7 @@ const Home = () => {
     };
 
     const navigateLeaderboard = async () => {
+        setLocalStorageItems();
         try {
             const data = await AuthService.checkUserToken();
 

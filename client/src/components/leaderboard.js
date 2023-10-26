@@ -1,10 +1,14 @@
 import React, {useState} from 'react';
 import { useNavigate } from 'react-router-dom';
+import { content } from './contents/leaderboardContent';
 import "./styles.css"
 
 const Leaderboard = () => {
     const navigate = useNavigate();
     const [darkMode, setDarkMode] = useState(false);
+
+    const [selectedLanguage, setSelectedLanguage] = useState("HUN");
+    const text = content[selectedLanguage];
 
     const navigateHome = () => {
         navigate('/home');
@@ -35,11 +39,11 @@ const Leaderboard = () => {
                 <table className={`${darkMode ? "dark-table" : ""}`}>
                     <thead className="thead-style">
                         <tr>
-                            <td>Helyezés</td>
-                            <td>Név</td>
-                            <td>Nyeremény</td>
-                            <td>Helyes válaszok (db)</td>
-                            <td>Eddigi nyeremények összege</td>
+                            <td>{text.placement}</td>
+                            <td>{text.name}</td>
+                            <td>{text.prize}</td>
+                            <td>{text.goodanswers}</td>
+                            <td>{text.summedprizes}</td>
                         </tr>
                     </thead>
                     <tbody>
@@ -120,7 +124,7 @@ const Leaderboard = () => {
                     className={`home-button-style ${darkMode ? "dark-button-style" : ""}`}
                     onClick={navigateHome}
                 >
-                    Visszalépés
+                    {text.backbutton}
                 </button>
             </div>
         </div>

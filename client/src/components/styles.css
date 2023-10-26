@@ -851,7 +851,7 @@ Admin Styles
 }
 
 .file-upload:before {
-    content: "Kép neve:";
+    content: "File: ";
 }
 
 .file-upload:hover {

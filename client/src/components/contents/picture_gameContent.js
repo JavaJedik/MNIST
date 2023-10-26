@@ -1,8 +1,12 @@
 export const content = {
     ENG: {
-        //TODO
+        numberofanswers: "Number of answers:",
+        goback: "Go back",
+        leaderboard: "Leaderboard",
     },
     HUN: {
-        //TODO
+        numberofanswers: "Válaszok száma:",
+        goback: "Visszalépés",
+        leaderboard: "Toplista",
     },
 };

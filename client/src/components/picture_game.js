@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import "./styles.css"
+import {content} from "./contents/picture_gameContent";
 
 const Number_Game = () => {
     const [username, setUsername] = useState('');
@@ -9,6 +10,9 @@ const Number_Game = () => {
     const [darkMode, setDarkMode] = useState(false);
     const [numAnswers, setNumAnswers] = useState(3);
     const maxNumber = 30;
+
+    const [selectedLanguage, setSelectedLanguage] = useState("HUN");
+    const text = content[selectedLanguage];
 
     const navigateHome = () => {
         navigate('/home');
@@ -24,7 +28,7 @@ const Number_Game = () => {
 
     const handleSliderChange = (event) => {
         if(event.target.value <= maxNumber) {
-        setNumAnswers(parseInt(event.target.value, 10));
+            setNumAnswers(parseInt(event.target.value, 10));
         }
     };
 
@@ -50,7 +54,7 @@ const Number_Game = () => {
 
                     <div className={`slider-container ${darkMode ? "dark-blur-container" : ""}`}>
                         <div className={`slider-text ${darkMode ? "dark-text" : ""}`}>
-                            Válaszok száma:
+                            {text.numberofanswers}
                         </div>
                         <input
                             className={`answer-slider ${darkMode ? "dark-answer-slider" : ""}`}
@@ -93,13 +97,13 @@ const Number_Game = () => {
                                 className={`button-style left-game-button ${darkMode ? "dark-button-style" : ""}`}
                                 onClick={navigateHome}
                             >
-                                Visszalépés
+                                {text.goback}
                             </button>
                             <button
                                 className={`button-style right-game-button ${darkMode ? "dark-button-style" : ""}`}
                                 onClick={navigateLeaderboard}
                             >
-                                Toplista
+                                {text.leaderboard}
                             </button>
                         </div>
                     </div>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import "./styles.css"
+import { content } from "./contents/registerContent";
 import AuthService from "../AuthService";
 
 const Register = () => {
@@ -15,6 +16,9 @@ const Register = () => {
     const [email, setEmail] = useState('');
     const [password1, setPassword1] = useState('');
     const [password2, setPassword2] = useState('');
+
+    const [selectedLanguage, setSelectedLanguage] = useState("HUN");
+    const text = content[selectedLanguage];
 
     const navigateLogin = () => {
         navigate("/login");
@@ -136,7 +140,7 @@ const Register = () => {
                     <input
                         className={`input-field ${darkMode ? "dark-input-field" : ""}`}
                         type="text"
-                        placeholder="Felhasználónév"
+                        placeholder={text.username}
                         id="username"
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
@@ -146,7 +150,7 @@ const Register = () => {
                     <input
                         className={`input-field ${darkMode ? "dark-input-field" : ""}`}
                         type="text"
-                        placeholder="E-mail cím"
+                        placeholder={text.email}
                         id="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
@@ -156,7 +160,7 @@ const Register = () => {
                     <input
                         className={`input-field ${darkMode ? "dark-input-field" : ""}`}
                         type="password"
-                        placeholder="Jelszó"
+                        placeholder={text.password}
                         id="password1"
                         value={password1}
                         onChange={(e) => setPassword1(e.target.value)}
@@ -166,7 +170,7 @@ const Register = () => {
                     <input
                         className={`input-field ${darkMode ? "dark-input-field" : ""}`}
                         type="password"
-                        placeholder="Jelszó mégegyszer"
+                        placeholder={text.passwordagain}
                         id="password2"
                         value={password2}
                         onChange={(e) => setPassword2(e.target.value)}
@@ -178,7 +182,7 @@ const Register = () => {
                         onClick={() => setIsDropdownOpenLanguage(!isDropdownOpenLanguage)}
                     >
                         <span>
-                            {selectedLanguageItem || "Válasszon nyelvet!"}
+                            {text.language}
                         </span>
                         <span className="dropbtn-arrow">
                             &#9660;
@@ -189,8 +193,8 @@ const Register = () => {
                             <p onClick={() => handleLanguageDropdownItemClick("Magyar")}>
                                 Magyar
                             </p>
-                            <p onClick={() => handleLanguageDropdownItemClick("Angol")}>
-                                Angol
+                            <p onClick={() => handleLanguageDropdownItemClick("English")}>
+                                English
                             </p>
                         </div>
                     </div>
@@ -200,7 +204,7 @@ const Register = () => {
                         className={`dropbtn ${darkMode ? "dark-button-style" : ""}`}
                         onClick={() => setIsDropdownOpenGender(!isDropdownOpenGender)}>
                         <span>
-                            {selectedGenderItem || "Adja meg a nemét!"}
+                            {selectedGenderItem || text.gender}
                         </span>
                         <span className="dropbtn-arrow">
                             &#9660;
@@ -220,13 +224,13 @@ const Register = () => {
                         className={`button-style ${darkMode ? "dark-button-style" : ""}`}
                         onClick={navigateLogin}
                     >
-                        Vissza
+                        {text.goback}
                     </button>
                     <button
                         className={`button-style ${darkMode ? "dark-button-style" : ""}`}
                         onClick={validateUserData}
                     >
-                        Regisztráció
+                        {text.register}
                     </button>
                 </div>
             </div>
