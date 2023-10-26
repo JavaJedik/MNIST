@@ -7,9 +7,16 @@ const Number_Game = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
-    const [darkMode, setDarkMode] = useState(false);
     const [numAnswers, setNumAnswers] = useState(3);
     const maxNumber = 30;
+
+    let previousDarkMode;
+    if(localStorage.getItem("darkMode") === "true") {
+        previousDarkMode = true;
+    } else if(localStorage.getItem("darkMode") === "false") {
+        previousDarkMode = false;
+    }
+    const [darkMode, setDarkMode] = useState(previousDarkMode);
 
     const selectedLanguage = localStorage.getItem("language");
     const text = content[selectedLanguage];

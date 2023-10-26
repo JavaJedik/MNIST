@@ -10,12 +10,19 @@ const Register = () => {
     const [selectedGenderItem, setSelectedGenderItem] = useState(null);
     const [isDropdownOpenLanguage, setIsDropdownOpenLanguage] = useState(false);
     const [isDropdownOpenGender, setIsDropdownOpenGender] = useState(false);
-    const [darkMode, setDarkMode] = useState(false);
 
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password1, setPassword1] = useState('');
     const [password2, setPassword2] = useState('');
+
+    let previousDarkMode;
+    if(localStorage.getItem("darkMode") === "true") {
+        previousDarkMode = true;
+    } else if(localStorage.getItem("darkMode") === "false") {
+        previousDarkMode = false;
+    }
+    const [darkMode, setDarkMode] = useState(previousDarkMode);
 
     const selectedLanguage = localStorage.getItem("language");
     const text = content[selectedLanguage];

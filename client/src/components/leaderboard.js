@@ -5,7 +5,14 @@ import "./styles.css"
 
 const Leaderboard = () => {
     const navigate = useNavigate();
-    const [darkMode, setDarkMode] = useState(false);
+
+    let previousDarkMode;
+    if(localStorage.getItem("darkMode") === "true") {
+        previousDarkMode = true;
+    } else if(localStorage.getItem("darkMode") === "false") {
+        previousDarkMode = false;
+    }
+    const [darkMode, setDarkMode] = useState(previousDarkMode);
 
     const [selectedLanguage, setSelectedLanguage] = useState("HUN");
     const text = content[selectedLanguage];

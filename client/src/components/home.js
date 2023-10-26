@@ -9,7 +9,12 @@ const Home = () => {
     const navigate = useNavigate();
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-    const previousDarkMode = false;
+    let previousDarkMode;
+    if(localStorage.getItem("darkMode") === "true") { /* a Boolean() nem működik itt, ki ne töröld!!!!*/
+        previousDarkMode = true;
+    } else if(localStorage.getItem("darkMode") === "false") {
+        previousDarkMode = false;
+    }
     const [darkMode, setDarkMode] = useState(previousDarkMode);
 
     const [selectedLanguage, setSelectedLanguage] = useState("HUN"); /* Alapból milyen nyelven jelenjen meg az oldal */
