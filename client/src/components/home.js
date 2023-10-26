@@ -8,8 +8,11 @@ const Home = () => {
     //const token = localStorage.getItem('userToken');
     const navigate = useNavigate();
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-    const [darkMode, setDarkMode] = useState(false);
-    const [selectedLanguage, setSelectedLanguage] = useState("HUN")
+
+    const previousDarkMode = false;
+    const [darkMode, setDarkMode] = useState(previousDarkMode);
+
+    const [selectedLanguage, setSelectedLanguage] = useState("HUN"); /* Alapból milyen nyelven jelenjen meg az oldal */
 
     const text = content[selectedLanguage];
 
@@ -35,6 +38,8 @@ const Home = () => {
     };
 
     const navigateNumberGame = () => {
+        localStorage.setItem("language", selectedLanguage);
+        localStorage.setItem("darkMode", JSON.stringify(darkMode));
         navigate("/number_game")
     };
 
