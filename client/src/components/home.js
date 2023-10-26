@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import "./styles.css"
 import { content } from './contents/homeContent';
-//import AuthService from '../AuthService';
+import AuthService from '../AuthService';
 
 const Home = () => {
     //const token = localStorage.getItem('userToken');
@@ -71,8 +71,22 @@ const Home = () => {
         setIsDropdownOpen(false)
     };
 
-    const navigateLeaderboard = () => {
-        navigate("/leaderboard");
+    const navigateLeaderboard = async () => {
+        try {
+            const data = await AuthService.checkUserToken();
+
+            if (data.success) {
+                navigate('/leaderboard');
+                console.log('Ranglista megnyitása.')
+            } else {
+                alert('Ranglista megnyitása sikertelen.');
+                console.log('Ranglista megnyitása sikertelen.')
+                navigate('/login')
+            }
+        } catch (error) {
+            console.error('Ranglista megnyitása sikertelen:', error);
+            navigate('/login')
+        }
     };
 
     return (
