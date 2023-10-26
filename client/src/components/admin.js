@@ -14,8 +14,14 @@ const Admin = () => {
     const [selectedLanguage, setSelectedLanguage] = useState("HUN");
     const text = content[selectedLanguage];
 
+    const setLocalStorageItems = () => {
+        localStorage.setItem("language", selectedLanguage);
+        localStorage.setItem("darkMode", JSON.stringify(darkMode));
+    }
+
     const navigateLogin = () => {
         //localStorage.removeItem('userToken');
+        setLocalStorageItems();
         navigate("/login");
     };
 

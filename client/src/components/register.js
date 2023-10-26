@@ -27,7 +27,13 @@ const Register = () => {
     const selectedLanguage = localStorage.getItem("language");
     const text = content[selectedLanguage];
 
+    const setLocalStorageItems = () => {
+        localStorage.setItem("language", selectedLanguage);
+        localStorage.setItem("darkMode", JSON.stringify(darkMode));
+    }
+
     const navigateLogin = () => {
+        setLocalStorageItems();
         navigate("/login");
     };
 
@@ -52,6 +58,7 @@ const Register = () => {
     }
 
     const registerUser = async () => {
+        setLocalStorageItems();
         try {
             /*const country = await getCurrentLocation();
             console.log(country)*/

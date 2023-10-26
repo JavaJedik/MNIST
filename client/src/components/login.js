@@ -13,7 +13,13 @@ const Login = () => {
     const selectedLanguage = localStorage.getItem("language");
     const text = content[selectedLanguage];
 
+    const setLocalStorageItems = () => {
+        localStorage.setItem("language", selectedLanguage);
+        localStorage.setItem("darkMode", JSON.stringify(darkMode));
+    }
+
     const navigateHome = async () => {
+        setLocalStorageItems();
         try {
             const data = await AuthService.login(username, password);
 
@@ -30,11 +36,13 @@ const Login = () => {
     };
 
     const navigateRegister = () => {
+        setLocalStorageItems();
         navigate('/register');
         console.log('Regisztrációs oldal megnyitása.')
     };
 
     const navigateHomeAsGuest = async () => {
+        setLocalStorageItems();
         try {
             const data = await AuthService.loginAsGuest();
 

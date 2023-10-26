@@ -19,6 +19,11 @@ const Number_Game = () => {
     const selectedLanguage = localStorage.getItem("language");
     const text = content[selectedLanguage];
 
+    const setLocalStorageItems = () => {
+        localStorage.setItem("language", selectedLanguage);
+        localStorage.setItem("darkMode", JSON.stringify(darkMode));
+    }
+
     useEffect(() => {
         document.addEventListener('keydown', handleKeyPress);
 
@@ -74,10 +79,12 @@ const Number_Game = () => {
     };
 
     const navigateHome = () => {
+        setLocalStorageItems();
         navigate('/home');
     };
 
     const navigateLeaderboard = () => {
+        setLocalStorageItems();
         navigate('/leaderboard');
     };
 

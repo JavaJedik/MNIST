@@ -21,11 +21,18 @@ const Number_Game = () => {
     const selectedLanguage = localStorage.getItem("language");
     const text = content[selectedLanguage];
 
+    const setLocalStorageItems = () => {
+        localStorage.setItem("language", selectedLanguage);
+        localStorage.setItem("darkMode", JSON.stringify(darkMode));
+    }
+
     const navigateHome = () => {
+        setLocalStorageItems();
         navigate('/home');
     };
 
     const navigateLeaderboard = () => {
+        setLocalStorageItems();
         navigate('/leaderboard');
     };
 
