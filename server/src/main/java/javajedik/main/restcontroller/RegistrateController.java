@@ -2,6 +2,7 @@ package javajedik.main.restcontroller;
 
 import javajedik.main.model.RegistrateData;
 import javajedik.main.service.RegistrateService;
+import javajedik.main.util.UserTokenUtil;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +37,10 @@ public class RegistrateController
         
         logger.info("A generált player_id: " + player_id);
         
-        return ResponseEntity.ok(player_id + "");
+        final String userToken = UserTokenUtil.generateToken(player_id);
+        
+        logger.info("A userToken generálva, küldése a válaszban, player_id: " + player_id);
+        
+        return ResponseEntity.ok(userToken);
     }
 }

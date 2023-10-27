@@ -18,23 +18,23 @@ public class PasswordHandlerSQL
 
     public boolean storePassword(int playerId, byte[] salt, byte[] passwordHash) 
     {
-        String query = "insert into password (player_id, salt, password_hash) values (?, ?, ?)";
+        final String query = SqlQ.storePassword();
         try 
         {
             jdbcTemplate.update(query, playerId, salt, passwordHash);
-            logger.info(playerId + " player_idhoz tartozó só és hash beszúrva az adatbázisba");
+            logger.info(playerId + " player_id-hoz tartozó só és hash beszúrva az adatbázisba");
             return true;
         } 
         catch (DataAccessException ex) 
         {
-            logger.error(playerId + " player_idhoz tartozó só és hash beszúrása az adatbázisba sikertelen");
+            logger.error(playerId + " player_id-hoz tartozó só és hash beszúrása az adatbázisba sikertelen");
             return false;
         }
     }
 
     public PasswordEntry getPasswordEntry(int playerId) 
     {
-        String query = "select salt, password_hash, created_at from password where player_id = ? order by created_at desc limit 1";
+        final String query = SqlQ.getPasswordEntry();
         try 
         {
             PasswordEntry entry = jdbcTemplate.queryForObject(query, (rs, rowNum) -> new PasswordEntry
@@ -50,7 +50,7 @@ public class PasswordHandlerSQL
         } 
         catch (DataAccessException ex) 
         {
-            logger.warn(playerId + " player_idhez nincs adat");
+            logger.warn(playerId + " player_id-hez nincs adat");
             return null;
         }
     }

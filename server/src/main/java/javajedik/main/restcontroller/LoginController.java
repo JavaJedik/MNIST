@@ -2,6 +2,7 @@ package javajedik.main.restcontroller;
 
 import javajedik.main.model.LoginData;
 import javajedik.main.service.LoginService;
+import javajedik.main.util.UserTokenUtil;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,21 +21,28 @@ public class LoginController
     
     @Autowired
     private LoginService loginService;
-    
-    private static final String userToken = "EzIttAUserToken"; // Konstans userToken
 
     @PostMapping("")
     public ResponseEntity<String> loginUser(@RequestBody LoginData loginData) 
     {
         logger.info("Bejelentkezési adatok megérkeztek: username: " + loginData.getUsername());
         
-        if(loginService.isValidLoginData(loginData))
+        final int player_id = loginService.getPlayerIdFromLoginData(loginData);
+        
+        if(player_id == -1)
         {
+            logger.warn("Bejelentkezés elutasítva, http 401 küldése, username: " + loginData.getUsername());
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Az adatok érvénytelenek.");
+        }
+        
+        if(loginService.isValidPasswordFromPlayerID(player_id, loginData.getPassword()))
+        {
+            final String userToken = UserTokenUtil.generateToken(player_id);
             logger.info("Bejelentkezés elfogadva, token elküldve: username: " + loginData.getUsername());
             return ResponseEntity.ok(userToken);
         }
         
         logger.warn("Bejelentkezés elutasítva, http 401 küldése, username: " + loginData.getUsername());
-        return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Az adatok érvénytelenek.");
     }
 }

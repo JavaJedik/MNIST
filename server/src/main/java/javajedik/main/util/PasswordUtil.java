@@ -36,5 +36,13 @@ public class PasswordUtil
             return null;
         }
     }
+    
+    public static boolean validatePassword(byte[] storedSalt, byte[] storedHash, String providedPassword) 
+    {
+        byte[] providedPasswordBytes = providedPassword.getBytes();
+        byte[] computedHash = generateHash(storedSalt, providedPasswordBytes);
+
+        return MessageDigest.isEqual(storedHash, computedHash);
+    }
 }
 

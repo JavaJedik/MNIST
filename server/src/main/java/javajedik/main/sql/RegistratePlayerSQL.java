@@ -36,11 +36,7 @@ public class RegistratePlayerSQL
 
     private int getEmailTypeIdFromDatabase(EmailParts emailParts) 
     {
-        String query = "select email_type.id " +
-                       "from email_tld " +
-                       "join email_type ON email_type.tld_id = email_tld.id " +
-                       "where email_type.domain = ? " +
-                       "and email_tld.tld = ?";
+        final String query = SqlQ.getEmailTypeIdFromDatabase();
 
         try 
         {
@@ -54,11 +50,7 @@ public class RegistratePlayerSQL
     
     public int getGenderIdByName(String genderName) 
     {
-        String query = "select gender.id " +
-                       "from gender " +
-                       "inner join gender_name on gender.id = gender_name.gender_id " +
-                       "where gender_name.name = ? " +
-                       "limit 1";
+        final String query = SqlQ.getGenderIdByName();
 
         try 
         {
@@ -72,11 +64,7 @@ public class RegistratePlayerSQL
     
     public int getLanguageIdByName(String languageName) 
     {
-        String sql = "select language.id " +
-                     "from language " +
-                     "inner join language_name ON language_name.language_id = language.id " +
-                     "where language_name.name = ? " +
-                     "limit 1";
+        final String sql = SqlQ.getLanguageIdByName();
 
         try 
         {
@@ -90,7 +78,7 @@ public class RegistratePlayerSQL
     
     public int insertPlayerId(int mainLanguageId, int playerRoleId) 
     {
-        String insertSql = "insert into player_id (main_language_id, player_role_id) values (?, ?)";
+        final String insertSql = SqlQ.insertPlayerId();
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
         jdbcTemplate.update(connection -> 
@@ -114,7 +102,7 @@ public class RegistratePlayerSQL
     
     public boolean insertRegisteredPlayerMinimal(RegisteredPlayer player) 
     {
-        String insertSql = "insert into registered_player (player_id, name, gender_id, email_prefix, email_type_id) values (?, ?, ?, ?, ?)";
+        final String insertSql = SqlQ.insertRegisteredPlayerMinimal();
 
         try 
         {
@@ -131,7 +119,7 @@ public class RegistratePlayerSQL
 
     public List<RegisteredPlayer> getAllRegisteredPlayers() 
     {
-        String sql = "select * from registered_player";
+        final String sql = SqlQ.getAllRegisteredPlayers();
 
         List<RegisteredPlayer> players = jdbcTemplate.query(sql, (rs, rowNum) -> 
         {
@@ -204,6 +192,7 @@ public class RegistratePlayerSQL
                 {
                     logger.error("A játékos regisztrálása sikertelen, változások visszavonása");
                     transactionManager.rollback(status);
+                    return -1;
                 }
             } 
             catch (TransactionException e) 

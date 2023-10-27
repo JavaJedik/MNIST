@@ -22,7 +22,7 @@ public class UserTokenUtil
     
     private static final String SECRET_KEY = RandomKeyGenerator.generateRandomKey();
 
-    public static String generateToken(int playerId) 
+    public static String generateToken(int player_id) 
     {
         LocalDateTime now = LocalDateTime.now();
         LocalDateTime expiration = now.plusHours(24);
@@ -31,7 +31,7 @@ public class UserTokenUtil
         logger.info("UserToken generálása...");
 
         return Jwts.builder()
-                .setSubject(Integer.toString(playerId))
+                .setSubject(Integer.toString(player_id))
                 .setIssuedAt(java.util.Date.from(now.atZone(ZoneId.systemDefault()).toInstant()))
                 .setExpiration(java.util.Date.from(expiration.atZone(ZoneId.systemDefault()).toInstant()))
                 .signWith(key, SignatureAlgorithm.HS256)
