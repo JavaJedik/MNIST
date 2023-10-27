@@ -35,6 +35,9 @@
 | 32  | Szerver     | 2023-10-23 | A szerver kezeli a rosszul megadott nemet (ha a kliens nem venné észre)                  | Success |
 | 33  | Szerver     | 2023-10-23 | A szerver kezeli a rosszul megadott nyelvet (ha a kliens nem venné észre)                | Success |
 | 34  | Szerver     | 2023-10-23 | Játékos regisztrációja jelszóval együtt szervernek küldött post kéréssel                 | Success |
+| 35  | Szerver     | 2023-10-27 | Bejelentkezés helyes felhasználói adatokkal                                              | Success |
+| 36  | Szerver     | 2023-10-27 | Bejelentkezés megtagadása helytelen jelszóval                                            | Success |
+| 37  | Adatbázis   | 2023-10-27 | Nem tud regisztrálni 2 játékos ugyanazon névvel                                          | Success |
 
 ## Egyszerűbb áttekinthetőségért csak a nehezebb lekérdezéseket írtam le, triviálisakat kevésbé.
 
@@ -135,7 +138,7 @@ Sikeresen tesztelték a weboldal elérését különböző testereink.
 ![](../kepek/teszt/tomi/t6.png)
 
 
-## Teszt 30-34
+## Teszt 30-37
 
 Curl kérés segítségével helytelen e-mail címe küldünk a szervernek, amit sikeresen elkapott, lekezelt, és választ küldött.
 
@@ -181,3 +184,10 @@ curl -X POST -H "Content-Type: application/json" -d '{
 ![](../kepek/teszt/tomi/t7.png)
 
 ![](../kepek/teszt/tomi/t8.png)
+
+
+Következő lépés pedig, hogy a szerver elfogadja a regisztrációnkat, és a helyes jelszóval engedjen be, de helytelen adatokkal ne engedjen be, két játékos ne tudjon regisztrálni ugyanazon nevekkel.
+
+![](../kepek/teszt/tomi/t9.png)
+
+![](../kepek/teszt/tomi/t10.png)

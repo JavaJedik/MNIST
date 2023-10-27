@@ -22,7 +22,7 @@ public class PlayerDataSQL
         try 
         {
             int playerId = jdbcTemplate.queryForObject(query, new Object[]{playerName}, Integer.class);
-            logger.info("A player_id és név -> " + playerName + ": " + playerId);
+            logger.info("A név és player_id -> " + playerName + " : " + playerId);
             return playerId;
         } 
         catch (DataAccessException ex) 
