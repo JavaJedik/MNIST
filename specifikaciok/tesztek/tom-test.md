@@ -189,14 +189,9 @@ curl -X POST -H "Content-Type: application/json" -d '{
 
 ![](../kepek/teszt/tomi/t7.png)
 
-![](../kepek/teszt/tomi/t8.png)
-
-
 Következő lépés pedig, hogy a szerver elfogadja a regisztrációnkat, és a helyes jelszóval engedjen be, de helytelen adatokkal ne engedjen be, két játékos ne tudjon regisztrálni ugyanazon nevekkel.
 
-![](../kepek/teszt/tomi/t9.png)
-
-![](../kepek/teszt/tomi/t10.png)
+![](../kepek/teszt/tomi/t8.png)
 
 ## Teszt 38-41
 
