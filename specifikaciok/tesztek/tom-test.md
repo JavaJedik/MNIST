@@ -42,6 +42,8 @@
 | 39  | Szerver     | 2023-10-28 | A userToken ellenőriztetése a szerver segítségével http fejlécben                        | Success |
 | 40  | Szerver     | 2023-10-28 | A hibás userToken ellenőriztetése a szerver segítségével http fejlécben                  | Success |
 | 41  | Szerver     | 2023-10-28 | A userToken ellenőriztetése, amikor a http fejlécmezőt se küldöm el                      | Success |
+| 42  | HTTP/2      | 2023-10-28 | A kommunikáció a http1.1 való átváltás után http2-t használt                             | Success |
+
 
 ## Egyszerűbb áttekinthetőségért csak a nehezebb lekérdezéseket írtam le, triviálisakat kevésbé.
 
@@ -217,3 +219,30 @@ curl http://localhost:8814/check/userToken
 ```
 
 ![](../kepek/teszt/tomi/t11.png)
+
+
+## Teszt 42
+
+```bash
+curl -I --http2 -H "userToken: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI2IiwiaWF0IjoxNjk4NTAxNTI3LCJleHAiOjE2OTg1OTE1Mjd9.gERkd0kfAeoIMYtljP9FhQOr5MFFE-0buTiQKvCwtMSf52FGiVNJ2PuNzcoZS6x6TxXko5GtfOGCq_KrI4bOqA" http://localhost:8814/check/userToken
+```
+
+```yaml
+HTTP/1.1 101 
+Connection: Upgrade
+Upgrade: h2c
+Date: Sat, 28 Oct 2023 13:59:59 GMT
+
+HTTP/2 200 
+vary: Origin
+vary: Access-Control-Request-Method
+vary: Access-Control-Request-Headers
+content-length: 0
+date: Sat, 28 Oct 2023 13:59:59 GMT
+```
+
+Az előző kérés esetén egy cURL parancsot használtunk a HTTP kérések elküldésére egy szervernek. A parancs tartalmazott egy --http2 kapcsolót, ami azt jelezte, hogy HTTP/2 protokollt használjunk a kérés elküldésére. A kérés specifikációjában volt egy fejléc is, amely tartalmazott egy "userToken" nevű hitelesítési tokent. Ezt a tokent a /check/userToken végpontnak küldtük el a kérés során.
+
+A szerver válasza két részből állt. Először egy "101 Switching Protocols" státuszkóddal indult, ami azt jelezte, hogy a szerver készen áll a protokoll váltásra. Ezt követően a válasz tartalmazta a "HTTP/2 200" státuszkódot, ami azt jelentette, hogy a kérés sikeres volt, és a szerver válaszolt egy 0 bájtos hosszúságú tartalommal. A fejlécek között megtalálhatók továbbá a "vary" fejlécek, amelyek a kérés változóit tükrözték vissza, és a "date" fejléc, ami azt mutatja, hogy a válasz melyik időpontban érkezett vissza.
+
+Az összefoglalóban elmondható, hogy a kérés HTTP/2 protokollon keresztül történt, és a "userToken" fejléc is sikeresen elküldésre került a szervernek. A szerver válasza sikeres volt, és nem tartalmazott tartalmat a válasz testében.
