@@ -38,6 +38,10 @@
 | 35  | Szerver     | 2023-10-27 | Bejelentkezés helyes felhasználói adatokkal                                              | Success |
 | 36  | Szerver     | 2023-10-27 | Bejelentkezés megtagadása helytelen jelszóval                                            | Success |
 | 37  | Adatbázis   | 2023-10-27 | Nem tud regisztrálni 2 játékos ugyanazon névvel                                          | Success |
+| 38  | Szerver     | 2023-10-28 | Bejelentkezés és userToken eltárolása ellenőrzésre                                       | Success |
+| 39  | Szerver     | 2023-10-28 | A userToken ellenőriztetése a szerver segítségével http fejlécben                        | Success |
+| 40  | Szerver     | 2023-10-28 | A hibás userToken ellenőriztetése a szerver segítségével http fejlécben                  | Success |
+| 41  | Szerver     | 2023-10-28 | A userToken ellenőriztetése, amikor a http fejlécmezőt se küldöm el                      | Success |
 
 ## Egyszerűbb áttekinthetőségért csak a nehezebb lekérdezéseket írtam le, triviálisakat kevésbé.
 
@@ -191,3 +195,25 @@ Következő lépés pedig, hogy a szerver elfogadja a regisztrációnkat, és a 
 ![](../kepek/teszt/tomi/t9.png)
 
 ![](../kepek/teszt/tomi/t10.png)
+
+## Teszt 38-41
+
+A hitelesítést a http fejlécmezők segítségével végzem el.
+Fontos volt tesztelni, hogy:
+ - Elfogadja a helyes tokent
+ - Ne fogadja el a helytelen tokent
+ - Ne fogadja el a kérést, ha nincs is megfelelő fejlécmező
+
+```bash
+curl -X POST -H "Content-Type: application/json" -d '{"username": "Johny", "password": "YourPasswordHere"}' http://localhost:8814/login
+```
+
+```bash
+curl -H "userToken: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI2IiwiaWF0IjoxNjk4NDk3MDU4LCJleHAiOjE2OTg1ODcwNTh9.adR4IZYVXkrPHDNErjxORARgs7k9dLLT06OUM3ixLXaL9shxLXRI7um2lykzWOGXkKYq3j6HhnRMV_5EOvQBlw" http://localhost:8814/check/userToken
+```
+
+```bash
+curl http://localhost:8814/check/userToken
+```
+
+![](../kepek/teszt/tomi/t11.png)

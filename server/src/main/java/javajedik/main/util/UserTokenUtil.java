@@ -6,7 +6,6 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.MalformedJwtException;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.UnsupportedJwtException;
-import io.jsonwebtoken.security.Keys;
 import io.jsonwebtoken.security.SignatureException;
 import io.jsonwebtoken.security.WeakKeyException;
 
@@ -20,13 +19,12 @@ public class UserTokenUtil
 {
     private static final Logger logger = LogManager.getLogger(UserTokenUtil.class);
     
-    private static final String SECRET_KEY = RandomKeyGenerator.generateRandomKey();
+    private static final SecretKey SECRET_KEY = RandomKeyGenerator.generateRandomKey();
 
     public static String generateToken(int player_id) 
     {
         LocalDateTime now = LocalDateTime.now();
         LocalDateTime expiration = now.plusHours(24);
-        SecretKey key = Keys.hmacShaKeyFor(SECRET_KEY.getBytes());
         
         logger.info("UserToken generálása...");
 
@@ -34,7 +32,7 @@ public class UserTokenUtil
                 .setSubject(Integer.toString(player_id))
                 .setIssuedAt(java.util.Date.from(now.atZone(ZoneId.systemDefault()).toInstant()))
                 .setExpiration(java.util.Date.from(expiration.atZone(ZoneId.systemDefault()).toInstant()))
-                .signWith(key, SignatureAlgorithm.HS256)
+                .signWith(SECRET_KEY, SignatureAlgorithm.HS512)
                 .compact();
     }
 
@@ -42,11 +40,10 @@ public class UserTokenUtil
     {
         try 
         {
-            SecretKey key = Keys.hmacShaKeyFor(SECRET_KEY.getBytes());
-            Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(userToken);
-            logger.info("UserToken is valid: " + userToken);
+            Jwts.parserBuilder().setSigningKey(SECRET_KEY).build().parseClaimsJws(userToken);
+            logger.info("UserToken is valid");
             return true;
-        } catch (ExpiredJwtException | MalformedJwtException | UnsupportedJwtException | SignatureException | WeakKeyException | IllegalArgumentException e) 
+        } catch (ExpiredJwtException | MalformedJwtException | UnsupportedJwtException | SignatureException | WeakKeyException | IllegalArgumentException | io.jsonwebtoken.io.DecodingException e) 
         {
             logger.warn("UserToken is invalid: " + userToken);
             return false;
@@ -55,10 +52,15 @@ public class UserTokenUtil
 
     public static int getPlayerId(String userToken) 
     {
-        SecretKey key = Keys.hmacShaKeyFor(SECRET_KEY.getBytes());
-        Claims claims = Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(userToken).getBody();
-        logger.info("Player_id is: " + claims.getSubject());
-        return Integer.parseInt(claims.getSubject());
+        try 
+        {
+            Claims claims = Jwts.parserBuilder().setSigningKey(SECRET_KEY).build().parseClaimsJws(userToken).getBody();
+            logger.info("Player_id is: " + claims.getSubject());
+            return Integer.parseInt(claims.getSubject());
+        } catch (ExpiredJwtException | MalformedJwtException | UnsupportedJwtException | SignatureException | WeakKeyException | IllegalArgumentException | io.jsonwebtoken.io.DecodingException e) 
+        {
+            logger.error("UserToken is invalid: " + userToken);
+            return -1;
+        }
     }
 }
-
