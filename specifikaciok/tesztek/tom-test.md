@@ -213,7 +213,7 @@ curl -H "userToken: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI2IiwiaWF0IjoxNjk4NDk3MDU4LCJ
 curl http://localhost:8814/check/userToken
 ```
 
-![](../kepek/teszt/tomi/t11.png)
+![](../kepek/teszt/tomi/t9.png)
 
 
 ## Teszt 42
