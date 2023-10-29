@@ -34,6 +34,8 @@ public class UploadController
             logger.warn("A kép biztonságos feldolgozása sikertelen, http 406 küldése...");
             return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body("A kép biztonságos feldolgozása sikertelen.");
         }
+        
+        
 
         
         return null;
