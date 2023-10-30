@@ -2,26 +2,23 @@ import React, {useState, useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
 import "./styles.css"
 import authService from "../AuthService";
-import {content} from "./contents/adminContent";
+import { content } from "./contents/adminContent";
+import { changer } from "./changer";
 
 const Admin = () => {
 
     const navigate = useNavigate();
     const [answer, setText] = useState('');
     const [pic, setPicture] = useState(null);
-    const [darkMode, setDarkMode] = useState(false);
 
-    const selectedLanguage = localStorage.getItem("language");
+    const [darkMode, setDarkMode] = useState(changer.darkMode);
+    const [selectedLanguage, setSelectedLanguage] = useState(changer.language);
+
     const text = content[selectedLanguage];
-
-    const setLocalStorageItems = () => {
-        localStorage.setItem("language", selectedLanguage);
-        localStorage.setItem("darkMode", JSON.stringify(darkMode));
-    }
 
     const navigateLogin = () => {
         //localStorage.removeItem('userToken');
-        setLocalStorageItems();
+        changer.setChangerItems(selectedLanguage, darkMode);
         navigate("/login");
     };
 

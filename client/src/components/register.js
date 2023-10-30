@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import "./styles.css"
 import { content } from "./contents/registerContent";
 import AuthService from "../AuthService";
+import { changer } from "./changer";
 
 const Register = () => {
     const navigate = useNavigate();
@@ -16,24 +17,12 @@ const Register = () => {
     const [password1, setPassword1] = useState('');
     const [password2, setPassword2] = useState('');
 
-    let previousDarkMode;
-    if(localStorage.getItem("darkMode") === "true") {
-        previousDarkMode = true;
-    } else if(localStorage.getItem("darkMode") === "false") {
-        previousDarkMode = false;
-    }
-    const [darkMode, setDarkMode] = useState(previousDarkMode);
-
-    const selectedLanguage = localStorage.getItem("language");
+    const [darkMode, setDarkMode] = useState(changer.darkMode);
+    const [selectedLanguage, setSelectedLanguage] = useState(changer.language);
     const text = content[selectedLanguage];
 
-    const setLocalStorageItems = () => {
-        localStorage.setItem("language", selectedLanguage);
-        localStorage.setItem("darkMode", JSON.stringify(darkMode));
-    }
-
     const navigateLogin = () => {
-        setLocalStorageItems();
+        changer.setChangerItems(selectedLanguage, darkMode);
         navigate("/login");
     };
 
@@ -58,7 +47,7 @@ const Register = () => {
     }
 
     const registerUser = async () => {
-        setLocalStorageItems();
+        changer.setChangerItems(selectedLanguage, darkMode);
         try {
             /*const country = await getCurrentLocation();
             console.log(country)*/
@@ -81,13 +70,14 @@ const Register = () => {
         }
     }
 
-    const handleLanguageDropdownItemClick = (item) => {
-        setSelectedLanguageItem(item);
-        setIsDropdownOpenLanguage(false)
+    const handleLanguageDropdownItemClick = (language) => {
+        setSelectedLanguage(language);
+        handleGenderDropdownItemClick(); //kitörli a másik nyelvű értéket
+        setIsDropdownOpenLanguage(false);
     };
 
-    const handleGenderDropdownItemClick = (item) => {
-        setSelectedGenderItem(item);
+    const handleGenderDropdownItemClick = (gender) => {
+        setSelectedGenderItem(gender);
         setIsDropdownOpenGender(false);
     }
 
@@ -204,10 +194,10 @@ const Register = () => {
                     </button>
                     <div id="myDropdown">
                         <div className={`dropdown-content-language ${darkMode ? "dark-dropdown-content" : ""}`}>
-                            <p onClick={() => handleLanguageDropdownItemClick("Magyar")}>
+                            <p onClick={() => handleLanguageDropdownItemClick("HUN")}>
                                 Magyar
                             </p>
-                            <p onClick={() => handleLanguageDropdownItemClick("English")}>
+                            <p onClick={() => handleLanguageDropdownItemClick("ENG")}>
                                 English
                             </p>
                         </div>

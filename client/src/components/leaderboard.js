@@ -1,29 +1,19 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { content } from './contents/leaderboardContent';
 import "./styles.css"
+import {changer} from "./changer";
 
 const Leaderboard = () => {
     const navigate = useNavigate();
 
-    let previousDarkMode;
-    if(localStorage.getItem("darkMode") === "true") {
-        previousDarkMode = true;
-    } else if(localStorage.getItem("darkMode") === "false") {
-        previousDarkMode = false;
-    }
-    const [darkMode, setDarkMode] = useState(previousDarkMode);
+    const [darkMode, setDarkMode] = useState(changer.darkMode);
+    const [selectedLanguage, setSelectedLanguage] = useState(changer.language);
 
-    const selectedLanguage = localStorage.getItem("language");
     const text = content[selectedLanguage];
 
-    const setLocalStorageItems = () => {
-        localStorage.setItem("language", selectedLanguage);
-        localStorage.setItem("darkMode", JSON.stringify(darkMode));
-    }
-
     const navigateHome = () => {
-        setLocalStorageItems();
+        changer.setChangerItems(selectedLanguage, darkMode);
         navigate('/home');
     };
 

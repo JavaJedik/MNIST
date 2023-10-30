@@ -2,22 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import "./styles.css"
 import { content } from './contents/homeContent';
+import { changer } from "./changer";
 import AuthService from '../AuthService';
 
 const Home = () => {
     //const token = localStorage.getItem('userToken');
     const navigate = useNavigate();
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-
-    let previousDarkMode;
-    if(localStorage.getItem("darkMode") === "true") { /* a Boolean() nem működik itt, ki ne töröld!!!!*/
-        previousDarkMode = true;
-    } else if(localStorage.getItem("darkMode") === "false") {
-        previousDarkMode = false;
-    }
-    const [darkMode, setDarkMode] = useState(previousDarkMode);
-
-    const [selectedLanguage, setSelectedLanguage] = useState("HUN"); /* Alapból milyen nyelven jelenjen meg az oldal */
+    const [darkMode, setDarkMode] = useState(changer.darkMode);
+    const [selectedLanguage, setSelectedLanguage] = useState(changer.language);
 
     const text = content[selectedLanguage];
 
@@ -39,18 +32,13 @@ const Home = () => {
 
     const navigateLogin = () => {
         //localStorage.removeItem('userToken');
-        setLocalStorageItems();
+        changer.setChangerItems(selectedLanguage, darkMode);
         navigate("/login");
     };
 
-    const setLocalStorageItems = () => {
-        localStorage.setItem("language", selectedLanguage);
-        localStorage.setItem("darkMode", JSON.stringify(darkMode));
-    }
-
     const navigateNumberGame = () => {
-        setLocalStorageItems();
-        navigate("/number_game")
+        changer.setChangerItems(selectedLanguage, darkMode);
+        navigate("/number_game");
     };
 
     /*const navigateQuiz = async () => {
@@ -82,12 +70,12 @@ const Home = () => {
     };*/
 
     const handleDropdownItemClick = (language) => {
-        setSelectedLanguage(language)
-        setIsDropdownOpen(false)
+        setSelectedLanguage(language);
+        setIsDropdownOpen(false);
     };
 
     const navigateLeaderboard = async () => {
-        setLocalStorageItems();
+        changer.setChangerItems(selectedLanguage, darkMode);
         try {
             const data = await AuthService.checkUserToken();
 

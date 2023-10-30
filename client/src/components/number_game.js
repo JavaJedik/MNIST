@@ -1,28 +1,18 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import "./styles.css"
-import {content} from "./contents/number_gameContent";
+import { content } from "./contents/number_gameContent";
+import { changer } from "./changer";
 
 const Number_Game = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
 
-    let previousDarkMode;
-    if(localStorage.getItem("darkMode") === "true") { /* a Boolean() nem működik itt, ki ne töröld!!!!*/
-        previousDarkMode = true;
-    } else if(localStorage.getItem("darkMode") === "false") {
-        previousDarkMode = false;
-    }
-    const [darkMode, setDarkMode] = useState(previousDarkMode);
+    const [darkMode, setDarkMode] = useState(changer.darkMode);
+    const [selectedLanguage, setSelectedLanguage] = useState(changer.language);
 
-    const selectedLanguage = localStorage.getItem("language");
     const text = content[selectedLanguage];
-
-    const setLocalStorageItems = () => {
-        localStorage.setItem("language", selectedLanguage);
-        localStorage.setItem("darkMode", JSON.stringify(darkMode));
-    }
 
     useEffect(() => {
         document.addEventListener('keydown', handleKeyPress);
@@ -79,12 +69,12 @@ const Number_Game = () => {
     };
 
     const navigateHome = () => {
-        setLocalStorageItems();
+        changer.setChangerItems(selectedLanguage, darkMode);
         navigate('/home');
     };
 
     const navigateLeaderboard = () => {
-        setLocalStorageItems();
+        changer.setChangerItems(selectedLanguage, darkMode);
         navigate('/leaderboard');
     };
 

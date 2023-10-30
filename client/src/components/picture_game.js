@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import "./styles.css"
-import {content} from "./contents/picture_gameContent";
+import { content } from "./contents/picture_gameContent";
+import { changer } from "./changer";
 
 const Number_Game = () => {
     const [username, setUsername] = useState('');
@@ -10,15 +11,9 @@ const Number_Game = () => {
     const [numAnswers, setNumAnswers] = useState(3);
     const maxNumber = 30;
 
-    let previousDarkMode;
-    if(localStorage.getItem("darkMode") === "true") {
-        previousDarkMode = true;
-    } else if(localStorage.getItem("darkMode") === "false") {
-        previousDarkMode = false;
-    }
-    const [darkMode, setDarkMode] = useState(previousDarkMode);
+    const [darkMode, setDarkMode] = useState(changer.darkMode);
+    const [selectedLanguage, setSelectedLanguage] = useState(changer.language);
 
-    const selectedLanguage = localStorage.getItem("language");
     const text = content[selectedLanguage];
 
     const setLocalStorageItems = () => {

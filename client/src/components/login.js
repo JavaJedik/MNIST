@@ -2,24 +2,19 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import "./styles.css"
 import AuthService from '../AuthService';
-import {content} from "./contents/loginContent";
+import { content } from "./contents/loginContent";
+import { changer } from "./changer";
 
 const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [darkMode, setDarkMode] = useState(false);
+    const [darkMode, setDarkMode] = useState(changer.darkMode);
     const navigate = useNavigate();
-
-    const selectedLanguage = localStorage.getItem("language");
+    const selectedLanguage = changer.language;
     const text = content[selectedLanguage];
 
-    const setLocalStorageItems = () => {
-        localStorage.setItem("language", selectedLanguage);
-        localStorage.setItem("darkMode", JSON.stringify(darkMode));
-    }
-
     const navigateHome = async () => {
-        setLocalStorageItems();
+        changer.setChangerItems(selectedLanguage, darkMode);
         try {
             const data = await AuthService.login(username, password);
 
@@ -28,7 +23,7 @@ const Login = () => {
                 console.log(username + ' felhasználó sikeresen bejelentkezett.')
             } else {
                 alert('Sikertelen bejelentkezés. Rossz felhasználónév vagy jelszó.');
-                console.log('Sikertelen bejelentkezés. Rossz felhasználónév vagy jelszó.')
+                console.log('Sikertelen bejelentkezés. Rossz felhasználónév vagy jelszó.');
             }
         } catch (error) {
             console.error('Login failed: ', error);
@@ -36,22 +31,22 @@ const Login = () => {
     };
 
     const navigateRegister = () => {
-        setLocalStorageItems();
+        changer.setChangerItems(selectedLanguage, darkMode);
         navigate('/register');
-        console.log('Regisztrációs oldal megnyitása.')
+        console.log('Regisztrációs oldal megnyitása.');
     };
 
     const navigateHomeAsGuest = async () => {
-        setLocalStorageItems();
+        changer.setChangerItems(selectedLanguage, darkMode);
         try {
             const data = await AuthService.loginAsGuest();
 
             if (data.success) {
                 navigate('/home');
-                console.log(username + ' felhasználó sikeresen bejelentkezett.')
+                console.log(username + ' felhasználó sikeresen bejelentkezett.');
             } else {
                 alert('Sikertelen bejelentkezés. Rossz felhasználónév vagy jelszó.');
-                console.log('Sikertelen bejelentkezés. Rossz felhasználónév vagy jelszó.')
+                console.log('Sikertelen bejelentkezés. Rossz felhasználónév vagy jelszó.');
             }
         } catch (error) {
             console.error('Login failed: ', error);
