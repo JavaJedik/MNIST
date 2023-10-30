@@ -83,10 +83,8 @@ const AuthService = {
       const response = await fetch(`${API_URL}/check/userToken`, {
         method: 'GET',
         headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${userToken}`,
-        },
-        body: JSON.stringify({})
+          'userToken': `${userToken}`
+        }
       });
 
       return await response.json();
