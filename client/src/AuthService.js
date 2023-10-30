@@ -80,21 +80,29 @@ const AuthService = {
     const userToken = localStorage.getItem('userToken');
 
     try {
-      const response = await fetch(`${API_URL}/check-logged-in`, {
-        method: 'POST',
+      const response = await fetch(`${API_URL}/check/userToken`, {
+        method: 'GET',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${userToken}`,
         },
-        body: JSON.stringify({
-          userToken
-        })
+        body: JSON.stringify({})
       });
 
       return await response.json();
-    } catch (error) {
-      console.error('Fetch error:', error);
-      throw new Error('Token check failed');
-    }
+
+      if (response.status === 200) {
+        const responseText = await response.text();
+        console.log('Válasz típusa:', typeof responseText);
+        console.log('Válasz tartalma:', responseText);
+      } else {
+        console.log('Nem kezelt státuszkód:', response.status);
+        throw new Error('No usertoken');
+      }
+      } catch (error) {
+        console.error('Fetch error:', error);
+        throw new Error('Token check failed');
+      }
   },
 
   checkUserToken: async () => {
