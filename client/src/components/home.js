@@ -81,15 +81,15 @@ const Home = () => {
 
             if (data.success) {
                 navigate('/leaderboard');
-                console.log('Ranglista megnyitása.')
+                console.log('Ranglista megnyitása.');
             } else {
                 alert('Ranglista megnyitása sikertelen.');
-                console.log('Ranglista megnyitása sikertelen.')
-                navigate('/login')
+                console.log('Ranglista megnyitása sikertelen.');
+                navigate('/login');
             }
         } catch (error) {
             console.error('Ranglista megnyitása sikertelen:', error);
-            navigate('/login')
+            navigate('/login');
         }
     };
 

@@ -5,5 +5,5 @@ export const changer = {
     setChangerItems : (language, darkMode) => {
         changer.language = language;
         changer.darkMode = darkMode;
-    }
+    },
 };

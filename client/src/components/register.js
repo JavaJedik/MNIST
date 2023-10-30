@@ -34,15 +34,15 @@ const Register = () => {
                 || password2 === null || password2 === ''
                 || selectedLanguageItem === null
                 || selectedGenderItem === null) {
-                throw new Error('Hiányzó adatok!')
+                throw new Error('Hiányzó adatok!');
             } else if (password1 !== password2) {
-                throw new Error('A jelszavak nem egyeznek!')
+                throw new Error('A jelszavak nem egyeznek!');
             } else {
-                await registerUser()
+                await registerUser();
             }
         } catch (error) {
-            console.error(error)
-            alert(error)
+            console.error(error);
+            alert(error);
         }
     }
 
@@ -56,17 +56,17 @@ const Register = () => {
                 selectedLanguageItem, selectedGenderItem);
 
             if (data.success) {
-                alert('Az adatok mentése sikeres!')
-                console.log('Az adatok mentése sikeres!')
-                navigate("/home")
+                alert('Az adatok mentése sikeres!');
+                console.log('Az adatok mentése sikeres!');
+                navigate("/home");
             } else {
-                alert('Az adatok mentése sikertelen!')
-                console.log('Az adatok mentése sikertelen!')
-                throw new Error('Az adatok mentése sikertelen!')
+                alert('Az adatok mentése sikertelen!');
+                console.log('Az adatok mentése sikertelen!');
+                throw new Error('Az adatok mentése sikertelen!');
             }
         } catch (error) {
-            console.error(error)
-            alert(error)
+            console.error(error);
+            alert(error);
         }
     }
 
