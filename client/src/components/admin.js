@@ -10,6 +10,7 @@ const Admin = () => {
     const navigate = useNavigate();
     const [answer, setText] = useState('');
     const [pic, setPicture] = useState(null);
+    const [picByteArray, setPicByteArray] = useState(null);
 
     const [darkMode, setDarkMode] = useState(changer.darkMode);
     const [selectedLanguage, setSelectedLanguage] = useState(changer.language);
@@ -20,6 +21,23 @@ const Admin = () => {
         //localStorage.removeItem('userToken');
         changer.setChangerItems(selectedLanguage, darkMode);
         navigate("/login");
+    };
+
+    const handleFileChange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+
+            reader.onload = (e) => {
+                const arrayBuffer = e.target.result;
+                const byteArray = new Uint8Array(arrayBuffer);
+
+                setPicByteArray(byteArray);
+            };
+
+            reader.readAsArrayBuffer(file);
+            setPicture(e.target.value);
+        }
     };
 
     return (
@@ -47,9 +65,8 @@ const Admin = () => {
                     className={`file-upload file-upload-clickable ${darkMode ? "dark-input-field" : ""}`}
                     type="file"
                     accept=".png, .jpg, .jpeg, .svg, .gif"
-                    value={pic}
                     placeholder="file"
-                    onChange={(e) => setPicture(e.target.value)}
+                    onChange={handleFileChange}
                     id="file_uploader"
                 />
 
@@ -68,7 +85,7 @@ const Admin = () => {
                 <div>
                     <button
                         className={`home-button-style ${darkMode ? "dark-button-style" : ""}`}
-                        onClick={() => authService.sendPicture(pic, answer)}
+                        onClick={() => authService.sendPicture(picByteArray, answer)}
                     >
                         {text.upload}
                     </button>

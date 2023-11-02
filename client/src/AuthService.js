@@ -195,9 +195,11 @@ const AuthService = {
 
     console.log("átment a kép");
 
+    console.log("Az elküldött kép byte tömbje: ", pic)
+    console.log("Az elküldött válasz: ", answer)
+
     const formData = new FormData();
     formData.append("image", pic);
-    
     formData.append("character", answer);
 
     fetch(`${API_URL}/upload_picture`, {
