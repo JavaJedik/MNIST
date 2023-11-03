@@ -66,4 +66,14 @@ public class SqlQ
     {
         return "select player_id from registered_player where name = ? limit 1";
     }
+    
+    public static final String insertFragmentSql()
+    {
+        return "insert into picture_bin_fragments (picture_id, fragment_bin, fragment_number) values (?, ?, ?)";
+    }
+    
+    public static final String insertLastFragmentSql()
+    {
+        return "insert into picture_last_fragment (picture_bin_fragment_picture_id, last_fragment_valid_bytes) values (?, ?)";
+    }
 }
