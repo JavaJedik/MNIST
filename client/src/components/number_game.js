@@ -9,6 +9,8 @@ const Number_Game = () => {
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
 
+    const imagePath = "./placeholder.png"
+
     const [darkMode, setDarkMode] = useState(changer.darkMode);
     const [selectedLanguage, setSelectedLanguage] = useState(changer.language);
 
@@ -99,8 +101,7 @@ const Number_Game = () => {
                 <div className={`classname ${darkMode ? "dark" : ""}`} />
 
                 <div className="game-left-container">
-                    <div className="image">
-                    </div>
+                    <img className="image" src={require(`${imagePath}`)} alt="A kép betöltése sikertelen." />
                 </div>
                 <div className="game-right-container">
                     <div className={`game-blur-container ${darkMode ? "dark-blur-container" : ""}`}/>
