@@ -26,9 +26,11 @@ public class UploadController
     @PostMapping("/picture")
     public ResponseEntity<String> uploadPicture(
             @RequestHeader("userToken") String userToken,
+            @RequestHeader("pictureAnswers") String pictureAnswers, // Have to convert to JSON!!!
             @RequestBody byte[] binaryData)
     {   
         logger.info("Egy userToken és byte[] érkezett, validáció megkezdése...");
+        logger.info("A kép válaszának adatai: " + pictureAnswers);
         
         final int player_id = UserTokenUtil.getPlayerId(userToken);
         
