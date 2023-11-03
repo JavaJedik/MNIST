@@ -208,14 +208,13 @@ const AuthService = {
             }
         ];
 
-        fetch(`${API_URL}/picture/upload`, {
+        fetch(`${API_URL}/upload/picture`, {
             method: "POST",
             headers: {
                 'userToken': `${userToken}`,
-                'pictureAnswer': `${JSON.stringify(pictureAnswerObject)}`,
-                'Content-Type': 'application/json'
+                //'pictureAnswer': `${JSON.stringify(pictureAnswerObject)}`
             },
-            body: JSON.stringify(pic),
+            body: pic
         })
 			.then((response) => {
 				if (response.ok) {

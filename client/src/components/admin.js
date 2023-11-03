@@ -15,6 +15,8 @@ const Admin = () => {
     const [darkMode, setDarkMode] = useState(changer.darkMode);
     const [selectedLanguage, setSelectedLanguage] = useState(changer.language);
 
+    const token = localStorage.getItem('userToken');
+
     const text = content[selectedLanguage];
 
     const navigateLogin = () => {
@@ -86,7 +88,7 @@ const Admin = () => {
                     <button
                         className={`home-button-style ${darkMode ? "dark-button-style" : ""}`}
                         onClick={() => authService.sendPicture(
-                            "placeholder", picByteArray, answer, "number", 1)}
+                            token, picByteArray, answer, "number", 1)}
                     >
                         {text.upload}
                     </button>
