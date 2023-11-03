@@ -32,6 +32,7 @@ const Register = () => {
                 || email === null || email === ''
                 || password1 === null || password1 === ''
                 || password2 === null || password2 === ''
+                || selectedLanguageItem === null
                 || selectedGenderItem === null) {
                 throw new Error('Hiányzó adatok!');
             } else if (password1 !== password2) {
@@ -52,7 +53,7 @@ const Register = () => {
             console.log(country)*/
 
             const data = await AuthService.registerUser(username, email, password1,
-                "magyar", selectedGenderItem);
+                selectedLanguageItem, selectedGenderItem);
 
             if (data.success) {
                 alert('Az adatok mentése sikeres!');
@@ -70,6 +71,11 @@ const Register = () => {
     }
 
     const handleLanguageDropdownItemClick = (language) => {
+        if(language === "HUN") {
+            setSelectedLanguageItem("magyar");
+        } else if(language === "ENG") {
+            setSelectedLanguageItem("angol");
+        }
         setSelectedLanguage(language);
         handleGenderDropdownItemClick(); //kitörli a másik nyelvű értéket
         setIsDropdownOpenLanguage(false);
