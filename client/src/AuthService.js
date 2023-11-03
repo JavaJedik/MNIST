@@ -195,8 +195,7 @@ const AuthService = {
             return;
         }
 
-        console.log("átment a kép");
-
+        console.log("Kép betöltése sikeres!");
         console.log("Az elküldött kép byte tömbje: ", pic)
         console.log("Az elküldött válasz: ", picture_answer_answer)
 
@@ -208,11 +207,17 @@ const AuthService = {
             }
         ];
 
+        console.log(typeof pictureAnswerObject)
+        console.log(pic.length)
+
+        /*let alma = JSON.stringify(pictureAnswerObject)
+        console.log(typeof alma)*/
+
         fetch(`${API_URL}/upload/picture`, {
             method: "POST",
             headers: {
                 'userToken': `${userToken}`,
-                //'pictureAnswer': `${JSON.stringify(pictureAnswerObject)}`
+                'pictureAnswers': `${JSON.stringify(pictureAnswerObject)}`
             },
             body: pic
         })
