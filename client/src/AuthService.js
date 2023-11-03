@@ -202,7 +202,7 @@ const AuthService = {
     formData.append("image", pic);
     formData.append("character", answer);
 
-    fetch(`${API_URL}/upload_picture`, {
+    fetch(`${API_URL}/picture/upload`, {
       method: "POST",
       body: formData,
     })
