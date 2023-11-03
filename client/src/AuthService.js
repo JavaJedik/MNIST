@@ -26,6 +26,7 @@ const AuthService = {
         console.log('Válasz tartalma:', responseText);
 
         // Adjunk vissza egy JSON objektumot a válaszból
+        localStorage.setItem('userToken', responseText);
         return {success: true, userToken: responseText};
       } else if (response.status === 401) {
         // Ha a státuszkód 401 Unauthorized, nincs válasz
@@ -160,6 +161,7 @@ const AuthService = {
         console.log('Válasz típusa:', typeof responseText);
         console.log('Válasz tartalma:', responseText);
 
+        localStorage.setItem('userToken', responseText);
         return { success: true, userToken: responseText };
       } else if (response.status === 409) {
         console.log('Nincs válasz a státuszkód 409 esetén.');
