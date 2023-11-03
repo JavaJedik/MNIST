@@ -5,27 +5,37 @@
 package javajedik.main.service.imp;
 
 import javajedik.main.model.ByteFragments;
-import javajedik.main.service.UploadPictureService;
 import javajedik.main.sql.PictureHandlerSQL;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import javajedik.main.service.PictureUploadHandlerService;
 
 @Service
-public class UploadPictureServiceImp implements UploadPictureService 
+public class PictureUploadHandlerServiceImp implements PictureUploadHandlerService 
 {
-    private static final Logger logger = LogManager.getLogger(UploadPictureService.class);
+    private static final Logger logger = LogManager.getLogger(PictureUploadHandlerService.class);
     
     @Autowired
     private PictureHandlerSQL pictureHandlerSQL;
 
     @Override
-    public boolean storePNG(byte[] pngBytes) 
+    public int storePNG(byte[] pngBytes) 
     {
         ByteFragments byteFragments = new ByteFragments(pngBytes, 255);
         
-        return pictureHandlerSQL.storePicture(byteFragments);
+        final int picture_id = pictureHandlerSQL.storePicture(byteFragments);
+        
+        if(picture_id == -1)
+        {
+            logger.warn("Kép beszúrása sikertelen... -1 visszaadása");
+            return -1;
+        } else
+        {
+            logger.info("Kép beszúrása sikeres, picture_id: " + picture_id);
+            return picture_id;
+        }
     }
     
 }

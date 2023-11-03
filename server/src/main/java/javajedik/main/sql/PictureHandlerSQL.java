@@ -90,7 +90,7 @@ public class PictureHandlerSQL
         }
     }
     
-    public boolean storePicture(ByteFragments byteFragments)
+    public int storePicture(ByteFragments byteFragments)
     {
         TransactionStatus status = transactionManager.getTransaction(new DefaultTransactionDefinition());
         
@@ -100,18 +100,18 @@ public class PictureHandlerSQL
         {
             logger.warn("Kép beszúrása sikertelen, tranzakció visszavonása...");
             transactionManager.rollback(status);
-            return false;
+            return -1;
         }
         
         if(!storeFragments(picture_id, byteFragments))
         {
             logger.warn("Fragmentek beszúrása közben hiba lépett fel, tranzakció visszavonása...");
             transactionManager.rollback(status);
-            return false;
+            return -1;
         }
         
         logger.info("Kép és fragmentek beszúrása  sikeres, tranzakció mentése...");
         transactionManager.commit(status);
-        return true;    
+        return picture_id;    
     }
 }

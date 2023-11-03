@@ -8,7 +8,7 @@ package javajedik.main.service;
  *
  * @author admin1
  */
-public interface UploadPictureService 
+public interface PictureUploadHandlerService 
 {
-    public boolean storePNG(byte[] pngBytes);
+    public int storePNG(byte[] pngBytes);
 }

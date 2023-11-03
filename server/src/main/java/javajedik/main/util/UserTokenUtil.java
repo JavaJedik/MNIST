@@ -12,6 +12,7 @@ import io.jsonwebtoken.security.WeakKeyException;
 import javax.crypto.SecretKey;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.util.Map;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -62,5 +63,34 @@ public class UserTokenUtil
             logger.error("UserToken is invalid: " + userToken);
             return -1;
         }
+    }
+    
+    public static String getPlayerRole(String userToken) 
+    {
+        int playerId = getPlayerId(userToken);
+
+        if (playerId != -1) 
+        {
+            try 
+            {
+                String sql = "SELECT pr.name " +
+                             "FROM player p " +
+                             "JOIN player_role pr ON p.player_role_id = pr.id " +
+                             "WHERE p.id = ?";
+
+                Map<String, Object> result = StaticJdbcUtil.select(sql, playerId);
+
+                if (result.containsKey("name")) 
+                {
+                    return result.get("name").toString();
+                }
+            } 
+            catch (Exception e) 
+            {
+                logger.error("Hiba történt a szerep megszerzésekor: " + e.getMessage());
+            }
+        }
+        
+        return "";
     }
 }

@@ -24,7 +24,7 @@ public class RegistrateServiceImp implements RegistrateService
     @Override
     public int registratePlayer(RegistrateData registrateData) 
     {
-        int player_id = registratePlayerSQL.tryToRegistratePlayer(registrateData);
+        final int player_id = registratePlayerSQL.tryToRegistratePlayer(registrateData);
         
         if(player_id == -1)
         {

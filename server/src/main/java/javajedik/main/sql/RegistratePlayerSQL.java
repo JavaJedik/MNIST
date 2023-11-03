@@ -141,7 +141,7 @@ public class RegistratePlayerSQL
     public int tryToRegistratePlayer(RegistrateData registrateData)
     {
         logger.info("Játékos regisztrálásának megkezdése az adatbázisban. Adatok:\n" + registrateData.toString());
-        int player_id;
+        final int player_id;
         EmailParts emailParts = EmailUtil.splitEmail(registrateData.getEmail());
         if(emailParts == null)
         {

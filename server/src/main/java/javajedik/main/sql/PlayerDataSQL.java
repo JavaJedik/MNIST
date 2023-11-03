@@ -21,7 +21,7 @@ public class PlayerDataSQL
 
         try 
         {
-            int playerId = jdbcTemplate.queryForObject(query, new Object[]{playerName}, Integer.class);
+            final int playerId = jdbcTemplate.queryForObject(query, new Object[]{playerName}, Integer.class);
             logger.info("A név és player_id -> " + playerName + " : " + playerId);
             return playerId;
         } 
