@@ -2,222 +2,231 @@ const API_URL = 'https://mnist-server.serveo.net';
 
 const AuthService = {
 
-  login: async (username, password) => {
-    try {
-      // Elküldjük a kérést és kiírjuk a küldött adatokat
-      const requestData = {
-        username,
-        password
-      };
-      console.log('Küldött adatok:', requestData);
+    login: async (username, password) => {
+        try {
+            // Elküldjük a kérést és kiírjuk a küldött adatokat
+            const requestData = {
+                username,
+                password
+            };
+            console.log('Küldött adatok:', requestData);
 
-      const response = await fetch(`${API_URL}/login`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(requestData)
-      });
+            const response = await fetch(`${API_URL}/login`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(requestData)
+            });
 
-      if (response.status === 200) {
-        // Ha a státuszkód 200 OK, olvassuk el a választ szövegként
-        const responseText = await response.text();
-        console.log('Válasz típusa:', typeof responseText);
-        console.log('Válasz tartalma:', responseText);
+            if (response.status === 200) {
+                // Ha a státuszkód 200 OK, olvassuk el a választ szövegként
+                const responseText = await response.text();
+                console.log('Válasz típusa:', typeof responseText);
+                console.log('Válasz tartalma:', responseText);
 
-        // Adjunk vissza egy JSON objektumot a válaszból
-        localStorage.setItem('userToken', responseText);
-        return {success: true, userToken: responseText};
-      } else if (response.status === 401) {
-        // Ha a státuszkód 401 Unauthorized, nincs válasz
-        console.log('Nincs válasz a státuszkód 401 esetén.');
+                // Adjunk vissza egy JSON objektumot a válaszból
+                localStorage.setItem('userToken', responseText);
+                return {success: true, userToken: responseText};
+            } else if (response.status === 401) {
+                // Ha a státuszkód 401 Unauthorized, nincs válasz
+                console.log('Nincs válasz a státuszkód 401 esetén.');
 
-        // Adjunk vissza egy JSON objektumot a válaszból
-        return {success: false, userToken: ''};
-      } else {
-        // Egyéb státuszkódok esetén
-        console.log('Nem kezelt státuszkód:', response.status);
-        throw new Error('Login failed');
-      }
-    } catch (error) {
-      console.error('Fetch error:', error);
-      throw new Error('Login failed');
-    }
-  },
-
-  loginAsGuest: async () => {
-    try {
-      const response = await fetch(`${API_URL}/login`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({})
-      });
-
-      console.log(response)
-
-      if (response.status === 200) {
-        const responseText = await response.text();
-        console.log('Válasz típusa:', typeof responseText);
-        console.log('Válasz tartalma:', responseText);
-
-        return {success: true, userToken: responseText};
-      } else if (response.status === 403) {
-        console.log('Nincs válasz a státuszkód 403 (Forbidden) esetén.');
-
-        return {success: false, userToken: ''};
-      } else {
-        console.log('Nem kezelt státuszkód:', response.status);
-        throw new Error('Login failed');
-      }
-    } catch (error) {
-      console.error('Fetch error:', error);
-      throw new Error('Login failed');
-    }
-  },
-
-  checkLoggedIn: async () => {
-    const userToken = localStorage.getItem('userToken');
-
-    try {
-      const response = await fetch(`${API_URL}/check/userToken`, {
-        method: 'GET',
-        headers: {
-          'userToken': `${userToken}`
+                // Adjunk vissza egy JSON objektumot a válaszból
+                return {success: false, userToken: ''};
+            } else {
+                // Egyéb státuszkódok esetén
+                console.log('Nem kezelt státuszkód:', response.status);
+                throw new Error('Login failed');
+            }
+        } catch (error) {
+            console.error('Fetch error:', error);
+            throw new Error('Login failed');
         }
-      });
+    },
 
-      return await response.json();
+    loginAsGuest: async () => {
+        try {
+            const response = await fetch(`${API_URL}/login`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({})
+            });
 
-      if (response.status === 200) {
-        const responseText = await response.text();
-        console.log('Válasz típusa:', typeof responseText);
-        console.log('Válasz tartalma:', responseText);
-      } else {
-        console.log('Nem kezelt státuszkód:', response.status);
-        throw new Error('No usertoken');
-      }
-      } catch (error) {
-        console.error('Fetch error:', error);
-        throw new Error('Token check failed');
-      }
-  },
+            console.log(response)
 
-  checkUserToken: async () => {
-    try {
-      const response = await fetch(`${API_URL}/check_usertoken`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({})
-      });
+            if (response.status === 200) {
+                const responseText = await response.text();
+                console.log('Válasz típusa:', typeof responseText);
+                console.log('Válasz tartalma:', responseText);
 
-      console.log(response)
+                return {success: true, userToken: responseText};
+            } else if (response.status === 403) {
+                console.log('Nincs válasz a státuszkód 403 (Forbidden) esetén.');
 
-      if (response.status === 200) {
-        const responseText = await response.text();
-        console.log('Válasz típusa:', typeof responseText);
-        console.log('Válasz tartalma:', responseText);
+                return {success: false, userToken: ''};
+            } else {
+                console.log('Nem kezelt státuszkód:', response.status);
+                throw new Error('Login failed');
+            }
+        } catch (error) {
+            console.error('Fetch error:', error);
+            throw new Error('Login failed');
+        }
+    },
 
-        return {success: true, userToken: responseText};
-      } else if (response.status === 403) {
-        console.log('Nincs válasz a státuszkód 403 (Forbidden) esetén.');
+    checkLoggedIn: async () => {
+        const userToken = localStorage.getItem('userToken');
 
-        return {success: false, userToken: ''};
-      } else {
-        console.log('Nem kezelt státuszkód:', response.status);
-        throw new Error('Login failed');
-      }
-    } catch (error) {
-      console.error('Fetch error:', error);
-      throw new Error('Login failed');
-    }
-  },
+        try {
+            const response = await fetch(`${API_URL}/check/userToken`, {
+                method: 'GET',
+                headers: {
+                    'userToken': `${userToken}`
+                }
+            });
 
-  registerUser: async (username, email, password, language, gender) => {
-    try {
-      const requestData = {
-        username,
-        email,
-        password,
-        language,
-        gender
-      };
+            return await response.json();
 
-      console.log('Küldött adatok:', requestData);
+            if (response.status === 200) {
+                const responseText = await response.text();
+                console.log('Válasz típusa:', typeof responseText);
+                console.log('Válasz tartalma:', responseText);
+            } else {
+                console.log('Nem kezelt státuszkód:', response.status);
+                throw new Error('No usertoken');
+            }
+        } catch (error) {
+            console.error('Fetch error:', error);
+            throw new Error('Token check failed');
+        }
+    },
 
-      const response = await fetch(`${API_URL}/registrate`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(requestData)
-      });
+    checkUserToken: async () => {
+        try {
+            const response = await fetch(`${API_URL}/check_usertoken`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({})
+            });
 
-      if (response.status === 200) {
-        const responseText = await response.text();
-        console.log('Válasz típusa:', typeof responseText);
-        console.log('Válasz tartalma:', responseText);
+            console.log(response)
 
-        localStorage.setItem('userToken', responseText);
-        return { success: true, userToken: responseText };
-      } else if (response.status === 409) {
-        console.log('Nincs válasz a státuszkód 409 esetén.');
+            if (response.status === 200) {
+                const responseText = await response.text();
+                console.log('Válasz típusa:', typeof responseText);
+                console.log('Válasz tartalma:', responseText);
 
-        return { success: false, userToken: '' };
-      } else {
-        console.log('Nem kezelt státuszkód:', response.status);
-        throw new Error('Registration failed.');
-      }
-    } catch (error) {
-      console.error('Fetch error:', error);
-      throw new Error('Registration failed.');
-    }
-  },
+                return {success: true, userToken: responseText};
+            } else if (response.status === 403) {
+                console.log('Nincs válasz a státuszkód 403 (Forbidden) esetén.');
 
-  //const pic = 0;
-  //const answer = '';
+                return {success: false, userToken: ''};
+            } else {
+                console.log('Nem kezelt státuszkód:', response.status);
+                throw new Error('Login failed');
+            }
+        } catch (error) {
+            console.error('Fetch error:', error);
+            throw new Error('Login failed');
+        }
+    },
 
-  sendPicture: (pic, answer) => {
-    let breakFunction = false
+    registerUser: async (username, email, password, language, gender) => {
+        try {
+            const requestData = {
+                username,
+                email,
+                password,
+                language,
+                gender
+            };
 
-    if (!pic) {
-      alert("Please select a file before uploading.");
-      breakFunction = true;
-    }
-    if(answer === '') {
-      alert("Please declare the answer for the picture.");
-      breakFunction = true;
-    }
-    if(breakFunction) {
-      return;
-    }
+            console.log('Küldött adatok:', requestData);
 
-    console.log("átment a kép");
+            const response = await fetch(`${API_URL}/registrate`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(requestData)
+            });
 
-    console.log("Az elküldött kép byte tömbje: ", pic)
-    console.log("Az elküldött válasz: ", answer)
+            if (response.status === 200) {
+                const responseText = await response.text();
+                console.log('Válasz típusa:', typeof responseText);
+                console.log('Válasz tartalma:', responseText);
 
-    const formData = new FormData();
-    formData.append("image", pic);
-    formData.append("character", answer);
+                localStorage.setItem('userToken', responseText);
+                return { success: true, userToken: responseText };
+            } else if (response.status === 409) {
+                console.log('Nincs válasz a státuszkód 409 esetén.');
 
-    fetch(`${API_URL}/picture/upload`, {
-      method: "POST",
-      body: formData,
-    })
-        .then((response) => {
-          if (response.ok) {
-            alert("File uploaded successfully.");
-          } else {
-            alert("File upload failed.");
-          }
+                return { success: false, userToken: '' };
+            } else {
+                console.log('Nem kezelt státuszkód:', response.status);
+                throw new Error('Registration failed.');
+            }
+        } catch (error) {
+            console.error('Fetch error:', error);
+            throw new Error('Registration failed.');
+        }
+    },
+
+    //const pic = 0;
+    //const answer = '';
+
+    sendPicture: (userToken, pic, picture_answer_answer, picture_answer_type, probability) => {
+        let breakFunction = false
+
+        if (!pic) {
+            alert("Please select a file before uploading.");
+            breakFunction = true;
+        }
+        if(picture_answer_answer === '') {
+            alert("Please declare the answer for the picture.");
+            breakFunction = true;
+        }
+        if(breakFunction) {
+            return;
+        }
+
+        console.log("átment a kép");
+
+        console.log("Az elküldött kép byte tömbje: ", pic)
+        console.log("Az elküldött válasz: ", picture_answer_answer)
+
+        const pictureAnswerObject = [
+            {
+                picture_answer_type,
+                picture_answer_answer,
+                probability
+            }
+        ];
+
+        fetch(`${API_URL}/picture/upload`, {
+            method: "POST",
+            headers: {
+                'userToken': `${userToken}`,
+                'pictureAnswer': `${JSON.stringify(pictureAnswerObject)}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(pic),
         })
-        .catch((error) => {
-          console.error("Error:", error);
-        });
-  }
+			.then((response) => {
+				if (response.ok) {
+					alert("File uploaded successfully.");
+				} else {
+					alert("File upload failed.");
+				}
+			})
+			.catch((error) => {
+			console.error("Error:", error);
+			});
+    }
 };
 export default AuthService;
