@@ -11,6 +11,8 @@ const Number_Game = () => {
     const [numAnswers, setNumAnswers] = useState(3);
     const maxNumber = 30;
 
+    const imagePath = "./placeholder.png"
+
     const [darkMode, setDarkMode] = useState(changer.darkMode);
     const [selectedLanguage, setSelectedLanguage] = useState(changer.language);
 
@@ -59,7 +61,7 @@ const Number_Game = () => {
                 <div className={`classname ${darkMode ? "dark" : ""}`} />
 
                 <div className="game-left-container">
-                    <div className="image" />
+                    <img className="image" src={require(`${imagePath}`)} alt="A kép betöltése sikertelen." />
 
                     <div className={`slider-container ${darkMode ? "dark-blur-container" : ""}`}>
                         <div className={`slider-text ${darkMode ? "dark-text" : ""}`}>
