@@ -76,4 +76,9 @@ public class SqlQ
     {
         return "insert into player_game (player_id) values (?)";
     }
+    
+    public static final String insertGuestPlayer()
+    {
+        return "insert into guest_player (player_id) values (?)";
+    }
 }
