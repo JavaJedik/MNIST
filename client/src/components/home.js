@@ -6,7 +6,7 @@ import { changer } from "./changer";
 import AuthService from '../AuthService';
 
 const Home = () => {
-    //const token = localStorage.getItem('userToken');
+    const userToken = localStorage.getItem('userToken');
     const navigate = useNavigate();
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [darkMode, setDarkMode] = useState(changer.darkMode);
@@ -38,7 +38,12 @@ const Home = () => {
 
     const navigateNumberGame = () => {
         changer.setChangerItems(selectedLanguage, darkMode);
-        navigate("/number_game");
+
+        if(AuthService.checkForGameToken(userToken) === "game") {
+            navigate("/number_game");
+        } else {
+            navigate("/login");
+        }
     };
 
     /*const navigateQuiz = async () => {
