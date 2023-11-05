@@ -4,7 +4,6 @@
  */
 package javajedik.main.service.imp;
 
-import javajedik.main.model.ByteFragments;
 import javajedik.main.sql.PictureHandlerSQL;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -22,10 +21,8 @@ public class PictureUploadHandlerServiceImp implements PictureUploadHandlerServi
 
     @Override
     public int storePNG(byte[] pngBytes) 
-    {
-        ByteFragments byteFragments = new ByteFragments(pngBytes, 255);
-        
-        final int picture_id = pictureHandlerSQL.storePicture(byteFragments);
+    {   
+        final int picture_id = pictureHandlerSQL.storePicture(pngBytes);
         
         if(picture_id == -1)
         {

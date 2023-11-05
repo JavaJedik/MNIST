@@ -1,0 +1,8 @@
+/home/kecyke2/NetBeansProjects/restapp/restapp/src/main/java/hu/unideb/hu/controller/RestExample.java
+/home/kecyke2/NetBeansProjects/restapp/restapp/src/main/java/hu/unideb/hu/service/mapper/CarMapper.java
+/home/kecyke2/NetBeansProjects/restapp/restapp/src/main/java/hu/unideb/hu/repository/CarRepository.java
+/home/kecyke2/NetBeansProjects/restapp/restapp/src/main/java/hu/unideb/hu/service/CarService.java
+/home/kecyke2/NetBeansProjects/restapp/restapp/src/main/java/hu/unideb/hu/dto/CarDto.java
+/home/kecyke2/NetBeansProjects/restapp/restapp/src/main/java/hu/unideb/hu/service/impl/CarServiceImpl.java
+/home/kecyke2/NetBeansProjects/restapp/restapp/src/main/java/hu/unideb/hu/model/Car.java
+/home/kecyke2/NetBeansProjects/restapp/restapp/src/main/java/hu/unideb/hu/Main.java

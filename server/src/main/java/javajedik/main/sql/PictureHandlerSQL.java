@@ -5,7 +5,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
-import javajedik.main.model.ByteFragments;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,28 +50,20 @@ public class PictureHandlerSQL
         }
     }
     
-    private void storeFragments(int picture_id, ByteFragments byteFragments) throws Exception
+    private void storeFragments(int picture_id, byte[] pictureBytes) throws Exception
     {
         List<CompletableFuture<Void>> fragmentFutures = new ArrayList<>();
 
         final String insertFragmentSql = SqlQ.insertFragmentSql();
         
-        logger.info("Felkészülés a fragmentek beszúrása. A picture_id: " + picture_id);
+        logger.info("Felkészülés a kép binárisának beszúrása. A picture_id: " + picture_id);
         
+        jdbcTemplate.update(insertFragmentSql, picture_id, pictureBytes);
 
-        for (int i = 0; i < byteFragments.getNumberOfFragments(); i++) 
-        {
-            int fragmentIndex = i;
-            jdbcTemplate.update(insertFragmentSql, picture_id, byteFragments.getNthFragment(fragmentIndex), fragmentIndex);
-        }
-
-        final String insertLastFragmentSql = SqlQ.insertLastFragmentSql();
-        jdbcTemplate.update(insertLastFragmentSql, picture_id, byteFragments.getLastFragmentValidLength());
-
-        logger.info("Fragmentek beszúrása sikeres. A picture_id: " + picture_id);
+        logger.info("A bináris beszúrása sikeres. A picture_id: " + picture_id);
     }
     
-    public int storePicture(ByteFragments byteFragments)
+    public int storePicture(byte[] pictureBytes)
     {
         TransactionStatus status = transactionManager.getTransaction(new DefaultTransactionDefinition());
         
@@ -87,7 +78,7 @@ public class PictureHandlerSQL
         
         try
         {
-            storeFragments(picture_id, byteFragments);
+            storeFragments(picture_id, pictureBytes);
         } catch (Exception e)
         {
             logger.warn("Fragmentek beszúrása közben hiba lépett fel, tranzakció visszavonása...");
