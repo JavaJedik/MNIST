@@ -47,12 +47,11 @@ const AuthService = {
 
     loginAsGuest: async () => {
         try {
-            const response = await fetch(`${API_URL}/login`, {
-                method: 'POST',
+            const response = await fetch(`${API_URL}/registrate/guest`, {
+                method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({})
             });
 
             console.log(response)
