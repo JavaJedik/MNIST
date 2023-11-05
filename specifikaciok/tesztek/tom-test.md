@@ -243,3 +243,9 @@ A szerver válasza két részből állt. Először egy "101 Switching Protocols"
 Az összefoglalóban elmondható, hogy a kérés HTTP/2 protokollon keresztül történt, és a "userToken" fejléc is sikeresen elküldésre került a szervernek. A szerver válasza sikeres volt, és nem tartalmazott tartalmat a válasz testében.
 
 A HTTP/2 sok előnnyel rendelkezik a HTTP/1.1-el szemben, például az egyetlen TCP kapcsolatokon keresztül több kérés és válasz kezelésének képessége, fejléc mezők tömörítése, prioritáskezelés és sok más hatékonyságot növelő funkció. Azonban a HTTP/2 fő célja a hatékonyság, és nem befolyásolja az alkalmazások által használt adatok típusát.
+
+## Teszt 43
+
+Képek feltöltése
+
+![](../kepek/teszt/tomi/t10.png)
