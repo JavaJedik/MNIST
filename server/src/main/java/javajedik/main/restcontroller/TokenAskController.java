@@ -44,6 +44,7 @@ public class TokenAskController
             return ResponseEntity.status(HttpStatus.INSUFFICIENT_STORAGE).body("Hiba lépett fel a játék regisztrálása során");
         }
         
-        return ResponseEntity.status(HttpStatus.OK).body(game_id + "");
+        logger.info("Játékkérelem elfogadva, játéktoken küldése... A player_id: " + player_id);
+        return ResponseEntity.status(HttpStatus.OK).body(GameTokenUtil.generateToken(game_id));
     }
 }

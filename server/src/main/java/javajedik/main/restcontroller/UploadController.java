@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import javajedik.main.service.PictureUploadHandlerService;
 import javajedik.main.util.UserTokenUtil;
 import org.springframework.web.bind.annotation.RequestHeader;
+import javajedik.main.service.PictureHandlerService;
 
 @RestController
 @RequestMapping("/upload")
@@ -21,7 +21,7 @@ public class UploadController
     private static final Logger logger = LogManager.getLogger(UploadController.class);
     
     @Autowired
-    private PictureUploadHandlerService uploadPictureService;
+    private PictureHandlerService uploadPictureService;
     
     @PostMapping("/picture")
     public ResponseEntity<String> uploadPicture(

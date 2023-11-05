@@ -5,6 +5,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
+import javajedik.main.model.PictureData;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -88,5 +89,32 @@ public class PictureHandlerSQL
         logger.info("Kép és fragment beszúrása  sikeres, tranzakció mentése...");
         transactionManager.commit(status);
         return picture_id;    
+    }
+    
+    public List<PictureData> getNumberPicture(int askedPictures) 
+    {
+        final String selectSql = "SELECT picture_id, bin_data FROM picture_bin_data LIMIT ?";
+
+        List<PictureData> result = jdbcTemplate.query
+        (
+            selectSql,
+            new Object[]{askedPictures},
+            (rs, rowNum) -> 
+            {
+                int pictureId = rs.getInt("picture_id");
+                byte[] binData = rs.getBytes("bin_data");
+                return new PictureData(pictureId, binData);
+            }
+        );
+
+        if(result.isEmpty() || result == null)
+        {
+            logger.warn("Nem sikerült képet szerezni az adatbázisból");
+        } else
+        {
+            logger.info("Sikerült képeket szerezni az adatbázisból");
+        }
+        
+        return result;
     }
 }
