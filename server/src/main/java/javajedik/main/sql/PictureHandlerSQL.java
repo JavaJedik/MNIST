@@ -52,7 +52,6 @@ public class PictureHandlerSQL
     
     private void storeFragments(int picture_id, byte[] pictureBytes) throws Exception
     {
-        List<CompletableFuture<Void>> fragmentFutures = new ArrayList<>();
 
         final String insertFragmentSql = SqlQ.insertFragmentSql();
         
@@ -81,12 +80,12 @@ public class PictureHandlerSQL
             storeFragments(picture_id, pictureBytes);
         } catch (Exception e)
         {
-            logger.warn("Fragmentek beszúrása közben hiba lépett fel, tranzakció visszavonása...");
+            logger.warn("Fragment beszúrása közben hiba lépett fel, tranzakció visszavonása...");
             transactionManager.rollback(status);
             return -1;
         }
         
-        logger.info("Kép és fragmentek beszúrása  sikeres, tranzakció mentése...");
+        logger.info("Kép és fragment beszúrása  sikeres, tranzakció mentése...");
         transactionManager.commit(status);
         return picture_id;    
     }

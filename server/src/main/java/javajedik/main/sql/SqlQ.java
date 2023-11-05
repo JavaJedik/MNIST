@@ -71,4 +71,9 @@ public class SqlQ
     {
         return "insert into picture_bin_data(picture_id, bin_data) values (?, ?)";
     }
+    
+    public static final String insertNewGame()
+    {
+        return "insert into player_game (player_id) values (?)";
+    }
 }
