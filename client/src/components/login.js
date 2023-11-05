@@ -10,8 +10,17 @@ const Login = () => {
     const [password, setPassword] = useState('');
     const [darkMode, setDarkMode] = useState(changer.darkMode);
     const navigate = useNavigate();
-    const selectedLanguage = changer.language;
+    const [selectedLanguage, setSelectedLanguage] = useState(changer.language);
     const text = content[selectedLanguage];
+
+    const languageChange = () => {
+        if(selectedLanguage === "HUN") {
+            setSelectedLanguage("ENG");
+        }
+        else if(selectedLanguage === "ENG") {
+            setSelectedLanguage("HUN");
+        }
+    }
 
     const navigateHome = async () => {
         changer.setChangerItems(selectedLanguage, darkMode);
@@ -65,6 +74,11 @@ const Login = () => {
                 />
                     <span className={`slider round ${darkMode ? "dark-slider" : ""}`} />
             </label>
+
+            <div
+                className="language-changer"
+                onClick={() => languageChange()}
+            />
 
             <div className={`classname ${darkMode ? "dark" : ""}`} />
 
