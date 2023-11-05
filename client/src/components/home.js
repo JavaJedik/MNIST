@@ -36,10 +36,12 @@ const Home = () => {
         navigate("/login");
     };
 
-    const navigateNumberGame = () => {
+    const navigateNumberGame = async () => {
         changer.setChangerItems(selectedLanguage, darkMode);
-        AuthService.checkForGameToken(userToken);
-        if(localStorage.getItem("userToken") !== "") {
+        const gameToken = await AuthService.checkForGameToken(userToken);
+        console.log("success: " + gameToken.success);
+        if(gameToken.success) {
+            console.log("gameToken success volt");
             navigate("/number_game");
         } else {
             navigate("/login");

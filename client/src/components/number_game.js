@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import "./styles.css"
 import { content } from "./contents/number_gameContent";
 import { changer } from "./changer";
+import AuthService from "../AuthService";
 
 const Number_Game = () => {
     const [username, setUsername] = useState('');
@@ -15,6 +16,8 @@ const Number_Game = () => {
     const [selectedLanguage, setSelectedLanguage] = useState(changer.language);
 
     const text = content[selectedLanguage];
+
+    //AuthService.checkGameToken(localStorage.getItem("gameToken"));
 
     useEffect(() => {
         document.addEventListener('keydown', handleKeyPress);

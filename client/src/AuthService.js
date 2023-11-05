@@ -234,36 +234,44 @@ const AuthService = {
 			});
     },
 
-    checkForGameToken: (userToken) => {
-        let responseData = "not found";
-
-        fetch(`${API_URL}/askToken/gameToken`, {
+    checkForGameToken: async (userToken) => {
+        const response = await fetch(`${API_URL}/askToken/gameToken`, {
             method: "GET",
             headers: {
                 'userToken': `${userToken}`,
             },
         })
-        .then((response) => {
-            if(response.ok) {
-                responseData = response.text();
-            } else {
-                responseData = "not found";
-            }
-            return responseData
-        })
-        .then((responseData) => {
-            if(responseData === "not found") {
-                console.log("Nem lett megtalálva gameToken.")
-            } else {
-                localStorage.setItem("gameToken", responseData);
-                console.log("gameToken beállítva.");
-                changer.navigate = true;
-                console.log("navigateLocation beállítva 'game'-re.");
-            }
-        })
-        .catch((error) => {
-            console.error("Error: ", error);
-        });
+
+        console.log("response.status: " + response.status);
+
+        if(response.status === 200) {
+            const responseText= await response.text();
+            console.log("Válasz típusa: ", typeof responseText);
+            console.log("Válasz tartalma: ", responseText);
+            localStorage.setItem("gameToken", responseText);
+            return {success: true, userToken: responseText};
+        } else {
+            console.log("Nem 200 jött vissza");
+            console.log("response.status: " + response.status);
+            return {success: false, userToken: ''};
+        }
     },
+
+    checkGameToken: (gameToken) => {
+        fetch(`${API_URL}/game/ask/picture/number`, {
+            method: "GET",
+            headers: {
+                'gameToken': `${gameToken}`,
+            },
+        })
+        .then((response) => {
+            console.log(response.text());
+            if(response.ok) {
+                console.log("ok státuszú lett");
+            } else {
+                console.log("nem lett ok státuszú");
+            }
+        })
+    }
 };
 export default AuthService;
