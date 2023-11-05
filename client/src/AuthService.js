@@ -1,3 +1,5 @@
+import {changer} from "./components/changer";
+
 const API_URL = 'https://mnist-server.serveo.net';
 
 const AuthService = {
@@ -234,10 +236,9 @@ const AuthService = {
 
     checkForGameToken: (userToken) => {
         let responseData = "not found";
-        let navigateLocation;
 
         fetch(`${API_URL}/askToken/gameToken`, {
-            method: "POST",
+            method: "GET",
             headers: {
                 'userToken': `${userToken}`,
             },
@@ -245,24 +246,24 @@ const AuthService = {
         .then((response) => {
             if(response.ok) {
                 responseData = response.text();
+            } else {
+                responseData = "not found";
             }
             return responseData
         })
         .then((responseData) => {
             if(responseData === "not found") {
                 console.log("Nem lett megtalálva gameToken.")
-                navigateLocation = "login"
             } else {
                 localStorage.setItem("gameToken", responseData);
                 console.log("gameToken beállítva.");
-                navigateLocation = "game";
+                changer.navigate = true;
                 console.log("navigateLocation beállítva 'game'-re.");
             }
         })
         .catch((error) => {
             console.error("Error: ", error);
         });
-        return navigateLocation;
     },
 };
 export default AuthService;

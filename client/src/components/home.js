@@ -38,8 +38,8 @@ const Home = () => {
 
     const navigateNumberGame = () => {
         changer.setChangerItems(selectedLanguage, darkMode);
-
-        if(AuthService.checkForGameToken(userToken) === "game") {
+        AuthService.checkForGameToken(userToken);
+        if(localStorage.getItem("userToken") !== "") {
             navigate("/number_game");
         } else {
             navigate("/login");
