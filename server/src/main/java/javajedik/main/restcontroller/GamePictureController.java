@@ -2,7 +2,6 @@ package javajedik.main.restcontroller;
 
 import java.util.List;
 import javajedik.main.model.PictureData;
-import javajedik.main.service.LoginService;
 import javajedik.main.service.PictureHandlerService;
 import javajedik.main.util.GameTokenUtil;
 import org.apache.logging.log4j.LogManager;
@@ -11,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -40,5 +41,18 @@ public class GamePictureController
         }
         
         return ResponseEntity.status(HttpStatus.OK).body(data);
+    }
+    
+    @PostMapping("/upload/answer/picture")
+    public ResponseEntity<String> uploadPictureAnswer (
+            @RequestHeader("gameToken") String gameToken,
+            @RequestBody String playerAnswer)
+    {
+        if(!GameTokenUtil.validateToken(gameToken))
+        {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+        
+        return ResponseEntity.status(HttpStatus.OK).build();
     }
 }

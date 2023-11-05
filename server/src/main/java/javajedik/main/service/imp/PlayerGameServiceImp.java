@@ -6,7 +6,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import javajedik.main.service.PictureHandlerService;
+import org.springframework.stereotype.Service;
 
+@Service
 public class PlayerGameServiceImp implements PlayerGameService
 {
     private static final Logger logger = LogManager.getLogger(PictureHandlerService.class);
