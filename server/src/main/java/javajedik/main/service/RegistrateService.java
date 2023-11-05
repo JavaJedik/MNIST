@@ -5,4 +5,6 @@ import javajedik.main.model.RegistrateData;
 public interface RegistrateService 
 {
     public int registratePlayer(RegistrateData registrateData);
+    
+    public int registrateGuest();
 }

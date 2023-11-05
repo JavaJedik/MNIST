@@ -43,4 +43,20 @@ public class RegistrateServiceImp implements RegistrateService
         
         return player_id;      
     }
+
+    @Override
+    public int registrateGuest() 
+    {
+        final int player_id = registratePlayerSQL.registrateGuest();
+        
+        if(player_id == -1)
+        {
+            logger.error("Vendég játékos regisztrálása sikertelen");
+            return player_id;
+        }
+        
+        logger.info("A generált player_id: " + player_id);
+        
+        return player_id;  
+    }
 }

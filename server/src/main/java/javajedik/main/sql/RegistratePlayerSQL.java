@@ -76,7 +76,7 @@ public class RegistratePlayerSQL
         }
     }
     
-    public int insertPlayerId(int mainLanguageId, int playerRoleId) 
+    private int insertPlayerId(int mainLanguageId, int playerRoleId) 
     {
         final String insertSql = SqlQ.insertPlayerId();
 
@@ -100,7 +100,7 @@ public class RegistratePlayerSQL
         }
     }
     
-    public boolean insertRegisteredPlayerMinimal(RegisteredPlayer player) 
+    private boolean insertRegisteredPlayerMinimal(RegisteredPlayer player) 
     {
         final String insertSql = SqlQ.insertRegisteredPlayerMinimal();
 
@@ -115,7 +115,15 @@ public class RegistratePlayerSQL
             return false;
         }
     }
+    
+    private boolean insertGuestPlayer(int player_id) 
+    {
+        final String insertSql = SqlQ.insertGuestPlayer();
 
+        int rowsAffected = jdbcTemplate.update(insertSql, player_id);
+
+        return rowsAffected > 0;
+    }            
 
     public List<RegisteredPlayer> getAllRegisteredPlayers() 
     {
@@ -209,6 +217,49 @@ public class RegistratePlayerSQL
             return -1;
         }
 
+        return player_id;
+    }
+    
+    public int registrateGuest()
+    {
+        final int player_id;
+        
+        TransactionStatus status = transactionManager.getTransaction(new DefaultTransactionDefinition());
+        
+        try 
+        {
+            player_id = insertPlayerId(1, 1); // 1 - user role
+
+            if(player_id == -1)
+            {
+                logger.info("A játékos regisztrálása sikertelen, változások visszavonása");
+                transactionManager.rollback(status);
+                return -1;
+            }
+
+            logger.info("A generált player_id: " + player_id);
+            
+            boolean success = insertGuestPlayer(player_id);
+            
+            if (success) 
+            {
+                logger.info("A játékos regisztrálása sikeres, tranzakció mentése... Adatok:\n" + player_id);
+                transactionManager.commit(status);
+            } 
+            else 
+            {
+                logger.error("A játékos regisztrálása sikertelen, változások visszavonása");
+                transactionManager.rollback(status);
+                return -1;
+            }
+        } 
+        catch (Exception e) 
+        {
+            logger.error("A tranzakció közben hiba lépett fel, adatok visszaállítása... A hiba: " + e);
+            transactionManager.rollback(status);
+            return -1;
+        } 
+        
         return player_id;
     }
 }
