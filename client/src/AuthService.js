@@ -62,7 +62,8 @@ const AuthService = {
                 const responseText = await response.text();
                 console.log('Válasz típusa:', typeof responseText);
                 console.log('Válasz tartalma:', responseText);
-
+                localStorage.setItem("userToken", responseText);
+                
                 return {success: true, userToken: responseText};
             } else if (response.status === 403) {
                 console.log('Nincs válasz a státuszkód 403 (Forbidden) esetén.');
@@ -238,8 +239,8 @@ const AuthService = {
         const response = await fetch(`${API_URL}/askToken/gameToken`, {
             method: "GET",
             headers: {
-                'userToken': `${userToken}`,
-            },
+                'userToken': `${userToken}`
+            }
         })
 
         console.log("response.status: " + response.status);
@@ -263,13 +264,13 @@ const AuthService = {
                 method: "GET",
                 headers: {
                     'gameToken': gameToken,
-                    'numberOfAskedPictures':numberOfAskedPictures
-                },
+                    'numberOfAskedPictures': numberOfAskedPictures
+                }
             });
 
             if (response.status === 200) {
                 const data = await response.json();
-                console.log("A válasz tartalmazza a képek binárisait");
+                console.log("A válasz tartalmazza a képek binárisait", data);
                 return { success: true, response: data };
             } else {
                 console.log("Nem lett OK státuszú:", response.status);
