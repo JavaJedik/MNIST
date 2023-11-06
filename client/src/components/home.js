@@ -38,7 +38,7 @@ const Home = () => {
 
     const navigateNumberGame = async () => {
         changer.setChangerItems(selectedLanguage, darkMode);
-        const gameToken = await AuthService.checkForGameToken(userToken);
+        const gameToken = await AuthService.askGameToken(userToken);
         console.log("success: " + gameToken.success);
         if(gameToken.success) {
             console.log("gameToken success volt");

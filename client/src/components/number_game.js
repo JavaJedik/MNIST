@@ -10,17 +10,31 @@ const Number_Game = () => {
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
 
-    const imagePath = "./placeholder.png"
-
     const [darkMode, setDarkMode] = useState(changer.darkMode);
     const [selectedLanguage, setSelectedLanguage] = useState(changer.language);
 
     const text = content[selectedLanguage];
+    const [pictures, setPictures] = useState([]);
+    const [currentPicture, setCurrentPicture] = useState(null);
 
-    //AuthService.checkGameToken(localStorage.getItem("gameToken"));
+    //AuthService.askNumberPicture(localStorage.getItem("gameToken"));
 
     useEffect(() => {
         document.addEventListener('keydown', handleKeyPress);
+
+        // Hívd meg itt az askNumberPicture-t, amikor a komponens betöltődik
+        AuthService.askNumberPicture(localStorage.getItem("gameToken"), 5)
+            .then(response => {
+                if (response.success) {
+                    setPictures(response.data); // Az összes képet beállítjuk
+                    setCurrentPicture(response.data[0]); // Az első képet állítjuk be kezdetben
+                } else {
+                    navigateLogin();
+                }
+            })
+            .catch(error => {
+                console.error("Képek lekérése sikertelen", error);
+            });
 
         return () => {
             document.removeEventListener('keydown', handleKeyPress);
@@ -72,10 +86,28 @@ const Number_Game = () => {
             button.click();
         }
     };
+    
+    const renderCurrentPicture = () => {
+        if (currentPicture) {
+            const byteArray = new Uint8Array(currentPicture.pictureBytes);
+            const blob = new Blob([byteArray], { type: "image/png" });
+            const imageUrl = URL.createObjectURL(blob);
+
+            return <img className="image" src={imageUrl} alt="Kép megjelenítése sikertelen." />;
+        } else {
+            return <div>Képek betöltése...</div>;
+        }
+    };
 
     const navigateHome = () => {
         changer.setChangerItems(selectedLanguage, darkMode);
         navigate('/home');
+    };
+    
+    const navigateLogin = () => {
+        changer.setChangerItems(selectedLanguage, darkMode);
+        localStorage.removeItem("userToken");
+        navigate('/login');
     };
 
     const navigateLeaderboard = () => {

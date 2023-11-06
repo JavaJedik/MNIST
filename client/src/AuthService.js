@@ -234,7 +234,7 @@ const AuthService = {
 			});
     },
 
-    checkForGameToken: async (userToken) => {
+    askGameToken: async (userToken) => {
         const response = await fetch(`${API_URL}/askToken/gameToken`, {
             method: "GET",
             headers: {
@@ -257,21 +257,28 @@ const AuthService = {
         }
     },
 
-    checkGameToken: (gameToken) => {
-        fetch(`${API_URL}/game/ask/picture/number`, {
-            method: "GET",
-            headers: {
-                'gameToken': `${gameToken}`,
-            },
-        })
-        .then((response) => {
-            console.log(response.text());
-            if(response.ok) {
-                console.log("ok státuszú lett");
+    askNumberPicture: async (gameToken, numberOfAskedPictures) => {
+        try {
+            const response = await fetch(`${API_URL}/game/ask/picture/number`, {
+                method: "GET",
+                headers: {
+                    'gameToken': gameToken,
+                    'numberOfAskedPictures':numberOfAskedPictures
+                },
+            });
+
+            if (response.status === 200) {
+                const data = await response.json();
+                console.log("A válasz tartalmazza a képek binárisait");
+                return { success: true, response: data };
             } else {
-                console.log("nem lett ok státuszú");
+                console.log("Nem lett OK státuszú:", response.status);
+                return { success: false, response: null };
             }
-        })
+        } catch (error) {
+            console.error("Hiba történt a képek lekérése közben:", error);
+            return { success: false, response: null };
+        }
     }
 };
 export default AuthService;

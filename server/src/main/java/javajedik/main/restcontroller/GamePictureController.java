@@ -26,20 +26,23 @@ public class GamePictureController
     private PictureHandlerService pictureHandlerService;
 
     @GetMapping("/ask/picture/number")
-    public ResponseEntity<List<PictureData>> askNumberPicture (@RequestHeader("gameToken") String gameToken)
+    public ResponseEntity<List<PictureData>> askNumberPicture (@RequestHeader("gameToken") String gameToken, @RequestHeader("numberOfAskedPictures") String numberOfAskedPicturesString)
     {
         if(!GameTokenUtil.validateToken(gameToken))
         {
+            logger.warn("Invalid gameToken");
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
         
-        List<PictureData> data = pictureHandlerService.askNumberPicture(5);
+        List<PictureData> data = pictureHandlerService.askNumberPicture(Integer.parseInt(numberOfAskedPicturesString));
         
         if(data == null || data.isEmpty())
         {
+            logger.error("Nincs kép az adatbázisban vagy nem kérhető le");
            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
         
+        logger.info("Képek megszerezve, küldés a kliensnek...");
         return ResponseEntity.status(HttpStatus.OK).body(data);
     }
     
@@ -50,9 +53,11 @@ public class GamePictureController
     {
         if(!GameTokenUtil.validateToken(gameToken))
         {
+            logger.info("Invalid gameToken");
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
         
+        logger.info("A képre adott válasz feltöltése sikeres");
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 }

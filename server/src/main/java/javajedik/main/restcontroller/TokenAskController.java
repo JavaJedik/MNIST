@@ -44,7 +44,18 @@ public class TokenAskController
             return ResponseEntity.status(HttpStatus.INSUFFICIENT_STORAGE).body("Hiba lépett fel a játék regisztrálása során");
         }
         
-        logger.info("Játékkérelem elfogadva, játéktoken küldése... A player_id: " + player_id);
-        return ResponseEntity.status(HttpStatus.OK).body(GameTokenUtil.generateToken(game_id));
+        logger.info("Játékkérelem elfogadva, játéktoken készítése... A player_id: " + player_id);
+        
+        final String gameToken = GameTokenUtil.generateToken(game_id);
+        
+        if (gameToken.length()>0)
+        {
+            logger.info("A gameToken generálva, elküldés. A player_id: " + player_id);
+            return ResponseEntity.status(HttpStatus.OK).body(gameToken);
+        } else
+        {
+            logger.info("A gameToken generálása sikertelen, player_id: " + player_id);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Hiba lépett fel a játék regisztrálása során");
+        }
     }
 }
