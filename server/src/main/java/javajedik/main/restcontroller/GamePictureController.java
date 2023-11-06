@@ -42,7 +42,7 @@ public class GamePictureController
            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
         
-        logger.info("Képek megszerezve, küldés a kliensnek...");
+        logger.info("Képek megszerezve, küldés a kliensnek... Képek száma: " + data.size());
         return ResponseEntity.status(HttpStatus.OK).body(data);
     }
     
