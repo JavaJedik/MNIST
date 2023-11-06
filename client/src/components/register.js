@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import "./styles.css"
+import "./styles/styles.css"
+import "./styles/register.css"
 import { content } from "./contents/registerContent";
 import AuthService from "../AuthService";
 import { changer } from "./changer";

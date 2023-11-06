@@ -1,0 +1,86 @@
+/* * {
+    outline: 1px solid red;
+    outline-offset: -1px;
+} */
+
+.admin-header {
+    position: relative;
+    text-align: center;
+    color: black;
+    font-size: 1.5rem;
+    letter-spacing: 0.2rem;
+    margin: 0 0 1em;
+}
+
+.admin-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 35em;
+    height: 35em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.admin-blur-container {
+    background-color: rgba(107, 123, 140, 0.5);
+    border: 1px solid whitesmoke;
+    backdrop-filter: blur(20px);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 35em;
+    height: 35em;
+    border-radius: 25px;
+    z-index: 0;
+}
+
+.file-upload-clickable {
+    cursor: pointer;
+}
+
+.file-upload {
+    background: whitesmoke;
+    width: 19em; /* 19em width + 1em padding-left */
+    height: 2em;
+    border: 1px solid grey;
+    border-radius: 15px;
+    margin: 1em;
+    padding-left: 1em;
+    padding-top: 3px;
+    padding-right: 0;
+    padding-bottom: 0;
+}
+
+.file-upload::placeholder {
+    font-weight: bolder;
+    text-align: center;
+}
+
+.file-upload:before {
+    content: "File: ";
+}
+
+.file-upload:hover {
+    transition-duration: 0.8s;
+    border: thin solid dodgerblue;
+    background: rgb(185, 197, 246);
+}
+
+.file-upload::-webkit-file-upload-button {
+    /* Default gomb eltűntetése */
+    width: 0;
+    height: 0;
+    visibility: hidden;
+}
+
+.one-char-answer {
+    text-align: center;
+    font-weight: bolder;
+    color: black;
+}

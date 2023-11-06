@@ -1,0 +1,122 @@
+/* * {
+    outline: 1px solid red;
+    outline-offset: -1px;
+} */
+
+.input-field {
+    position: relative;
+    background: whitesmoke;
+    width: 20em;
+    height: 2em;
+    border: thin solid rgb(185, 197, 246);
+    border-radius: 15px;
+    transition-duration: 0.8s;
+    text-align: center;
+    caret-color: blueviolet;
+    caret-shape: auto;
+}
+
+.input-field:hover {
+    border: medium solid rgb(185, 197, 246);;
+    background: rgb(185, 197, 246);
+}
+
+.input-field::placeholder {
+    font-weight: bolder;
+}
+
+.button-style {
+    background: whitesmoke;
+    font-weight: bolder;
+    text-align: center;
+    margin: 1em 0.5em 0;
+    border: medium solid rgb(185, 197, 246);
+    border-radius: 15px;
+    transition-duration: 0.8s;
+    width: 9.6em;
+    height: 2.25em;
+    padding: 5px;
+    cursor: pointer;
+}
+
+
+.bottom-button {
+    margin: 0;
+    padding: 0;
+}
+
+.button-style:hover {
+    background: rgb(185, 197, 246);
+}
+
+.button-style:active {
+    transform: scale(0.85);
+    transition-duration: 0.3s;
+}
+
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40em;
+    height: 20em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+
+.blur-container {
+    background-color: rgba(107, 123, 140, 0.5);
+    border: 1px solid whitesmoke;
+    backdrop-filter: blur(20px);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 35em;
+    height: 25em;
+    border-radius: 25px;
+    z-index: 0;
+}
+
+
+.content {
+    position: relative;
+    margin: 0.8em 0 0.5em;
+}
+
+.content-bottom {
+    color: black;
+    font-weight: bolder;
+    font-size: 1.5rem;
+    position: relative;
+    text-align: center;
+    cursor: default;
+    margin: 0.5em 0;
+}
+
+@media (max-width: 700px) {
+    .input-field {
+        width: 10em;
+    }
+
+    .button-style {
+        width: 6em;
+    }
+
+    .container {
+        width: 20em;
+    }
+
+    .blur-container {
+        width: 20em;
+    }
+
+    .content-bottom {
+        font-size: 1rem;
+    }
+}

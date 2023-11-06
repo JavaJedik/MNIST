@@ -1,0 +1,126 @@
+/* * {
+    outline: 1px solid red;
+    outline-offset: -1px;
+} */
+
+.dropbtn {
+    position: relative;
+    background: whitesmoke;
+    color: #6e6e6e;
+    width: 20.25em;
+    height: 2.25em;
+    border: medium solid rgb(185, 197, 246);
+    border-radius: 15px;
+    transition-duration: 0.8s;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 0.25em;
+}
+
+.dropbtn-arrow {
+    position: absolute;
+    top: 0;
+    right: 0.8em;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+}
+
+.active-language .dropbtn-arrow {
+    transform: rotate(180deg);
+}
+
+.active-gender .dropbtn-arrow {
+    transform: rotate(180deg);
+}
+
+.dropbtn:hover {
+    border: thin solid dodgerblue;
+    background: rgb(185, 197, 246);
+}
+
+.dropdown {
+    position: relative;
+    display: inline-list-item;
+    text-align: center;
+    margin: 0.5em;
+}
+
+.dropdown-content-language, .dropdown-content-gender {
+    display: none;
+    position: absolute;
+    width: 20.25em;
+    height: auto;
+    border-radius: 15px;
+    background-color: #f1f1f1;
+    border: thin solid grey;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    cursor: pointer;
+}
+
+.dropdown-content-language p:hover, .dropdown-content-gender p:hover {
+    color: dodgerblue;
+}
+
+.reg-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40em;
+    height: 30em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.reg-blur-container {
+    background-color: rgba(107, 123, 140, 0.5);
+    backdrop-filter: blur(20px);
+    border: 1px solid whitesmoke;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 38em;
+    height: 32em;
+    border-radius: 25px;
+    z-index: 0;
+}
+
+.dropdown.active-language .dropdown-content-language {
+    display: block;
+}
+
+.dropdown.active-gender .dropdown-content-gender {
+    display: block;
+}
+
+@media (max-width: 700px) {
+    .dropbtn {
+        width: 10.25em;
+    }
+
+    .dropbtn-arrow {
+        right: 0.2em;
+    }
+
+    .dropdown-content {
+        width: 10.25em;
+    }
+
+    .reg-container {
+        width: 20em;
+    }
+
+    .reg-blur-container {
+        width: 20em;
+    }
+
+    .dropdown-content-language, .dropdown-content-gender {
+        width: 10em;
+    }
+}

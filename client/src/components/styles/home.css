@@ -1,0 +1,136 @@
+/* * {
+    outline: 1px solid red;
+    outline-offset: -1px;
+} */
+
+.home-header {
+    position: relative;
+    text-align: center;
+    color: black;
+    font-size: 1.5rem;
+    letter-spacing: 0.2rem;
+    margin: 0 0 1em;
+}
+
+.home-dropbtn {
+    position: relative;
+    background: whitesmoke;
+    border: medium solid rgb(185, 197, 246);
+    color: #6e6e6e;
+    width: 20em;
+    height: 2em;
+    border-radius: 15px;
+    transition-duration: 0.8s;
+    text-align: center;
+    cursor: pointer;
+}
+
+.active .dropbtn-arrow {
+    transform: rotate(180deg);
+}
+
+.home-dropbtn:hover {
+    border: thin solid dodgerblue;
+    background: rgb(185, 197, 246);
+}
+
+.home-dropdown {
+    position: relative;
+    display: inline-list-item;
+    text-align: center;
+    margin: 1em;
+}
+
+.home-dropdown-content {
+    display: none;
+    color: #6e6e6e;
+    position: absolute;
+    width: 20em;
+    height: 5em;
+    border-radius: 15px;
+    background-color: #f1f1f1;
+    border: thin solid grey;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    cursor: pointer;
+}
+
+.home-dropdown.active .home-dropdown-content {
+    display: block;
+}
+
+.home-dropdown-content p:hover {
+    color: dodgerblue;
+}
+
+.home-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30em;
+    height: 25em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.home-blur-container {
+    background-color: rgba(107, 123, 140, 0.5);
+    border: 1px solid whitesmoke;
+    backdrop-filter: blur(20px);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30em;
+    height: 25em;
+    border-radius: 25px;
+    z-index: 0;
+}
+
+.home-button-style {
+    background: whitesmoke;
+    color: black;
+    font-weight: bolder;
+    text-align: center;
+    margin: 1em;
+    border: medium solid rgb(185, 197, 246);
+    border-radius: 15px;
+    transition-duration: 0.8s;
+    width: 20em;
+    height: 2em;
+    cursor: pointer;
+}
+
+.home-button-style:hover {
+    background: rgb(185, 197, 246);
+}
+
+@media (max-width: 700px) {
+    .home-header {
+        font-size: 0.85rem;
+    }
+
+    .home-dropbtn {
+        width: 10em;
+    }
+
+    .home-dropdown-content {
+        width: 10em;
+    }
+
+    .home-button-style {
+        width: 10em;
+    }
+
+    .home-container {
+        width: 20em;
+    }
+
+    .home-blur-container {
+        width: 20em;
+    }
+}
