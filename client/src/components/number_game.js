@@ -9,13 +9,14 @@ const Number_Game = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
+    
+    const [pictures, setPictures] = useState([]);
+    const [currentPictureIndex, setCurrentPictureIndex] = useState(0);
 
     const [darkMode, setDarkMode] = useState(changer.darkMode);
     const [selectedLanguage, setSelectedLanguage] = useState(changer.language);
 
     const text = content[selectedLanguage];
-    const [pictures, setPictures] = useState([]);
-    const [currentPicture, setCurrentPicture] = useState(null);
     
     const imagePath = "./placeholder.png";
 
@@ -24,13 +25,12 @@ const Number_Game = () => {
     useEffect(() => {
         document.addEventListener('keydown', handleKeyPress);
 
-        // Hívd meg itt az askNumberPicture-t, amikor a komponens betöltődik
         AuthService.askNumberPicture(localStorage.getItem("gameToken"), 5)
             .then(response => {
                 if (response.success) {
-                    console.log(response.data);
-                    //setPictures(response.data); // Az összes képet beállítjuk
-                    //setCurrentPicture(response.data[0]); // Az első képet állítjuk be kezdetben
+                    setPictures(response.response); // Az összes képet beállítjuk
+                    setCurrentPictureIndex(0); // Az első képet állítjuk be kezdetben
+                    console.log("Sikeresen tároltuk a képeket");
                 } else {
                     navigateLogin();
                 }
@@ -87,18 +87,6 @@ const Number_Game = () => {
         const button = document.getElementById(buttonId);
         if (button) {
             button.click();
-        }
-    };
-    
-    const renderCurrentPicture = () => {
-        if (currentPicture) {
-            const byteArray = new Uint8Array(currentPicture.pictureBytes);
-            const blob = new Blob([byteArray], { type: "image/png" });
-            const imageUrl = URL.createObjectURL(blob);
-
-            return <img className="image" src={imageUrl} alt="Kép megjelenítése sikertelen." />;
-        } else {
-            return <div>Képek betöltése...</div>;
         }
     };
 
