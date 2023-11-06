@@ -12,7 +12,7 @@ const Number_Game = () => {
     
     const [pictures, setPictures] = useState([]);
     const [currentPictureIndex, setCurrentPictureIndex] = useState(0);
-    const [imageUrl, setImageUrl] = useState(''); // Itt hozz létre az imageUrl változót
+    const [imageUrl, setImageUrl] = useState('');
 
     const [darkMode, setDarkMode] = useState(changer.darkMode);
     const [selectedLanguage, setSelectedLanguage] = useState(changer.language);
@@ -29,36 +29,46 @@ const Number_Game = () => {
         ) {
             const currentPicture = pictures[currentPictureIndex];
             const byteArray = new Uint8Array(currentPicture.pictureBytes);
+            console.log(byteArray);
             const blob = new Blob([byteArray], { type: "image/png" });
-            const imageUrl = URL.createObjectURL(blob);
-            setImageUrl(imageUrl); // Itt állítsd be az imageUrl-t
+            console.log(blob);
+            const imageUrl1 = URL.createObjectURL(blob);
+            setImageUrl(imageUrl1); // Itt állítsd be az imageUrl-t
         } else {
             return <div>Nincs kép vagy betöltés...</div>;
         }
     };
     
-    useEffect(() => {
-        document.addEventListener('keydown', handleKeyPress);
+useEffect(() => {
+    document.addEventListener('keydown', handleKeyPress);
+    
+    const fetchData = async () => {
+        try {
+            const response = await AuthService.askNumberPicture(localStorage.getItem("gameToken"), 5);
+            if (response.success) {
+                console.log("A gamere érkezett adatok: ", response.response)
+                setPictures(response.response); // Az összes képet beállítjuk
+                setCurrentPictureIndex(0); // Az első képet állítjuk be kezdetben
+            } else {
+                navigateLogin();
+            }
+        } catch (error) {
+            console.error("Képek lekérése sikertelen", error);
+        }
+    };
 
-        AuthService.askNumberPicture(localStorage.getItem("gameToken"), 5)
-            .then(response => {
-                if (response.success) {
-                    setPictures(response.response); // Az összes képet beállítjuk
-                    setCurrentPictureIndex(0); // Az első képet állítjuk be kezdetben
-                    console.log("Sikeresen tároltuk a képeket");
-                    renderCurrentPicture();
-                } else {
-                    navigateLogin();
-                }
-            })
-            .catch(error => {
-                console.error("Képek lekérése sikertelen", error);
-            });
+    fetchData();
 
-        return () => {
-            document.removeEventListener('keydown', handleKeyPress);
-        };
-    }, []);
+    return () => {
+        document.removeEventListener('keydown', handleKeyPress);
+    };
+}, []);
+
+// Ezt a useEffect-et hozzáadjuk a pictures állapot figyelésére
+useEffect(() => {
+    renderCurrentPicture();
+    console.log("Sikeresen tároltuk a képeket", pictures); // Itt loggolhatod a frissített állapotot
+}, [pictures]);
 
     const handleKeyPress = (event) => {
         switch (event.key) {
