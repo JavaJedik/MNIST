@@ -16,6 +16,8 @@ const Number_Game = () => {
     const text = content[selectedLanguage];
     const [pictures, setPictures] = useState([]);
     const [currentPicture, setCurrentPicture] = useState(null);
+    
+    const imagePath = "./placeholder.png";
 
     //AuthService.askNumberPicture(localStorage.getItem("gameToken"));
 
@@ -26,8 +28,9 @@ const Number_Game = () => {
         AuthService.askNumberPicture(localStorage.getItem("gameToken"), 5)
             .then(response => {
                 if (response.success) {
-                    setPictures(response.data); // Az összes képet beállítjuk
-                    setCurrentPicture(response.data[0]); // Az első képet állítjuk be kezdetben
+                    console.log(response.data);
+                    //setPictures(response.data); // Az összes képet beállítjuk
+                    //setCurrentPicture(response.data[0]); // Az első képet állítjuk be kezdetben
                 } else {
                     navigateLogin();
                 }
