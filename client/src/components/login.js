@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import "./styles/styles.css"
 import "./styles/login.css"
 import AuthService from '../AuthService';
 import { content } from "./contents/loginContent";

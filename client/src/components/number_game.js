@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import "./styles/styles.css"
 import "./styles/number_game.css"
 import { content } from "./contents/number_gameContent";
 import { changer } from "./changer";

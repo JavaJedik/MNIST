@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
-import "./styles/styles.css"
 import "./styles/admin.css"
 import authService from "../AuthService";
 import { content } from "./contents/adminContent";

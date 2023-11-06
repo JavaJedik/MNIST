@@ -1,3 +1,5 @@
+@import "styles.css";
+
 .game-main-container {
     position: absolute;
     display: flex;
@@ -231,7 +233,7 @@
     }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 500px) {
     .game-main-container {
         flex-direction: column;
     }
@@ -273,8 +275,8 @@
 @media (max-height: 800px) {
     .game-blur-container {
         position: relative;
-        width: 18em;
-        height: 30em;
+        width: 16em;
+        height: 27em;
     }
 
     .numbers {
@@ -303,6 +305,11 @@
 
     .idk-button {
         font-size: 1.2em;
+    }
+
+    .image {
+        width: 56px;
+        margin: 0;
     }
 
     .left-game-button {

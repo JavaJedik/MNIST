@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { content } from './contents/leaderboardContent';
-import "./styles/styles.css"
 import "./styles/leaderboard.css"
 import {changer} from "./changer";
 
