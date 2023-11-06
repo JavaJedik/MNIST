@@ -22,18 +22,22 @@ const Number_Game = () => {
     //AuthService.askNumberPicture(localStorage.getItem("gameToken"));
 
     const renderCurrentPicture = () => {
+        console.log("A képek száma: ", pictures.length)
         if (
             pictures.length > 0 &&
             currentPictureIndex >= 0 &&
             currentPictureIndex < pictures.length
         ) {
             const currentPicture = pictures[currentPictureIndex];
-            const byteArray = new Uint8Array(currentPicture.pictureBytes);
-            console.log(byteArray);
+            const base64ImageData = currentPicture.pictureBytes;
+            const byteCharacters = atob(base64ImageData);
+            const byteNumbers = new Array(byteCharacters.length);
+            for (let i = 0; i < byteCharacters.length; i++) {
+                byteNumbers[i] = byteCharacters.charCodeAt(i);
+            }
+            const byteArray = new Uint8Array(byteNumbers);
             const blob = new Blob([byteArray], { type: "image/png" });
-            console.log(blob);
-            const imageUrl1 = URL.createObjectURL(blob);
-            setImageUrl(imageUrl1); // Itt állítsd be az imageUrl-t
+            setImageUrl(URL.createObjectURL(blob)); // Itt állítsd be az imageUrl-t
         } else {
             return <div>Nincs kép vagy betöltés...</div>;
         }
@@ -49,6 +53,7 @@ useEffect(() => {
                 console.log("A gamere érkezett adatok: ", response.response)
                 setPictures(response.response); // Az összes képet beállítjuk
                 setCurrentPictureIndex(0); // Az első képet állítjuk be kezdetben
+                renderCurrentPicture();
             } else {
                 navigateLogin();
             }
@@ -63,12 +68,6 @@ useEffect(() => {
         document.removeEventListener('keydown', handleKeyPress);
     };
 }, []);
-
-// Ezt a useEffect-et hozzáadjuk a pictures állapot figyelésére
-useEffect(() => {
-    renderCurrentPicture();
-    console.log("Sikeresen tároltuk a képeket", pictures); // Itt loggolhatod a frissített állapotot
-}, [pictures]);
 
     const handleKeyPress = (event) => {
         switch (event.key) {
