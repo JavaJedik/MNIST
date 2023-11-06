@@ -12,16 +12,31 @@ const Number_Game = () => {
     
     const [pictures, setPictures] = useState([]);
     const [currentPictureIndex, setCurrentPictureIndex] = useState(0);
+    const [imageUrl, setImageUrl] = useState(''); // Itt hozz létre az imageUrl változót
 
     const [darkMode, setDarkMode] = useState(changer.darkMode);
     const [selectedLanguage, setSelectedLanguage] = useState(changer.language);
 
     const text = content[selectedLanguage];
-    
-    const imagePath = "./placeholder.png";
 
     //AuthService.askNumberPicture(localStorage.getItem("gameToken"));
 
+    const renderCurrentPicture = () => {
+        if (
+            pictures.length > 0 &&
+            currentPictureIndex >= 0 &&
+            currentPictureIndex < pictures.length
+        ) {
+            const currentPicture = pictures[currentPictureIndex];
+            const byteArray = new Uint8Array(currentPicture.pictureBytes);
+            const blob = new Blob([byteArray], { type: "image/png" });
+            const imageUrl = URL.createObjectURL(blob);
+            setImageUrl(imageUrl); // Itt állítsd be az imageUrl-t
+        } else {
+            return <div>Nincs kép vagy betöltés...</div>;
+        }
+    };
+    
     useEffect(() => {
         document.addEventListener('keydown', handleKeyPress);
 
@@ -31,6 +46,7 @@ const Number_Game = () => {
                     setPictures(response.response); // Az összes képet beállítjuk
                     setCurrentPictureIndex(0); // Az első képet állítjuk be kezdetben
                     console.log("Sikeresen tároltuk a képeket");
+                    renderCurrentPicture();
                 } else {
                     navigateLogin();
                 }
@@ -127,8 +143,9 @@ const Number_Game = () => {
                 <div className={`classname ${darkMode ? "dark" : ""}`} />
 
                 <div className="game-left-container">
-                    <img className="image" src={require(`${imagePath}`)} alt="A kép betöltése sikertelen." />
+                    <img className="image" src={imageUrl} alt="A kép betöltése sikertelen." />
                 </div>
+
                 <div className="game-right-container">
                     <div className={`game-blur-container ${darkMode ? "dark-blur-container" : ""}`}/>
                     <div className="game-container">
