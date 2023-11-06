@@ -67,7 +67,7 @@ useEffect(() => {
     return () => {
         document.removeEventListener('keydown', handleKeyPress);
     };
-}, []);
+}, [pictures.length==0]);
 
     const handleKeyPress = (event) => {
         switch (event.key) {
@@ -133,6 +133,16 @@ useEffect(() => {
 
     const handleClick = (clickedNumber) => {
         alert("A válaszod: " + clickedNumber);
+       if (pictures.length === 1) {
+            // Ha csak egy elem van a tömbben, akkor törölje az összes elemét
+            setPictures([]);
+        } else if (pictures.length > 1) {
+            // Ha több, mint egy elem van a tömbben, törölje az első elemet
+            const updatedPictures = pictures.slice(1);
+            setPictures(updatedPictures);
+            setCurrentPictureIndex(0);
+            renderCurrentPicture();
+        }
     }
 
     return (
