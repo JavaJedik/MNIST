@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import "./styles/styles.css"
 import { content } from "./contents/picture_gameContent";
 import { changer } from "./changer";
+import AuthService from '../AuthService';
 
 const Number_Game = () => {
     const [username, setUsername] = useState('');
@@ -17,6 +18,32 @@ const Number_Game = () => {
     const [selectedLanguage, setSelectedLanguage] = useState(changer.language);
 
     const text = content[selectedLanguage];
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const data = await AuthService.checkLoggedIn();
+                console.log(data)
+
+                if (data !== 200 || data === null) {
+                    throw new Error("Hiba a token ellenőrzésében!")
+                }
+
+            } catch (error) {
+                console.error('Hiba az autentikációs ellenőrzésben:', error);
+                alert(`Hiba az autentikációs ellenőrzésben: ${error}`);
+                navigateLogin()
+            }
+        };
+
+        fetchData();
+    }, []);
+
+    const navigateLogin = () => {
+        localStorage.removeItem('userToken');
+        changer.setChangerItems(selectedLanguage, darkMode);
+        navigate("/login");
+    };
 
     const setLocalStorageItems = () => {
         localStorage.setItem("language", selectedLanguage);

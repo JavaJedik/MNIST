@@ -4,6 +4,7 @@ import "./styles/styles.css"
 import authService from "../AuthService";
 import { content } from "./contents/adminContent";
 import { changer } from "./changer";
+import AuthService from "../AuthService";
 
 const Admin = () => {
 
@@ -19,8 +20,28 @@ const Admin = () => {
 
     const text = content[selectedLanguage];
 
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const data = await AuthService.checkLoggedIn();
+                console.log(data)
+
+                if (data !== 200 || data === null) {
+                    throw new Error("Hiba a token ellenőrzésében!")
+                }
+
+            } catch (error) {
+                console.error('Hiba az autentikációs ellenőrzésben:', error);
+                alert(`Hiba az autentikációs ellenőrzésben: ${error}`);
+                navigateLogin()
+            }
+        };
+
+        fetchData();
+    }, []);
+
     const navigateLogin = () => {
-        //localStorage.removeItem('userToken');
+        localStorage.removeItem('userToken');
         changer.setChangerItems(selectedLanguage, darkMode);
         navigate("/login");
     };

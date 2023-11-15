@@ -21,6 +21,26 @@ const Number_Game = () => {
 
     //AuthService.askNumberPicture(localStorage.getItem("gameToken"));
 
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const data = await AuthService.checkLoggedIn();
+                console.log(data)
+
+                if (data !== 200 || data === null) {
+                    throw new Error("Hiba a token ellenőrzésében!")
+                }
+
+            } catch (error) {
+                console.error('Hiba az autentikációs ellenőrzésben:', error);
+                alert(`Hiba az autentikációs ellenőrzésben: ${error}`);
+                navigateLogin()
+            }
+        };
+
+        fetchData();
+    }, []);
+
     const renderCurrentPicture = () => {
         console.log("A képek száma: ", pictures.length)
         if (

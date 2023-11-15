@@ -79,7 +79,7 @@ const AuthService = {
         }
     },
 
-    /*checkLoggedIn: async () => {
+    checkLoggedIn: async () => {
         const userToken = localStorage.getItem('userToken');
 
         try {
@@ -90,12 +90,11 @@ const AuthService = {
                 }
             });
 
-            return await response.json();
-
             if (response.status === 200) {
                 const responseText = await response.text();
                 console.log('Válasz típusa:', typeof responseText);
                 console.log('Válasz tartalma:', responseText);
+                return response.status;
             } else {
                 console.log('Nem kezelt státuszkód:', response.status);
                 throw new Error('No usertoken');
@@ -104,7 +103,7 @@ const AuthService = {
             console.error('Fetch error:', error);
             throw new Error('Token check failed');
         }
-    },*/
+    },
 
     checkUserToken: async () => {
         try {

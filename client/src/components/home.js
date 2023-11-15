@@ -19,13 +19,17 @@ const Home = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const data = await AuthService.checkUserToken();
+                const data = await AuthService.checkLoggedIn();
+                console.log(data)
 
-                if (!data.success) {
-                    navigateLogin();
+                if (data !== 200 || data === null) {
+                    throw new Error("Hiba a token ellenőrzésében!")
                 }
+
             } catch (error) {
                 console.error('Hiba az autentikációs ellenőrzésben:', error);
+                alert(`Hiba az autentikációs ellenőrzésben: ${error}`);
+                navigateLogin()
             }
         };
 
@@ -76,13 +80,12 @@ const Home = () => {
                 navigate('/leaderboard');
                 console.log('Ranglista megnyitása.');
             } else {
-                alert('Ranglista megnyitása sikertelen.');
                 console.log('Ranglista megnyitása sikertelen.');
-                navigate('/login');
+                throw new Error('Ranglista megnyitása sikertelen.');
             }
         } catch (error) {
             console.error('Ranglista megnyitása sikertelen:', error);
-            navigate('/login');
+            navigateLogin()
         }
     };
 
