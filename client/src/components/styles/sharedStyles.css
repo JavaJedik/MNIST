@@ -130,12 +130,13 @@ Dark Styles
 }
 
 .dark-input-field {
+    color: whitesmoke;
     background: darkgray; /*whitesmoke*/
     border: thin solid rgb(70, 58, 9);
 }
 
 .dark-input-field::placeholder {
-    color: white;
+    color: whitesmoke;;
     font-weight: bolder;
 }
 
@@ -145,7 +146,7 @@ Dark Styles
 }
 
 .dark-input-field:before {
-    color: white;
+    color: whitesmoke;
 }
 
 input[type="file"] {
@@ -160,7 +161,7 @@ input[type="file"].dark-input-field {
 .dark-button-style {
     background: darkgray;
     border: medium solid rgb(70, 58, 9);
-    color: white;
+    color: whitesmoke;
     font-weight: bolder;
 }
 
@@ -170,12 +171,12 @@ input[type="file"].dark-input-field {
 }
 
 .dark-span {
-    color: white;
+    color: whitesmoke;
 }
 
 .dark-dropdown-content {
     background: darkgray;
-    color: white;
+    color: whitesmoke;
     font-weight: bolder;
 }
 
@@ -184,7 +185,7 @@ input[type="file"].dark-input-field {
 }
 
 .dark-content-bottom {
-    color: white;
+    color: whitesmoke;
 }
 
 .dark-numbers {
