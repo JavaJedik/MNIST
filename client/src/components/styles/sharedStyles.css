@@ -13,7 +13,7 @@
 }
 
 .main-container {
-    background-image: url("../../../resources/background_light.jpg");
+    background-image: url("../../../resources/light_background.jpg");
     background-position: center;
     background-size: cover;
     display: flex;
