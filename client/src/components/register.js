@@ -28,15 +28,21 @@ const Register = () => {
 
     const validateUserData = async () => {
         try {
+            if (selectedLanguageItem === null) {
+                setSelectedLanguageItem("magyar");
+            }
             if (username === null || username === '' // A kitörlés miatt kell, mert akkor már nem null lesz.
                 || email === null || email === ''
                 || password1 === null || password1 === ''
                 || password2 === null || password2 === ''
-                || selectedLanguageItem === null
                 || selectedGenderItem === null) {
                 throw new Error('Hiányzó adatok!');
+            } else if (!isValidEmail(email)) {
+                throw new Error('A megadott email nem valid!');
             } else if (password1 !== password2) {
                 throw new Error('A jelszavak nem egyeznek!');
+            } else if (!isLessStrongPassword(password1)) {
+                throw new Error('A jelszó minimum 6 karakter, közte 1 szám és 1 nagybetű.');
             } else {
                 await registerUser();
             }
