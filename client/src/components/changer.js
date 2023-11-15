@@ -1,6 +1,6 @@
 export const changer = {
     language : "HUN",
-    darkMode : false,
+    darkMode : true,
 
     setChangerItems : (language, darkMode) => {
         changer.language = language;

@@ -13,7 +13,7 @@
 }
 
 .main-container {
-    background-image: url("../../../resources/background.jpg");
+    background-image: url("../../../resources/background_light.jpg");
     background-position: center;
     background-size: cover;
     display: flex;
@@ -112,6 +112,17 @@ input:checked + .slider:before {
 Dark Styles
 ------------------------------------------------------------------------------------------------------------------------
 */
+
+.dark-main-container {
+    background-image: url("../../../resources/dark_background.jpg");
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
 
 .dark-blur-container {
     background: rgba(120, 110, 100, 0.5); /*kézzel átállított*/

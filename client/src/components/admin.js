@@ -43,7 +43,7 @@ const Admin = () => {
     };
 
     return (
-        <div className="main-container">
+        <div className={`main-container ${darkMode ? "dark-main-container" : ""}`}>
 
             <label className="switch">
                 <input

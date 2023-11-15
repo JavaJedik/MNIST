@@ -79,7 +79,7 @@ const AuthService = {
         }
     },
 
-    checkLoggedIn: async () => {
+    /*checkLoggedIn: async () => {
         const userToken = localStorage.getItem('userToken');
 
         try {
@@ -104,7 +104,7 @@ const AuthService = {
             console.error('Fetch error:', error);
             throw new Error('Token check failed');
         }
-    },
+    },*/
 
     checkUserToken: async () => {
         try {

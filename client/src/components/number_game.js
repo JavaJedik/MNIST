@@ -146,7 +146,7 @@ useEffect(() => {
     }
 
     return (
-        <div className="main-container">
+        <div className={`main-container ${darkMode ? "dark-main-container" : ""}`}>
             <div className="game-main-container">
 
                 <label className="switch">

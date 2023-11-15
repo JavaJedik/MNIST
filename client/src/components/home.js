@@ -19,7 +19,7 @@ const Home = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const data = await AuthService.checkLoggedIn();
+                const data = await AuthService.checkUserToken();
 
                 if (!data.success) {
                     navigateLogin();
@@ -87,7 +87,7 @@ const Home = () => {
     };
 
     return (
-        <div className="main-container">
+        <div div className={`main-container ${darkMode ? "dark-main-container" : ""}`}>
 
             <label className="switch">
                 <input
