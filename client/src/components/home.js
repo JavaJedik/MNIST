@@ -71,7 +71,12 @@ const Home = () => {
         setIsDropdownOpen(false);
     };
 
-    const navigateLeaderboard = async () => {
+    const navigateLeaderboard = () => {
+        changer.setChangerItems(selectedLanguage, darkMode);
+        navigate("/leaderboard");
+    }
+
+    /*const navigateLeaderboard = async () => {
         changer.setChangerItems(selectedLanguage, darkMode);
         try {
             const data = await AuthService.checkUserToken();
@@ -87,7 +92,7 @@ const Home = () => {
             console.error('Ranglista megnyitása sikertelen:', error);
             navigateLogin()
         }
-    };
+    };*/
 
     return (
         <div div className={`main-container ${darkMode ? "dark-main-container" : ""}`}>
