@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import "./styles/home.css"
+import "./styles/styles.css"
 import { content } from './contents/homeContent';
 import { changer } from "./changer";
 import AuthService from '../AuthService';
@@ -14,7 +14,9 @@ const Home = () => {
 
     const text = content[selectedLanguage];
 
-    /*useEffect(() => {
+    console.log(userToken)
+
+    useEffect(() => {
         const fetchData = async () => {
             try {
                 const data = await AuthService.checkLoggedIn();
@@ -28,10 +30,10 @@ const Home = () => {
         };
 
         fetchData();
-    }, []);*/
+    }, []);
 
     const navigateLogin = () => {
-        //localStorage.removeItem('userToken');
+        localStorage.removeItem('userToken');
         changer.setChangerItems(selectedLanguage, darkMode);
         navigate("/login");
     };

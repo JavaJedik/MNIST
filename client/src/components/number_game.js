@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import "./styles/number_game.css"
+import "./styles/styles.css"
 import { content } from "./contents/number_gameContent";
 import { changer } from "./changer";
 import AuthService from "../AuthService";
