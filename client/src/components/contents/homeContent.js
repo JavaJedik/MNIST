@@ -4,7 +4,8 @@ export const content = {
         choose: "Choose a language!",
         language: "English",
         leaderboard: "Leaderboard",
-        game: "Start game",
+        game: "Start number game!",
+        picture_game: "Start picture game!",
         logout: "Log out",
     },
     HUN: {
@@ -12,7 +13,8 @@ export const content = {
         choose: "Válasszon nyelvet!",
         language: "Magyar",
         leaderboard: "Toplista",
-        game: "Játék indítása",
+        game: "Számos játék indítása!",
+        picture_game: "Képes játék indítása!",
         logout: "Kijelentkezés",
     },
 };

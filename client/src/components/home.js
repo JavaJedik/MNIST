@@ -48,33 +48,17 @@ const Home = () => {
         }
     };
 
-    /*const navigateQuiz = async () => {
-        try {
-            const data = await AuthService.checkLoggedIn();
-
-            if (data.success) {
-                navigate("/quiz");
-            } else {
-                navigateLogin();
-            }
-        } catch (error) {
-            console.error('Hiba az autentikációs ellenőrzésben:', error);
+    const navigatePictureGame = async () => {
+        changer.setChangerItems(selectedLanguage, darkMode);
+        const gameToken = await AuthService.askGameToken(localStorage.getItem("userToken"));
+        console.log("success: " + gameToken.success);
+        if(gameToken.success) {
+            console.log("gameToken success volt");
+            navigate("/picture_game");
+        } else {
+            navigate("/login");
         }
     };
-
-    const navigateLeaderboard = async () => {
-        try {
-            const data = await AuthService.checkLoggedIn();
-
-            if (data.success) {
-                navigate("/leaderboard");
-            } else {
-                navigateLogin();
-            }
-        } catch (error) {
-            console.error('Hiba az autentikációs ellenőrzésben:', error);
-        }
-    };*/
 
     const handleDropdownItemClick = (language) => {
         setSelectedLanguage(language);
@@ -158,6 +142,15 @@ const Home = () => {
                             onClick={navigateNumberGame}>
                             <u>
                                 {text.game}
+                            </u>
+                        </button>
+                    </div>
+                    <div>
+                        <button
+                            className={`home-button-style ${darkMode ? "dark-button-style" : ""}`}
+                            onClick={navigatePictureGame}>
+                            <u>
+                                {text.picture_game}
                             </u>
                         </button>
                     </div>
