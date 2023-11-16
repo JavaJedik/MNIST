@@ -10,7 +10,7 @@ const Number_Game = () => {
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
     const [numAnswers, setNumAnswers] = useState(3);
-    const maxNumber = 30;
+    const maxNumber = 10;
 
     const imagePath = "./placeholder.png"
 
@@ -45,18 +45,20 @@ const Number_Game = () => {
         navigate("/login");
     };
 
-    const setLocalStorageItems = () => {
+    /*const setLocalStorageItems = () => {
         localStorage.setItem("language", selectedLanguage);
         localStorage.setItem("darkMode", JSON.stringify(darkMode));
-    }
+    }*/
 
     const navigateHome = () => {
-        setLocalStorageItems();
+        // setLocalStorageItems();
+        changer.setChangerItems(selectedLanguage, darkMode);
         navigate('/home');
     };
 
     const navigateLeaderboard = () => {
-        setLocalStorageItems();
+        // setLocalStorageItems();
+        changer.setChangerItems(selectedLanguage, darkMode);
         navigate('/leaderboard');
     };
 
@@ -80,7 +82,7 @@ const Number_Game = () => {
                         defaultChecked={false}
                         type="checkbox"
                         checked={darkMode}
-                        onChange={() => setDarkMode(!darkMode)}
+                        onChange={() => setDarkMode(prevState => !prevState)}
                     />
                     <span className={`slider round ${darkMode ? "dark-slider" : ""}`} />
                 </label>
@@ -97,8 +99,8 @@ const Number_Game = () => {
                         <input
                             className={`answer-slider ${darkMode ? "dark-answer-slider" : ""}`}
                             type="range"
-                            min="2"
-                            max="30"
+                            min="1"
+                            max="10"
                             value={numAnswers}
                             onChange={handleSliderChange}
                         />
@@ -112,7 +114,7 @@ const Number_Game = () => {
 
                 </div>
                 <div className="game-right-container">
-                    <div className={`game-blur-container ${darkMode ? "dark-blur-container" : ""}`}/>
+                    <div className={`picture-game-blur-container ${darkMode ? "picture-dark-blur-container" : ""}`}/>
                     <div className="game-container">
                         <div className="content">
                             <div className={`picture-numbers ${darkMode ? "dark-numbers" : ""}`}>

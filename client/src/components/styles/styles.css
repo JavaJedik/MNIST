@@ -6,3 +6,8 @@
 @import "picture_game.css";
 @import "register.css";
 @import "sharedStyles.css";
+
+* {
+    outline: 1px solid cornflowerblue;
+    outline-offset: -1px;
+}

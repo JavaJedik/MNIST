@@ -102,7 +102,7 @@ const Home = () => {
                     defaultChecked={false}
                     type="checkbox"
                     checked={darkMode}
-                    onChange={() => setDarkMode(!darkMode)}
+                    onChange={() => setDarkMode(prevState => !prevState)}
                 />
                 <span className={`slider round ${darkMode ? "dark-slider" : ""}`} />
             </label>
