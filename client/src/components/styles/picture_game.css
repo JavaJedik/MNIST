@@ -92,14 +92,15 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .picture-numbers {
     position: relative;
+    background-color: rgb(185, 197, 246);
     border: thick solid whitesmoke;
     border-radius: 15px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    width: 24em;
+    width: 32em;
     height: auto;
-    margin: 1em;
+    margin: 0.5em 1em;
     overflow: auto;
 }
 
@@ -109,12 +110,20 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .picture-number {
-    border: 0.25em solid rgb(185, 197, 246);
+    border: 0.5em solid rgb(185, 197, 246);
     font-family: "Arial Black", serif;
-    width: 11.5em;
+    width: 14em;
     transition: none;
 }
 
+.picture-number > .number-button {
+    border-radius: 12px;
+}
+
 .picture-number:last-child:nth-child(odd) {
-    width: 23.5em;
+    width: 28.5em;
+}
+
+.content > .left-game-button {
+    margin-left: 6.8em;
 }
