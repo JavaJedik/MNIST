@@ -80,19 +80,23 @@ input[type="number"]::-webkit-outer-spin-button {
     border: 1px solid whitesmoke;
     backdrop-filter: blur(20px);
     position: relative;
+    display: inline-flex;
+    justify-content: center;
     width: 35em;
-    height: 45em;
+    height: auto;
     border-radius: 25px;
     z-index: 0;
+    overflow: auto;
+    padding: 1em;
 }
 
 .picture-numbers {
     position: relative;
     border: thick solid whitesmoke;
     border-radius: 15px;
-    flex-direction: row;
-    align-content: baseline;
+    display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     width: 24em;
     height: auto;
     margin: 1em;
@@ -107,6 +111,9 @@ input[type="number"]::-webkit-outer-spin-button {
 .picture-number {
     border: 0.25em solid rgb(185, 197, 246);
     font-family: "Arial Black", serif;
+    width: 11.5em;
+}
+
+.picture-number:last-child:nth-child(odd) {
     width: 23.5em;
-    height: auto;
 }

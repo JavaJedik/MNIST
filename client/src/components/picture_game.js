@@ -98,7 +98,7 @@ const Picture_Game = () => {
                         <input
                             className={`answer-slider ${darkMode ? "dark-answer-slider" : ""}`}
                             type="range"
-                            min="1"
+                            min="2"
                             max="10"
                             value={numAnswers}
                             onChange={handleSliderChange}
@@ -113,8 +113,7 @@ const Picture_Game = () => {
 
                 </div>
                 <div className="game-right-container">
-                    <div className={`picture-game-blur-container ${darkMode ? "picture-dark-blur-container" : ""}`}/>
-                    <div className="game-container">
+                    <div className={`picture-game-blur-container ${darkMode ? "picture-dark-blur-container" : ""}`}>
                         <div className="content">
                             <div className={`picture-numbers ${darkMode ? "dark-numbers" : ""}`}>
                                 {Array.from({ length: numAnswers }).map((_, index) => (
