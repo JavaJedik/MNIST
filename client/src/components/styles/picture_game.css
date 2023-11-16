@@ -112,6 +112,7 @@ input[type="number"]::-webkit-outer-spin-button {
     border: 0.25em solid rgb(185, 197, 246);
     font-family: "Arial Black", serif;
     width: 11.5em;
+    transition: none;
 }
 
 .picture-number:last-child:nth-child(odd) {
