@@ -5,7 +5,7 @@ import { content } from "./contents/picture_gameContent";
 import { changer } from "./changer";
 import AuthService from '../AuthService';
 
-const Number_Game = () => {
+const Picture_Game = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
@@ -71,7 +71,6 @@ const Number_Game = () => {
             setNumAnswers(parseInt(event.target.value, 10));
         }
     };
-
 
     return (
         <div className={`main-container ${darkMode ? "dark-main-container" : ""}`}>
@@ -153,4 +152,4 @@ const Number_Game = () => {
     );
 };
 
-export default Number_Game;
+export default Picture_Game;
