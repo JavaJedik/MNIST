@@ -82,7 +82,6 @@ input[type="number"]::-webkit-outer-spin-button {
     position: relative;
     width: 35em;
     height: 45em;
-    display: grid;
     border-radius: 25px;
     z-index: 0;
 }
