@@ -99,7 +99,7 @@ const Register = () => {
 
     function isLessStrongPassword(checkPassword) {
         // Minimum 6 karakter, közte 1 szám és 1 nagybetű.
-        const passwordRegex = /^(?=.*[a-zA-Z])(?=.*\d).{6,}$/;
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$/;
         return passwordRegex.test(checkPassword);
     }
 
@@ -163,7 +163,10 @@ const Register = () => {
                 </div>
                 <div className = "content">
                     <input
-                        className={`input-field ${darkMode ? "dark-input-field" : ""}`}
+                        className={`input-field ${darkMode ? "dark-input-field" : ""}
+                                                ${email !== "" ? 
+                                                    isValidEmail(email) ?
+                                                        "valid-email" : "invalid-email" : ""}`}
                         type="text"
                         placeholder={text.email}
                         id="email"
@@ -173,7 +176,10 @@ const Register = () => {
                 </div>
                 <div className = "content">
                     <input
-                        className={`input-field ${darkMode ? "dark-input-field" : ""}`}
+                        className={`input-field ${darkMode ? "dark-input-field" : ""} 
+                                                ${password1 !== "" ? 
+                                                    isLessStrongPassword(password1) ?
+                                                        "valid-password" : "invalid-password" : ""}`}
                         type="password"
                         placeholder={text.password}
                         id="password1"
@@ -183,7 +189,10 @@ const Register = () => {
                 </div>
                 <div className = "content">
                     <input
-                        className={`input-field ${darkMode ? "dark-input-field" : ""}`}
+                        className={`input-field ${darkMode ? "dark-input-field" : ""}
+                                                ${password2 !== "" ?
+                                                     password1 === password2 ?
+                                                        "valid-password" : "invalid-password" : ""}`}
                         type="password"
                         placeholder={text.passwordagain}
                         id="password2"
