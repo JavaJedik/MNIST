@@ -16,7 +16,7 @@ const Home = () => {
 
     console.log(userToken)
 
-    useEffect(() => {
+    /*useEffect(() => {
         const fetchData = async () => {
             try {
                 const data = await AuthService.checkLoggedIn();
@@ -34,13 +34,13 @@ const Home = () => {
         };
 
         fetchData();
-    }, []);
+    }, []);*/
 
     const navigateLogin = () => {
         localStorage.removeItem('userToken');
         changer.setChangerItems(selectedLanguage, darkMode);
         navigate("/login");
-    };
+    };/*
 
     const navigateNumberGame = async () => {
         changer.setChangerItems(selectedLanguage, darkMode);
@@ -64,7 +64,7 @@ const Home = () => {
         } else {
             navigate("/login");
         }
-    };
+    };*/
 
     const handleDropdownItemClick = (language) => {
         setSelectedLanguage(language);
@@ -149,7 +149,7 @@ const Home = () => {
                     <div>
                         <button
                             className={`home-button-style ${darkMode ? "dark-button-style" : ""}`}
-                            onClick={navigateNumberGame}>
+                            /*onClick={navigateNumberGame}*/>
                             <u>
                                 {text.game}
                             </u>
@@ -158,7 +158,7 @@ const Home = () => {
                     <div>
                         <button
                             className={`home-button-style ${darkMode ? "dark-button-style" : ""}`}
-                            onClick={navigatePictureGame}>
+                            /*onClick={navigatePictureGame}*/>
                             <u>
                                 {text.picture_game}
                             </u>

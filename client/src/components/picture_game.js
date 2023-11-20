@@ -19,7 +19,7 @@ const Picture_Game = () => {
 
     const text = content[selectedLanguage];
 
-    useEffect(() => {
+    /*useEffect(() => {
         const fetchData = async () => {
             try {
                 const data = await AuthService.checkLoggedIn();
@@ -37,7 +37,7 @@ const Picture_Game = () => {
         };
 
         fetchData();
-    }, []);
+    }, []);*/
 
     const navigateLogin = () => {
         localStorage.removeItem('userToken');
@@ -74,7 +74,7 @@ const Picture_Game = () => {
 
     return (
         <div className={`main-container ${darkMode ? "dark-main-container" : ""}`}>
-            <div className="game-main-container">
+            <div className="picture-game-main-container">
 
                 <label className="switch">
                     <input

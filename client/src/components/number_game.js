@@ -21,7 +21,7 @@ const Number_Game = () => {
 
     //AuthService.askNumberPicture(localStorage.getItem("gameToken"));
 
-    useEffect(() => {
+    /*useEffect(() => {
         const fetchData = async () => {
             try {
                 const data = await AuthService.checkLoggedIn();
@@ -39,7 +39,7 @@ const Number_Game = () => {
         };
 
         fetchData();
-    }, []);
+    }, []);*/
 
     const renderCurrentPicture = () => {
         console.log("A képek száma: ", pictures.length)
@@ -75,7 +75,7 @@ useEffect(() => {
                 setCurrentPictureIndex(0); // Az első képet állítjuk be kezdetben
                 renderCurrentPicture();
             } else {
-                navigateLogin();
+                //navigateLogin();
             }
         } catch (error) {
             console.error("Képek lekérése sikertelen", error);

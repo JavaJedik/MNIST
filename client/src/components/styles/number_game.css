@@ -232,10 +232,6 @@
 }
 
 @media (max-width: 500px) {
-    .game-main-container {
-        flex-direction: column;
-    }
-
     .game-blur-container {
         width: 25em;
         height: 40em;
