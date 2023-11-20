@@ -21,7 +21,7 @@ const Number_Game = () => {
 
     //AuthService.askNumberPicture(localStorage.getItem("gameToken"));
 
-    /*useEffect(() => {
+    useEffect(() => {
         const fetchData = async () => {
             try {
                 const data = await AuthService.checkLoggedIn();
@@ -39,7 +39,7 @@ const Number_Game = () => {
         };
 
         fetchData();
-    }, []);*/
+    }, []);
 
     const renderCurrentPicture = () => {
         console.log("A képek száma: ", pictures.length)

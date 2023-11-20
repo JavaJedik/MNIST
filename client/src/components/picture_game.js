@@ -19,7 +19,7 @@ const Picture_Game = () => {
 
     const text = content[selectedLanguage];
 
-    /*useEffect(() => {
+    useEffect(() => {
         const fetchData = async () => {
             try {
                 const data = await AuthService.checkLoggedIn();
@@ -37,7 +37,7 @@ const Picture_Game = () => {
         };
 
         fetchData();
-    }, []);*/
+    }, []);
 
     const navigateLogin = () => {
         localStorage.removeItem('userToken');
