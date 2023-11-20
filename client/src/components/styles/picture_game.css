@@ -90,13 +90,14 @@ input[type="number"]::-webkit-outer-spin-button {
     backdrop-filter: blur(20px);
     position: relative;
     display: inline-flex;
-    justify-content: center;
     width: 35em;
     height: auto;
     border-radius: 25px;
     z-index: 0;
-    overflow: hidden;
+
     padding: 1em;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .picture-numbers {
@@ -110,7 +111,6 @@ input[type="number"]::-webkit-outer-spin-button {
     width: 32em;
     height: auto;
     margin: 0.5em 1em;
-    overflow: auto;
 }
 
 .picture-numbers::-webkit-scrollbar {
@@ -137,6 +137,21 @@ input[type="number"]::-webkit-outer-spin-button {
     margin-left: 6.8em;
 }
 
+.picture-button-container {
+    display: flex;
+    justify-content: space-around;
+    padding: 0 2.5em;
+    align-items: center;
+}
+
+.picture-button-container > .left-game-button {
+    width: 15em;
+}
+
+.picture-button-container > .right-game-button {
+    width: 15em;
+}
+
 @media (max-width: 1160px) or (max-height: 950px) {
     .picture-game-blur-container {
         width: 32em;
@@ -152,6 +167,14 @@ input[type="number"]::-webkit-outer-spin-button {
 
     .picture-number:last-child:nth-child(odd) {
         width: 25em;
+    }
+
+    .picture-button-container > .left-game-button {
+        width: 12em;
+    }
+
+    .picture-button-container > .right-game-button {
+        width: 12em;
     }
 }
 
@@ -187,6 +210,18 @@ input[type="number"]::-webkit-outer-spin-button {
 
     .picture-number:last-child:nth-child(odd) {
         width: 21em;
+    }
+
+    .picture-button-container {
+        padding: 0 1em;
+    }
+
+    .picture-button-container > .left-game-button {
+        width: 10em;
+    }
+
+    .picture-button-container > .right-game-button {
+        width: 10em;
     }
 }
 
@@ -225,6 +260,18 @@ input[type="number"]::-webkit-outer-spin-button {
 
     .picture-number:last-child:nth-child(odd) {
         width: 17em;
+    }
+
+    .picture-button-container {
+        padding: 0 1em;
+    }
+
+    .picture-button-container > .left-game-button {
+        width: 10em;
+    }
+
+    .picture-button-container > .right-game-button {
+        width: 10em;
     }
 }
 

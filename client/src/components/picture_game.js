@@ -131,18 +131,20 @@ const Picture_Game = () => {
                                     </div>
                                 ))}
                             </div>
-                            <button
-                                className={`button-style left-game-button ${darkMode ? "dark-button-style" : ""}`}
-                                onClick={navigateHome}
-                            >
-                                {text.goback}
-                            </button>
-                            <button
-                                className={`button-style right-game-button ${darkMode ? "dark-button-style" : ""}`}
-                                onClick={navigateLeaderboard}
-                            >
-                                {text.leaderboard}
-                            </button>
+                            <div className="picture-button-container">
+                                <button
+                                    className={`button-style left-game-button ${darkMode ? "dark-button-style" : ""}`}
+                                    onClick={navigateHome}
+                                >
+                                    {text.goback}
+                                </button>
+                                <button
+                                    className={`button-style right-game-button ${darkMode ? "dark-button-style" : ""}`}
+                                    onClick={navigateLeaderboard}
+                                >
+                                    {text.leaderboard}
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
