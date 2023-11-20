@@ -145,6 +145,14 @@ input[type="number"]::-webkit-outer-spin-button {
     .picture-numbers {
         width: 30em;
     }
+
+    .picture-number {
+        width: 12em;
+    }
+
+    .picture-number:last-child:nth-child(odd) {
+        width: 25em;
+    }
 }
 
 @media (max-width: 1000px) or (max-height: 750px) {
@@ -168,8 +176,17 @@ input[type="number"]::-webkit-outer-spin-button {
         width: 24em;
         margin-right: 1em;
     }
+
     .picture-numbers {
         width: 22em;
+    }
+
+    .picture-number {
+        width: 10em;
+    }
+
+    .picture-number:last-child:nth-child(odd) {
+        width: 21em;
     }
 }
 
@@ -178,8 +195,17 @@ input[type="number"]::-webkit-outer-spin-button {
         width: 22em;
         margin-right: 1em;
     }
+
     .picture-numbers {
         width: 20em;
+    }
+
+    .picture-number {
+        width: 9em;
+    }
+
+    .picture-number:last-child:nth-child(odd) {
+        width: 19em;
     }
 }
 
@@ -188,8 +214,17 @@ input[type="number"]::-webkit-outer-spin-button {
         width: 20em;
         margin-right: 1em;
     }
+
     .picture-numbers {
         width: 20em;
+    }
+
+    .picture-number {
+        width: 8em;
+    }
+
+    .picture-number:last-child:nth-child(odd) {
+        width: 17em;
     }
 }
 
