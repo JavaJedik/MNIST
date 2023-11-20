@@ -95,7 +95,7 @@ input[type="number"]::-webkit-outer-spin-button {
     height: auto;
     border-radius: 25px;
     z-index: 0;
-    overflow: auto;
+    overflow: hidden;
     padding: 1em;
 }
 

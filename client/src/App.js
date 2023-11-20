@@ -20,9 +20,19 @@ function App() {
             <Route path="/number_game" element={<Number_Game />} />
             <Route path="/picture_game" element={<Picture_Game />} />
             <Route path="/admin" element={<Admin />} />
+            <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
   );
+}
+
+function NotFound() {
+    return (
+        <div>
+            <h2>404</h2>
+            <p>A kért oldal nem található!</p>
+        </div>
+    );
 }
 
 export default App;
