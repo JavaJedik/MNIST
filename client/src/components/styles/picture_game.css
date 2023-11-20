@@ -157,12 +157,15 @@ input[type="number"]::-webkit-outer-spin-button {
     }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 800px) {
     .picture-game-main-container {
         flex-direction: column;
     }
+}
+
+@media (max-width: 700px) {
     .picture-game-blur-container {
-        width: 20em;
+        width: 24em;
         margin-right: 1em;
     }
     .picture-numbers {
@@ -172,7 +175,7 @@ input[type="number"]::-webkit-outer-spin-button {
 
 @media (max-width: 600px) {
     .picture-game-blur-container {
-        width: 18em;
+        width: 22em;
         margin-right: 1em;
     }
     .picture-numbers {
@@ -182,17 +185,7 @@ input[type="number"]::-webkit-outer-spin-button {
 
 @media (max-width: 550px) {
     .picture-game-blur-container {
-        width: 14em;
-        margin-right: 1em;
-    }
-    .picture-numbers {
         width: 20em;
-    }
-}
-
-@media (max-width: 550px) {
-    .picture-game-blur-container {
-        width: 10em;
         margin-right: 1em;
     }
     .picture-numbers {
@@ -202,7 +195,7 @@ input[type="number"]::-webkit-outer-spin-button {
 
 @media (max-width: 500px) {
     .picture-game-blur-container {
-        width: 20em;
+        width: 18em;
         margin-right: 1em;
     }
     .picture-numbers {
