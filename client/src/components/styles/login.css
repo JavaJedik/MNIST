@@ -12,7 +12,7 @@
 }
 
 .input-field:hover {
-    border: medium solid rgb(185, 197, 246);;
+    border: medium solid rgb(185, 197, 246);
     background: rgb(185, 197, 246);
 }
 
@@ -24,7 +24,7 @@
     background: whitesmoke;
     font-weight: bolder;
     text-align: center;
-    margin: 1em 0.5em 0;
+    margin: 1em 0.5em 0 0.5em;
     border: medium solid rgb(185, 197, 246);
     border-radius: 15px;
     transition-duration: 0.8s;
@@ -81,7 +81,7 @@
 
 .content {
     position: relative;
-    margin: 0.8em 0 0.5em;
+    margin: 0.8em 0 0.5em 0;
 }
 
 .content-bottom {
@@ -91,7 +91,7 @@
     position: relative;
     text-align: center;
     cursor: default;
-    margin: 0.5em 0;
+    margin: 0.5em 0 0.5em 0;
 }
 
 @media (max-width: 700px) {

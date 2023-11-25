@@ -110,7 +110,7 @@ input[type="number"]::-webkit-outer-spin-button {
     justify-content: center;
     width: 32em;
     height: auto;
-    margin: 0.5em 1em;
+    margin: 0.5em 1em 0.5em 1em;
 }
 
 .picture-numbers::-webkit-scrollbar {
@@ -140,7 +140,7 @@ input[type="number"]::-webkit-outer-spin-button {
 .picture-button-container {
     display: flex;
     justify-content: space-around;
-    padding: 0 2.5em;
+    padding: 0 2.5em 0 2.5em;
     align-items: center;
 }
 

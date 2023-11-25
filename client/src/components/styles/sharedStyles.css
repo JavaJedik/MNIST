@@ -39,7 +39,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #bbb;
+    background-color: #bbbbbb;
     -webkit-transition: .4s;
     transition: .4s;
 }
@@ -55,7 +55,7 @@
     width: 26px;
     left: 4px;
     bottom: 4px;
-    background-color: white;
+    background-color: #ffffff;
     -webkit-transition: .4s;
     transition: .4s;
 }
@@ -84,7 +84,7 @@ input:checked + .slider {
 }
 
 input:focus + .slider {
-    box-shadow: 0 0 1px black;
+    box-shadow: 0 0 1px 0 black;
 }
 
 input:checked + .slider:before {
@@ -130,7 +130,7 @@ Dark Styles
 }
 
 .dark-input-field::placeholder {
-    color: whitesmoke;;
+    color: whitesmoke;
     font-weight: bolder;
 }
 
@@ -192,8 +192,8 @@ input[type="file"].dark-input-field {
 
 .dark-number-button {
     background: grey;
-    border-color: white;
-    color: white;
+    border-color: #ffffff;
+    color: #ffffff;
 }
 
 .dark-number-button:hover {
@@ -201,7 +201,7 @@ input[type="file"].dark-input-field {
 }
 
 .dark-table {
-    color: white;
+    color: #ffffff;
 }
 
 .dark-text {
