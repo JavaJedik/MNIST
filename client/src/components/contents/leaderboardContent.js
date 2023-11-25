@@ -10,7 +10,7 @@ export const content = {
     HUN: {
         placement: "Helyezés",
         name: "Név",
-        prize: "nyeremény",
+        prize: "Nyeremény",
         goodanswers: "Helyes válaszok száma",
         summedprizes: "Eddigi nyeremények összege",
         backbutton: "Visszalépés",
