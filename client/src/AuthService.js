@@ -1,5 +1,3 @@
-import {changer} from "./components/changer";
-
 const API_URL = 'https://mnist-server.serveo.net';
 
 const AuthService = {
@@ -94,6 +92,7 @@ const AuthService = {
                 const responseText = await response.text();
                 console.log('Válasz típusa:', typeof responseText);
                 console.log('Válasz tartalma:', responseText);
+
                 return response.status;
             } else {
                 console.log('Nem kezelt státuszkód:', response.status);
@@ -163,6 +162,7 @@ const AuthService = {
                 console.log('Válasz tartalma:', responseText);
 
                 localStorage.setItem('userToken', responseText);
+
                 return { success: true, userToken: responseText };
             } else if (response.status === 409) {
                 console.log('Nincs válasz a státuszkód 409 esetén.');
@@ -270,15 +270,19 @@ const AuthService = {
             if (response.status === 200) {
                 const data = await response.json();
                 console.log("A válasz tartalmazza a képek binárisait", data);
+
                 return { success: true, response: data };
             } else {
                 console.log("Nem lett OK státuszú:", response.status);
+
                 return { success: false, response: null };
             }
         } catch (error) {
             console.error("Hiba történt a képek lekérése közben:", error);
+
             return { success: false, response: null };
         }
     }
 };
+
 export default AuthService;
