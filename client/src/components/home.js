@@ -95,7 +95,7 @@ const Home = () => {
     };*/
 
     return (
-        <div div className={`main-container ${darkMode ? "dark-main-container" : ""}`}>
+        <div className={`main-container ${darkMode ? "dark-main-container" : ""}`}>
 
             <label className="switch">
                 <input
@@ -111,23 +111,28 @@ const Home = () => {
 
             <div className={`home-blur-container ${darkMode ? "dark-blur-container" : ""}`} />
                 <div className="home-container">
+
                     <div>
                         <h1 className={`home-header ${darkMode ? "dark-content-bottom" : ""}`}>
                             {text.welcome}
                         </h1>
                     </div>
-                    <div
-                        className={`home-dropdown ${isDropdownOpen ? "active" : ""}`}>
+
+                    <div className={`home-dropdown ${isDropdownOpen ? "active" : ""}`}>
+
                         <button
                             className={`home-dropbtn ${darkMode ? "dark-button-style" : ""}`}
-                            onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
+                            onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                        >
                             <span className={`${darkMode ? "dark-span" : ""}`}>
                                 {text.language}
                             </span>
+
                             <span className="dropbtn-arrow">
                                 &#9660;
                             </span>
                         </button>
+
                         <div id="home-myDropdown">
                             <div className={`home-dropdown-content ${darkMode ? "dark-dropdown-content" : ""}`}>
                                 <p onClick={() => handleDropdownItemClick("HUN")}>
@@ -138,36 +143,45 @@ const Home = () => {
                                 </p>
                             </div>
                         </div>
+
                     </div>
+
                     <div>
                         <button
                             className={`home-button-style ${darkMode ? "dark-button-style" : ""}`}
-                            onClick={navigateLeaderboard}>
+                            onClick={navigateLeaderboard}
+                        >
                             {text.leaderboard}
                         </button>
                     </div>
+
                     <div>
                         <button
                             className={`home-button-style ${darkMode ? "dark-button-style" : ""}`}
-                            onClick={navigateNumberGame}>
+                            onClick={navigateNumberGame}
+                        >
                             <u>
                                 {text.game}
                             </u>
                         </button>
                     </div>
+
                     <div>
                         <button
                             className={`home-button-style ${darkMode ? "dark-button-style" : ""}`}
-                            onClick={navigatePictureGame}>
+                            onClick={navigatePictureGame}
+                        >
                             <u>
                                 {text.picture_game}
                             </u>
                         </button>
                     </div>
+
                     <div className="home-content">
                         <button
                             className={`home-button-style ${darkMode ? "dark-button-style" : ""}`}
-                            onClick={navigateLogin}>
+                            onClick={navigateLogin}
+                        >
                             {text.logout}
                         </button>
                     </div>

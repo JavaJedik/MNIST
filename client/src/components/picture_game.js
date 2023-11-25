@@ -83,18 +83,26 @@ const Picture_Game = () => {
                         checked={darkMode}
                         onChange={() => setDarkMode(prevState => !prevState)}
                     />
+
                     <span className={`slider round ${darkMode ? "dark-slider" : ""}`} />
                 </label>
 
                 <div className={`classname ${darkMode ? "dark" : ""}`} />
 
                 <div className="game-left-container">
-                    <img className="image" src={require(`${imagePath}`)} alt="A kép betöltése sikertelen." />
+
+                    <img
+                        className="image"
+                        src={require(`${imagePath}`)}
+                        alt="A kép betöltése sikertelen."
+                    />
 
                     <div className={`slider-container ${darkMode ? "dark-blur-container" : ""}`}>
+
                         <div className={`slider-text ${darkMode ? "dark-text" : ""}`}>
                             {text.numberofanswers}
                         </div>
+
                         <input
                             className={`answer-slider ${darkMode ? "dark-answer-slider" : ""}`}
                             type="range"
@@ -103,20 +111,26 @@ const Picture_Game = () => {
                             value={numAnswers}
                             onChange={handleSliderChange}
                         />
+
                         <input
                             className={`answer-number-input ${darkMode ? "dark-answer-number-input" : ""}`}
                             type="number"
                             value={numAnswers}
                             onChange={handleSliderChange}
                         />
+
                     </div>
 
                 </div>
+
                 <div className="game-right-container">
                     <div className={`picture-game-blur-container ${darkMode ? "picture-dark-blur-container" : ""}`}>
                         <div className="content">
+
                             <div className={`picture-numbers ${darkMode ? "dark-numbers" : ""}`}>
-                                {Array.from({ length: numAnswers }).map((_, index) => (
+                                {Array.from(
+                                    { length: numAnswers }).map(
+                                        (_, index) => (
                                     <div
                                         className="picture-number"
                                         onClick={() => handleClick(index+1)}
@@ -131,23 +145,29 @@ const Picture_Game = () => {
                                     </div>
                                 ))}
                             </div>
+
                             <div className="picture-button-container">
+
                                 <button
                                     className={`button-style left-game-button ${darkMode ? "dark-button-style" : ""}`}
                                     onClick={navigateHome}
                                 >
                                     {text.goback}
                                 </button>
+
                                 <button
                                     className={`button-style right-game-button ${darkMode ? "dark-button-style" : ""}`}
                                     onClick={navigateLeaderboard}
                                 >
                                     {text.leaderboard}
                                 </button>
+
                             </div>
+
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     );

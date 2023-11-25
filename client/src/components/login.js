@@ -83,6 +83,7 @@ const Login = () => {
             <div className={`classname ${darkMode ? "dark" : ""}`} />
 
             <div className={`blur-container ${darkMode ? "dark-blur-container" : ""}`} />
+
             <div className="container">
 
                 <div>
@@ -101,6 +102,7 @@ const Login = () => {
                         onChange={(e) => setUsername(e.target.value)}
                     />
                 </div>
+
                 <div className="content">
                     <input
                         className={`input-field ${darkMode ? "dark-input-field" : ""}`}
@@ -111,36 +113,37 @@ const Login = () => {
                         onChange={(e) => setPassword(e.target.value)}
                     />
                 </div>
+
                 <div className="content">
                     <button
-                        className="button-style"
                         className={`button-style ${darkMode ? "dark-button-style" : ""}`}
                         onClick={navigateHome}
                     >
                         {text.login}
                     </button>
                     <button
-                        className="button-style"
                         className={`button-style ${darkMode ? "dark-button-style" : ""}`}
                         onClick={navigateRegister}
                     >
                         {text.registration}
                     </button>
                 </div>
+
                 <div>
                     <p className={`content-bottom ${darkMode ? "dark-content-bottom" : ""}`}>
                         {text.bottomtext}
                     </p>
                 </div>
+
                 <div className="bottom-button">
                     <button
-                        className="button-style"
                         className={`button-style ${darkMode ? "dark-button-style" : ""}`}
                         onClick={navigateHomeAsGuest}
                     >
                         {text.guest}
                     </button>
                 </div>
+
             </div>
         </div>
     );

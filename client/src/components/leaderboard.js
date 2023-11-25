@@ -1,8 +1,8 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { content } from './contents/leaderboardContent';
 import "./styles/styles.css"
-import {changer} from "./changer";
+import { changer } from "./changer";
 import AuthService from "../AuthService";
 
 const Leaderboard = () => {
@@ -65,6 +65,7 @@ const Leaderboard = () => {
             <div className={`classname ${darkMode ? "dark" : ""}`} />
 
             <div className={`board-blur-container ${darkMode ? "dark-blur-container" : ""}`} />
+
             <div className="board-container">
                 <table className={`${darkMode ? "dark-table" : ""}`}>
                     <thead className="thead-style">
@@ -76,6 +77,7 @@ const Leaderboard = () => {
                             <td>{text.summedprizes}</td>
                         </tr>
                     </thead>
+
                     <tbody>
                         <tr>
                             <td>1.</td>
@@ -147,10 +149,10 @@ const Leaderboard = () => {
                             <td>{goodAnswers}</td>
                             <td>{sumOfWinnings}</td>
                         </tr>
+
                     </tbody>
                 </table>
                 <button
-                    className="home-button-style"
                     className={`home-button-style ${darkMode ? "dark-button-style" : ""}`}
                     onClick={navigateHome}
                 >

@@ -87,7 +87,7 @@ useEffect(() => {
     return () => {
         document.removeEventListener('keydown', handleKeyPress);
     };
-}, [pictures.length==0]);
+}, [pictures.length === 0]);
 
     const handleKeyPress = (event) => {
         switch (event.key) {
@@ -176,6 +176,7 @@ useEffect(() => {
                         checked={darkMode}
                         onChange={() => setDarkMode(prevState => !prevState)}
                     />
+
                     <span className={`slider round ${darkMode ? "dark-slider" : ""}`} />
                 </label>
 
@@ -186,16 +187,20 @@ useEffect(() => {
                 </div>
 
                 <div className="game-right-container">
+
                     <div className={`game-blur-container ${darkMode ? "dark-blur-container" : ""}`}/>
+
                     <div className="game-container">
                         <div className="content">
 
                             <div className={`numbers ${darkMode ? "dark-numbers" : ""}`}>
+
                                 <div className={`numbers-top ${darkMode ? "dark-numbers-top" : ""}`}>
                                     <div className="numbers-top-text">
                                         {text.toptext}
                                     </div>
                                 </div>
+
                                 <div className="number" onClick={() => handleClick(1)}>
                                     <button
                                         id="button1"
@@ -204,6 +209,7 @@ useEffect(() => {
                                         1
                                     </button>
                                 </div>
+
                                 <div className="number" onClick={() => handleClick(2)}>
                                     <button
                                         id="button2"
@@ -212,6 +218,7 @@ useEffect(() => {
                                         2
                                     </button>
                                 </div>
+
                                 <div className="number" onClick={() => handleClick(3)}>
                                     <button
                                         id="button3"
@@ -220,6 +227,7 @@ useEffect(() => {
                                         3
                                     </button>
                                 </div>
+
                                 <div className="number" onClick={() => handleClick(4)}>
                                     <button
                                         id="button4"
@@ -228,6 +236,7 @@ useEffect(() => {
                                         4
                                     </button>
                                 </div>
+
                                 <div className="number" onClick={() => handleClick(5)}>
                                     <button
                                         id="button5"
@@ -236,6 +245,7 @@ useEffect(() => {
                                         5
                                     </button>
                                 </div>
+
                                 <div className="number" onClick={() => handleClick(6)}>
                                     <button
                                         id="button6"
@@ -244,6 +254,7 @@ useEffect(() => {
                                         6
                                     </button>
                                 </div>
+
                                 <div className="number" onClick={() => handleClick(7)}>
                                     <button
                                         id="button7"
@@ -252,6 +263,7 @@ useEffect(() => {
                                         7
                                     </button>
                                 </div>
+
                                 <div className="number" onClick={() => handleClick(8)}>
                                     <button
                                         id="button8"
@@ -260,6 +272,7 @@ useEffect(() => {
                                         8
                                     </button>
                                 </div>
+
                                 <div className="number" onClick={() => handleClick(9)}>
                                     <button
                                         id="button9"
@@ -268,6 +281,7 @@ useEffect(() => {
                                         9
                                     </button>
                                 </div>
+
                                 <div className="number last-number"  onClick={() => handleClick(0)}>
                                     <button
                                         id="button0"
@@ -276,15 +290,19 @@ useEffect(() => {
                                         0
                                     </button>
                                 </div>
+
                                 <div className="idk">
                                     <button
                                         id="number"
                                         className={`idk-button ${darkMode ? "dark-number-button" : ""}`}
-                                        onClick={() => handleClick("Nem tudom")}>
+                                        onClick={() => handleClick("Nem tudom")}
+                                    >
                                         {text.idk}
                                     </button>
                                 </div>
+
                             </div>
+
                             <div className="button-container">
                                 <button
                                     className={`button-style left-game-button ${darkMode ? "dark-button-style" : ""}`}
@@ -292,6 +310,7 @@ useEffect(() => {
                                 >
                                     {text.goback}
                                 </button>
+
                                 <button
                                     className={`button-style right-game-button ${darkMode ? "dark-button-style" : ""}`}
                                     onClick={navigateLeaderboard}
@@ -299,8 +318,10 @@ useEffect(() => {
                                     {text.leaderboard}
                                 </button>
                             </div>
+
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>

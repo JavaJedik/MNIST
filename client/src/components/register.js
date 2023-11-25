@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import "./styles/styles.css"
 import { content } from "./contents/registerContent";
@@ -31,11 +31,13 @@ const Register = () => {
             if (selectedLanguageItem === null) {
                 setSelectedLanguageItem("magyar");
             }
-            if (username === null || username === '' // A kitörlés miatt kell, mert akkor már nem null lesz.
+            if (
+                username === null || username === '' // A kitörlés miatt kell, mert akkor már nem null lesz.
                 || email === null || email === ''
                 || password1 === null || password1 === ''
                 || password2 === null || password2 === ''
-                || selectedGenderItem === null) {
+                || selectedGenderItem === null
+            ) {
                 throw new Error('Hiányzó adatok!');
             } else if (!isValidEmail(email)) {
                 throw new Error('A megadott email nem valid!');
@@ -138,19 +140,23 @@ const Register = () => {
         <div className={`main-container ${darkMode ? "dark-main-container" : ""}`}>
 
             <label className="switch">
+
                 <input
                     defaultChecked={false}
                     type="checkbox"
                     checked={darkMode}
                     onChange={() => setDarkMode(prevState => !prevState)}
                 />
+
                 <span className={`slider round ${darkMode ? "dark-slider" : ""}`} />
+
             </label>
 
             <div className={`classname ${darkMode ? "dark" : ""}`} />
 
             <div  className={`reg-blur-container ${darkMode ? "dark-blur-container" : ""}`}/>
             <div className = "reg-container">
+
                 <div className = "content">
                     <input
                         className={`input-field ${darkMode ? "dark-input-field" : ""}`}
@@ -161,12 +167,15 @@ const Register = () => {
                         onChange={(e) => setUsername(e.target.value)}
                     />
                 </div>
+
                 <div className = "content">
                     <input
-                        className={`input-field ${darkMode ? "dark-input-field" : ""}
-                                                ${email !== "" ? 
-                                                    isValidEmail(email) ?
-                                                        "valid-email" : "invalid-email" : ""}`}
+                        className={
+                        `input-field ${darkMode ? "dark-input-field" : ""}
+                                ${email !== "" ? 
+                                        isValidEmail(email) ?
+                                                "valid-email" : "invalid-email" : ""}`
+                    }
                         type="text"
                         placeholder={text.email}
                         id="email"
@@ -174,12 +183,15 @@ const Register = () => {
                         onChange={(e) => setEmail(e.target.value)}
                     />
                 </div>
+
                 <div className = "content">
                     <input
-                        className={`input-field ${darkMode ? "dark-input-field" : ""} 
-                                                ${password1 !== "" ? 
-                                                    isLessStrongPassword(password1) ?
-                                                        "valid-password" : "invalid-password" : ""}`}
+                        className={
+                        `input-field ${darkMode ? "dark-input-field" : ""} 
+                                ${password1 !== "" ? 
+                                        isLessStrongPassword(password1) ?
+                                                "valid-password" : "invalid-password" : ""}`
+                    }
                         type="password"
                         placeholder={text.password}
                         id="password1"
@@ -187,12 +199,15 @@ const Register = () => {
                         onChange={(e) => setPassword1(e.target.value)}
                     />
                 </div>
+
                 <div className = "content">
                     <input
-                        className={`input-field ${darkMode ? "dark-input-field" : ""}
-                                                ${password2 !== "" ?
-                                                     password1 === password2 ?
-                                                        "valid-password" : "invalid-password" : ""}`}
+                        className={
+                        `input-field ${darkMode ? "dark-input-field" : ""}
+                                ${password2 !== "" ?
+                                        password1 === password2 ?
+                                                "valid-password" : "invalid-password" : ""}`
+                    }
                         type="password"
                         placeholder={text.passwordagain}
                         id="password2"
@@ -200,62 +215,88 @@ const Register = () => {
                         onChange={(e) => setPassword2(e.target.value)}
                     />
                 </div>
+
                 <div className={`dropdown ${isDropdownOpenLanguage ? "active-language" : ""}`}>
+
                     <button
                         className={`dropbtn ${darkMode ? "dark-button-style" : ""}`}
                         onClick={() => setIsDropdownOpenLanguage(!isDropdownOpenLanguage)}
                     >
+
                         <span>
                             {text.language}
                         </span>
+
                         <span className="dropbtn-arrow">
                             &#9660;
                         </span>
+
                     </button>
+
                     <div id="myDropdown">
+
                         <div className={`dropdown-content-language ${darkMode ? "dark-dropdown-content" : ""}`}>
                             <p onClick={() => handleLanguageDropdownItemClick("HUN")}>
                                 Magyar
                             </p>
+
                             <p onClick={() => handleLanguageDropdownItemClick("ENG")}>
                                 English
                             </p>
                         </div>
+
                     </div>
+
                 </div>
+
                 <div className={`dropdown ${isDropdownOpenGender ? "active-gender" : ""}`}>
+
                     <button
                         className={`dropbtn ${darkMode ? "dark-button-style" : ""}`}
-                        onClick={() => setIsDropdownOpenGender(!isDropdownOpenGender)}>
+                        onClick={() => setIsDropdownOpenGender(!isDropdownOpenGender)}
+                    >
+
                         <span>
                             {selectedGenderItem || text.gender}
                         </span>
+
                         <span className="dropbtn-arrow">
                             &#9660;
                         </span>
+
                     </button>
+
                     <div id="myDropdown">
 
                         <div className={`dropdown-content-gender ${darkMode ? "dark-dropdown-content" : ""}`}>
+
                             <p onClick={() => handleGenderDropdownItemClick(text.male)}>
                                 {text.male}
                             </p>
+
                             <p onClick={() => handleGenderDropdownItemClick(text.female)}>
                                 {text.female}
                             </p>
+
                             <p onClick={() => handleGenderDropdownItemClick(text.cat)}>
                                 {text.cat}
                             </p>
+
                         </div>
+
                     </div>
+
                 </div>
+
                 <div className = "content">
+
                     <button
                         className={`button-style ${darkMode ? "dark-button-style" : ""}`}
                         onClick={navigateLogin}
                     >
                         {text.goback}
                     </button>
+
                     <button
                         className={`button-style ${darkMode ? "dark-button-style" : ""}`}
                         onClick={validateUserData}
@@ -263,6 +304,7 @@ const Register = () => {
                         {text.register}
                     </button>
                 </div>
+
             </div>
         </div>
     );
