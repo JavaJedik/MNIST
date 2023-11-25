@@ -7,21 +7,22 @@ import Leaderboard from './components/leaderboard';
 import Number_Game from './components/number_game';
 import Picture_Game from './components/picture_game';
 import Admin from './components/admin';
-import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+
 function App() {
     return (
         <BrowserRouter>
-        <Routes>
-            <Route path="/" element={<Navigate to="/login"/>}/>
-            <Route path="/login" element={<Login />} />
-            <Route path="/home" element={<Home />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/leaderboard" element={<Leaderboard />} />
-            <Route path="/number_game" element={<Number_Game />} />
-            <Route path="/picture_game" element={<Picture_Game />} />
-            <Route path="/admin" element={<Admin />} />
-            <Route path="*" element={<NotFound />} />
-        </Routes>
+            <Routes>
+                <Route path="/" element={<Navigate to="/login"/>} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/home" element={<Home />} />
+                <Route path="/register" element={<Register />} />
+                <Route path="/leaderboard" element={<Leaderboard />} />
+                <Route path="/number_game" element={<Number_Game />} />
+                <Route path="/picture_game" element={<Picture_Game />} />
+                <Route path="/admin" element={<Admin />} />
+                <Route path="*" element={<NotFound />} />
+            </Routes>
       </BrowserRouter>
   );
 }
