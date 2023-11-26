@@ -63,6 +63,15 @@ const Admin = () => {
         }
     };
 
+    const languageChange = () => {
+        if(selectedLanguage === "HUN") {
+            setSelectedLanguage("ENG");
+        }
+        else if(selectedLanguage === "ENG") {
+            setSelectedLanguage("HUN");
+        }
+    }
+
     return (
         <div className={`main-container ${darkMode ? "dark-main-container" : ""}`}>
 
@@ -75,6 +84,11 @@ const Admin = () => {
                 />
                 <span className={`slider round ${darkMode ? "dark-slider" : ""}`} />
             </label>
+
+            <div
+                className="language-changer"
+                onClick={() => languageChange()}
+            />
 
             <div className={`admin-blur-container ${darkMode ? "dark-blur-container" : ""}`} />
             <div className="admin-container">
