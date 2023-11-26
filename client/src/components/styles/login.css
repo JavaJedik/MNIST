@@ -100,7 +100,7 @@
     }
 
     .button-style {
-        width: 6em;
+        width: 7.4em;
     }
 
     .container {
@@ -113,9 +113,5 @@
 
     .content-bottom {
         font-size: 1rem;
-    }
-
-    .button-style {
-        font-size: 0.8em;
     }
 }

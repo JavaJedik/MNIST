@@ -6,6 +6,10 @@
     font-weight: bolder;
 }
 
+body {
+    overflow: hidden;
+}
+
 .main-container {
     background-image: url("../../../resources/light_background.jpg");
     background-position: center;
