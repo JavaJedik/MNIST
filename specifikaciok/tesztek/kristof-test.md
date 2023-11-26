@@ -1,5 +1,4 @@
 <head>
-    <title>Tesztelés</title>
     <h1>Tesztelés</h1>
     <hr>
 </head>
