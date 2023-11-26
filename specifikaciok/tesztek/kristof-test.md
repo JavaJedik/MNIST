@@ -18,43 +18,43 @@
         <tbody>
             <tr>
                 <td>1.</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>Frontend teszt</td>
+                <td>2023.11.26</td>
+                <td>Gombok és effektjeik tesztelése a bejelentkezési oldalon.</td>
+                <td>Siker</td>
             </tr>
             <tr>
                 <td>2.</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>Frontend teszt</td>
+                <td>2023.11.26</td>
+                <td>Sötét téma tesztelése.</td>
+                <td>Siker</td>
             </tr>
             <tr>
                 <td>3.</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>Frontend teszt</td>
+                <td>2023.11.26</td>
+                <td>Nyelvválasztás tesztelése.</td>
+                <td>Siker</td>
             </tr>
             <tr>
                 <td>4.</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>Frontend teszt</td>
+                <td>2023.11.26</td>
+                <td>Regisztrációs oldalra navigálás.</td>
+                <td>Siker</td>
             </tr>
             <tr>
                 <td>5.</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>Frontend teszt</td>
+                <td>2023.11.26</td>
+                <td>Sötét mód és nyelv választás megőrzése oldal váltásánál.</td>
+                <td>Siker</td>
             </tr>
             <tr>
-                <td>5.</td>
-                <td></td>
-                <td></td>
+                <td>6.</td>
+                <td>Frontend teszt</td>
+                <td>2023.11.26</td>
                 <td></td>
                 <td></td>
             </tr>
