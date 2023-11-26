@@ -7,6 +7,7 @@ import Leaderboard from './components/leaderboard';
 import Number_Game from './components/number_game';
 import Picture_Game from './components/picture_game';
 import Admin from './components/admin';
+import N_Answer_Game from './components/n_answer_game';
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 
 function App() {
@@ -21,7 +22,9 @@ function App() {
                 <Route path="/number_game" element={<Number_Game />} />
                 <Route path="/picture_game" element={<Picture_Game />} />
                 <Route path="/admin" element={<Admin />} />
+                <Route path="/test/n_answer_game" element={<N_Answer_Game />} />
                 <Route path="*" element={<NotFound />} />
+
             </Routes>
       </BrowserRouter>
   );
