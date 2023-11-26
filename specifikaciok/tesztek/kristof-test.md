@@ -1,5 +1,5 @@
-<title>Tesztelés</title>
 <head>
+    <title>Tesztelés</title>
     <h1>Tesztelés</h1>
     <hr>
 </head>
@@ -198,6 +198,13 @@
                 <td>Visszalépés gomb tesztelése a képjáték oldalon.</td>
                 <td>Siker</td>
             </tr>
+            <tr>
+                <td>27.</td>
+                <td>Frontend teszt</td>
+                <td>2023.11.26</td>
+                <td>Kijelentkezés gomb tesztelése a főoldalon.</td>
+                <td>Siker</td>
+            </tr>
         </tbody>
     </table>
     <hr>
@@ -210,5 +217,10 @@
     <img src="../kepek/teszt-kepek-kristof/5.png" alt="5">
     <img src="../kepek/teszt-kepek-kristof/6.png" alt="6">
     <img src="../kepek/teszt-kepek-kristof/7.png" alt="7">
-    <h2><li>11-20. ID.:</li></h2>
+    <h2><li>11-27. ID.:</li></h2>
+    <img src="../kepek/teszt-kepek-kristof/8.png" alt="8">
+    <img src="../kepek/teszt-kepek-kristof/9.png" alt="9">
+    <img src="../kepek/teszt-kepek-kristof/10.png" alt="10">
+    <img src="../kepek/teszt-kepek-kristof/11.png" alt="11">
+    <img src="../kepek/teszt-kepek-kristof/12.png" alt="12">
 </body>
