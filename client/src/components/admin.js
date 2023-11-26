@@ -12,12 +12,16 @@ const Admin = () => {
     const [answer, setText] = useState('');
     const [pic, setPicture] = useState(null);
     const [picByteArray, setPicByteArray] = useState(null);
+    const newPictureArrays = [];
 
     const [selectedUploadItem, setSelectedUploadItem] = useState(null);
     const [isDropdownOpenUpload, setIsDropdownOpenUpload] = useState(false);
 
     const [darkMode, setDarkMode] = useState(changer.darkMode);
     const [selectedLanguage, setSelectedLanguage] = useState(changer.language);
+
+    const [pictureNames, setPictureNames] = useState([]);
+    const [pictureArrays, setPictureArrays] = useState([]);
 
 
 
@@ -52,19 +56,37 @@ const Admin = () => {
     };
 
     const handleFileChange = (e) => {
-        const file = e.target.files[0];
-        if (file) {
-            const reader = new FileReader();
+        const files = e.target.files;
 
-            reader.onload = (e) => {
-                const arrayBuffer = e.target.result;
-                const byteArray = new Uint8Array(arrayBuffer);
+        if (files.length > 0) {
+            const newPictureArrays = [];
 
-                setPicByteArray(byteArray);
-            };
+            for (let i = 0; i < files.length; i++) {
+                const file = files[i];
+                const reader = new FileReader();
 
-            reader.readAsArrayBuffer(file);
-            setPicture(e.target.value);
+                reader.onload = (e) => {
+                    const arrayBuffer = e.target.result;
+                    const byteArray = new Uint8Array(arrayBuffer);
+
+                    newPictureArrays.push(byteArray);
+
+                    if (newPictureArrays.length === files.length) {
+                        setPictureArrays(newPictureArrays);
+                    }
+                };
+
+                reader.readAsArrayBuffer(file);
+            }
+            console.log(newPictureArrays)
+            console.log(setPictureArrays)
+
+
+            const newPictureNames = Array.from(files).map(file => file.name);
+            setPictureNames(newPictureNames);
+
+            console.log(newPictureNames)
+            console.log(setPictureNames)
         }
     };
 
@@ -107,7 +129,6 @@ const Admin = () => {
                         {text.welcome}
                     </h1>
                 </div>
-
                 <input
                     className={`file-upload file-upload-clickable ${darkMode ? "dark-input-field" : ""}`}
                     type="file"
@@ -115,6 +136,7 @@ const Admin = () => {
                     placeholder="file"
                     onChange={handleFileChange}
                     id="file_uploader"
+                    multiple
                 />
 
                 <div className={`dropdown ${isDropdownOpenUpload ? "active-upload" : ""}`}>
@@ -156,7 +178,7 @@ const Admin = () => {
                     <button
                         className={`home-button-style ${darkMode ? "dark-button-style" : ""}`}
                         onClick={() => authService.sendPicture(
-                            token, picByteArray, answer, "number", 1)}
+                            token, newPictureArrays, selectedUploadItem)}
                     >
                         {text.upload}
                     </button>
