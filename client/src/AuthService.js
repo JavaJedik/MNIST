@@ -1,5 +1,6 @@
-const API_URL = 'https://1c544cddb7c3cfcf4e845eadf5c5ee81.serveo.net';
-/*'https://mnist-server.serveo.net'*/
+const API_URL = 'https://5e550e710137ca118856c1421230a66b.serveo.net';
+/*'https://1c544cddb7c3cfcf4e845eadf5c5ee81.serveo.net';
+'https://mnist-server.serveo.net';*/
 
 const AuthService = {
 
