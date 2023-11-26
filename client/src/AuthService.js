@@ -183,14 +183,14 @@ const AuthService = {
     //const pic = 0;
     //const answer = '';
 
-    sendPicture: (userToken, pic, picture_answer_answer, picture_answer_type, probability) => {
+    sendPictures: (userToken, picArray, uploadType) => {
         let breakFunction = false
 
-        if (!pic) {
+        if (!picArray) {
             alert("Please select a file before uploading.");
             breakFunction = true;
         }
-        if(picture_answer_answer === '') {
+        if(uploadType === '') {
             alert("Please declare the answer for the picture.");
             breakFunction = true;
         }
@@ -199,30 +199,16 @@ const AuthService = {
         }
 
         console.log("Kép betöltése sikeres!");
-        console.log("Az elküldött kép byte tömbje: ", pic)
-        console.log("Az elküldött válasz: ", picture_answer_answer)
-
-        const pictureAnswerObject = [
-            {
-                picture_answer_type,
-                picture_answer_answer,
-                probability
-            }
-        ];
-
-        console.log(typeof pictureAnswerObject)
-        console.log(pic.length)
-
-        /*let alma = JSON.stringify(pictureAnswerObject)
-        console.log(typeof alma)*/
+        console.log("Az elküldött kép byte tömbje: ", picArray)
+        console.log("Az elküldött válasz: ", uploadType)
 
         fetch(`${API_URL}/upload/picture`, {
             method: "POST",
             headers: {
                 'userToken': `${userToken}`,
-                'pictureAnswers': `${JSON.stringify(pictureAnswerObject)}`
+                'uploadType': `${uploadType}`
             },
-            body: pic
+            body: picArray
         })
 			.then((response) => {
 				if (response.ok) {

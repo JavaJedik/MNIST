@@ -177,7 +177,7 @@ const Admin = () => {
                 <div>
                     <button
                         className={`home-button-style ${darkMode ? "dark-button-style" : ""}`}
-                        onClick={() => authService.sendPicture(
+                        onClick={() => authService.sendPictures(
                             token, newPictureArrays, selectedUploadItem)}
                     >
                         {text.upload}
