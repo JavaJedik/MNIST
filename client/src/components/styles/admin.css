@@ -79,3 +79,24 @@
     font-weight: bolder;
     color: black;
 }
+
+.dropdown-content-upload {
+    display: none;
+    position: absolute;
+    width: 20.25em;
+    height: auto;
+    border-radius: 15px;
+    background-color: #f1f1f1;
+    border: thin solid grey;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    z-index: 1;
+    cursor: pointer;
+}
+
+.dropdown-content-upload p:hover {
+    color: dodgerblue;
+}
+
+.dropdown.active-upload .dropdown-content-upload {
+    display: block;
+}
