@@ -90,7 +90,13 @@
     </table>
     <hr>
     <h2>Képek a lépésekhez:</h2>
-    <h2><li>1-10:</li></h2>
-    <p></p>
-    
+    <h2><li>1-10. ID.:</li></h2>
+    <img src="../kepek/teszt-kepek-kristof/1.png" alt="1">
+    <img src="../kepek/teszt-kepek-kristof/2.png" alt="2">
+    <img src="../kepek/teszt-kepek-kristof/3.png" alt="3">
+    <img src="../kepek/teszt-kepek-kristof/4.png" alt="4">
+    <img src="../kepek/teszt-kepek-kristof/5.png" alt="5">
+    <img src="../kepek/teszt-kepek-kristof/6.png" alt="6">
+    <img src="../kepek/teszt-kepek-kristof/7.png" alt="7">
+    <h2><li>11-20. ID.:</li></h2>
 </body>
