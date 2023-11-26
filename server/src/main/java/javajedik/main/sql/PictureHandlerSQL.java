@@ -51,7 +51,7 @@ public class PictureHandlerSQL
         }
     }
     
-    private void storeFragments(int picture_id, byte[] pictureBytes) throws Exception
+    private void storeBinData(int picture_id, byte[] pictureBytes) throws Exception
     {
 
         final String insertFragmentSql = SqlQ.insertFragmentSql();
@@ -78,7 +78,7 @@ public class PictureHandlerSQL
         
         try
         {
-            storeFragments(picture_id, pictureBytes);
+            storeBinData(picture_id, pictureBytes);
         } catch (Exception e)
         {
             logger.warn("Fragment beszúrása közben hiba lépett fel, tranzakció visszavonása...");
