@@ -90,5 +90,7 @@
     </table>
     <hr>
     <h2>Képek a lépésekhez:</h2>
+    <h2><li>1-10:</li></h2>
+    <p></p>
     
 </body>
