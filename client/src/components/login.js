@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import "./styles/styles.css"
 import AuthService from '../AuthService';
@@ -6,6 +6,7 @@ import { content } from "./contents/loginContent";
 import { changer } from "./changer";
 
 const Login = () => {
+    const userToken = localStorage.getItem('userToken');
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [darkMode, setDarkMode] = useState(changer.darkMode);
@@ -21,6 +22,21 @@ const Login = () => {
             setSelectedLanguage("HUN");
         }
     }
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const data = await AuthService.checkLoggedIn();
+                console.log(data)
+                navigate('/home')
+                console.log(username + ' felhasználó be van jelentkezve.');
+            } catch (error) {
+                console.log('Nincs valid userToken');
+            }
+        };
+
+        fetchData();
+    }, []);
 
     const navigateHome = async () => {
         changer.setChangerItems(selectedLanguage, darkMode);

@@ -183,14 +183,16 @@ const AuthService = {
     //const pic = 0;
     //const answer = '';
 
-    sendPictures: (userToken, picArray, uploadType) => {
+    /*sendPictures: (userToken, picArrays, pictureType) => {
         let breakFunction = false
+
+        const picArray = picArrays[0]
 
         if (!picArray) {
             alert("Please select a file before uploading.");
             breakFunction = true;
         }
-        if(uploadType === '') {
+        if(pictureType === '' || pictureType === null) {
             alert("Please declare the answer for the picture.");
             breakFunction = true;
         }
@@ -200,26 +202,89 @@ const AuthService = {
 
         console.log("Kép betöltése sikeres!");
         console.log("Az elküldött kép byte tömbje: ", picArray)
-        console.log("Az elküldött válasz: ", uploadType)
+        console.log("Az elküldött válasz: ", pictureType)
 
-        fetch(`${API_URL}/upload/picture`, {
+        /*const pictureAnswerObject = [
+            {
+                picture_answer_type,
+                picture_answer_answer,
+                probability
+            }
+        ];
+
+        console.log(typeof pictureAnswerObject)
+        console.log(pic.length)*/
+
+        /*let alma = JSON.stringify(pictureAnswerObject)
+        console.log(typeof alma)*/
+
+        /*fetch(`${API_URL}/upload/picture`, {
             method: "POST",
             headers: {
                 'userToken': `${userToken}`,
-                'uploadType': `${uploadType}`
+                'pictureType': `${JSON.stringify(pictureType)}`
             },
             body: picArray
         })
-			.then((response) => {
-				if (response.ok) {
-					alert("File uploaded successfully.");
-				} else {
-					alert("File upload failed.");
-				}
-			})
-			.catch((error) => {
-			console.error("Error:", error);
-			});
+            .then((response) => {
+                if (response.ok) {
+                    alert("File uploaded successfully.");
+                } else {
+                    alert("File upload failed.");
+                }
+            })
+            .catch((error) => {
+                console.error("Error:", error);
+            });
+    },*/
+
+    sendPictures: (userToken, picArrays, pictureType) => {
+        let breakFunction = false
+
+        //const picArray = picArrays[0]
+
+        if (!picArrays) {
+            alert("Please select a file before uploading.");
+            breakFunction = true;
+        }
+        if(pictureType === '' || pictureType === null) {
+            alert("Please declare the answer for the picture.");
+            breakFunction = true;
+        }
+        if(breakFunction) {
+            return;
+        }
+
+        console.log("Kép betöltése sikeres!");
+        console.log("Az elküldött kép byte tömbje: ", picArrays)
+        console.log("Az elküldött válasz: ", pictureType)
+
+        for (let i = 0; i < picArrays.length; i++) {
+            const picArray = picArrays[i];
+
+            console.log(`Uploading picture ${i + 1}...`);
+            console.log("The byte array of the uploaded picture: ", picArray);
+            console.log("The uploaded answer: ", pictureType);
+
+            fetch(`${API_URL}/upload/picture`, {
+                method: "POST",
+                headers: {
+                    'userToken': `${userToken}`,
+                    'pictureType': `${JSON.stringify(pictureType)}`
+                },
+                body: picArray
+            })
+                .then((response) => {
+                    if (response.ok) {
+                        console.log(`Picture ${i + 1} uploaded successfully.`);
+                    } else {
+                        console.log(`Picture ${i + 1} upload failed.`);
+                    }
+                })
+                .catch((error) => {
+                    console.error(`Error uploading picture ${i + 1}:`, error);
+                });
+        }
     },
 
     askGameToken: async (userToken) => {

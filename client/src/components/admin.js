@@ -12,7 +12,6 @@ const Admin = () => {
     const [answer, setText] = useState('');
     const [pic, setPicture] = useState(null);
     const [picByteArray, setPicByteArray] = useState(null);
-    const newPictureArrays = [];
 
     const [selectedUploadItem, setSelectedUploadItem] = useState(null);
     const [isDropdownOpenUpload, setIsDropdownOpenUpload] = useState(false);
@@ -22,6 +21,7 @@ const Admin = () => {
 
     const [pictureNames, setPictureNames] = useState([]);
     const [pictureArrays, setPictureArrays] = useState([]);
+    const [newPictureArrays, setNewPictureArrays] = useState([]);
 
 
 
@@ -72,7 +72,7 @@ const Admin = () => {
                     newPictureArrays.push(byteArray);
 
                     if (newPictureArrays.length === files.length) {
-                        setPictureArrays(newPictureArrays);
+                        setNewPictureArrays(newPictureArrays);
                     }
                 };
 
@@ -82,13 +82,15 @@ const Admin = () => {
             console.log(setPictureArrays)
 
 
-            const newPictureNames = Array.from(files).map(file => file.name);
+            /*const newPictureNames = Array.from(files).map(file => file.name);
             setPictureNames(newPictureNames);
 
             console.log(newPictureNames)
-            console.log(setPictureNames)
+            console.log(setPictureNames)*/
         }
     };
+
+    console.log(newPictureArrays)
 
     const languageChange = () => {
         if(selectedLanguage === "HUN") {
@@ -147,7 +149,7 @@ const Admin = () => {
                     >
 
                         <span>
-                            {selectedUploadItem || text.number}
+                            {selectedUploadItem || text.choose}
                         </span>
 
                         <span className="dropbtn-arrow">

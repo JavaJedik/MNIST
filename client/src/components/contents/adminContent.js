@@ -4,6 +4,7 @@ export const content = {
         answerplaceholder: "Correct answer (1 character)",
         upload: "Upload file",
         logout: "Log out",
+        choose: "Choose the picture type!",
         number: "Number",
         dog_and_cat: "Dog and Cat"
     },
@@ -12,6 +13,7 @@ export const content = {
         answerplaceholder: "Helyes válasz (1 karakter)",
         upload: "Fájl feltöltése",
         logout: "Kijelentkezés",
+        choose: "Válaszd ki a kép típusát!",
         number: "Szám",
         dog_and_cat: "Kutya és Macska"
     },
