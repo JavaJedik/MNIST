@@ -55,36 +55,36 @@
                 <td>6.</td>
                 <td>Frontend teszt</td>
                 <td>2023.11.26</td>
-                <td></td>
-                <td></td>
+                <td>Regisztrációs oldalon a mezők tesztelése, hogy elfogadja-e a megadott értéket.</td>
+                <td>Siker</td>
             </tr>
             <tr>
-                <td>5.</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>7.</td>
+                <td>Frontend teszt</td>
+                <td>2023.11.26</td>
+                <td>Helyes adatok megadása esetén a regisztráció elküldése a backend számára.</td>
+                <td>Siker</td>
             </tr>
             <tr>
-                <td>5.</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>8.</td>
+                <td>Frontend teszt</td>
+                <td>2023.11.26</td>
+                <td>Bejelentkezési oldalon bejelentkezés megtagadása nem regisztrált adatokkal.</td>
+                <td>Siker</td>
             </tr>
             <tr>
-                <td>5.</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>9.</td>
+                <td>Frontend teszt</td>
+                <td>2023.11.26</td>
+                <td>Bejelentkezési oldalon bejelentkezés engedélyezése regisztrált adatokkal.</td>
+                <td>Siker</td>
             </tr>
             <tr>
-                <td>5.</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>10.</td>
+                <td>Frontend teszt</td>
+                <td>2023.11.26</td>
+                <td>Bejelentkezési oldalon bejelentkezés vendég profillal, az ennek szánt gomb használatával.</td>
+                <td>Siker</td>
             </tr>
         </tbody>
     </table>
