@@ -28,6 +28,11 @@ public class PictureData
         this.pictureAnswerNickname = pictureAnswerNickname;
     }
 
+    public AnswerOptions getAnswerOptions() 
+    {
+        return answerOptions;
+    }
+
     public void setAnswerOptions(AnswerOptions answerOptions) 
     {
         this.answerOptions = answerOptions;
