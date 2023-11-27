@@ -4,6 +4,7 @@ import java.util.List;
 import javajedik.main.model.PictureData;
 import javajedik.main.service.PictureHandlerService;
 import javajedik.main.util.GameTokenUtil;
+import javajedik.main.util.ImageUtil;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +44,15 @@ public class GamePictureController
         }
         
         logger.info("Képek megszerezve, küldés a kliensnek... Képek száma: " + data.size());
+        try
+        {
+            logger.info("Képek felépítésének megpróbálása küldés előtt...");
+            ImageUtil.convertToPNG(data.get(0).getPictureBytes());
+        } catch (Exception e)
+        {
+            logger.error("Kép felépítése sikertelen, internal server error küldése.");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(data);
+        }
         return ResponseEntity.status(HttpStatus.OK).body(data);
     }
     
