@@ -2,9 +2,7 @@ package javajedik.main.sql;
 
 import java.sql.PreparedStatement;
 import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
 import javajedik.main.model.PictureData;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -63,13 +61,29 @@ public class PictureHandlerSQL
         logger.info("A bináris beszúrása sikeres. A picture_id: " + picture_id);
     }
     
-    public int storePicture(byte[] pictureBytes)
+    private int storePictureRealOptions(int pictureId, int answerCollectionId) throws Exception
+    {
+        final String insertSql = "INSERT INTO picture_real_options (picture_id, answer_collection_id) VALUES (?, ?)";
+        
+        int rowsAffected = jdbcTemplate.update(insertSql, pictureId, answerCollectionId);
+        
+        if (rowsAffected > 0) {
+            logger.info("A picture_real_options táblába történő beszúrás sikeres.");
+            return rowsAffected;
+        } else 
+        {
+            logger.warn("Nem sikerült beszúrni az adatokat a picture_real_options táblába.");
+            return -1;
+        }
+    }
+    
+    public int storePicture(PictureData pictureData)
     {
         TransactionStatus status = transactionManager.getTransaction(new DefaultTransactionDefinition());
         
-        int picture_id = insertNewPicture();
+        pictureData.setPictureId(insertNewPicture());
         
-        if(picture_id == -1)
+        if(pictureData.getPictureId() == -1)
         {
             logger.warn("Kép beszúrása sikertelen, tranzakció visszavonása...");
             transactionManager.rollback(status);
@@ -78,7 +92,11 @@ public class PictureHandlerSQL
         
         try
         {
-            storeBinData(picture_id, pictureBytes);
+            storeBinData(pictureData.getPictureId(), pictureData.getPictureBytes());
+            logger.info("Kép fragmentjeinek beszúrása sikeres, picture_id : " + pictureData.getPictureId());
+            
+            storePictureRealOptions(pictureData.getPictureId(), 1); // 1 az answer_collection_id fix értéke
+            logger.info("A picture_real_options táblába történő beszúrás sikeres, picture_id : " + pictureData.getPictureId());
         } catch (Exception e)
         {
             logger.warn("Fragment beszúrása közben hiba lépett fel, tranzakció visszavonása...");
@@ -88,7 +106,7 @@ public class PictureHandlerSQL
         
         logger.info("Kép és fragment beszúrása  sikeres, tranzakció mentése...");
         transactionManager.commit(status);
-        return picture_id;    
+        return pictureData.getPictureId();    
     }
     
     public List<PictureData> getNumberPicture(int askedPictures) 

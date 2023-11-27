@@ -4,11 +4,38 @@ public class PictureData
 {
     int pictureId;
     byte[] pictureBytes;
+    String pictureAnswerNickname;
+    AnswerOptions answerOptions;
 
+    public PictureData(byte[] pictureBytes) 
+    {
+        this.pictureBytes = pictureBytes;
+    }
+    
     public PictureData(int pictureId, byte[] pictureBytes) 
     {
         this.pictureId = pictureId;
         this.pictureBytes = pictureBytes;
+    }
+
+    public void setPictureId(int pictureId) 
+    {
+        this.pictureId = pictureId;
+    }
+
+    public void setPictureAnswerNickname(String pictureAnswerNickname) 
+    {
+        this.pictureAnswerNickname = pictureAnswerNickname;
+    }
+
+    public void setAnswerOptions(AnswerOptions answerOptions) 
+    {
+        this.answerOptions = answerOptions;
+    }
+    
+    public String getPictureAnswerNickname() 
+    {
+        return pictureAnswerNickname;
     }
 
     public int getPictureId() 

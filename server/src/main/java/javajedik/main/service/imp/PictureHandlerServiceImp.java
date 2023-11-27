@@ -22,9 +22,9 @@ public class PictureHandlerServiceImp implements PictureHandlerService
     private PictureHandlerSQL pictureHandlerSQL;
 
     @Override
-    public int storePNG(byte[] pngBytes) 
+    public int storePNG(PictureData pictureData) 
     {   
-        final int picture_id = pictureHandlerSQL.storePicture(pngBytes);
+        final int picture_id = pictureHandlerSQL.storePicture(pictureData);
         
         if(picture_id == -1)
         {

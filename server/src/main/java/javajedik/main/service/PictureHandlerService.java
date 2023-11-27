@@ -5,7 +5,7 @@ import javajedik.main.model.PictureData;
 
 public interface PictureHandlerService 
 {
-    public int storePNG(byte[] pngBytes);
+    public int storePNG(PictureData pictureData);
 
     public List<PictureData> askNumberPicture(int askedPictures);
 }

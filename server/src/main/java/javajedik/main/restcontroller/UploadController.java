@@ -1,5 +1,6 @@
 package javajedik.main.restcontroller;
 
+import javajedik.main.model.PictureData;
 import javajedik.main.util.ImageUtil;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -56,7 +57,8 @@ public class UploadController
             return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body("A kép biztonságos feldolgozása sikertelen.");
         }
         
-        final int picture_id = uploadPictureService.storePNG(binaryData);
+        PictureData pictureData = new PictureData(binaryData);
+        final int picture_id = uploadPictureService.storePNG(pictureData);
         
         return ResponseEntity.status(HttpStatus.OK).body("A képazonosítód: " + picture_id);
     }
