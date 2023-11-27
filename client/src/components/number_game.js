@@ -57,6 +57,12 @@ const Number_Game = () => {
             }
             const byteArray = new Uint8Array(byteNumbers);
             const blob = new Blob([byteArray], { type: "image/png" });
+            const reader = new FileReader();
+            reader.onloadend = function () 
+            {
+                console.log("Blob tartalom:", reader.result);
+            };
+            reader.readAsText(blob);
             setImageUrl(URL.createObjectURL(blob)); // Itt állítsd be az imageUrl-t
         } else {
             return <div>Nincs kép vagy betöltés...</div>;
