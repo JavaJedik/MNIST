@@ -50,6 +50,7 @@ const Number_Game = () => {
         ) {
             const currentPicture = pictures[currentPictureIndex];
             const base64ImageData = currentPicture.pictureBytes;
+            console.log("A BASE64 kódolt kép: " + base64ImageData);
             const byteCharacters = atob(base64ImageData);
             const byteNumbers = new Array(byteCharacters.length);
             for (let i = 0; i < byteCharacters.length; i++) {
