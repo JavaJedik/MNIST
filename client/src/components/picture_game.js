@@ -72,6 +72,35 @@ const Picture_Game = () => {
         }
     };
 
+    const renderCurrentPicture = () => {
+        console.log("A képek száma: ", pictures.length)
+        if (
+            pictures.length > 0 &&
+            currentPictureIndex >= 0 &&
+            currentPictureIndex < pictures.length
+        ) {
+            const currentPicture = pictures[currentPictureIndex];
+            const base64ImageData = currentPicture.pictureBytes;
+            console.log("A BASE64 kódolt kép: " + base64ImageData);
+            const byteCharacters = atob(base64ImageData);
+            const byteNumbers = new Array(byteCharacters.length);
+            for (let i = 0; i < byteCharacters.length; i++) {
+                byteNumbers[i] = byteCharacters.charCodeAt(i);
+            }
+            const byteArray = new Uint8Array(byteNumbers);
+            const blob = new Blob([byteArray], { type: "image/png" });
+            const reader = new FileReader();
+            reader.onloadend = function ()
+            {
+                console.log("Blob tartalom:", reader.result);
+            };
+            reader.readAsText(blob);
+            setImageUrl(URL.createObjectURL(blob)); // Itt állítsd be az imageUrl-t
+        } else {
+            return <div>Nincs kép vagy betöltés...</div>;
+        }
+    };
+
     return (
         <div className={`main-container ${darkMode ? "dark-main-container" : ""}`}>
             <div className="picture-game-main-container">
