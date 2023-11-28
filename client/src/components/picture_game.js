@@ -12,7 +12,10 @@ const Picture_Game = () => {
     const [numAnswers, setNumAnswers] = useState(3);
     const maxNumber = 10;
 
-    const imagePath = "./placeholder.png"
+    const [pictures, setPictures] = useState([]);
+    const [numberOfAnswers, setNumberOfAnswers] = useState([]);
+    const [currentPictureIndex, setCurrentPictureIndex] = useState(0);
+    const [imageUrl, setImageUrl] = useState('');
 
     const [darkMode, setDarkMode] = useState(changer.darkMode);
     const [selectedLanguage, setSelectedLanguage] = useState(changer.language);
@@ -72,6 +75,63 @@ const Picture_Game = () => {
         }
     };
 
+    useEffect(() => {
+        //document.addEventListener('keydown', handleKeyPress);
+
+        const fetchData = async () => {
+            try {
+                const response = await AuthService.askPicture(localStorage.getItem("gameToken"), 5);
+                if (response.success) {
+                    console.log("A gamere érkezett adatok: ", response.response)
+                    setPictures(response.response); // Az összes képet beállítjuk
+                    console.log("Response: ", response.response)
+                    console.log("Number of answers: ", 0)
+                    setCurrentPictureIndex(0); // Az első képet állítjuk be kezdetben
+                    renderCurrentPicture();
+                } else {
+                    navigateLogin();
+                }
+            } catch (error) {
+                console.error("Képek lekérése sikertelen", error);
+            }
+        };
+
+        fetchData();
+
+        /*return () => {
+            document.removeEventListener('keydown', handleKeyPress);
+        };*/
+    }, [pictures.length === 0]);
+
+    const renderCurrentPicture = () => {
+        console.log("A képek száma: ", pictures.length)
+        if (
+            pictures.length > 0 &&
+            currentPictureIndex >= 0 &&
+            currentPictureIndex < pictures.length
+        ) {
+            const currentPicture = pictures[currentPictureIndex];
+            const base64ImageData = currentPicture.pictureBytes;
+            console.log("A BASE64 kódolt kép: " + base64ImageData);
+            const byteCharacters = atob(base64ImageData);
+            const byteNumbers = new Array(byteCharacters.length);
+            for (let i = 0; i < byteCharacters.length; i++) {
+                byteNumbers[i] = byteCharacters.charCodeAt(i);
+            }
+            const byteArray = new Uint8Array(byteNumbers);
+            const blob = new Blob([byteArray], { type: "image/png" });
+            const reader = new FileReader();
+            reader.onloadend = function ()
+            {
+                console.log("Blob tartalom:", reader.result);
+            };
+            reader.readAsText(blob);
+            setImageUrl(URL.createObjectURL(blob)); // Itt állítsd be az imageUrl-t
+        } else {
+            return <div>Nincs kép vagy betöltés...</div>;
+        }
+    };
+
     return (
         <div className={`main-container ${darkMode ? "dark-main-container" : ""}`}>
             <div className="picture-game-main-container">
@@ -91,11 +151,7 @@ const Picture_Game = () => {
 
                 <div className="game-left-container">
 
-                    <img
-                        className="image"
-                        src={require(`${imagePath}`)}
-                        alt="A kép betöltése sikertelen."
-                    />
+                    <img className="image" src={imageUrl} alt="A kép betöltése sikertelen." />
 
                     <div className={`slider-container ${darkMode ? "dark-blur-container" : ""}`}>
 

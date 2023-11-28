@@ -70,31 +70,31 @@ const Number_Game = () => {
         }
     };
     
-useEffect(() => {
-    document.addEventListener('keydown', handleKeyPress);
-    
-    const fetchData = async () => {
-        try {
-            const response = await AuthService.askNumberPicture(localStorage.getItem("gameToken"), 5);
-            if (response.success) {
-                console.log("A gamere érkezett adatok: ", response.response)
-                setPictures(response.response); // Az összes képet beállítjuk
-                setCurrentPictureIndex(0); // Az első képet állítjuk be kezdetben
-                renderCurrentPicture();
-            } else {
-                //navigateLogin();
+    useEffect(() => {
+        document.addEventListener('keydown', handleKeyPress);
+
+        const fetchData = async () => {
+            try {
+                const response = await AuthService.askNumberPicture(localStorage.getItem("gameToken"), 5);
+                if (response.success) {
+                    console.log("A gamere érkezett adatok: ", response.response)
+                    setPictures(response.response); // Az összes képet beállítjuk
+                    setCurrentPictureIndex(0); // Az első képet állítjuk be kezdetben
+                    renderCurrentPicture();
+                } else {
+                    navigateLogin();
+                }
+            } catch (error) {
+                console.error("Képek lekérése sikertelen", error);
             }
-        } catch (error) {
-            console.error("Képek lekérése sikertelen", error);
-        }
-    };
+        };
 
-    fetchData();
+        fetchData();
 
-    return () => {
-        document.removeEventListener('keydown', handleKeyPress);
-    };
-}, [pictures.length === 0]);
+        return () => {
+            document.removeEventListener('keydown', handleKeyPress);
+        };
+    }, [pictures.length === 0]);
 
     const handleKeyPress = (event) => {
         switch (event.key) {

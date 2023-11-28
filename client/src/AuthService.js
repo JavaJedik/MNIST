@@ -1,4 +1,4 @@
-const API_URL = 'https://d3164ce47e24e47676576d9a0480cc0b.serveo.net';
+const API_URL = 'http://serveo.net:8814';
 /*'https://1c544cddb7c3cfcf4e845eadf5c5ee81.serveo.net';
 'https://mnist-server.serveo.net';*/
 
@@ -311,6 +311,33 @@ const AuthService = {
     },
 
     askNumberPicture: async (gameToken, numberOfAskedPictures) => {
+        try {
+            const response = await fetch(`${API_URL}/game/ask/picture/number`, {
+                method: "GET",
+                headers: {
+                    'gameToken': gameToken,
+                    'numberOfAskedPictures': numberOfAskedPictures
+                }
+            });
+
+            if (response.status === 200) {
+                const data = await response.json();
+                console.log("A válasz tartalmazza a képek binárisait", data);
+
+                return { success: true, response: data };
+            } else {
+                console.log("Nem lett OK státuszú:", response.status);
+
+                return { success: false, response: null };
+            }
+        } catch (error) {
+            console.error("Hiba történt a képek lekérése közben:", error);
+
+            return { success: false, response: null };
+        }
+    },
+
+    askPicture: async (gameToken, numberOfAskedPictures) => {
         try {
             const response = await fetch(`${API_URL}/game/ask/picture/number`, {
                 method: "GET",
