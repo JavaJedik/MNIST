@@ -65,6 +65,10 @@ const Picture_Game = () => {
         navigate('/leaderboard');
     };
 
+    const handleClick = (clickedNumber) => {
+        alert("A válaszod: " + clickedNumber);
+    }
+
     const handleSliderChange = (event) => {
         if(event.target.value <= maxNumber) {
             setNumAnswers(parseInt(event.target.value, 10));
@@ -135,9 +139,10 @@ const Picture_Game = () => {
         }
     };
 
+    /*
     const handleClick = (clickedNumber) => {
         alert("A válaszod: " + clickedNumber);
-        if (pictures.length === 1) {
+       if (pictures.length === 1) {
             // Ha csak egy elem van a tömbben, akkor törölje az összes elemét
             setPictures([]);
         } else if (pictures.length > 1) {
@@ -148,6 +153,7 @@ const Picture_Game = () => {
             renderCurrentPicture();
         }
     }
+    */
 
     return (
         <div className={`main-container ${darkMode ? "dark-main-container" : ""}`}>
