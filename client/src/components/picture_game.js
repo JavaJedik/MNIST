@@ -13,6 +13,7 @@ const Picture_Game = () => {
     const maxNumber = 10;
 
     const [pictures, setPictures] = useState([]);
+    const [numberOfAnswers, setNumberOfAnswers] = useState([]);
     const [currentPictureIndex, setCurrentPictureIndex] = useState(0);
     const [imageUrl, setImageUrl] = useState('');
 
@@ -84,6 +85,9 @@ const Picture_Game = () => {
                     console.log("A gamere érkezett adatok: ", response.response)
                     setPictures(response.response); // Az összes képet beállítjuk
                     console.log("Response: ", response.response)
+                    let answerOpt = response.response.answerOptions
+                    setNumberOfAnswers(answerOpt)
+                    console.log("Number of answers: ", numberOfAnswers)
                     setCurrentPictureIndex(0); // Az első képet állítjuk be kezdetben
                     renderCurrentPicture();
                 } else {
