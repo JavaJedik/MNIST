@@ -53,6 +53,8 @@ public class GamePictureController
             logger.error("Kép felépítése sikertelen, internal server error küldése.");
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(data);
         }
+        
+        logger.info("A képek adatai: " + data.get(1).getAnswerOptions()[1]);
         return ResponseEntity.status(HttpStatus.OK).body(data);
     }
     
