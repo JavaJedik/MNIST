@@ -54,7 +54,7 @@ public class GamePictureController
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(data);
         }
         
-        logger.info("A képek adatai: " + data.get(1).getAnswerOptions()[1]);
+        //logger.info("A képek adatai: " + data.get(1).getAnswerOptions()[1]);
         return ResponseEntity.status(HttpStatus.OK).body(data);
     }
     
