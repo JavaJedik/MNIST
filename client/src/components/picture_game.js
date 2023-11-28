@@ -155,30 +155,6 @@ const Picture_Game = () => {
 
                     <img className="image" src={imageUrl} alt="A kép betöltése sikertelen." />
 
-                    <div className={`slider-container ${darkMode ? "dark-blur-container" : ""}`}>
-
-                        <div className={`slider-text ${darkMode ? "dark-text" : ""}`}>
-                            {text.numberofanswers}
-                        </div>
-
-                        <input
-                            className={`answer-slider ${darkMode ? "dark-answer-slider" : ""}`}
-                            type="range"
-                            min="2"
-                            max="10"
-                            value={numAnswers}
-                            onChange={handleSliderChange}
-                        />
-
-                        <input
-                            className={`answer-number-input ${darkMode ? "dark-answer-number-input" : ""}`}
-                            type="number"
-                            value={numAnswers}
-                            onChange={handleSliderChange}
-                        />
-
-                    </div>
-
                 </div>
 
                 <div className="game-right-container">
