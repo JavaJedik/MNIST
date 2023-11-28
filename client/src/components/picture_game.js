@@ -110,9 +110,14 @@ const Picture_Game = () => {
         ) {
             const currentPicture = pictures[currentPictureIndex];
             const responseArray = pictures[currentPictureIndex].answerOptions
-            console.log("Response Array:", responseArray)
+            const answersArray = pictures[currentPictureIndex].answerOptions[0].answer
+
             setNumberOfAnswers(responseArray.length)
+
+            console.log("Response Array:", responseArray)
+            console.log("Answer Array: ", answersArray)
             console.log("Number of Answers: ", numberOfAnswers)
+
             const base64ImageData = currentPicture.pictureBytes;
             console.log("A BASE64 kódolt kép: " + base64ImageData);
             const byteCharacters = atob(base64ImageData);
