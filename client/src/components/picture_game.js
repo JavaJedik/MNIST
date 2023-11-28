@@ -84,8 +84,6 @@ const Picture_Game = () => {
                 if (response.success) {
                     console.log("A gamere érkezett adatok: ", response.response)
                     setPictures(response.response); // Az összes képet beállítjuk
-                    console.log("Response: ", response.response)
-                    console.log("Number of answers: ", 0)
                     setCurrentPictureIndex(0); // Az első képet állítjuk be kezdetben
                     renderCurrentPicture();
                 } else {
@@ -111,6 +109,10 @@ const Picture_Game = () => {
             currentPictureIndex < pictures.length
         ) {
             const currentPicture = pictures[currentPictureIndex];
+            const responseArray = pictures[currentPictureIndex].answerOptions
+            console.log("Response Array:", responseArray)
+            setNumberOfAnswers(responseArray.length)
+            console.log("Number of Answers: ", numberOfAnswers)
             const base64ImageData = currentPicture.pictureBytes;
             console.log("A BASE64 kódolt kép: " + base64ImageData);
             const byteCharacters = atob(base64ImageData);
@@ -185,7 +187,7 @@ const Picture_Game = () => {
 
                             <div className={`picture-numbers ${darkMode ? "dark-numbers" : ""}`}>
                                 {Array.from(
-                                    { length: numAnswers }).map(
+                                    { length: numberOfAnswers }).map(
                                         (_, index) => (
                                     <div
                                         className="picture-number"
