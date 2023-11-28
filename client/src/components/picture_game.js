@@ -119,7 +119,6 @@ const Picture_Game = () => {
             console.log("Number of Answers: ", numberOfAnswers)
 
             const base64ImageData = currentPicture.pictureBytes;
-            console.log("A BASE64 kódolt kép: " + base64ImageData);
             const byteCharacters = atob(base64ImageData);
             const byteNumbers = new Array(byteCharacters.length);
             for (let i = 0; i < byteCharacters.length; i++) {
@@ -130,7 +129,7 @@ const Picture_Game = () => {
             const reader = new FileReader();
             reader.onloadend = function ()
             {
-                console.log("Blob tartalom:", reader.result);
+                console.log("Blob tartalom:");
             };
             reader.readAsText(blob);
             setImageUrl(URL.createObjectURL(blob)); // Itt állítsd be az imageUrl-t
