@@ -85,9 +85,7 @@ const Picture_Game = () => {
                     console.log("A gamere érkezett adatok: ", response.response)
                     setPictures(response.response); // Az összes képet beállítjuk
                     console.log("Response: ", response.response)
-                    let answerOpt = response.response.answerOptions
-                    setNumberOfAnswers(answerOpt)
-                    console.log("Number of answers: ", numberOfAnswers)
+                    console.log("Number of answers: ", 0)
                     setCurrentPictureIndex(0); // Az első képet állítjuk be kezdetben
                     renderCurrentPicture();
                 } else {
