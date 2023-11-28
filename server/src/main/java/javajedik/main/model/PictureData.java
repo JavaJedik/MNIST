@@ -5,7 +5,7 @@ public class PictureData
     int pictureId;
     byte[] pictureBytes;
     String pictureAnswerNickname;
-    AnswerOptions answerOptions;
+    AnswerOption[] answerOptions;
 
     public PictureData(byte[] pictureBytes) 
     {
@@ -28,12 +28,12 @@ public class PictureData
         this.pictureAnswerNickname = pictureAnswerNickname;
     }
 
-    public AnswerOptions getAnswerOptions() 
+    public AnswerOption[] getAnswerOptions() 
     {
         return answerOptions;
     }
 
-    public void setAnswerOptions(AnswerOptions answerOptions) 
+    public void setAnswerOptions(AnswerOption[] answerOptions) 
     {
         this.answerOptions = answerOptions;
     }

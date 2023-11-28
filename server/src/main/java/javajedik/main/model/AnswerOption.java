@@ -8,21 +8,21 @@ package javajedik.main.model;
  *
  * @author kecyke
  */
-public class AnswerOptions 
+public class AnswerOption 
 {
     int id;
     String type;
     String answer;
 
-    public AnswerOptions(int id, String type, String answer) 
+    public AnswerOption(int id, String type, String answer) 
     {
         this.id = id;
         this.type = type;
         this.answer = answer;
     }
 
-    public AnswerOptions(int id) 
-    {
+    public AnswerOption(int id) 
+    {   
         this.id = id;
     }
 

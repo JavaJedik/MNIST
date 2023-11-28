@@ -3,6 +3,7 @@ package javajedik.main.sql;
 import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.util.List;
+import javajedik.main.model.AnswerOption;
 import javajedik.main.model.PictureData;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -131,6 +132,17 @@ public class PictureHandlerSQL
         } else
         {
             logger.info("Sikerült képeket szerezni az adatbázisból");
+        }
+        
+        // KÉSŐBB CSERÉLNI KELL!!!
+        for(int i = 0; i<result.size();i++)
+        {
+            AnswerOption[] ao = new AnswerOption[10];
+            for(int j=0;j<10;j++)
+            {
+                ao[j]=new AnswerOption(j+1,"Szám",(j+1)+"");
+            }
+            ao[9]=new AnswerOption(10,"Szám","0");
         }
         
         return result;
