@@ -157,7 +157,7 @@ const Number_Game = () => {
         changer.setChangerItems(selectedLanguage, darkMode);
         navigate('/leaderboard');
     };
-
+    /*
     const handleClick = (clickedNumber) => {
         alert("A válaszod: " + clickedNumber);
        if (pictures.length === 1) {
@@ -171,6 +171,7 @@ const Number_Game = () => {
             renderCurrentPicture();
         }
     }
+    */
 
     return (
         <div className={`main-container ${darkMode ? "dark-main-container" : ""}`}>
