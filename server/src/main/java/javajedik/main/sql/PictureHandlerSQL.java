@@ -143,8 +143,9 @@ public class PictureHandlerSQL
                 ao[j]=new AnswerOption(j+1,"Szám",(j+1)+"");
             }
             ao[9]=new AnswerOption(10,"Szám","0");
+            result.get(i).setAnswerOptions(ao);
+            result.get(i).setPictureAnswerNickname("Szám");
         }
-        
         return result;
     }
 }
