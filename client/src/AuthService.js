@@ -1,4 +1,4 @@
-const API_URL = 'https://d3164ce47e24e47676576d9a0480cc0b.serveo.net';
+const API_URL = 'http://serveo.net:8814';
 /*'https://1c544cddb7c3cfcf4e845eadf5c5ee81.serveo.net';
 'https://mnist-server.serveo.net';*/
 
