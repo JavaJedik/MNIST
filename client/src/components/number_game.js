@@ -41,6 +41,16 @@ const Number_Game = () => {
         fetchData();
     }, []);
 
+    useEffect(() => {
+        console.log("A képek: ", pictures);
+
+        if (pictures.length > 0) {
+            setCurrentPictureIndex(0);
+            renderCurrentPicture();
+        }
+
+    }, [pictures]);
+
     const renderCurrentPicture = () => {
         console.log("A képek száma: ", pictures.length)
         if (
@@ -69,6 +79,10 @@ const Number_Game = () => {
             return <div>Nincs kép vagy betöltés...</div>;
         }
     };
+
+    useEffect(() => {
+        renderCurrentPicture();
+    }, [currentPictureIndex, pictures]);
     
     useEffect(() => {
         document.addEventListener('keydown', handleKeyPress);
