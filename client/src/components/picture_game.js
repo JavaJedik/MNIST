@@ -161,8 +161,8 @@ const Picture_Game = () => {
         renderCurrentPicture();
     }, [currentPictureIndex, pictures]);
 
-    const handleClick = (clickedNumber) => {
-        alert("A válaszod: " + clickedNumber);
+    const handleClick = (element) => {
+        alert("A válaszod: " + element);
        if (pictures.length === 1) {
             // Ha csak egy elem van a tömbben, akkor törölje az összes elemét
             setPictures([]);
@@ -207,7 +207,7 @@ const Picture_Game = () => {
                                     responseArray[0].map((element, index) => (
                                         <div
                                             className="picture-number"
-                                            onClick={() => handleClick(index + 1)}
+                                            onClick={() => handleClick(element.answer)}
                                             key={index}
                                         >
                                             <button
