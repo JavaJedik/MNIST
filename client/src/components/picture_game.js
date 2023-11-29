@@ -14,6 +14,7 @@ const Picture_Game = () => {
 
     const [pictures, setPictures] = useState([]);
     const [numberOfAnswers, setNumberOfAnswers] = useState([]);
+    const [responseArray, setResponseArray] = useState([]);
     const [currentPictureIndex, setCurrentPictureIndex] = useState(0);
     const [imageUrl, setImageUrl] = useState('');
 
@@ -31,7 +32,6 @@ const Picture_Game = () => {
                 if (data !== 200 || data === null) {
                     throw new Error("Hiba a token ellenőrzésében!")
                 }
-
             } catch (error) {
                 console.error('Hiba az autentikációs ellenőrzésben:', error);
                 alert(`Hiba az autentikációs ellenőrzésben: ${error}`);
@@ -48,35 +48,25 @@ const Picture_Game = () => {
         navigate("/login");
     };
 
-    /*const setLocalStorageItems = () => {
+    const setLocalStorageItems = () => {
         localStorage.setItem("language", selectedLanguage);
         localStorage.setItem("darkMode", JSON.stringify(darkMode));
-    }*/
+    }
 
     const navigateHome = () => {
-        // setLocalStorageItems();
+        setLocalStorageItems();
         changer.setChangerItems(selectedLanguage, darkMode);
         navigate('/home');
     };
 
     const navigateLeaderboard = () => {
-        // setLocalStorageItems();
+        setLocalStorageItems();
         changer.setChangerItems(selectedLanguage, darkMode);
         navigate('/leaderboard');
     };
 
-    const handleClick = (clickedNumber) => {
-        alert("A válaszod: " + clickedNumber);
-    }
-
-    const handleSliderChange = (event) => {
-        if(event.target.value <= maxNumber) {
-            setNumAnswers(parseInt(event.target.value, 10));
-        }
-    };
-
-    useEffect(() => {
-        //document.addEventListener('keydown', handleKeyPress);
+    /* useEffect(() => {
+        document.addEventListener('keydown', handleKeyPress);
 
         const fetchData = async () => {
             try {
@@ -84,8 +74,8 @@ const Picture_Game = () => {
                 if (response.success) {
                     console.log("A gamere érkezett adatok: ", response.response)
                     setPictures(response.response); // Az összes képet beállítjuk
+                    console.log("A képek: ", pictures)
                     setCurrentPictureIndex(0); // Az első képet állítjuk be kezdetben
-                    renderCurrentPicture();
                 } else {
                     navigateLogin();
                 }
@@ -96,41 +86,70 @@ const Picture_Game = () => {
 
         fetchData();
 
-        /*return () => {
+        return () => {
             document.removeEventListener('keydown', handleKeyPress);
-        };*/
-    }, [pictures.length === 0]);
+        };
+    }, []); */
 
-    const renderCurrentPicture = () => {
-        console.log("A képek száma: ", pictures.length)
-        if (
-            pictures.length > 0 &&
-            currentPictureIndex >= 0 &&
-            currentPictureIndex < pictures.length
-        ) {
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await AuthService.askPicture(localStorage.getItem("gameToken"), 5);
+                if (response.success) {
+                    console.log("A gamere érkezett adatok: ", response.response);
+                    setPictures(response.response); // Az összes képet beállítjuk
+                } else {
+                    navigateLogin();
+                }
+            } catch (error) {
+                console.error("Képek lekérése sikertelen", error);
+            }
+        };
+
+        fetchData();
+
+    }, []);
+
+    useEffect(() => {
+        console.log("A képek: ", pictures);
+
+        if (pictures.length > 0) {
+            setCurrentPictureIndex(0);
+            renderCurrentPicture();
+        }
+
+    }, [pictures]);
+
+    const renderCurrentPicture = async () => {
+        console.log("A képek száma: ", pictures.length);
+        if (pictures && pictures.length > 0 && currentPictureIndex >= 0 && currentPictureIndex < pictures.length) {
             const currentPicture = pictures[currentPictureIndex];
-            const responseArray = pictures[currentPictureIndex].answerOptions
-            const answersArray = pictures[currentPictureIndex].answerOptions[0].answer
 
-            setNumberOfAnswers(responseArray.length)
+            const newResponseArray = [currentPicture.answerOptions];
+            setResponseArray(newResponseArray);
+            setNumberOfAnswers(newResponseArray.length);
 
-            console.log("Response Array:", responseArray)
-            console.log("Answer Array: ", answersArray)
-            console.log("Number of Answers: ", numberOfAnswers)
+            console.log("Response Array:", newResponseArray);
+            console.log("Answer of First Button: ", newResponseArray[0][0].answer);
+            console.log("Number of Answers", numberOfAnswers);
 
             const base64ImageData = currentPicture.pictureBytes;
             const byteCharacters = atob(base64ImageData);
             const byteNumbers = new Array(byteCharacters.length);
+
             for (let i = 0; i < byteCharacters.length; i++) {
                 byteNumbers[i] = byteCharacters.charCodeAt(i);
             }
+
             const byteArray = new Uint8Array(byteNumbers);
             const blob = new Blob([byteArray], { type: "image/png" });
+
             const reader = new FileReader();
-            reader.onloadend = function ()
-            {
+
+            reader.onloadend = function () {
                 console.log("Blob tartalom:");
             };
+
             reader.readAsText(blob);
             setImageUrl(URL.createObjectURL(blob)); // Itt állítsd be az imageUrl-t
         } else {
@@ -138,7 +157,10 @@ const Picture_Game = () => {
         }
     };
 
-    /*
+    useEffect(() => {
+        renderCurrentPicture();
+    }, [currentPictureIndex, pictures]);
+
     const handleClick = (clickedNumber) => {
         alert("A válaszod: " + clickedNumber);
        if (pictures.length === 1) {
@@ -152,7 +174,6 @@ const Picture_Game = () => {
             renderCurrentPicture();
         }
     }
-    */
 
     return (
         <div className={`main-container ${darkMode ? "dark-main-container" : ""}`}>
@@ -182,22 +203,25 @@ const Picture_Game = () => {
                         <div className="content">
 
                             <div className={`picture-numbers ${darkMode ? "dark-numbers" : ""}`}>
-                                {Array.from(
-                                    { length: numberOfAnswers }).map(
-                                        (_, index) => (
-                                    <div
-                                        className="picture-number"
-                                        onClick={() => handleClick(index+1)}
-                                    >
-                                        <button
+                                {responseArray[0] ? (
+                                    responseArray[0].map((element, index) => (
+                                        <div
+                                            className="picture-number"
+                                            onClick={() => handleClick(index + 1)}
                                             key={index}
-                                            className={`number-button ${darkMode ? "dark-number-button" : ""}`}
-
                                         >
-                                            {`Btn ${index + 1}`}
-                                        </button>
-                                    </div>
-                                ))}
+                                            <button
+                                                className={`number-button ${darkMode ? "dark-number-button" : ""}`}
+                                            >
+                                                {element.answer}
+                                            </button>
+                                        </div>
+                                    ))
+                                ) : (
+                                    <>
+                                        <p>Betöltés!</p>
+                                    </>
+                                )}
                             </div>
 
                             <div className="picture-button-container">
