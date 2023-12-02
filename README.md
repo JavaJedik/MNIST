@@ -22,7 +22,7 @@ CREATE USER 'mnist'@'localhost' IDENTIFIED BY 'jelszo';
 GRANT SELECT, INSERT, UPDATE, DELETE ON mnist.* TO 'mnist'@'localhost';
 FLUSH PRIVILEGES;
 exit;
-sudo mysql mnist < mnist_dump.sql
+sudo mysql mnist < mnist.sql
 ```
 
 ## Frontend
