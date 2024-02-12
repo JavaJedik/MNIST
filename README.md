@@ -18,7 +18,7 @@ sudo mysql
 SELECT User FROM mysql.user;
 CREATE DATABASE mnist;
 USE mnist;
-CREATE USER 'mnist'@'localhost' IDENTIFIED BY 'jelszo';
+CREATE USER 'mnist'@'localhost' IDENTIFIED BY '9999';
 GRANT SELECT, INSERT, UPDATE, DELETE ON mnist.* TO 'mnist'@'localhost';
 FLUSH PRIVILEGES;
 exit;
