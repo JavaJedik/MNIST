@@ -694,8 +694,8 @@ DROP TABLE IF EXISTS `password`;
 CREATE TABLE `password` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `player_id` int(11) DEFAULT NULL,
-  `salt` VARBINARY(255) DEFAULT NULL,
-  `password_hash` VARBINARY(255) DEFAULT NULL,
+  `salt` varbinary(255) DEFAULT NULL,
+  `password_hash` varbinary(255) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`),
   KEY `player_id` (`player_id`),
