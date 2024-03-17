@@ -174,6 +174,22 @@ const Number_Game = () => {
 
     const handleClick = (clickedNumber) => {
         alert("A válaszod: " + clickedNumber);
+        
+        if(pictures.length > 0)
+        {
+            const currentPicture = pictures[currentPictureIndex];
+            const pictureId = currentPicture.pictureId;
+            if(clickedNumber == 0)
+            {
+                const answerId = currentPicture.answerOptions[9].id;
+                const data = AuthService.sendPictureAnswer(localStorage.getItem('gameToken'), pictureId, answerId);
+            } else
+            {
+                const answerId = currentPicture.answerOptions[clickedNumber-1].id;
+                const data = AuthService.sendPictureAnswer(localStorage.getItem('gameToken'), pictureId, answerId);
+            }
+        }
+        
        if (pictures.length === 1) {
             // Ha csak egy elem van a tömbben, akkor törölje az összes elemét
             setPictures([]);

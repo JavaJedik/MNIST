@@ -180,64 +180,6 @@ const AuthService = {
         }
     },
 
-    //const pic = 0;
-    //const answer = '';
-
-    /*sendPictures: (userToken, picArrays, pictureType) => {
-        let breakFunction = false
-
-        const picArray = picArrays[0]
-
-        if (!picArray) {
-            alert("Please select a file before uploading.");
-            breakFunction = true;
-        }
-        if(pictureType === '' || pictureType === null) {
-            alert("Please declare the answer for the picture.");
-            breakFunction = true;
-        }
-        if(breakFunction) {
-            return;
-        }
-
-        console.log("Kép betöltése sikeres!");
-        console.log("Az elküldött kép byte tömbje: ", picArray)
-        console.log("Az elküldött válasz: ", pictureType)
-
-        /*const pictureAnswerObject = [
-            {
-                picture_answer_type,
-                picture_answer_answer,
-                probability
-            }
-        ];
-
-        console.log(typeof pictureAnswerObject)
-        console.log(pic.length)*/
-
-        /*let alma = JSON.stringify(pictureAnswerObject)
-        console.log(typeof alma)*/
-
-        /*fetch(`${API_URL}/upload/picture`, {
-            method: "POST",
-            headers: {
-                'userToken': `${userToken}`,
-                'pictureType': `${JSON.stringify(pictureType)}`
-            },
-            body: picArray
-        })
-            .then((response) => {
-                if (response.ok) {
-                    alert("File uploaded successfully.");
-                } else {
-                    alert("File upload failed.");
-                }
-            })
-            .catch((error) => {
-                console.error("Error:", error);
-            });
-    },*/
-
     sendPictures: (userToken, picArrays, pictureType) => {
         let breakFunction = false
 
@@ -361,6 +303,34 @@ const AuthService = {
             console.error("Hiba történt a képek lekérése közben:", error);
 
             return { success: false, response: null };
+        }
+    },
+
+    sendPictureAnswer: async (gameToken, pictureId, answerId) => {
+        try {
+            const response = await fetch(`${API_URL}/game/answer/picture`, {
+                method: "POST",
+                headers:
+                {
+                    'Content-Type': 'application/json', // Hozzáadva a Content-Type fejléc
+                    'gameToken': gameToken
+                },
+                body: JSON.stringify({  // Az objektumot JSON-ként átalakítjuk
+                    'pictureId': pictureId,
+                    'answerId': answerId
+                })
+            });
+
+            if (response.status === 200) {
+                console.log("A válasz feltöltése sikeres.");
+                return true;
+            } else {
+                console.log("A válasz feltöltése sikertelen: ", response.status);
+                return false;
+            }
+        } catch (error) {
+            console.error("Hiba a kép válaszának küldése közben: ", error);
+            return false;
         }
     }
 };
