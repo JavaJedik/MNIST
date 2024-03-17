@@ -2,6 +2,7 @@ package javajedik.main.restcontroller;
 
 import java.util.List;
 import javajedik.main.model.PictureData;
+import javajedik.main.model.PictureAnswer;
 import javajedik.main.service.PictureHandlerService;
 import javajedik.main.util.GameTokenUtil;
 import javajedik.main.util.ImageUtil;
@@ -59,17 +60,21 @@ public class GamePictureController
     }
     
     @PostMapping("/upload/answer/picture")
-    public ResponseEntity<String> uploadPictureAnswer (
+    public ResponseEntity<String> uploadPictureAnswer(
             @RequestHeader("gameToken") String gameToken,
-            @RequestBody String playerAnswer)
-    {
-        if(!GameTokenUtil.validateToken(gameToken))
-        {
+            @RequestBody PictureAnswer pictureAnswer) {
+        if (!GameTokenUtil.validateToken(gameToken)) {
             logger.info("Invalid gameToken");
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
         
-        logger.info("A képre adott válasz feltöltése sikeres");
-        return ResponseEntity.status(HttpStatus.OK).build();
+        logger.info("A feltölteni kívánt kép és válasz: " + pictureAnswer);
+        
+        if(pictureHandlerService.uploadPictureAnswer(pictureAnswer,GameTokenUtil.getGameId(gameToken))) 
+        {
+            return ResponseEntity.status(HttpStatus.OK).body("A képre adott válasz feltöltése sikeres: " + pictureAnswer);
+        }
+        
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("A képre adott válasz feltöltése sikertelen: " + pictureAnswer);
     }
 }

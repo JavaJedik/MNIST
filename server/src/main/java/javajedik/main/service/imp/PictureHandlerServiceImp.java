@@ -5,6 +5,7 @@
 package javajedik.main.service.imp;
 
 import java.util.List;
+import javajedik.main.model.PictureAnswer;
 import javajedik.main.model.PictureData;
 import javajedik.main.sql.PictureHandlerSQL;
 import org.apache.logging.log4j.LogManager;
@@ -51,5 +52,11 @@ public class PictureHandlerServiceImp implements PictureHandlerService
         }
         
         return data;
+    }
+    
+    @Override
+    public boolean uploadPictureAnswer(PictureAnswer pictureAnswer,int gameId)
+    {
+        return pictureHandlerSQL.uploadPictureAnswer(pictureAnswer, gameId);
     }
 }

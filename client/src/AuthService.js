@@ -308,7 +308,7 @@ const AuthService = {
 
     sendPictureAnswer: async (gameToken, pictureId, answerId) => {
         try {
-            const response = await fetch(`${API_URL}/game/answer/picture`, {
+            const response = await fetch(`${API_URL}/game/upload/answer/picture`, {
                 method: "POST",
                 headers:
                 {
