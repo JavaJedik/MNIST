@@ -26,7 +26,7 @@ public class RandomKeyGenerator
     {
         SecureRandom secureRandom = new SecureRandom();
         byte[] randomBytes = new byte[KEY_LENGTH];
-        secureRandom.nextBytes(randomBytes);
+        //secureRandom.nextBytes(randomBytes); //RANDOMIZÁLNI KELL!
 
         SecretKey key = new SecretKeySpec(randomBytes, "HmacSHA512");
 
