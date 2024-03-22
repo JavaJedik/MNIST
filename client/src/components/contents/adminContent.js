@@ -6,7 +6,8 @@ export const content = {
         logout: "Log out",
         choose: "Choose the picture type!",
         number: "Number",
-        dog_and_cat: "Dog and Cat"
+        dog_and_cat: "Dog and Cat",
+        picture_data: "Picture Data"
     },
     HUN: {
         welcome: "Üdvözöljük, Admin!",
@@ -15,6 +16,7 @@ export const content = {
         logout: "Kijelentkezés",
         choose: "Válaszd ki a kép típusát!",
         number: "Szám",
-        dog_and_cat: "Kutya és Macska"
+        dog_and_cat: "Kutya és Macska",
+        picture_data: "Adatok a képről"
     },
 };

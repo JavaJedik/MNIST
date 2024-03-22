@@ -180,7 +180,7 @@ const AuthService = {
         }
     },
 
-    sendPictures: (userToken, picArrays, pictureType) => {
+    sendPictures: (userToken, picArrays, pictureType, pictureData) => {
         let breakFunction = false
 
         //const picArray = picArrays[0]
@@ -193,6 +193,10 @@ const AuthService = {
             alert("Please declare the answer for the picture.");
             breakFunction = true;
         }
+        if(pictureData === '') {
+            alert("Please add data about the picture.");
+            breakFunction = true;
+        }
         if(breakFunction) {
             return;
         }
@@ -200,6 +204,7 @@ const AuthService = {
         console.log("Kép betöltése sikeres!");
         console.log("Az elküldött kép byte tömbje: ", picArrays)
         console.log("Az elküldött válasz: ", pictureType)
+        console.log("Az elküldött adatok a képről: ", pictureData)
 
         for (let i = 0; i < picArrays.length; i++) {
             const picArray = picArrays[i];
@@ -212,7 +217,8 @@ const AuthService = {
                 method: "POST",
                 headers: {
                     'userToken': `${userToken}`,
-                    'pictureType': `${JSON.stringify(pictureType)}`
+                    'pictureType': `${JSON.stringify(pictureType)}`,
+                    'pictureData': `${JSON.stringify(pictureData)}`
                 },
                 body: picArray
             })

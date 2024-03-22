@@ -12,6 +12,7 @@ const Admin = () => {
     const [answer, setText] = useState('');
     const [pic, setPicture] = useState(null);
     const [picByteArray, setPicByteArray] = useState(null);
+    const [dataForPicture, setDataForPicture] = useState(null)
 
     const [selectedUploadItem, setSelectedUploadItem] = useState(null);
     const [isDropdownOpenUpload, setIsDropdownOpenUpload] = useState(false);
@@ -141,6 +142,17 @@ const Admin = () => {
                     multiple
                 />
 
+
+                <div className="content">
+                    <input
+                        className={`input-field ${darkMode ? "dark-input-field" : ""}`}
+                        type="text"
+                        placeholder={text.picture_data}
+                        id="picturedata"
+                        onChange={(e) => setDataForPicture(e.target.value)}
+                    />
+                </div>
+
                 <div className={`dropdown ${isDropdownOpenUpload ? "active-upload" : ""}`}>
 
                     <button
@@ -180,7 +192,7 @@ const Admin = () => {
                     <button
                         className={`home-button-style ${darkMode ? "dark-button-style" : ""}`}
                         onClick={() => authService.sendPictures(
-                            token, newPictureArrays, selectedUploadItem)}
+                            token, newPictureArrays, selectedUploadItem, dataForPicture)}
                     >
                         {text.upload}
                     </button>
