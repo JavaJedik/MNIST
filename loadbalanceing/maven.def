@@ -1,0 +1,20 @@
+Bootstrap: docker
+From: debian:12.5
+
+%post
+    apt-get update
+    apt-get install -y default-jdk maven git
+    mkdir /a
+    chmod -R 777 /a
+    cd /a
+    git clone https://github.com/JavaJedik/MNIST.git
+    #/bin/bash -c 'timeout 1m mvn -f /a/MNIST/server/pom.xml spring-boot:run -Dspring-boot.run.arguments=--server.port=$1'
+    mvn -f /a/MNIST/server/pom.xml install
+    chmod -R 777 /a
+
+%runscript
+    echo "Running Spring Boot application on port $1..."
+    cd /a/MNIST/server
+    timeout 59m mvn -f /a/MNIST/server/pom.xml spring-boot:run -Dspring-boot.run.arguments=--server.port=$1
+
+

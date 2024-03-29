@@ -9,8 +9,11 @@
 #include <atomic>
 #include <sys/socket.h>
 
-std::vector<std::pair<std::string, int>> servers = {{"127.0.0.1", 8814}, {"127.0.0.1", 8816}};
+std::vector<std::pair<std::string, int>> servers = {{"127.0.0.1", 8816}};
 std::atomic<size_t> server_index{0};
+std::atomic<int> activeConnections{0};
+static const int loadBalancerPort=8814;
+static int maxQueueSize=100;
 
 void configureKeepAlive(int sock) {
     int optval = 1;
@@ -29,6 +32,7 @@ void configureKeepAlive(int sock) {
 void forwardData(int sourceSock, int destSock, std::thread::id threadId) {
     char buffer[4096];
     size_t totalBytes = 0;
+
     while (true) {
         ssize_t bytesRead = read(sourceSock, buffer, sizeof(buffer));
         if (bytesRead <= 0) break;
@@ -39,6 +43,10 @@ void forwardData(int sourceSock, int destSock, std::thread::id threadId) {
     }
 
     std::cout << "[" << threadId << "] Kapcsolat lezárva, összesen " << totalBytes << " byte adat átvitelre került." << std::endl;
+
+    activeConnections--; int numberOfConnections = activeConnections.load(); // Konkorens hozzáférés elkerülése
+    std::cout << "[" << threadId << "] Jelenleg aktív (kliens+szerver) kapcsolatok száma: " << numberOfConnections << " (" << int(numberOfConnections/2) << ")" << std::endl;
+
     close(sourceSock);
     close(destSock);
 }
@@ -71,6 +79,9 @@ void handleClient(int clientSock, sockaddr_in clientAddr) {
     std::thread clientToServerThread(forwardData, clientSock, serverSock, threadId);
     std::thread serverToClientThread(forwardData, serverSock, clientSock, threadId);
 
+    activeConnections = activeConnections+2; int numberOfConnections =  activeConnections.load(); // A szerver-kliens pár miatt, és a konkorens írások elkerülésére
+    std::cout << "[" << std::this_thread::get_id() << "] Jelenleg aktív (kliens+szerver) kapcsolatok száma: " << numberOfConnections << " (" << int(numberOfConnections/2) << ")" << std::endl;
+
     clientToServerThread.join();
     serverToClientThread.join();
 }
@@ -80,7 +91,7 @@ int main() {
     sockaddr_in loadBalancerAddr;
     memset(&loadBalancerAddr, 0, sizeof(loadBalancerAddr));
     loadBalancerAddr.sin_family = AF_INET;
-    loadBalancerAddr.sin_port = htons(8815);
+    loadBalancerAddr.sin_port = htons(loadBalancerPort);
     loadBalancerAddr.sin_addr.s_addr = INADDR_ANY;
 
     if (bind(loadBalancerSock, (sockaddr*)&loadBalancerAddr, sizeof(loadBalancerAddr)) < 0) {
@@ -88,8 +99,8 @@ int main() {
         return -1;
     }
 
-    listen(loadBalancerSock, 5);
-    std::cout << "Load balancer is listening on port 8815..." << std::endl;
+    listen(loadBalancerSock, maxQueueSize);
+    std::cout << "Load balancer is listening on port " << loadBalancerPort << "..." << std::endl;
 
     while (true) {
         sockaddr_in clientAddr;
