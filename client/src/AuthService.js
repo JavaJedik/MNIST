@@ -180,7 +180,7 @@ const AuthService = {
         }
     },
 
-    sendPictures: (userToken, picArrays, pictureType, pictureData) => {
+    sendPictures: (userToken, picArrays, language, collectionType, pictureType, pictureAnswer) => {
         let breakFunction = false
 
         //const picArray = picArrays[0]
@@ -189,11 +189,16 @@ const AuthService = {
             alert("Please select a file before uploading.");
             breakFunction = true;
         }
+        if(collectionType==='' || collectionType===null)
+        {
+            alert("Please dexlare the collection for the picture")
+            breakFunction=true
+        }
         if(pictureType === '' || pictureType === null) {
             alert("Please declare the answer for the picture.");
             breakFunction = true;
         }
-        if(pictureData === '') {
+        if(pictureAnswer === '') {
             alert("Please add data about the picture.");
             breakFunction = true;
         }
@@ -202,23 +207,26 @@ const AuthService = {
         }
 
         console.log("Kép betöltése sikeres!");
-        console.log("Az elküldött kép byte tömbje: ", picArrays)
-        console.log("Az elküldött válasz: ", pictureType)
-        console.log("Az elküldött adatok a képről: ", pictureData)
+        console.log("Az elküldött kép(ek) byte tömbje(i): ", picArrays)
+        console.log("A képkollekció: ", collectionType)
+        console.log("Az elküldött választípus: ", pictureType)
+        console.log("Az elküldött válasz a képről: ", pictureAnswer)
 
         for (let i = 0; i < picArrays.length; i++) {
             const picArray = picArrays[i];
 
             console.log(`Uploading picture ${i + 1}...`);
             console.log("The byte array of the uploaded picture: ", picArray);
-            console.log("The uploaded answer: ", pictureType);
+            console.log("The uploaded answer: ", pictureAnswer);
 
             fetch(`${API_URL}/upload/picture`, {
                 method: "POST",
                 headers: {
                     'userToken': `${userToken}`,
+                    'language': `${language}`,
+                    'collectionType': `${collectionType}`,
                     'pictureType': `${JSON.stringify(pictureType)}`,
-                    'pictureData': `${JSON.stringify(pictureData)}`
+                    'pictureAnswer': `${JSON.stringify(pictureAnswer)}`
                 },
                 body: picArray
             })
@@ -226,7 +234,7 @@ const AuthService = {
                     if (response.ok) {
                         console.log(`Picture ${i + 1} uploaded successfully.`);
                     } else {
-                        console.log(`Picture ${i + 1} upload failed.`);
+                        console.log(`Picture ${i + 1} upload failed. Response: `, response);
                     }
                 })
                 .catch((error) => {

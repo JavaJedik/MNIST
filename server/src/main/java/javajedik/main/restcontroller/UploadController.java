@@ -27,11 +27,13 @@ public class UploadController
     @PostMapping("/picture")
     public ResponseEntity<String> uploadPicture(
             @RequestHeader("userToken") String userToken,
+            @RequestHeader("language") String language,
             @RequestHeader("pictureType") String pictureType,
+            @RequestHeader("pictureAnswer") String pictureAnswer,
             @RequestBody byte[] binaryData)
     {   
         logger.info("Egy userToken és byte[] érkezett, validáció megkezdése...");
-        logger.info("A kép válaszának adatai: " + pictureType);
+        logger.info("A kép válaszának típusa és értéke: " + pictureType + ", " + pictureAnswer);
         
         final int player_id = UserTokenUtil.getPlayerId(userToken);
         
