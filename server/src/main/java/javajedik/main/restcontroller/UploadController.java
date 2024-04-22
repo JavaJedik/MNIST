@@ -1,6 +1,6 @@
 package javajedik.main.restcontroller;
 
-import javajedik.main.model.PictureData;
+import javajedik.main.model.UploadPictureData;
 import javajedik.main.util.ImageUtil;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javajedik.main.util.UserTokenUtil;
 import org.springframework.web.bind.annotation.RequestHeader;
 import javajedik.main.service.PictureHandlerService;
+import javajedik.main.util.LanguageDict;
 
 @RestController
 @RequestMapping("/upload")
@@ -28,12 +29,16 @@ public class UploadController
     public ResponseEntity<String> uploadPicture(
             @RequestHeader("userToken") String userToken,
             @RequestHeader("language") String language,
+            @RequestHeader("collectionType") String collectionType,
             @RequestHeader("pictureType") String pictureType,
             @RequestHeader("pictureAnswer") String pictureAnswer,
             @RequestBody byte[] binaryData)
     {   
+        pictureType = pictureType.replaceAll("^\"|\"$", "");
+        pictureAnswer = pictureAnswer.replaceAll("^\"|\"$", "");
+        
         logger.info("Egy userToken és byte[] érkezett, validáció megkezdése...");
-        logger.info("A kép válaszának típusa és értéke: " + pictureType + ", " + pictureAnswer);
+        logger.info("A kép válaszának kollekciója, típusa és értéke: " + collectionType + ", " + pictureType + ", " + pictureAnswer);
         
         final int player_id = UserTokenUtil.getPlayerId(userToken);
         
@@ -59,9 +64,16 @@ public class UploadController
             return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body("A kép biztonságos feldolgozása sikertelen.");
         }
         
-        PictureData pictureData = new PictureData(binaryData);
-        final int picture_id = uploadPictureService.storePNG(pictureData);
+        language = LanguageDict.getLanguage(language);
         
+        UploadPictureData uploadPictureData = new UploadPictureData(language, collectionType, pictureType, pictureAnswer, binaryData);
+        final int picture_id = uploadPictureService.storePNG(uploadPictureData);
+        
+        if(picture_id==-1)
+        {
+            return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body("A kollekció nem létezik vagy a válasz nem eleme.");
+        }
+                
         return ResponseEntity.status(HttpStatus.OK).body("A képazonosítód: " + picture_id);
     }
 }

@@ -3,10 +3,11 @@ package javajedik.main.service;
 import java.util.List;
 import javajedik.main.model.PictureData;
 import javajedik.main.model.PictureAnswer;
+import javajedik.main.model.UploadPictureData;
 
 public interface PictureHandlerService 
 {
-    public int storePNG(PictureData pictureData);
+    public int storePNG(UploadPictureData uploadPictureData);
 
     public List<PictureData> askNumberPicture(int askedPictures);
     

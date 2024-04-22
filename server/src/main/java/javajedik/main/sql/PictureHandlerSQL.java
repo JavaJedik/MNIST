@@ -9,6 +9,7 @@ import javajedik.main.model.AnswerOption;
 import javajedik.main.model.CollectionData;
 import javajedik.main.model.PictureAnswer;
 import javajedik.main.model.PictureData;
+import javajedik.main.model.UploadPictureData;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,6 +69,69 @@ public class PictureHandlerSQL
         logger.info("A bináris beszúrása sikeres. A picture_id: " + picture_id);
     }
     
+    private int getCollectionIdByName(UploadPictureData uploadPictureData) {
+        final String selectSql = "SELECT answer_collection.id " +
+                                 "FROM answer_collection " +
+                                 "JOIN answer_collection_wordlist ON answer_collection_wordlist.id = answer_collection.answer_collection_wordlist_id " +
+                                 "JOIN answer_collection_wordlist_international ON answer_collection_wordlist_international.answer_collection_wordlist_id = answer_collection_wordlist.id " +
+                                 "JOIN language ON language.id = answer_collection_wordlist_international.language_id " +
+                                 "JOIN language_name ON language.id = language_name.language_id " +
+                                 "WHERE language_name.name = ? AND answer_collection_wordlist_international.word = ?";
+
+        try {
+            logger.info("Adatok: " + uploadPictureData.getLanguage() + ", " + uploadPictureData.getCollectionType());
+            int collectionId = jdbcTemplate.queryForObject(selectSql,
+                    new Object[]{uploadPictureData.getLanguage(), uploadPictureData.getCollectionType()},
+                    Integer.class);
+
+            logger.info("Kollekció azonosítójának lekérése sikeres: " + collectionId);
+
+            return collectionId;
+        } catch (DataAccessException e) {
+            logger.warn("Nem sikerült lekérni a kollekció azonosítóját a megadott adatok alapján.", e);
+            return -1;
+        }
+    }
+
+    private int getAnswerIdByCriteria(UploadPictureData uploadPictureData) {
+        final String selectSql = "SELECT answer_option.id " +
+                "FROM answer_collection " +
+                "JOIN answer_collection_wordlist ON answer_collection_wordlist.id = answer_collection.answer_collection_wordlist_id " +
+                "JOIN answer_collection_wordlist_international ON answer_collection_wordlist_international.answer_collection_wordlist_id = answer_collection_wordlist.id " +
+                "JOIN language ON language.id = answer_collection_wordlist_international.language_id " +
+                "JOIN language_name ON language.id = language_name.language_id " +
+                "JOIN answer_collection_answers ON answer_collection_answers.answer_collection_id = answer_collection.id " +
+                "JOIN answer_option ON answer_option.id = answer_collection_answers.answer_option_id " +
+                "JOIN picture_answer_type ON answer_option.picture_answer_type_id = picture_answer_type.id " +
+                "JOIN type_wordlist ON type_wordlist.id = picture_answer_type.type_wordlist_id " +
+                "JOIN type_wordlist_international ON type_wordlist.id = type_wordlist_international.wordlist_id AND language.id = type_wordlist_international.language_id " +
+                "JOIN picture_answer_answer ON answer_option.picture_answer_answer_id = picture_answer_answer.id " +
+                "JOIN answer_wordlist ON answer_wordlist.id = picture_answer_answer.answer_wordlist_id " +
+                "JOIN answer_wordlist_international ON answer_wordlist_international.wordlist_id = answer_wordlist.id AND language.id = answer_wordlist_international.language_id " +
+                "WHERE answer_collection.id = ? AND language_name.name = ? " +
+                "AND type_wordlist_international.word = ? AND answer_wordlist_international.word = ? " +
+                "LIMIT 1";
+
+        int collection_id = uploadPictureData.getCollection_id();
+        String language = uploadPictureData.getLanguage();
+        String answerType = uploadPictureData.getPictureType();
+        String answer = uploadPictureData.getPictureAnswer();
+        logger.info("Adatok: " + collection_id + ", " + language + ", " + answerType + ", " + answer);
+        try {
+            Integer answerId = jdbcTemplate.queryForObject(selectSql,
+                    //new Object[]{uploadPictureData.getCollection_id(), uploadPictureData.getLanguage(), uploadPictureData.getPictureType(), uploadPictureData.getPictureAnswer()},
+                    new Object[]{collection_id, language, answerType, answer},
+                    Integer.class);
+
+            logger.info("Válasz azonosítójának lekérése sikeres: " + answerId);
+
+            return answerId != null ? answerId : -1;
+        } catch (DataAccessException e) {
+            logger.warn("Nem sikerült lekérni a válasz azonosítóját a megadott kritériumok alapján." + e);
+            return -1;
+        }
+    }
+
     private int storePictureRealOptions(int pictureId, int answerCollectionId) throws Exception
     {
         final String insertSql = "INSERT INTO picture_real_options (picture_id, answer_collection_id) VALUES (?, ?)";
@@ -84,26 +148,67 @@ public class PictureHandlerSQL
         }
     }
     
-    public int storePicture(PictureData pictureData)
+    private boolean storePictureRealAnswer(int pictureId, int answerOptionId) 
+    {
+        try 
+        {
+            String insertSql = "INSERT INTO picture_real_answers (picture_id, answer_option_id) VALUES (?, ?)";
+            int rowsAffected = jdbcTemplate.update(insertSql, pictureId, answerOptionId);
+
+            if (rowsAffected > 0) 
+            {
+                logger.info("Sikeresen beszúrt sor a picture_real_answers táblába.");
+                return true;
+            } else 
+            {
+                logger.warn("Nem sikerült beszúrni a sort a picture_real_answers táblába.");
+                return false;
+            }
+        } catch (DataAccessException e) 
+        {
+            logger.error("Hiba történt a beszúrás közben a picture_real_answers táblába.", e);
+            return false;
+        }
+    }
+  
+    public int storePicture(UploadPictureData uploadPictureData)
     {
         TransactionStatus status = transactionManager.getTransaction(new DefaultTransactionDefinition());
         
-        pictureData.setPictureId(insertNewPicture());
-        
-        if(pictureData.getPictureId() == -1)
+        int picture_id = insertNewPicture();
+        if(picture_id == -1)
         {
             logger.warn("Kép beszúrása sikertelen, tranzakció visszavonása...");
             transactionManager.rollback(status);
             return -1;
         }
         
+        uploadPictureData.setCollection_id(getCollectionIdByName(uploadPictureData));
+        if(uploadPictureData.getCollection_id()==-1)
+        {
+            logger.warn("A kollekció nem létezik, tranzakció visszavonása...");
+            transactionManager.rollback(status);
+            return -1;
+        }
+        
+        int answer_option_id=getAnswerIdByCriteria(uploadPictureData);
+        if(answer_option_id==-1)
+        {
+            logger.warn("A kollekció hoz nem létezik adott válasz...");
+            transactionManager.rollback(status);
+            return -1;
+        }
+        
         try
         {
-            storeBinData(pictureData.getPictureId(), pictureData.getPictureBytes());
-            logger.info("Kép fragmentjeinek beszúrása sikeres, picture_id : " + pictureData.getPictureId());
+            storeBinData(picture_id, uploadPictureData.getPictureBytes());
+            logger.info("Kép fragmentjeinek beszúrása sikeres, picture_id : " + picture_id);
             
-            storePictureRealOptions(pictureData.getPictureId(), 1); // 1 az answer_collection_id fix értéke
-            logger.info("A picture_real_options táblába történő beszúrás sikeres, picture_id : " + pictureData.getPictureId());
+            storePictureRealOptions(picture_id, uploadPictureData.getCollection_id());
+            logger.info("A picture_real_options táblába történő beszúrás sikeres, picture_id : " + picture_id);
+            
+            storePictureRealAnswer(picture_id,answer_option_id);
+            logger.info("A picture_real_answers táblába történő beszúrás sikeres,\npicture_id és answer_option_id: (" + picture_id + ", " + answer_option_id + ")");
         } catch (Exception e)
         {
             logger.warn("Fragment beszúrása közben hiba lépett fel, tranzakció visszavonása...");
@@ -113,11 +218,11 @@ public class PictureHandlerSQL
         
         logger.info("Kép és fragment beszúrása  sikeres, tranzakció mentése...");
         transactionManager.commit(status);
-        return pictureData.getPictureId();    
+        return picture_id;    
     }
     
     public List<PictureData> getNumberPicture(int askedPictures) 
-    {
+    {   
         final String selectSql = "SELECT answer_collection.id AS collection_id, " +
                 "answer_collection_wordlist_international.word AS collection_name, " +
                 "language_name.name AS language, " +
@@ -138,7 +243,7 @@ public class PictureHandlerSQL
                 "JOIN picture_answer_answer ON answer_option.picture_answer_answer_id = picture_answer_answer.id " +
                 "JOIN answer_wordlist ON answer_wordlist.id = picture_answer_answer.answer_wordlist_id " +
                 "JOIN answer_wordlist_international ON answer_wordlist_international.wordlist_id = answer_wordlist.id AND language.id = answer_wordlist_international.language_id " +
-                "WHERE type_wordlist_international.word = 'Szám' AND language_name.name = 'magyar' " +
+                "WHERE answer_collection_wordlist_international.word = 'Szám' AND language_name.name = 'magyar' " +
                 "ORDER BY answer_collection.id, answer_collection_answers.nth_answer";
 
         List<CollectionData> collectionDataList = jdbcTemplate.query(

@@ -7,6 +7,7 @@ package javajedik.main.service.imp;
 import java.util.List;
 import javajedik.main.model.PictureAnswer;
 import javajedik.main.model.PictureData;
+import javajedik.main.model.UploadPictureData;
 import javajedik.main.sql.PictureHandlerSQL;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -23,9 +24,9 @@ public class PictureHandlerServiceImp implements PictureHandlerService
     private PictureHandlerSQL pictureHandlerSQL;
 
     @Override
-    public int storePNG(PictureData pictureData) 
+    public int storePNG(UploadPictureData uploadPictureData) 
     {   
-        final int picture_id = pictureHandlerSQL.storePicture(pictureData);
+        final int picture_id = pictureHandlerSQL.storePicture(uploadPictureData);
         
         if(picture_id == -1)
         {
