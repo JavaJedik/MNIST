@@ -6,6 +6,7 @@ import javajedik.main.model.PictureAnswer;
 import javajedik.main.service.PictureHandlerService;
 import javajedik.main.util.GameTokenUtil;
 import javajedik.main.util.ImageUtil;
+import javajedik.main.util.LanguageDict;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,16 +28,24 @@ public class GamePictureController
     @Autowired
     private PictureHandlerService pictureHandlerService;
 
-    @GetMapping("/ask/picture/number")
-    public ResponseEntity<List<PictureData>> askNumberPicture (@RequestHeader("gameToken") String gameToken, @RequestHeader("numberOfAskedPictures") String numberOfAskedPicturesString)
+    @GetMapping("/ask/picture")
+    public ResponseEntity<List<PictureData>> askPictures (
+            @RequestHeader("gameToken") String gameToken, 
+            @RequestHeader("collectionName") String collectionName,
+            @RequestHeader("language") String language,
+            @RequestHeader("numberOfAskedPictures") String numberOfAskedPicturesString)
     {
-        if(!GameTokenUtil.validateToken(gameToken))
+        if(false && !GameTokenUtil.validateToken(gameToken))
         {
             logger.warn("Invalid gameToken");
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
         
-        List<PictureData> data = pictureHandlerService.askNumberPicture(Integer.parseInt(numberOfAskedPicturesString));
+        language = LanguageDict.getLanguage(language);
+        
+        logger.info("CollectionName: " + collectionName + ", Language: " + language + ", NumberOfAskedPictures: " + numberOfAskedPicturesString);
+                
+        List<PictureData> data = pictureHandlerService.askPictures(collectionName,language,Integer.parseInt(numberOfAskedPicturesString));
         
         if(data == null || data.isEmpty())
         {

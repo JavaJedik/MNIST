@@ -9,7 +9,7 @@ public class LanguageDict
 
     static 
     {
-        languageMap.put("hun", "Hungarian");
+        languageMap.put("hun", "Magyar");
         languageMap.put("eng", "English");
         // Ide írd további nyelvek leképzéseit...
     }

@@ -40,9 +40,9 @@ public class PictureHandlerServiceImp implements PictureHandlerService
     }
 
     @Override
-    public List<PictureData> askNumberPicture(int askedPictures) 
+    public List<PictureData> askPictures(String collectionName, String language, int askedPictures) 
     {
-        List<PictureData> data = pictureHandlerSQL.getNumberPicture(askedPictures);
+        List<PictureData> data = pictureHandlerSQL.getPictures(collectionName, language, askedPictures);
         
         if(data.isEmpty() || data == null)
         {

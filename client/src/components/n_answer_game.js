@@ -32,7 +32,7 @@ const N_Answer_Game = () => {
             } catch (error) {
                 console.error('Hiba az autentikációs ellenőrzésben:', error);
                 alert(`Hiba az autentikációs ellenőrzésben: ${error}`);
-                navigateLogin()
+                //navigateLogin()
             }
         };
 
@@ -106,7 +106,7 @@ const N_Answer_Game = () => {
                         <input
                             className={`answer-slider ${darkMode ? "dark-answer-slider" : ""}`}
                             type="range"
-                            min="2"
+                            min="1"
                             max="10"
                             value={numAnswers}
                             onChange={handleSliderChange}

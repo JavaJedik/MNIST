@@ -60,7 +60,7 @@ const Number_Game = () => {
         ) {
             const currentPicture = pictures[currentPictureIndex];
             const base64ImageData = currentPicture.pictureBytes;
-            console.log("A BASE64 kódolt kép: " + base64ImageData);
+            //console.log("A BASE64 kódolt kép: " + base64ImageData);
             const byteCharacters = atob(base64ImageData);
             const byteNumbers = new Array(byteCharacters.length);
             for (let i = 0; i < byteCharacters.length; i++) {
@@ -89,9 +89,9 @@ const Number_Game = () => {
 
         const fetchData = async () => {
             try {
-                const response = await AuthService.askNumberPicture(localStorage.getItem("gameToken"), 5);
+                const response = await AuthService.askPicture(localStorage.getItem("gameToken"), text.collectionName, selectedLanguage,  5);
                 if (response.success) {
-                    console.log("A gamere érkezett adatok: ", response.response)
+                    console.log("A gamere érkezett adatok: ", response.response);
                     setPictures(response.response); // Az összes képet beállítjuk
                     setCurrentPictureIndex(0); // Az első képet állítjuk be kezdetben
                     renderCurrentPicture();
@@ -179,7 +179,7 @@ const Number_Game = () => {
         {
             const currentPicture = pictures[currentPictureIndex];
             const pictureId = currentPicture.pictureId;
-            if(clickedNumber == 0)
+            if(clickedNumber === 0)
             {
                 const answerId = currentPicture.answerOptions[9].id;
                 const data = AuthService.sendPictureAnswer(localStorage.getItem('gameToken'), pictureId, answerId);

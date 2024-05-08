@@ -65,36 +65,10 @@ const Picture_Game = () => {
         navigate('/leaderboard');
     };
 
-    /* useEffect(() => {
-        document.addEventListener('keydown', handleKeyPress);
-
-        const fetchData = async () => {
-            try {
-                const response = await AuthService.askPicture(localStorage.getItem("gameToken"), 5);
-                if (response.success) {
-                    console.log("A gamere érkezett adatok: ", response.response)
-                    setPictures(response.response); // Az összes képet beállítjuk
-                    console.log("A képek: ", pictures)
-                    setCurrentPictureIndex(0); // Az első képet állítjuk be kezdetben
-                } else {
-                    navigateLogin();
-                }
-            } catch (error) {
-                console.error("Képek lekérése sikertelen", error);
-            }
-        };
-
-        fetchData();
-
-        return () => {
-            document.removeEventListener('keydown', handleKeyPress);
-        };
-    }, []); */
-
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await AuthService.askPicture(localStorage.getItem("gameToken"), 5);
+                const response = await AuthService.askPicture(localStorage.getItem("gameToken"), "none", selectedLanguage, 5);
                 if (response.success) {
                     console.log("A gamere érkezett adatok: ", response.response);
                     setPictures(response.response); // Az összes képet beállítjuk
@@ -108,7 +82,7 @@ const Picture_Game = () => {
 
         fetchData();
 
-    }, []);
+    }, [pictures.length === 0]);
 
     useEffect(() => {
         console.log("A képek: ", pictures);

@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
+import java.util.stream.Stream;
 import javajedik.main.model.AnswerOption;
 import javajedik.main.model.CollectionData;
 import javajedik.main.model.PictureAnswer;
@@ -194,7 +195,7 @@ public class PictureHandlerSQL
         int answer_option_id=getAnswerIdByCriteria(uploadPictureData);
         if(answer_option_id==-1)
         {
-            logger.warn("A kollekció hoz nem létezik adott válasz...");
+            logger.warn("A kollekcióhoz nem létezik adott válasz...");
             transactionManager.rollback(status);
             return -1;
         }
@@ -221,8 +222,24 @@ public class PictureHandlerSQL
         return picture_id;    
     }
     
-    public List<PictureData> getNumberPicture(int askedPictures) 
+    public List<PictureData> getPictures(String collectionName, String language, int askedPictures) 
     {   
+        logger.info("Lekérendő képek: " + collectionName + ", " + language + ", " + askedPictures);
+        String whereClause;
+        if (collectionName.equals("none") || true) 
+        {
+            String randomCollectionIdSql = "SELECT id FROM answer_collection ORDER BY RAND() LIMIT 1";
+
+            int randomCollectionId = jdbcTemplate.queryForObject(randomCollectionIdSql, Integer.class);
+
+            whereClause = "WHERE answer_collection.id = " + randomCollectionId +" AND language_name.name = " + "\"" + language + "\"";
+        } else 
+        {
+            whereClause = "WHERE answer_collection_wordlist_international.word = " + "\"" + collectionName + "\"" + " AND language_name.name = " + "\"" + language + "\"";
+        }
+        
+        logger.info("A where feltétel: " + whereClause);
+
         final String selectSql = "SELECT answer_collection.id AS collection_id, " +
                 "answer_collection_wordlist_international.word AS collection_name, " +
                 "language_name.name AS language, " +
@@ -243,30 +260,33 @@ public class PictureHandlerSQL
                 "JOIN picture_answer_answer ON answer_option.picture_answer_answer_id = picture_answer_answer.id " +
                 "JOIN answer_wordlist ON answer_wordlist.id = picture_answer_answer.answer_wordlist_id " +
                 "JOIN answer_wordlist_international ON answer_wordlist_international.wordlist_id = answer_wordlist.id AND language.id = answer_wordlist_international.language_id " +
-                "WHERE answer_collection_wordlist_international.word = 'Szám' AND language_name.name = 'magyar' " +
+                whereClause + " " +
                 "ORDER BY answer_collection.id, answer_collection_answers.nth_answer";
 
         List<CollectionData> collectionDataList = jdbcTemplate.query(
-        selectSql,
-        new RowMapper<CollectionData>() {
-            @Override
-            public CollectionData mapRow(ResultSet rs, int rowNum) throws SQLException {
-                int collectionId = rs.getInt("collection_id");
-                String collectionName = rs.getString("collection_name");
-                String language = rs.getString("language");
-                int answerId = rs.getInt("answer_id");
-                String type = rs.getString("type");
-                String name = rs.getString("name");
-                int nthAnswer = rs.getInt("nth_answer");
+            selectSql,
+            new RowMapper<CollectionData>() 
+            {
+                @Override
+                public CollectionData mapRow(ResultSet rs, int rowNum) throws SQLException 
+                {
+                    int collectionId = rs.getInt("collection_id");
+                    String collectionName = rs.getString("collection_name");
+                    String language = rs.getString("language");
+                    int answerId = rs.getInt("answer_id");
+                    String type = rs.getString("type");
+                    String name = rs.getString("name");
+                    int nthAnswer = rs.getInt("nth_answer");
 
-                return new CollectionData(collectionId, collectionName, language, answerId, type, name, nthAnswer);
-            }
-        });
-        
-        int collectionId = collectionDataList.get(0).getCollectionId(); // Az első elem collectionId tulajdonsága
+                    return new CollectionData(collectionId, collectionName, language, answerId, type, name, nthAnswer);
+                }
+            });
+
+        int collectionId = collectionDataList.get(0).getCollectionId();
         String pictureSql = "SELECT picture_id FROM picture " +
                             "JOIN picture_real_options ON picture.id = picture_real_options.picture_id " +
-                            "WHERE picture_real_options.answer_collection_id = " + collectionId;
+                            "WHERE picture_real_options.answer_collection_id = " + collectionId + " " +
+                            "ORDER BY RAND() LIMIT " + askedPictures;
 
         List<Integer> pictureIdList = jdbcTemplate.queryForList(pictureSql, Integer.class);
 
@@ -275,11 +295,18 @@ public class PictureHandlerSQL
             logger.warn("A kért képek száma nagyobb, mint amennyi rendelkezésre áll. Kérlek, ellenőrizd az inputot.");
         }
 
-        final String bindataSql = "SELECT picture_id, bin_data FROM picture_bin_data LIMIT ?";
+        StringBuilder bindataSql = new StringBuilder("SELECT picture_id, bin_data FROM picture_bin_data WHERE picture_id IN (");
+        for (int i = 0; i < askedPictures; i++) {
+            bindataSql.append("?");
+            if (i < askedPictures - 1) {
+                bindataSql.append(", ");
+            }
+        }
+        bindataSql.append(")");
 
         List<PictureData> result = jdbcTemplate.query(
-            bindataSql,
-            new Object[]{askedPictures},
+            bindataSql.toString(),
+            pictureIdList.toArray(),
             (rs, rowNum) -> {
                 int pictureId = rs.getInt("picture_id");
                 byte[] binData = rs.getBytes("bin_data");
@@ -294,19 +321,20 @@ public class PictureHandlerSQL
         {
             logger.info("Sikerült képeket szerezni az adatbázisból");
         }
-        
-        for(int i = 0; i<result.size();i++)
+
+        for (int i = 0; i < result.size(); i++) 
         {
             AnswerOption[] ao = new AnswerOption[collectionDataList.size()];
-            for(int j=0;j<10;j++)
+            for (int j = 0; j < collectionDataList.size(); j++) 
             {
-                ao[j]=new AnswerOption(collectionDataList.get(j).getAnswerId(),collectionDataList.get(j).getType(),collectionDataList.get(j).getName());
+                ao[j] = new AnswerOption(collectionDataList.get(j).getAnswerId(), collectionDataList.get(j).getType(), collectionDataList.get(j).getName());
             }
             result.get(i).setAnswerOptions(ao);
             result.get(i).setPictureAnswerNickname(collectionDataList.get(i).getCollectionName());
         }
         return result;
     }
+
     
     public boolean uploadPictureAnswer(PictureAnswer pictureAnswer, int gameId) 
     {

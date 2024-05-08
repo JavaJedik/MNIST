@@ -9,7 +9,7 @@ public interface PictureHandlerService
 {
     public int storePNG(UploadPictureData uploadPictureData);
 
-    public List<PictureData> askNumberPicture(int askedPictures);
+    public List<PictureData> askPictures(String collectionName, String language, int askedPictures);
     
     public boolean uploadPictureAnswer(PictureAnswer pictureAnswer,int gameId);
 }
