@@ -4,6 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 import javajedik.main.model.AnswerOption;
@@ -292,7 +293,8 @@ public class PictureHandlerSQL
 
         if (askedPictures > pictureIdList.size()) 
         {
-            logger.warn("A kért képek száma nagyobb, mint amennyi rendelkezésre áll. Kérlek, ellenőrizd az inputot.");
+            logger.warn("A kért képek száma nagyobb (" + askedPictures + "), " + "mint amennyi rendelkezésre áll (" + pictureIdList.size() + "). Kérlek, ellenőrizd az inputot.");
+            askedPictures = pictureIdList.size();
         }
 
         StringBuilder bindataSql = new StringBuilder("SELECT picture_id, bin_data FROM picture_bin_data WHERE picture_id IN (");
@@ -304,6 +306,8 @@ public class PictureHandlerSQL
         }
         bindataSql.append(")");
 
+        logger.warn("A kiválasztott képek: " + Arrays.toString(pictureIdList.toArray()));
+        
         List<PictureData> result = jdbcTemplate.query(
             bindataSql.toString(),
             pictureIdList.toArray(),
@@ -324,13 +328,14 @@ public class PictureHandlerSQL
 
         for (int i = 0; i < result.size(); i++) 
         {
+            logger.info("Iteration: " + i + ", Result size: " + result.size());
             AnswerOption[] ao = new AnswerOption[collectionDataList.size()];
             for (int j = 0; j < collectionDataList.size(); j++) 
             {
                 ao[j] = new AnswerOption(collectionDataList.get(j).getAnswerId(), collectionDataList.get(j).getType(), collectionDataList.get(j).getName());
             }
             result.get(i).setAnswerOptions(ao);
-            result.get(i).setPictureAnswerNickname(collectionDataList.get(i).getCollectionName());
+            result.get(i).setPictureAnswerNickname(collectionDataList.get(0).getCollectionName());
         }
         return result;
     }

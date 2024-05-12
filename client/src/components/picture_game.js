@@ -68,7 +68,7 @@ const Picture_Game = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await AuthService.askPicture(localStorage.getItem("gameToken"), "none", selectedLanguage, 5);
+                const response = await AuthService.askPicture(localStorage.getItem("gameToken"), "none", selectedLanguage, 2);
                 if (response.success) {
                     console.log("A gamere érkezett adatok: ", response.response);
                     setPictures(response.response); // Az összes képet beállítjuk
